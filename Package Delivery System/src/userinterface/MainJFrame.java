@@ -306,7 +306,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void backLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMousePressed
         // TODO add your handling code here:
-        
+        loginJPanel.setVisible(true);
+        container.setVisible(false);
+        leftPanel.setVisible(false);
+        getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
     }//GEN-LAST:event_backLabelMousePressed
 
     private void txtUserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusGained
