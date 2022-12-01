@@ -4,7 +4,19 @@
  */
 package userinterface;
 
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+
 
 /**
  *
@@ -54,6 +66,11 @@ public class forgotPasswordPanel extends javax.swing.JPanel {
         submitBtnPanel.setBackground(new java.awt.Color(25, 56, 82));
         submitBtnPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         submitBtnPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitBtnPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitBtnPanelMouseClicked(evt);
+            }
+        });
 
         submitLabel.setBackground(new java.awt.Color(25, 56, 82));
         submitLabel.setForeground(new java.awt.Color(204, 204, 204));
@@ -61,6 +78,9 @@ public class forgotPasswordPanel extends javax.swing.JPanel {
         submitLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 submitLabelMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                submitLabelMousePressed(evt);
             }
         });
 
@@ -119,8 +139,49 @@ public class forgotPasswordPanel extends javax.swing.JPanel {
 
     private void submitLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitLabelMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Email Sent");
+        
+        String toEmail = txtEmail.getText();
+        String fromEmail = "amazonian.co.us@gmail.com";
+        String password = "MAM@Amazonian";
+        Properties defaultProps = new Properties();
+        defaultProps.setProperty("mail.smtp.auth", "true");
+        defaultProps.setProperty("mail.smtp.starttls.enable", "true");
+        defaultProps.setProperty("mail.smtp.host", "smtp.gmail.com");
+        defaultProps.setProperty("mail.smtp.port", "587");
+
+        Session session = Session.getDefaultInstance(defaultProps, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthenticator() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        });
+  
+        try{
+          MimeMessage message = new MimeMessage(session);
+          message.setFrom(new InternetAddress(fromEmail));
+          message.addRecipient(RecipientType.TO, new InternetAddress(toEmail));
+          message.setSubject("AMAZONIAN: Password Reset Notification");
+          message.setText("Hi, \n \n Your New Password is password"+"\n \nThanks,\nTeam Amazonian.");
+          
+          Transport.send(message,fromEmail,"whdnlrdwrascgiij");
+          
+          JOptionPane.showMessageDialog(this, "Email Successfully sent");
+        }
+        catch(Exception e){
+            
+                JOptionPane.showMessageDialog(this, "Please enter a valid Email ID");
+            
+        }
+        
     }//GEN-LAST:event_submitLabelMouseClicked
+
+    private void submitBtnPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnPanelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitBtnPanelMouseClicked
+
+    private void submitLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitLabelMousePressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_submitLabelMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

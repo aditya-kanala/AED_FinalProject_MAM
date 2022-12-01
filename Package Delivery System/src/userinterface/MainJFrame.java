@@ -7,6 +7,7 @@ package userinterface;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import userinterface.StoreManager.StoreManagerJPanel;
 
 /**
  *
@@ -175,7 +176,7 @@ public class MainJFrame extends javax.swing.JFrame {
         signUpLabel.setBackground(new java.awt.Color(25, 56, 82));
         signUpLabel.setForeground(new java.awt.Color(204, 204, 204));
         signUpLabel.setText("     Sign Up");
-        signUpLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        signUpLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signUpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signUpLabelMouseClicked(evt);
@@ -200,6 +201,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
         signInButtonPanel.setBackground(new java.awt.Color(25, 56, 82));
         signInButtonPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        signInButtonPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signInButtonPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signInButtonPanelMouseClicked(evt);
+            }
+        });
 
         signInLabel.setBackground(new java.awt.Color(25, 56, 82));
         signInLabel.setForeground(new java.awt.Color(204, 204, 204));
@@ -223,6 +230,7 @@ public class MainJFrame extends javax.swing.JFrame {
         forgotPassword.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         forgotPassword.setForeground(new java.awt.Color(204, 204, 204));
         forgotPassword.setText("Forgot Password?");
+        forgotPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         forgotPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 forgotPasswordMouseClicked(evt);
@@ -277,13 +285,13 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(loginJPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(exitLabel)
-                        .addGap(189, 189, 189)
+                        .addGap(213, 213, 213)
                         .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(userNameSeperator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(passwordSeperator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -372,6 +380,22 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitLabelMouseClicked
+
+    private void signInButtonPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInButtonPanelMouseClicked
+        // TODO add your handling code here:
+        loginJPanel.setVisible(false);
+        container.setVisible(true);
+        leftPanel.setVisible(true);
+        logoutLabel.setVisible(false);
+        backLabel.setVisible(true);
+        txtUserName.setText("");
+        fldPassword.setText("");
+        
+        StoreManagerJPanel panel = new StoreManagerJPanel();
+        container.add("workArea", panel);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.next(container);
+    }//GEN-LAST:event_signInButtonPanelMouseClicked
 
     /**
      * @param args the command line arguments

@@ -209,25 +209,25 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageOrganizationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrganizationMousePressed
-        manageOrganization();
+        
     }//GEN-LAST:event_manageOrganizationMousePressed
 
     private void manageOrganizationPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrganizationPanelMousePressed
         // TODO add your handling code here:
-        manageOrganization();
+        
     }//GEN-LAST:event_manageOrganizationPanelMousePressed
 
     private void manageEmployeeLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEmployeeLabelMousePressed
-        manageEmployee();
+        
     }//GEN-LAST:event_manageEmployeeLabelMousePressed
 
     private void manageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEmployeeMousePressed
         // TODO add your handling code here:
-        manageEmployee();
+        
     }//GEN-LAST:event_manageEmployeeMousePressed
 
     private void manageUserAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageUserAccountMousePressed
-        manageUser();
+       
     }//GEN-LAST:event_manageUserAccountMousePressed
 
 
