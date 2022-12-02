@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import userinterface.CustomerServiceRepresentative.csrPanel;
 import userinterface.StoreManager.StoreManagerJPanel;
+import userinterface.customer.CustomerHomePanel;
 
 /**
  *
@@ -395,7 +396,8 @@ public class MainJFrame extends javax.swing.JFrame {
         fldPassword.setText("");
         
         //StoreManagerJPanel panel = new StoreManagerJPanel();
-        csrPanel panel = new csrPanel();
+        //csrPanel panel = new csrPanel();
+        CustomerHomePanel panel = new CustomerHomePanel();
         container.add("workArea", panel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
