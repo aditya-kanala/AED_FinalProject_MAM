@@ -396,11 +396,10 @@ public class MainJFrame extends javax.swing.JFrame {
         txtUserName.setText("");
         fldPassword.setText("");
         
-        //StoreManagerJPanel panel = new StoreManagerJPanel();
+        StoreManagerJPanel panel = new StoreManagerJPanel();
         //csrPanel panel = new csrPanel();
 //        CustomerHomePanel panel = new CustomerHomePanel();
-        mapsPanel panel = new mapsPanel();
-        container.add("csrPanel", panel);
+        container.add("workArea", panel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
         
