@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1058, 840]"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblManagerName" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                              <Component id="txtManagerName" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblManagerEmail" max="32767" attributes="0"/>
+                                  <Component id="lblManagerUserName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblManagerPassword" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtManagerEmail" max="32767" attributes="0"/>
+                                  <Component id="txtManagerUserName" max="32767" attributes="0"/>
+                                  <Component id="pwdManagerPassword" min="-2" pref="268" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblStoreName" max="32767" attributes="0"/>
+                                  <Component id="lblStoreID" min="-2" pref="87" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtStoreName" max="32767" attributes="0"/>
+                                  <Component id="txtStoreID" min="-2" pref="268" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="lblHeading" min="-2" pref="431" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="446" max="-2" attributes="0"/>
+                      <Component id="btnCreateStoreManager" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="303" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+              <Component id="lblHeading" min="-2" pref="53" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblStoreID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtStoreID" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblStoreName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtStoreName" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblManagerName" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtManagerName" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblManagerEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtManagerEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblManagerUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtManagerUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblManagerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pwdManagerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+              <Component id="btnCreateStoreManager" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace pref="245" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblStoreID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Store ID :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtStoreID">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStoreName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Store Name :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblManagerName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manager Name :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblManagerEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manager Email :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblManagerUserName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Username :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblManagerPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Password :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtStoreName">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtManagerName">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtManagerEmail">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtManagerUserName">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pwdManagerPassword">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCreateStoreManager">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Manager"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHeading">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="36" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Create New Store Manager"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
