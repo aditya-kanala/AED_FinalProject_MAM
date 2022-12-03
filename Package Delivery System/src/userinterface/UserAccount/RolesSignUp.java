@@ -123,22 +123,59 @@ public class RolesSignUp extends javax.swing.JPanel {
         txtUserName = new javax.swing.JTextField();
         btnCreateUser = new javax.swing.JButton();
 
+        StoreManager.setBackground(new java.awt.Color(25, 54, 82));
+        StoreManager.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblStoreName.setBackground(new java.awt.Color(25, 54, 82));
+        lblStoreName.setForeground(new java.awt.Color(204, 204, 204));
         lblStoreName.setText("Store Name :");
 
+        lblSHeading.setBackground(new java.awt.Color(25, 54, 82));
         lblSHeading.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lblSHeading.setForeground(new java.awt.Color(204, 204, 204));
         lblSHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSHeading.setText("Create a Store Manager");
 
+        lblSManagerName.setBackground(new java.awt.Color(25, 54, 82));
+        lblSManagerName.setForeground(new java.awt.Color(204, 204, 204));
         lblSManagerName.setText("Manager Name :");
 
+        lblSManagerEmail.setBackground(new java.awt.Color(25, 54, 82));
+        lblSManagerEmail.setForeground(new java.awt.Color(204, 204, 204));
         lblSManagerEmail.setText("Manager Email :");
 
+        lblSManagerUserName.setBackground(new java.awt.Color(25, 54, 82));
+        lblSManagerUserName.setForeground(new java.awt.Color(204, 204, 204));
         lblSManagerUserName.setText("Username :");
 
+        lblSManagerPassword.setBackground(new java.awt.Color(25, 54, 82));
+        lblSManagerPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblSManagerPassword.setText("Password :");
 
+        txtStoreName.setBackground(new java.awt.Color(25, 54, 82));
+        txtStoreName.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtSManagerName.setBackground(new java.awt.Color(25, 54, 82));
+        txtSManagerName.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtSManagerEmail.setBackground(new java.awt.Color(25, 54, 82));
+        txtSManagerEmail.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtSManagerUserName.setBackground(new java.awt.Color(25, 54, 82));
+        txtSManagerUserName.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblStoreID.setBackground(new java.awt.Color(25, 54, 82));
+        lblStoreID.setForeground(new java.awt.Color(204, 204, 204));
         lblStoreID.setText("Store ID :");
 
+        pwdSManagerPassword.setBackground(new java.awt.Color(25, 54, 82));
+        pwdSManagerPassword.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtStoreID.setBackground(new java.awt.Color(25, 54, 82));
+        txtStoreID.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnCreateStoreManager.setBackground(new java.awt.Color(25, 54, 82));
+        btnCreateStoreManager.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateStoreManager.setText("Create Manager");
 
         javax.swing.GroupLayout StoreManagerLayout = new javax.swing.GroupLayout(StoreManager);
@@ -216,22 +253,59 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         tabbedRoles.addTab("Store Manager", StoreManager);
 
+        WarehouseManager.setBackground(new java.awt.Color(25, 54, 82));
+        WarehouseManager.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblWarehouseName.setBackground(new java.awt.Color(25, 54, 82));
+        lblWarehouseName.setForeground(new java.awt.Color(204, 204, 204));
         lblWarehouseName.setText("Store Name :");
 
+        lblWHeading.setBackground(new java.awt.Color(25, 54, 82));
         lblWHeading.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lblWHeading.setForeground(new java.awt.Color(204, 204, 204));
         lblWHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWHeading.setText("Create a Warehouse Manager");
 
+        lblWManagerName.setBackground(new java.awt.Color(25, 54, 82));
+        lblWManagerName.setForeground(new java.awt.Color(204, 204, 204));
         lblWManagerName.setText("Manager Name :");
 
+        lblWManagerEmail.setBackground(new java.awt.Color(25, 54, 82));
+        lblWManagerEmail.setForeground(new java.awt.Color(204, 204, 204));
         lblWManagerEmail.setText("Manager Email :");
 
+        lblManagerUserName1.setBackground(new java.awt.Color(25, 54, 82));
+        lblManagerUserName1.setForeground(new java.awt.Color(204, 204, 204));
         lblManagerUserName1.setText("Username :");
 
+        lblWManagerPassword.setBackground(new java.awt.Color(25, 54, 82));
+        lblWManagerPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblWManagerPassword.setText("Password :");
 
+        txtWarehouseName.setBackground(new java.awt.Color(25, 54, 82));
+        txtWarehouseName.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtWManagerName.setBackground(new java.awt.Color(25, 54, 82));
+        txtWManagerName.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtWManagerEmail.setBackground(new java.awt.Color(25, 54, 82));
+        txtWManagerEmail.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtWManagerUserName.setBackground(new java.awt.Color(25, 54, 82));
+        txtWManagerUserName.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblWarehouseID.setBackground(new java.awt.Color(25, 54, 82));
+        lblWarehouseID.setForeground(new java.awt.Color(204, 204, 204));
         lblWarehouseID.setText("Warehouse ID :");
 
+        pwdWManagerPassword1.setBackground(new java.awt.Color(25, 54, 82));
+        pwdWManagerPassword1.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtWarehouseID.setBackground(new java.awt.Color(25, 54, 82));
+        txtWarehouseID.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnCreateWarehouseManager.setBackground(new java.awt.Color(25, 54, 82));
+        btnCreateWarehouseManager.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateWarehouseManager.setText("Create Manager");
 
         javax.swing.GroupLayout WarehouseManagerLayout = new javax.swing.GroupLayout(WarehouseManager);
@@ -309,19 +383,46 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         tabbedRoles.addTab("Warehouse Manager", WarehouseManager);
 
+        CSR.setBackground(new java.awt.Color(25, 54, 82));
+        CSR.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblCHeading.setBackground(new java.awt.Color(25, 54, 82));
         lblCHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblCHeading.setForeground(new java.awt.Color(204, 204, 204));
         lblCHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCHeading.setText("Create a CSR Agent");
 
+        lblCSRAgentID.setBackground(new java.awt.Color(25, 54, 82));
+        lblCSRAgentID.setForeground(new java.awt.Color(204, 204, 204));
         lblCSRAgentID.setText("CSR Agent ID :");
 
+        lblCSRAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        lblCSRAgentName.setForeground(new java.awt.Color(204, 204, 204));
         lblCSRAgentName.setText("CSR Agent Name :");
 
+        lblCSRAgentEmail.setBackground(new java.awt.Color(25, 54, 82));
+        lblCSRAgentEmail.setForeground(new java.awt.Color(204, 204, 204));
         lblCSRAgentEmail.setText("Email :");
 
+        lblCSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
+        lblCSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblCSRAgentPassword.setText("Password :");
 
+        txtCSRAgentID.setBackground(new java.awt.Color(25, 54, 82));
+        txtCSRAgentID.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtCSRAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        txtCSRAgentName.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtCSRAgentEmail.setBackground(new java.awt.Color(25, 54, 82));
+        txtCSRAgentEmail.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnCreateCSR.setBackground(new java.awt.Color(25, 54, 82));
+        btnCreateCSR.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateCSR.setText("Create CSR Agent");
+
+        pwdCSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
+        pwdCSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout CSRLayout = new javax.swing.GroupLayout(CSR);
         CSR.setLayout(CSRLayout);
@@ -382,19 +483,46 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         tabbedRoles.addTab("CSR", CSR);
 
+        SSR.setBackground(new java.awt.Color(25, 54, 82));
+        SSR.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblSSRHeading1.setBackground(new java.awt.Color(25, 54, 82));
         lblSSRHeading1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblSSRHeading1.setForeground(new java.awt.Color(204, 204, 204));
         lblSSRHeading1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSSRHeading1.setText("Create an SSR Agent");
 
+        lblSSRAgentID.setBackground(new java.awt.Color(25, 54, 82));
+        lblSSRAgentID.setForeground(new java.awt.Color(204, 204, 204));
         lblSSRAgentID.setText("SSR Agent ID :");
 
+        lblSSRAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        lblSSRAgentName.setForeground(new java.awt.Color(204, 204, 204));
         lblSSRAgentName.setText("SSR Agent Name :");
 
+        lblSSRAgentEmail.setBackground(new java.awt.Color(25, 54, 82));
+        lblSSRAgentEmail.setForeground(new java.awt.Color(204, 204, 204));
         lblSSRAgentEmail.setText("Email :");
 
+        lblSSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
+        lblSSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblSSRAgentPassword.setText("Password :");
 
+        txtSSRAgentID.setBackground(new java.awt.Color(25, 54, 82));
+        txtSSRAgentID.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtSSRAgentEmail.setBackground(new java.awt.Color(25, 54, 82));
+        txtSSRAgentEmail.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnCreateSSR.setBackground(new java.awt.Color(25, 54, 82));
+        btnCreateSSR.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateSSR.setText("Create SSR Agent");
+
+        pwdSSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
+        pwdSSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtSSRAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        txtSSRAgentName.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout SSRLayout = new javax.swing.GroupLayout(SSR);
         SSR.setLayout(SSRLayout);
@@ -455,19 +583,51 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         tabbedRoles.addTab("SSR", SSR);
 
+        ShippingAgent.setBackground(new java.awt.Color(25, 54, 82));
+        ShippingAgent.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblSAHeading.setBackground(new java.awt.Color(25, 54, 82));
         lblSAHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblSAHeading.setForeground(new java.awt.Color(204, 204, 204));
         lblSAHeading.setText("Register a Shipping Agent");
 
+        lblShippingAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        lblShippingAgentName.setForeground(new java.awt.Color(204, 204, 204));
         lblShippingAgentName.setText("Name :");
 
+        lblShippingAgentMobile.setBackground(new java.awt.Color(25, 54, 82));
+        lblShippingAgentMobile.setForeground(new java.awt.Color(204, 204, 204));
         lblShippingAgentMobile.setText("Mobile :");
 
+        lblShippingAgentBaseLocation.setBackground(new java.awt.Color(25, 54, 82));
+        lblShippingAgentBaseLocation.setForeground(new java.awt.Color(204, 204, 204));
         lblShippingAgentBaseLocation.setText("Base Location :");
 
+        lblShippingUserName.setBackground(new java.awt.Color(25, 54, 82));
+        lblShippingUserName.setForeground(new java.awt.Color(204, 204, 204));
         lblShippingUserName.setText("User Name :");
 
+        lblShippingAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
+        lblShippingAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblShippingAgentPassword.setText("Password :");
 
+        txtShippingAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        txtShippingAgentName.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtShippingAgentMobile.setBackground(new java.awt.Color(25, 54, 82));
+        txtShippingAgentMobile.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtShippingAgentBaseLocation.setBackground(new java.awt.Color(25, 54, 82));
+        txtShippingAgentBaseLocation.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtShippingAgentUserName.setBackground(new java.awt.Color(25, 54, 82));
+        txtShippingAgentUserName.setForeground(new java.awt.Color(204, 204, 204));
+
+        pwdShippingAgent.setBackground(new java.awt.Color(25, 54, 82));
+        pwdShippingAgent.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnShippingAgent.setBackground(new java.awt.Color(25, 54, 82));
+        btnShippingAgent.setForeground(new java.awt.Color(204, 204, 204));
         btnShippingAgent.setText("Create Shipping Agent");
 
         javax.swing.GroupLayout ShippingAgentLayout = new javax.swing.GroupLayout(ShippingAgent);
@@ -537,23 +697,60 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         tabbedRoles.addTab("Shipping Agent", ShippingAgent);
 
+        DeliveryAgent.setBackground(new java.awt.Color(25, 54, 82));
+        DeliveryAgent.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblDAHeading.setBackground(new java.awt.Color(25, 54, 82));
         lblDAHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblDAHeading.setForeground(new java.awt.Color(204, 204, 204));
         lblDAHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDAHeading.setText("Register a Delivery Agent");
 
+        lblDAAgentID.setBackground(new java.awt.Color(25, 54, 82));
+        lblDAAgentID.setForeground(new java.awt.Color(204, 204, 204));
         lblDAAgentID.setText("Agent ID :");
 
+        lblDAAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        lblDAAgentName.setForeground(new java.awt.Color(204, 204, 204));
         lblDAAgentName.setText("Agent Name : ");
 
+        lblDAAgentMobile.setBackground(new java.awt.Color(25, 54, 82));
+        lblDAAgentMobile.setForeground(new java.awt.Color(204, 204, 204));
         lblDAAgentMobile.setText("Mobile :");
 
+        lblDAAgentBaseLocation.setBackground(new java.awt.Color(25, 54, 82));
+        lblDAAgentBaseLocation.setForeground(new java.awt.Color(204, 204, 204));
         lblDAAgentBaseLocation.setText("Base Location :");
 
+        lblDAAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
+        lblDAAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblDAAgentPassword.setText("Password :");
 
+        lblDAAgentUserName.setBackground(new java.awt.Color(25, 54, 82));
+        lblDAAgentUserName.setForeground(new java.awt.Color(204, 204, 204));
         lblDAAgentUserName.setText("User Name :");
 
+        txtDAAgentID.setBackground(new java.awt.Color(25, 54, 82));
+        txtDAAgentID.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtDAAgentName.setBackground(new java.awt.Color(25, 54, 82));
+        txtDAAgentName.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtDAAgentBaseLocation.setBackground(new java.awt.Color(25, 54, 82));
+        txtDAAgentBaseLocation.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtDAAgentUserName.setBackground(new java.awt.Color(25, 54, 82));
+        txtDAAgentUserName.setForeground(new java.awt.Color(204, 204, 204));
+
+        pwdDAAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
+        pwdDAAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnDAAgent.setBackground(new java.awt.Color(25, 54, 82));
+        btnDAAgent.setForeground(new java.awt.Color(204, 204, 204));
         btnDAAgent.setText("Register Delivery Agent");
+
+        txtDAAgentMobile.setBackground(new java.awt.Color(25, 54, 82));
+        txtDAAgentMobile.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout DeliveryAgentLayout = new javax.swing.GroupLayout(DeliveryAgent);
         DeliveryAgent.setLayout(DeliveryAgentLayout);
@@ -631,25 +828,61 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         tabbedRoles.addTab("Delivery Agent", DeliveryAgent);
 
+        Customer.setBackground(new java.awt.Color(25, 54, 82));
+        Customer.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblCustomerHeading.setBackground(new java.awt.Color(25, 54, 82));
         lblCustomerHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblCustomerHeading.setForeground(new java.awt.Color(204, 204, 204));
         lblCustomerHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCustomerHeading.setText("Create a New User");
 
+        lblUserName.setBackground(new java.awt.Color(25, 54, 82));
+        lblUserName.setForeground(new java.awt.Color(204, 204, 204));
         lblUserName.setText("Name :");
 
+        lblUserEmail.setBackground(new java.awt.Color(25, 54, 82));
+        lblUserEmail.setForeground(new java.awt.Color(204, 204, 204));
         lblUserEmail.setText("Email :");
 
+        lblUserMobile.setBackground(new java.awt.Color(25, 54, 82));
+        lblUserMobile.setForeground(new java.awt.Color(204, 204, 204));
         lblUserMobile.setText("Mobile :");
 
+        lblUserGender.setBackground(new java.awt.Color(25, 54, 82));
+        lblUserGender.setForeground(new java.awt.Color(204, 204, 204));
         lblUserGender.setText("Gender :");
 
+        lblUserUserName.setBackground(new java.awt.Color(25, 54, 82));
+        lblUserUserName.setForeground(new java.awt.Color(204, 204, 204));
         lblUserUserName.setText("User Name :");
 
+        lblUserPassword.setBackground(new java.awt.Color(25, 54, 82));
+        lblUserPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblUserPassword.setText("Password :");
 
+        pwdUserPassword.setBackground(new java.awt.Color(25, 54, 82));
+        pwdUserPassword.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtUserUserName.setBackground(new java.awt.Color(25, 54, 82));
+        txtUserUserName.setForeground(new java.awt.Color(204, 204, 204));
+
+        cbUserGender.setBackground(new java.awt.Color(25, 54, 82));
         cbUserGender.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        cbUserGender.setForeground(new java.awt.Color(204, 204, 204));
         cbUserGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Male", "Female", "Other", "Do not want to disclose", " " }));
 
+        txtUserMobile.setBackground(new java.awt.Color(25, 54, 82));
+        txtUserMobile.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtUserEmail.setBackground(new java.awt.Color(25, 54, 82));
+        txtUserEmail.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtUserName.setBackground(new java.awt.Color(25, 54, 82));
+        txtUserName.setForeground(new java.awt.Color(204, 204, 204));
+
+        btnCreateUser.setBackground(new java.awt.Color(25, 54, 82));
+        btnCreateUser.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateUser.setText("Create User");
 
         javax.swing.GroupLayout CustomerLayout = new javax.swing.GroupLayout(Customer);
@@ -659,36 +892,32 @@ public class RolesSignUp extends javax.swing.JPanel {
             .addGroup(CustomerLayout.createSequentialGroup()
                 .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CustomerLayout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUserUserName)
+                            .addComponent(lblUserPassword)
+                            .addComponent(lblUserGender)))
+                    .addGroup(CustomerLayout.createSequentialGroup()
+                        .addGap(319, 319, 319)
                         .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCustomerHeading)
                             .addGroup(CustomerLayout.createSequentialGroup()
-                                .addGap(298, 298, 298)
-                                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblUserUserName)
-                                    .addComponent(lblUserPassword)
-                                    .addComponent(lblUserGender)))
-                            .addGroup(CustomerLayout.createSequentialGroup()
-                                .addGap(319, 319, 319)
                                 .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCustomerHeading)
-                                    .addGroup(CustomerLayout.createSequentialGroup()
-                                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblUserName)
-                                            .addComponent(lblUserEmail)
-                                            .addComponent(lblUserMobile))
-                                        .addGap(29, 29, 29)
-                                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtUserMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbUserGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUserUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                            .addComponent(pwdUserPassword)))
+                                    .addComponent(lblUserName)
+                                    .addComponent(lblUserEmail)
+                                    .addComponent(lblUserMobile))
+                                .addGap(29, 29, 29)
+                                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtUserMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUserUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pwdUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbUserGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(CustomerLayout.createSequentialGroup()
                         .addGap(418, 418, 418)
                         .addComponent(btnCreateUser)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(353, Short.MAX_VALUE))
         );
         CustomerLayout.setVerticalGroup(
             CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -711,11 +940,11 @@ public class RolesSignUp extends javax.swing.JPanel {
                 .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUserUserName)
                     .addComponent(txtUserUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pwdUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUserPassword))
-                .addGap(29, 29, 29)
+                .addGap(23, 23, 23)
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserPassword)
+                    .addComponent(pwdUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUserGender)
                     .addComponent(cbUserGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
