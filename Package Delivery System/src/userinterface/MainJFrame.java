@@ -395,9 +395,9 @@ public class MainJFrame extends javax.swing.JFrame {
         txtUserName.setText("");
         fldPassword.setText("");
         
-        //StoreManagerJPanel panel = new StoreManagerJPanel();
+        StoreManagerJPanel panel = new StoreManagerJPanel();
         //csrPanel panel = new csrPanel();
-        CustomerHomePanel panel = new CustomerHomePanel();
+//        CustomerHomePanel panel = new CustomerHomePanel();
         container.add("workArea", panel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
