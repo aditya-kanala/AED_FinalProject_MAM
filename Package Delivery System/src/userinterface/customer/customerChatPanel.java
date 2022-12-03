@@ -40,6 +40,7 @@ public class customerChatPanel extends javax.swing.JPanel {
             
         }
         
+        msgSend.setVisible(true);
     }
 
     /**
@@ -53,6 +54,7 @@ public class customerChatPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         msg_area = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
         msg_text = new javax.swing.JTextField();
         msgSend = new javax.swing.JLabel();
 
@@ -66,17 +68,23 @@ public class customerChatPanel extends javax.swing.JPanel {
         msg_area.setText("hello");
         jScrollPane1.setViewportView(msg_area);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         msg_text.setBackground(new java.awt.Color(25, 56, 82));
         msg_text.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         msg_text.setText("test");
         msg_text.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(255, 204, 0)));
-        msg_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                msg_textActionPerformed(evt);
-            }
-        });
 
-        msgSend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Email Send.png"))); // NOI18N
+        msgSend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Email Send(3).png"))); // NOI18N
         msgSend.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 msgSendMouseClicked(evt);
@@ -93,6 +101,11 @@ public class customerChatPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msgSend, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 8, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,6 +117,11 @@ public class customerChatPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(msgSend, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                         .addContainerGap())))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -120,13 +138,10 @@ public class customerChatPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_msgSendMouseClicked
 
-    private void msg_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msg_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_msg_textActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel msgSend;
     private javax.swing.JTextArea msg_area;

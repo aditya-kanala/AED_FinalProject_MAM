@@ -8,6 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import userinterface.CustomerServiceRepresentative.csrPanel;
+import userinterface.Maps.mapsPanel;
 import userinterface.StoreManager.StoreManagerJPanel;
 import userinterface.customer.CustomerHomePanel;
 
@@ -397,10 +398,12 @@ public class MainJFrame extends javax.swing.JFrame {
         
         //StoreManagerJPanel panel = new StoreManagerJPanel();
         //csrPanel panel = new csrPanel();
-        CustomerHomePanel panel = new CustomerHomePanel();
-        container.add("workArea", panel);
+//        CustomerHomePanel panel = new CustomerHomePanel();
+        mapsPanel panel = new mapsPanel();
+        container.add("csrPanel", panel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
+        
     }//GEN-LAST:event_signInButtonPanelMouseClicked
 
     /**
