@@ -70,8 +70,9 @@ public class chatPanel extends javax.swing.JPanel {
         msgarea.setRows(5);
         jScrollPane1.setViewportView(msgarea);
 
-        msg_text.setBackground(new java.awt.Color(25, 56, 82));
+        msg_text.setBackground(new java.awt.Color(204, 204, 0));
         msg_text.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        msg_text.setText("hgfhgfjhg");
         msg_text.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(255, 204, 0)));
         msg_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

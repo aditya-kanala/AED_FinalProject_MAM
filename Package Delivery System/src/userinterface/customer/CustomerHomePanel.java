@@ -64,6 +64,9 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         manageOrganization.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         manageOrganization.setText("Customer Chat Box");
         manageOrganization.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manageOrganizationMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageOrganizationMousePressed(evt);
             }
@@ -233,6 +236,10 @@ public class CustomerHomePanel extends javax.swing.JPanel {
     private void manageUserAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageUserAccountMousePressed
 
     }//GEN-LAST:event_manageUserAccountMousePressed
+
+    private void manageOrganizationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrganizationMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageOrganizationMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

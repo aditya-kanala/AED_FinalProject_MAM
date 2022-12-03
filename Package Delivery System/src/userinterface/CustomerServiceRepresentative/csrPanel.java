@@ -214,7 +214,7 @@ public class csrPanel extends javax.swing.JPanel {
         
         chatPanel panel = new chatPanel();
         
-        rightCSRPanel.add("workArea", panel);
+        rightCSRPanel.add("chatPanel", panel);
         
         CardLayout layout = (CardLayout) rightCSRPanel.getLayout();
         layout.next(rightCSRPanel);

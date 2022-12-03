@@ -111,6 +111,7 @@
                 <Property name="text" type="java.lang.String" value="Customer Chat Box"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="manageOrganizationMouseClicked"/>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="manageOrganizationMousePressed"/>
               </Events>
             </Component>
