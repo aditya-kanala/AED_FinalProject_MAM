@@ -76,7 +76,7 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
         lblHeading2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblHeading2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeading2.setText("Create Store");
+        lblHeading2.setText("Register a Store");
 
         lblStoreID2.setText("Store ID :");
 
@@ -153,7 +153,7 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
         lblHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeading.setText("Create Warehouse");
+        lblHeading.setText("Register a Warehouse");
 
         lblWarehouseType.setText("Warehouse Type :");
 
@@ -162,7 +162,7 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         WarehouseLayout.setHorizontalGroup(
             WarehouseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WarehouseLayout.createSequentialGroup()
-                .addGap(0, 423, Short.MAX_VALUE)
+                .addGap(0, 355, Short.MAX_VALUE)
                 .addComponent(lblHeading)
                 .addGap(291, 291, 291))
             .addGroup(WarehouseLayout.createSequentialGroup()
@@ -214,7 +214,7 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
         lblFHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblFHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFHeading.setText("Register Farm");
+        lblFHeading.setText("Register a Farm");
 
         lblFarmName.setText("Farm Name :");
 
@@ -285,7 +285,7 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
         lblSHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblSHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSHeading.setText("Create New Supplier");
+        lblSHeading.setText("Create a Supplier");
 
         lblSupplierName.setText("Supplier Name :");
 
@@ -330,7 +330,7 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
                     .addGroup(SupplierLayout.createSequentialGroup()
                         .addGap(476, 476, 476)
                         .addComponent(btnCreateSupplier)))
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         SupplierLayout.setVerticalGroup(
             SupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

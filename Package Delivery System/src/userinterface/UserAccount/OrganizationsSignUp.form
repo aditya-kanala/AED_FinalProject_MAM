@@ -117,7 +117,7 @@
                   <Font name="Times New Roman" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create Store"/>
+                <Property name="text" type="java.lang.String" value="Register a Store"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblStoreID2">
@@ -161,7 +161,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="423" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="355" max="32767" attributes="0"/>
                       <Component id="lblHeading" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
                   </Group>
@@ -254,7 +254,7 @@
                   <Font name="Times New Roman" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create Warehouse"/>
+                <Property name="text" type="java.lang.String" value="Register a Warehouse"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblWarehouseType">
@@ -351,7 +351,7 @@
                   <Font name="Times New Roman" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Register Farm"/>
+                <Property name="text" type="java.lang.String" value="Register a Farm"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblFarmName">
@@ -433,7 +433,7 @@
                               <Component id="btnCreateSupplier" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="288" max="32767" attributes="0"/>
+                      <EmptySpace pref="291" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -486,7 +486,7 @@
                   <Font name="Times New Roman" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create New Supplier"/>
+                <Property name="text" type="java.lang.String" value="Create a Supplier"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblSupplierName">

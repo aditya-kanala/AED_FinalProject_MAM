@@ -93,13 +93,41 @@ public class RolesSignUp extends javax.swing.JPanel {
         pwdShippingAgent = new javax.swing.JPasswordField();
         btnShippingAgent = new javax.swing.JButton();
         DeliveryAgent = new javax.swing.JPanel();
+        lblDAHeading = new javax.swing.JLabel();
+        lblDAAgentID = new javax.swing.JLabel();
+        lblDAAgentName = new javax.swing.JLabel();
+        lblDAAgentMobile = new javax.swing.JLabel();
+        lblDAAgentBaseLocation = new javax.swing.JLabel();
+        lblDAAgentPassword = new javax.swing.JLabel();
+        lblDAAgentUserName = new javax.swing.JLabel();
+        txtDAAgentID = new javax.swing.JTextField();
+        txtDAAgentName = new javax.swing.JTextField();
+        txtDAAgentBaseLocation = new javax.swing.JTextField();
+        txtDAAgentUserName = new javax.swing.JTextField();
+        pwdDAAgentPassword = new javax.swing.JPasswordField();
+        btnDAAgent = new javax.swing.JToggleButton();
+        txtDAAgentMobile = new javax.swing.JTextField();
         Customer = new javax.swing.JPanel();
+        lblCustomerHeading = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        lblUserEmail = new javax.swing.JLabel();
+        lblUserMobile = new javax.swing.JLabel();
+        lblUserGender = new javax.swing.JLabel();
+        lblUserUserName = new javax.swing.JLabel();
+        lblUserPassword = new javax.swing.JLabel();
+        pwdUserPassword = new javax.swing.JPasswordField();
+        txtUserUserName = new javax.swing.JTextField();
+        cbUserGender = new javax.swing.JComboBox<>();
+        txtUserMobile = new javax.swing.JTextField();
+        txtUserEmail = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
+        btnCreateUser = new javax.swing.JButton();
 
         lblStoreName.setText("Store Name :");
 
         lblSHeading.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblSHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSHeading.setText("Create New Store Manager");
+        lblSHeading.setText("Create a Store Manager");
 
         lblSManagerName.setText("Manager Name :");
 
@@ -192,7 +220,7 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         lblWHeading.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lblWHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWHeading.setText("Create New Warehouse Manager");
+        lblWHeading.setText("Create a Warehouse Manager");
 
         lblWManagerName.setText("Manager Name :");
 
@@ -283,7 +311,7 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         lblCHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblCHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCHeading.setText("Create CSR Agent");
+        lblCHeading.setText("Create a CSR Agent");
 
         lblCSRAgentID.setText("CSR Agent ID :");
 
@@ -356,7 +384,7 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         lblSSRHeading1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblSSRHeading1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSSRHeading1.setText("Create SSR Agent");
+        lblSSRHeading1.setText("Create an SSR Agent");
 
         lblSSRAgentID.setText("SSR Agent ID :");
 
@@ -428,7 +456,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         tabbedRoles.addTab("SSR", SSR);
 
         lblSAHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        lblSAHeading.setText("Create Shipping Agent");
+        lblSAHeading.setText("Register a Shipping Agent");
 
         lblShippingAgentName.setText("Name :");
 
@@ -446,10 +474,17 @@ public class RolesSignUp extends javax.swing.JPanel {
         ShippingAgent.setLayout(ShippingAgentLayout);
         ShippingAgentLayout.setHorizontalGroup(
             ShippingAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ShippingAgentLayout.createSequentialGroup()
+                .addGap(0, 234, Short.MAX_VALUE)
+                .addComponent(lblSAHeading)
+                .addGap(287, 287, 287))
             .addGroup(ShippingAgentLayout.createSequentialGroup()
                 .addGroup(ShippingAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ShippingAgentLayout.createSequentialGroup()
-                        .addGap(338, 338, 338)
+                        .addGap(411, 411, 411)
+                        .addComponent(btnShippingAgent))
+                    .addGroup(ShippingAgentLayout.createSequentialGroup()
+                        .addGap(311, 311, 311)
                         .addGroup(ShippingAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblShippingUserName)
                             .addComponent(lblShippingAgentName)
@@ -457,20 +492,13 @@ public class RolesSignUp extends javax.swing.JPanel {
                             .addComponent(lblShippingAgentBaseLocation)
                             .addComponent(lblShippingAgentMobile))
                         .addGap(40, 40, 40)
-                        .addGroup(ShippingAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtShippingAgentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtShippingAgentUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pwdShippingAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtShippingAgentBaseLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtShippingAgentMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(ShippingAgentLayout.createSequentialGroup()
-                        .addGap(383, 383, 383)
-                        .addComponent(btnShippingAgent)))
+                        .addGroup(ShippingAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtShippingAgentName)
+                            .addComponent(txtShippingAgentMobile)
+                            .addComponent(txtShippingAgentBaseLocation)
+                            .addComponent(txtShippingAgentUserName)
+                            .addComponent(pwdShippingAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ShippingAgentLayout.createSequentialGroup()
-                .addGap(0, 302, Short.MAX_VALUE)
-                .addComponent(lblSAHeading)
-                .addGap(287, 287, 287))
         );
         ShippingAgentLayout.setVerticalGroup(
             ShippingAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,28 +537,191 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         tabbedRoles.addTab("Shipping Agent", ShippingAgent);
 
+        lblDAHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblDAHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDAHeading.setText("Register a Delivery Agent");
+
+        lblDAAgentID.setText("Agent ID :");
+
+        lblDAAgentName.setText("Agent Name : ");
+
+        lblDAAgentMobile.setText("Mobile :");
+
+        lblDAAgentBaseLocation.setText("Base Location :");
+
+        lblDAAgentPassword.setText("Password :");
+
+        lblDAAgentUserName.setText("User Name :");
+
+        btnDAAgent.setText("Register Delivery Agent");
+
         javax.swing.GroupLayout DeliveryAgentLayout = new javax.swing.GroupLayout(DeliveryAgent);
         DeliveryAgent.setLayout(DeliveryAgentLayout);
         DeliveryAgentLayout.setHorizontalGroup(
             DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1058, Short.MAX_VALUE)
+            .addGroup(DeliveryAgentLayout.createSequentialGroup()
+                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DeliveryAgentLayout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DeliveryAgentLayout.createSequentialGroup()
+                                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDAAgentID)
+                                    .addComponent(lblDAAgentName)
+                                    .addComponent(lblDAAgentMobile))
+                                .addGap(52, 52, 52)
+                                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDAAgentID, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                                    .addComponent(txtDAAgentName)
+                                    .addComponent(txtDAAgentMobile)))
+                            .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DeliveryAgentLayout.createSequentialGroup()
+                                    .addComponent(lblDAAgentPassword)
+                                    .addGap(71, 71, 71)
+                                    .addComponent(pwdDAAgentPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DeliveryAgentLayout.createSequentialGroup()
+                                    .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblDAAgentBaseLocation)
+                                        .addComponent(lblDAAgentUserName))
+                                    .addGap(50, 50, 50)
+                                    .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtDAAgentUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                                        .addComponent(txtDAAgentBaseLocation))))))
+                    .addGroup(DeliveryAgentLayout.createSequentialGroup()
+                        .addGap(392, 392, 392)
+                        .addComponent(btnDAAgent))
+                    .addGroup(DeliveryAgentLayout.createSequentialGroup()
+                        .addGap(261, 261, 261)
+                        .addComponent(lblDAHeading)))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         DeliveryAgentLayout.setVerticalGroup(
             DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
+            .addGroup(DeliveryAgentLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(lblDAHeading)
+                .addGap(68, 68, 68)
+                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDAAgentID)
+                    .addComponent(txtDAAgentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDAAgentName)
+                    .addComponent(txtDAAgentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDAAgentMobile)
+                    .addComponent(txtDAAgentMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDAAgentBaseLocation)
+                    .addComponent(txtDAAgentBaseLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblDAAgentUserName)
+                    .addComponent(txtDAAgentUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(DeliveryAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDAAgentPassword)
+                    .addComponent(pwdDAAgentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addComponent(btnDAAgent)
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         tabbedRoles.addTab("Delivery Agent", DeliveryAgent);
+
+        lblCustomerHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblCustomerHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCustomerHeading.setText("Create a New User");
+
+        lblUserName.setText("Name :");
+
+        lblUserEmail.setText("Email :");
+
+        lblUserMobile.setText("Mobile :");
+
+        lblUserGender.setText("Gender :");
+
+        lblUserUserName.setText("User Name :");
+
+        lblUserPassword.setText("Password :");
+
+        cbUserGender.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        cbUserGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Male", "Female", "Other", "Do not want to disclose", " " }));
+
+        btnCreateUser.setText("Create User");
 
         javax.swing.GroupLayout CustomerLayout = new javax.swing.GroupLayout(Customer);
         Customer.setLayout(CustomerLayout);
         CustomerLayout.setHorizontalGroup(
             CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1058, Short.MAX_VALUE)
+            .addGroup(CustomerLayout.createSequentialGroup()
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CustomerLayout.createSequentialGroup()
+                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CustomerLayout.createSequentialGroup()
+                                .addGap(298, 298, 298)
+                                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblUserUserName)
+                                    .addComponent(lblUserPassword)
+                                    .addComponent(lblUserGender)))
+                            .addGroup(CustomerLayout.createSequentialGroup()
+                                .addGap(319, 319, 319)
+                                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCustomerHeading)
+                                    .addGroup(CustomerLayout.createSequentialGroup()
+                                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblUserName)
+                                            .addComponent(lblUserEmail)
+                                            .addComponent(lblUserMobile))
+                                        .addGap(29, 29, 29)
+                                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtUserMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbUserGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUserUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                            .addComponent(pwdUserPassword)))
+                    .addGroup(CustomerLayout.createSequentialGroup()
+                        .addGap(418, 418, 418)
+                        .addComponent(btnCreateUser)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         CustomerLayout.setVerticalGroup(
             CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
+            .addGroup(CustomerLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(lblCustomerHeading)
+                .addGap(90, 90, 90)
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserName)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserEmail)
+                    .addComponent(txtUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserMobile)
+                    .addComponent(txtUserMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserUserName)
+                    .addComponent(txtUserUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pwdUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUserPassword))
+                .addGap(29, 29, 29)
+                .addGroup(CustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserGender)
+                    .addComponent(cbUserGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84)
+                .addComponent(btnCreateUser)
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         tabbedRoles.addTab("Customer", Customer);
@@ -559,13 +750,24 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateCSR;
     private javax.swing.JButton btnCreateSSR;
     private javax.swing.JButton btnCreateStoreManager;
+    private javax.swing.JButton btnCreateUser;
     private javax.swing.JButton btnCreateWarehouseManager;
+    private javax.swing.JToggleButton btnDAAgent;
     private javax.swing.JButton btnShippingAgent;
+    private javax.swing.JComboBox<String> cbUserGender;
     private javax.swing.JLabel lblCHeading;
     private javax.swing.JLabel lblCSRAgentEmail;
     private javax.swing.JLabel lblCSRAgentID;
     private javax.swing.JLabel lblCSRAgentName;
     private javax.swing.JLabel lblCSRAgentPassword;
+    private javax.swing.JLabel lblCustomerHeading;
+    private javax.swing.JLabel lblDAAgentBaseLocation;
+    private javax.swing.JLabel lblDAAgentID;
+    private javax.swing.JLabel lblDAAgentMobile;
+    private javax.swing.JLabel lblDAAgentName;
+    private javax.swing.JLabel lblDAAgentPassword;
+    private javax.swing.JLabel lblDAAgentUserName;
+    private javax.swing.JLabel lblDAHeading;
     private javax.swing.JLabel lblManagerUserName1;
     private javax.swing.JLabel lblSAHeading;
     private javax.swing.JLabel lblSHeading;
@@ -585,6 +787,12 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JLabel lblShippingUserName;
     private javax.swing.JLabel lblStoreID;
     private javax.swing.JLabel lblStoreName;
+    private javax.swing.JLabel lblUserEmail;
+    private javax.swing.JLabel lblUserGender;
+    private javax.swing.JLabel lblUserMobile;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblUserPassword;
+    private javax.swing.JLabel lblUserUserName;
     private javax.swing.JLabel lblWHeading;
     private javax.swing.JLabel lblWManagerEmail;
     private javax.swing.JLabel lblWManagerName;
@@ -592,14 +800,21 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JLabel lblWarehouseID;
     private javax.swing.JLabel lblWarehouseName;
     private javax.swing.JPasswordField pwdCSRAgentPassword;
+    private javax.swing.JPasswordField pwdDAAgentPassword;
     private javax.swing.JPasswordField pwdSManagerPassword;
     private javax.swing.JPasswordField pwdSSRAgentPassword;
     private javax.swing.JPasswordField pwdShippingAgent;
+    private javax.swing.JPasswordField pwdUserPassword;
     private javax.swing.JPasswordField pwdWManagerPassword1;
     private javax.swing.JTabbedPane tabbedRoles;
     private javax.swing.JTextField txtCSRAgentEmail;
     private javax.swing.JTextField txtCSRAgentID;
     private javax.swing.JTextField txtCSRAgentName;
+    private javax.swing.JTextField txtDAAgentBaseLocation;
+    private javax.swing.JTextField txtDAAgentID;
+    private javax.swing.JTextField txtDAAgentMobile;
+    private javax.swing.JTextField txtDAAgentName;
+    private javax.swing.JTextField txtDAAgentUserName;
     private javax.swing.JTextField txtSManagerEmail;
     private javax.swing.JTextField txtSManagerName;
     private javax.swing.JTextField txtSManagerUserName;
@@ -612,6 +827,10 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JTextField txtShippingAgentUserName;
     private javax.swing.JTextField txtStoreID;
     private javax.swing.JTextField txtStoreName;
+    private javax.swing.JTextField txtUserEmail;
+    private javax.swing.JTextField txtUserMobile;
+    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtUserUserName;
     private javax.swing.JTextField txtWManagerEmail;
     private javax.swing.JTextField txtWManagerName;
     private javax.swing.JTextField txtWManagerUserName;

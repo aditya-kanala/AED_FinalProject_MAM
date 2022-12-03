@@ -145,7 +145,7 @@
                   <Font name="Times New Roman" size="36" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create New Store Manager"/>
+                <Property name="text" type="java.lang.String" value="Create a Store Manager"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblSManagerName">
@@ -307,7 +307,7 @@
                   <Font name="Times New Roman" size="36" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create New Warehouse Manager"/>
+                <Property name="text" type="java.lang.String" value="Create a Warehouse Manager"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblWManagerName">
@@ -443,7 +443,7 @@
                   <Font name="Times New Roman" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create CSR Agent"/>
+                <Property name="text" type="java.lang.String" value="Create a CSR Agent"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCSRAgentID">
@@ -570,7 +570,7 @@
                   <Font name="Times New Roman" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create SSR Agent"/>
+                <Property name="text" type="java.lang.String" value="Create an SSR Agent"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblSSRAgentID">
@@ -620,10 +620,19 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="234" max="32767" attributes="0"/>
+                      <Component id="lblSAHeading" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="411" max="-2" attributes="0"/>
+                              <Component id="btnShippingAgent" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="338" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="lblShippingUserName" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblShippingAgentName" min="-2" max="-2" attributes="0"/>
@@ -632,25 +641,16 @@
                                   <Component id="lblShippingAgentMobile" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtShippingAgentName" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtShippingAgentUserName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pwdShippingAgent" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtShippingAgentBaseLocation" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtShippingAgentMobile" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtShippingAgentName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtShippingAgentMobile" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtShippingAgentBaseLocation" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtShippingAgentUserName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="pwdShippingAgent" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="383" max="-2" attributes="0"/>
-                              <Component id="btnShippingAgent" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="302" max="32767" attributes="0"/>
-                      <Component id="lblSAHeading" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -706,7 +706,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="48" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Create Shipping Agent"/>
+                <Property name="text" type="java.lang.String" value="Register a Shipping Agent"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblShippingAgentName">
@@ -763,15 +763,157 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1058" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="306" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblDAAgentID" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDAAgentName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDAAgentMobile" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtDAAgentID" pref="264" max="32767" attributes="0"/>
+                                          <Component id="txtDAAgentName" max="32767" attributes="0"/>
+                                          <Component id="txtDAAgentMobile" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblDAAgentPassword" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="pwdDAAgentPassword" pref="263" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblDAAgentBaseLocation" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblDAAgentUserName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtDAAgentUserName" pref="263" max="32767" attributes="0"/>
+                                              <Component id="txtDAAgentBaseLocation" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="392" max="-2" attributes="0"/>
+                              <Component id="btnDAAgent" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
+                              <Component id="lblDAHeading" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="270" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="809" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="lblDAHeading" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDAAgentID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDAAgentID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblDAAgentName" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDAAgentName" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblDAAgentMobile" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDAAgentMobile" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDAAgentBaseLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDAAgentBaseLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblDAAgentUserName" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDAAgentUserName" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDAAgentPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pwdDAAgentPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="btnDAAgent" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="312" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblDAHeading">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="48" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Register a Delivery Agent"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDAAgentID">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agent ID :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDAAgentName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agent Name : "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDAAgentMobile">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mobile :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDAAgentBaseLocation">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Base Location :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDAAgentPassword">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Password :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDAAgentUserName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="User Name :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDAAgentID">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDAAgentName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDAAgentBaseLocation">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDAAgentUserName">
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="pwdDAAgentPassword">
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="btnDAAgent">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Register Delivery Agent"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDAAgentMobile">
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="Customer">
           <Constraints>
@@ -785,15 +927,172 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1058" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblUserUserName" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblUserPassword" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblUserGender" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblCustomerHeading" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblUserName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblUserEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblUserMobile" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtUserMobile" min="-2" pref="287" max="-2" attributes="0"/>
+                                                  <Component id="txtUserEmail" min="-2" pref="287" max="-2" attributes="0"/>
+                                                  <Component id="txtUserName" min="-2" pref="287" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cbUserGender" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtUserUserName" alignment="0" pref="287" max="32767" attributes="0"/>
+                                  <Component id="pwdUserPassword" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="418" max="-2" attributes="0"/>
+                              <Component id="btnCreateUser" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="809" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="lblCustomerHeading" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblUserEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtUserEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblUserMobile" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtUserMobile" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblUserUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtUserUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="pwdUserPassword" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUserPassword" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblUserGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbUserGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="btnCreateUser" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="236" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblCustomerHeading">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="48" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Create a New User"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUserName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Name :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUserEmail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Email :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUserMobile">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mobile :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUserGender">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gender :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUserUserName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="User Name :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUserPassword">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Password :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="pwdUserPassword">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtUserUserName">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbUserGender">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="6">
+                    <StringItem index="0" value="  "/>
+                    <StringItem index="1" value="Male"/>
+                    <StringItem index="2" value="Female"/>
+                    <StringItem index="3" value="Other"/>
+                    <StringItem index="4" value="Do not want to disclose"/>
+                    <StringItem index="5" value=" "/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtUserMobile">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtUserEmail">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtUserName">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCreateUser">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Create User"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
