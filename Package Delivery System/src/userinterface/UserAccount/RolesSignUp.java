@@ -57,7 +57,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         txtWManagerEmail = new javax.swing.JTextField();
         txtWManagerUserName = new javax.swing.JTextField();
         lblWarehouseID = new javax.swing.JLabel();
-        pwdWManagerPassword1 = new javax.swing.JPasswordField();
+        pwdWManagerPassword = new javax.swing.JPasswordField();
         txtWarehouseID = new javax.swing.JTextField();
         btnCreateWarehouseManager = new javax.swing.JButton();
         CSR = new javax.swing.JPanel();
@@ -306,8 +306,8 @@ public class RolesSignUp extends javax.swing.JPanel {
         lblWarehouseID.setForeground(new java.awt.Color(204, 204, 204));
         lblWarehouseID.setText("Warehouse ID :");
 
-        pwdWManagerPassword1.setBackground(new java.awt.Color(25, 54, 82));
-        pwdWManagerPassword1.setForeground(new java.awt.Color(204, 204, 204));
+        pwdWManagerPassword.setBackground(new java.awt.Color(25, 54, 82));
+        pwdWManagerPassword.setForeground(new java.awt.Color(204, 204, 204));
 
         txtWarehouseID.setBackground(new java.awt.Color(25, 54, 82));
         txtWarehouseID.setForeground(new java.awt.Color(204, 204, 204));
@@ -315,6 +315,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         btnCreateWarehouseManager.setBackground(new java.awt.Color(25, 54, 82));
         btnCreateWarehouseManager.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateWarehouseManager.setText("Create Manager");
+        btnCreateWarehouseManager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateWarehouseManagerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout WarehouseManagerLayout = new javax.swing.GroupLayout(WarehouseManager);
         WarehouseManager.setLayout(WarehouseManagerLayout);
@@ -338,7 +343,7 @@ public class RolesSignUp extends javax.swing.JPanel {
                                 .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtWManagerEmail)
                                     .addComponent(txtWManagerUserName)
-                                    .addComponent(pwdWManagerPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(pwdWManagerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(WarehouseManagerLayout.createSequentialGroup()
                                 .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblWarehouseName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -383,7 +388,7 @@ public class RolesSignUp extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWManagerPassword)
-                    .addComponent(pwdWManagerPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwdWManagerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93)
                 .addComponent(btnCreateWarehouseManager, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(214, Short.MAX_VALUE))
@@ -428,6 +433,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         btnCreateCSR.setBackground(new java.awt.Color(25, 54, 82));
         btnCreateCSR.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateCSR.setText("Create CSR Agent");
+        btnCreateCSR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateCSRActionPerformed(evt);
+            }
+        });
 
         pwdCSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
         pwdCSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
@@ -525,6 +535,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         btnCreateSSR.setBackground(new java.awt.Color(25, 54, 82));
         btnCreateSSR.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateSSR.setText("Create SSR Agent");
+        btnCreateSSR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateSSRActionPerformed(evt);
+            }
+        });
 
         pwdSSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
         pwdSSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
@@ -1001,6 +1016,76 @@ public class RolesSignUp extends javax.swing.JPanel {
 }
     }//GEN-LAST:event_btnCreateStoreManagerActionPerformed
 
+    private void btnCreateWarehouseManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWarehouseManagerActionPerformed
+        // TODO add your handling code here:
+        String id= txtWarehouseID.getText();
+        String sname= txtWarehouseName.getText();
+        String mname=txtWManagerName.getText();
+        String memail = txtWManagerEmail.getText();
+        String username = txtWManagerUserName.getText();
+        String password = String.valueOf(pwdWManagerPassword.getText());
+        
+      try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_manager values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,id);
+        preparedStatement.setString(2,sname);
+        preparedStatement.setString(3,mname);
+        preparedStatement.setString(4,memail);
+        preparedStatement.setString(5,username);
+        preparedStatement.setString(6,password);
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Warehouse Manager Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+}   
+    }//GEN-LAST:event_btnCreateWarehouseManagerActionPerformed
+
+    private void btnCreateCSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCSRActionPerformed
+        // TODO add your handling code here:
+        String id= txtCSRAgentID.getText();
+        String csrname= txtCSRAgentName.getText();
+        String csremail = txtCSRAgentEmail.getText();
+        String password = String.valueOf(pwdCSRAgentPassword.getText());
+        
+      try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into csr values(?,?,?,?)");
+        preparedStatement.setString(1,id);
+        preparedStatement.setString(2,csrname);
+        preparedStatement.setString(3,csremail);
+        preparedStatement.setString(4,password);
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "CSR Agent Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+}   
+    }//GEN-LAST:event_btnCreateCSRActionPerformed
+
+    private void btnCreateSSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSSRActionPerformed
+        // TODO add your handling code here:\
+        String id= txtSSRAgentID.getText();
+        String ssrname= txtSSRAgentName.getText();
+        String ssremail = txtSSRAgentEmail.getText();
+        String password = String.valueOf(pwdSSRAgentPassword.getText());
+        
+      try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into ssr values(?,?,?,?)");
+        preparedStatement.setString(1,id);
+        preparedStatement.setString(2,ssrname);
+        preparedStatement.setString(3,ssremail);
+        preparedStatement.setString(4,password);
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "SSR Agent Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+}     
+    }//GEN-LAST:event_btnCreateSSRActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CSR;
@@ -1068,7 +1153,7 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JPasswordField pwdSSRAgentPassword;
     private javax.swing.JPasswordField pwdShippingAgent;
     private javax.swing.JPasswordField pwdUserPassword;
-    private javax.swing.JPasswordField pwdWManagerPassword1;
+    private javax.swing.JPasswordField pwdWManagerPassword;
     private javax.swing.JTabbedPane tabbedRoles;
     private javax.swing.JTextField txtCSRAgentEmail;
     private javax.swing.JTextField txtCSRAgentID;
