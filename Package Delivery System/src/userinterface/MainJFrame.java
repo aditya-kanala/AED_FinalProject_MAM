@@ -4,7 +4,6 @@
  */
 package userinterface;
 
-import com.mysql.cj.protocol.Resultset;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.sql.Connection;
@@ -16,11 +15,11 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import userinterface.CustomerServiceRepresentative.csrPanel;
-import userinterface.Maps.mapsPanel;
 import userinterface.StoreManager.StoreManagerJPanel;
 import userinterface.customer.CustomerHomePanel;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -72,7 +71,6 @@ public class MainJFrame extends javax.swing.JFrame {
         newUserSeperator = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1338, 900));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         leftPanel.setBackground(new java.awt.Color(244, 242, 227));
@@ -223,6 +221,7 @@ public class MainJFrame extends javax.swing.JFrame {
         exitLabel.setFont(new java.awt.Font("Shree Devanagari 714", 1, 36)); // NOI18N
         exitLabel.setForeground(new java.awt.Color(204, 204, 204));
         exitLabel.setText("X");
+        exitLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitLabelMouseClicked(evt);
@@ -377,15 +376,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void signInButtonPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInButtonPanelMouseClicked
         // TODO add your handling code here:
-        
-        
-        
-        
-       SystemAdminJPanel panel = new SystemAdminJPanel(connection);
-//            mapsPanel panel = new mapsPanel();
-////        csrPanel panel = new csrPanel();
-////        CustomerHomePanel panel = new CustomerHomePanel();
-        container.add("workArea", panel);
+       
+        //container.add("workArea", panel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
         
@@ -405,23 +397,14 @@ public class MainJFrame extends javax.swing.JFrame {
 //                        layout.next(container);
                 }
             }
-        loginJPanel.setVisible(false);
-        container.setVisible(true);
-        leftPanel.setVisible(true);
-        logoutLabel.setVisible(false);
-        backLabel.setVisible(true);
-        txtUserName.setText("");
-        fldPassword.setText("");
-<<<<<<< HEAD
-
-        CustomerHomePanel panel = new CustomerHomePanel();
-    //StoreManagerJPanel panel = new StoreManagerJPanel();
-//        mapsPanel panel = new mapsPanel();
-//        csrPanel panel = new csrPanel();
-        container.add("workArea11", panel);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.next(container);
-=======
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText("");
           }
           
           /*Distribution Admin Login*/
@@ -518,26 +501,16 @@ public class MainJFrame extends javax.swing.JFrame {
           }
           else{
             JOptionPane.showMessageDialog(this, "No Admin Found for the Credentials"+" :( :(");
-
           }
-        
         }
->>>>>>> main
-        
-        
         catch(SQLException e){
             System.out.println("Error while retrieving data  "+e);
-        }
-       
-
-
-    
+        }  
+        
     }//GEN-LAST:event_signInButtonPanelMouseClicked
 
     private void newUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newUserMouseClicked
-        // TODO add your handling code here:
-        String rootPath = System.getProperty("user.dir");
-        System.out.println(rootPath);
+        // TODO add your handling code here:   
     }//GEN-LAST:event_newUserMouseClicked
 
     /**
@@ -610,6 +583,4 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtUserName;
     private javax.swing.JSeparator userNameSeperator;
     // End of variables declaration//GEN-END:variables
-
-
 }
