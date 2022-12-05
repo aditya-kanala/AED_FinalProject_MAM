@@ -40,9 +40,7 @@ public class mapsPanel extends javax.swing.JPanel {
         Engine engine = Engine.newInstance(options);
         browser = engine.newBrowser();
         BrowserView view = BrowserView.newInstance(browser);
-        browser.navigation().loadUrl("https://www.google.com/maps");
-        
-        mapArea.add(view);
+       
     }
 
     /**
@@ -56,13 +54,21 @@ public class mapsPanel extends javax.swing.JPanel {
 
         mapArea = new javax.swing.JPanel();
         btnSetLocation = new javax.swing.JButton();
+        setMarkers = new javax.swing.JButton();
 
-        mapArea.setLayout(new java.awt.CardLayout());
+        mapArea.setLayout(new javax.swing.BoxLayout(mapArea, javax.swing.BoxLayout.LINE_AXIS));
 
         btnSetLocation.setText("Set Location");
         btnSetLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSetLocationActionPerformed(evt);
+            }
+        });
+
+        setMarkers.setText("Set Markers");
+        setMarkers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setMarkersActionPerformed(evt);
             }
         });
 
@@ -74,14 +80,18 @@ public class mapsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(476, 476, 476)
                 .addComponent(btnSetLocation)
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addGap(193, 193, 193)
+                .addComponent(setMarkers)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(btnSetLocation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSetLocation)
+                    .addComponent(setMarkers))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(mapArea, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -100,20 +110,27 @@ public class mapsPanel extends javax.swing.JPanel {
                 String[] placeName = split2[0].split("\\+");
                 String[] longLat = split2[1].split(",");
                 String place="";
-                int i=0;
-                while(placeName.length!=0){
-                    place+=placeName[i++];
-                    
+                
+                int size = placeName.length;
+                for(int i=0;i<size;i++){
+                    place+=placeName[i];
                 }
                 System.out.println(place);
                 System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
             }
     }//GEN-LAST:event_btnSetLocationActionPerformed
 
+    private void setMarkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setMarkersActionPerformed
+   
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_setMarkersActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSetLocation;
     private javax.swing.JPanel mapArea;
+    private javax.swing.JButton setMarkers;
     // End of variables declaration//GEN-END:variables
 
     
