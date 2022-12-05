@@ -4,7 +4,6 @@
  */
 package userinterface;
 
-import com.mysql.cj.protocol.Resultset;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.sql.Connection;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import userinterface.CustomerServiceRepresentative.csrPanel;
-import userinterface.Maps.mapsPanel;
 import userinterface.StoreManager.StoreManagerJPanel;
 import userinterface.customer.CustomerHomePanel;
 import java.sql.*;
@@ -412,16 +410,16 @@ public class MainJFrame extends javax.swing.JFrame {
         backLabel.setVisible(true);
         txtUserName.setText("");
         fldPassword.setText("");
-<<<<<<< HEAD
 
-        CustomerHomePanel panel = new CustomerHomePanel();
+
+        //CustomerHomePanel panel = new CustomerHomePanel();
     //StoreManagerJPanel panel = new StoreManagerJPanel();
 //        mapsPanel panel = new mapsPanel();
 //        csrPanel panel = new csrPanel();
-        container.add("workArea11", panel);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.next(container);
-=======
+//        container.add("workArea11", panel);
+//        CardLayout layout = (CardLayout) container.getLayout();
+//        layout.next(container);
+
           }
           
           /*Distribution Admin Login*/
@@ -522,7 +520,7 @@ public class MainJFrame extends javax.swing.JFrame {
           }
         
         }
->>>>>>> main
+
         
         
         catch(SQLException e){
