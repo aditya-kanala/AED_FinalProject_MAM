@@ -36,6 +36,7 @@ public class mapsPanel extends javax.swing.JPanel {
         Engine engine = Engine.newInstance(options);
         browser = engine.newBrowser();
         BrowserView view = BrowserView.newInstance(browser);
+<<<<<<< HEAD
         //browser.navigation().loadUrl("https://www.google.com/maps");
         
         
@@ -51,6 +52,9 @@ public class mapsPanel extends javax.swing.JPanel {
         String rootPath = System.getProperty("user.dir");
         browser.navigation().loadUrl(rootPath+"/simple_map.html/");
         mapArea.add(view);
+=======
+       
+>>>>>>> main
     }
 
     /**
@@ -66,7 +70,7 @@ public class mapsPanel extends javax.swing.JPanel {
         btnSetLocation = new javax.swing.JButton();
         setMarkers = new javax.swing.JButton();
 
-        mapArea.setLayout(new java.awt.CardLayout());
+        mapArea.setLayout(new javax.swing.BoxLayout(mapArea, javax.swing.BoxLayout.LINE_AXIS));
 
         btnSetLocation.setText("Set Location");
         btnSetLocation.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +79,11 @@ public class mapsPanel extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< HEAD
         setMarkers.setText("Set Location");
+=======
+        setMarkers.setText("Set Markers");
+>>>>>>> main
         setMarkers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setMarkersActionPerformed(evt);
@@ -90,9 +98,15 @@ public class mapsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(476, 476, 476)
                 .addComponent(btnSetLocation)
+<<<<<<< HEAD
                 .addGap(61, 61, 61)
                 .addComponent(setMarkers)
                 .addContainerGap(317, Short.MAX_VALUE))
+=======
+                .addGap(193, 193, 193)
+                .addComponent(setMarkers)
+                .addContainerGap(195, Short.MAX_VALUE))
+>>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,6 +123,7 @@ public class mapsPanel extends javax.swing.JPanel {
     private void btnSetLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetLocationActionPerformed
         // TODO add your handling code here:
         if (browser.url()!= null) {
+<<<<<<< HEAD
  
             String[] split1= browser.url().split("/place/");
             String[] split2 = split1[1].split("/@");
@@ -118,13 +133,39 @@ public class mapsPanel extends javax.swing.JPanel {
             int size=placeName.length;
             for(int i=0;i<size;i++){
                 place+=placeName[i];
+=======
+
+//                System.out.println(browser.url());
+//                String[] a = browser.url().split("!3d", 0);
+//                String[] b = a[1].split("!4d");
+//                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
+                    
+                String[] split1= browser.url().split("/place/");
+                String[] split2 = split1[1].split("/@");
+                String[] placeName = split2[0].split("\\+");
+                String[] longLat = split2[1].split(",");
+                String place="";
+                
+                int size = placeName.length;
+                for(int i=0;i<size;i++){
+                    place+=placeName[i];
+                }
+                System.out.println(place);
+                System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
+>>>>>>> main
             }
         }
             
     }//GEN-LAST:event_btnSetLocationActionPerformed
 
     private void setMarkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setMarkersActionPerformed
+<<<<<<< HEAD
         // TODO add your handling code here:
+=======
+   
+        
+// TODO add your handling code here:
+>>>>>>> main
     }//GEN-LAST:event_setMarkersActionPerformed
 
 

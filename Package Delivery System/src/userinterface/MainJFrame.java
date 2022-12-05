@@ -4,14 +4,23 @@
  */
 package userinterface;
 
+import com.mysql.cj.protocol.Resultset;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import userinterface.CustomerServiceRepresentative.csrPanel;
 import userinterface.Maps.mapsPanel;
 import userinterface.StoreManager.StoreManagerJPanel;
 import userinterface.customer.CustomerHomePanel;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,8 +38,10 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setVisible(false);
         leftPanel.setVisible(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        databaseConnection();
     }
-
+    
+    Connection connection;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -366,6 +377,34 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void signInButtonPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInButtonPanelMouseClicked
         // TODO add your handling code here:
+        
+        
+        
+        
+       SystemAdminJPanel panel = new SystemAdminJPanel(connection);
+//            mapsPanel panel = new mapsPanel();
+////        csrPanel panel = new csrPanel();
+////        CustomerHomePanel panel = new CustomerHomePanel();
+        container.add("workArea", panel);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.next(container);
+        
+        try{ 
+        
+         /*BPO Admin Login*/   
+          if(txtUserName.getText().equalsIgnoreCase("bpoadmin")){  
+            PreparedStatement preparedStatement =connection.prepareStatement("select * from admins where username=?");
+            preparedStatement.setString(1, "bpoadmin");
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "BPO Admin Login Successful..!!");
+//                        StoreManagerJPanel panel = new StoreManagerJPanel();
+//                        container.add("workArea111", panel);
+//                        CardLayout layout = (CardLayout) container.getLayout();
+//                        layout.next(container);
+                }
+            }
         loginJPanel.setVisible(false);
         container.setVisible(true);
         leftPanel.setVisible(true);
@@ -373,6 +412,7 @@ public class MainJFrame extends javax.swing.JFrame {
         backLabel.setVisible(true);
         txtUserName.setText("");
         fldPassword.setText("");
+<<<<<<< HEAD
 
         CustomerHomePanel panel = new CustomerHomePanel();
     //StoreManagerJPanel panel = new StoreManagerJPanel();
@@ -381,7 +421,117 @@ public class MainJFrame extends javax.swing.JFrame {
         container.add("workArea11", panel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
+=======
+          }
+          
+          /*Distribution Admin Login*/
+          else if(txtUserName.getText().equalsIgnoreCase("dadmin")){  
+            PreparedStatement preparedStatement =connection.prepareStatement("select * from admins where username=?");
+            preparedStatement.setString(1, "dadmin");
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Distribution Admin Login Successful..!!");
+//                        StoreManagerJPanel panel = new StoreManagerJPanel();
+//                        container.add("workArea111", panel);
+//                        CardLayout layout = (CardLayout) container.getLayout();
+//                        layout.next(container);
+                }
+            }
+        loginJPanel.setVisible(false);
+        container.setVisible(true);
+        leftPanel.setVisible(true);
+        logoutLabel.setVisible(false);
+        backLabel.setVisible(true);
+        txtUserName.setText("");
+        fldPassword.setText("");
+          }
+          
+          /*Logistics Admin Login */
+          else if(txtUserName.getText().equalsIgnoreCase("ladmin")){  
+            PreparedStatement preparedStatement =connection.prepareStatement("select * from admins where username=?");
+            preparedStatement.setString(1, "ladmin");
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Logistics Admin Login Successful..!!");
+//                        StoreManagerJPanel panel = new StoreManagerJPanel();
+//                        container.add("workArea111", panel);
+//                        CardLayout layout = (CardLayout) container.getLayout();
+//                        layout.next(container);
+                }
+            }
+        loginJPanel.setVisible(false);
+        container.setVisible(true);
+        leftPanel.setVisible(true);
+        logoutLabel.setVisible(false);
+        backLabel.setVisible(true);
+        txtUserName.setText("");
+        fldPassword.setText("");
+          }
+          
+          
+         /*Market Place Admin Login*/
+          else if(txtUserName.getText().equalsIgnoreCase("madmin")){  
+            PreparedStatement preparedStatement =connection.prepareStatement("select * from admins where username=?");
+            preparedStatement.setString(1, "madmin");
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
+                    JOptionPane.showMessageDialog(this, "Market Place Admin Login Successful..!!");
+//                        StoreManagerJPanel panel = new StoreManagerJPanel();
+//                        container.add("workArea111", panel);
+//                        CardLayout layout = (CardLayout) container.getLayout();
+//                        layout.next(container);
+                }
+            }
+         loginJPanel.setVisible(false);
+        container.setVisible(true);
+        leftPanel.setVisible(true);
+        logoutLabel.setVisible(false);
+        backLabel.setVisible(true);
+        txtUserName.setText("");
+        fldPassword.setText("");
+          }
+          
+          /*System Admin Login*/
+          else if(txtUserName.getText().equalsIgnoreCase("sadmin")){  
+            PreparedStatement preparedStatement =connection.prepareStatement("select * from admins where username=?");
+            preparedStatement.setString(1, "sadmin");
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
+                    JOptionPane.showMessageDialog(this, "System Admin Login Successful..!!");
+//                        StoreManagerJPanel panel = new StoreManagerJPanel();
+//                        container.add("workArea111", panel);
+//                        CardLayout layout = (CardLayout) container.getLayout();
+//                        layout.next(container);
+                }
+            }
+        loginJPanel.setVisible(false);
+        container.setVisible(true);
+        leftPanel.setVisible(true);
+        logoutLabel.setVisible(false);
+        backLabel.setVisible(true);
+        txtUserName.setText("");
+        fldPassword.setText("");
+          }
+          else{
+            JOptionPane.showMessageDialog(this, "No Admin Found for the Credentials"+" :( :(");
+
+          }
         
+        }
+>>>>>>> main
+        
+        
+        catch(SQLException e){
+            System.out.println("Error while retrieving data  "+e);
+        }
+       
+
+
+    
     }//GEN-LAST:event_signInButtonPanelMouseClicked
 
     private void newUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newUserMouseClicked
@@ -424,6 +574,20 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void databaseConnection(){
+        try {
+            connection =DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
+            System.out.println(connection);
+
+            System.out.println("Connected With the database successfully"); //Message after successful connection 
+        } catch (SQLException e) {
+            System.out.println("Error while connecting to the database"); //Message if something goes wrong while conneting to the database
+        }
+
+    }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backLabel;
