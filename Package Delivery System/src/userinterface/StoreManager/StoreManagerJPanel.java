@@ -42,6 +42,9 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        viewStoreGraphsPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        viewStoreGraphsLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         jPanel3.setBackground(new java.awt.Color(227, 73, 78));
@@ -153,11 +156,6 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageSupplyOrdersLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         manageSupplyOrdersLabel.setText("Manage Supply Orders");
         manageSupplyOrdersLabel.setPreferredSize(new java.awt.Dimension(115, 16));
-        manageSupplyOrdersLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageSupplyOrdersLabelMousePressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout manageSupplyOrdersPanelLayout = new javax.swing.GroupLayout(manageSupplyOrdersPanel);
         manageSupplyOrdersPanel.setLayout(manageSupplyOrdersPanelLayout);
@@ -194,6 +192,28 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 190, 10));
+
+        viewStoreGraphsPanel.setBackground(new java.awt.Color(215, 81, 81));
+        viewStoreGraphsPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                viewStoreGraphsPanelMousePressed(evt);
+            }
+        });
+        viewStoreGraphsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewStoreGraphsPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 31));
+
+        viewStoreGraphsLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        viewStoreGraphsLabel.setText("View Graph Scene Details");
+        viewStoreGraphsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                viewStoreGraphsLabelMousePressed(evt);
+            }
+        });
+        viewStoreGraphsPanel.add(viewStoreGraphsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 231, 31));
+
+        jPanel3.add(viewStoreGraphsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 280, 40));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -235,13 +255,18 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageUserOrdersPanelMousePressed
 
     private void manageSupplyOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupplyOrdersPanelMousePressed
-       
+       manageSupplyOrders();
     }//GEN-LAST:event_manageSupplyOrdersPanelMousePressed
 
-    private void manageSupplyOrdersLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupplyOrdersLabelMousePressed
+    private void viewStoreGraphsLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewStoreGraphsLabelMousePressed
         // TODO add your handling code here:
-        manageSupplyOrders();
-    }//GEN-LAST:event_manageSupplyOrdersLabelMousePressed
+        storeGraphs();
+    }//GEN-LAST:event_viewStoreGraphsLabelMousePressed
+
+    private void viewStoreGraphsPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewStoreGraphsPanelMousePressed
+        // TODO add your handling code here:
+        storeGraphs();
+    }//GEN-LAST:event_viewStoreGraphsPanelMousePressed
 
     private void manageStore(){
         manageStorePanel.setBackground(new Color(255, 255, 255));
@@ -273,9 +298,20 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         layout.next(rightSystemAdminPanel);
     }
 
+    private void storeGraphs(){
+        manageStorePanel.setBackground(new Color(227, 73, 78));
+        manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
+        manageSupplyOrdersPanel.setBackground(new Color(227, 73, 78));
+        viewStoreGraphsPanel.setBackground(new Color(255, 255, 255));
+        ViewStoreGraphsJPanel viewStoreGraphsJPanel = new ViewStoreGraphsJPanel();
+        rightSystemAdminPanel.add("viewStoreGraphsJPanel",viewStoreGraphsJPanel);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
@@ -288,5 +324,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel manageUserOrdersLabel;
     private javax.swing.JPanel manageUserOrdersPanel;
     private javax.swing.JPanel rightSystemAdminPanel;
+    private javax.swing.JLabel viewStoreGraphsLabel;
+    private javax.swing.JPanel viewStoreGraphsPanel;
     // End of variables declaration//GEN-END:variables
 }
