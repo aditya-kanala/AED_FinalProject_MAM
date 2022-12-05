@@ -339,7 +339,7 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="txtWManagerEmail" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtWManagerUserName" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="pwdWManagerPassword1" alignment="0" min="-2" pref="268" max="-2" attributes="0"/>
+                                          <Component id="pwdWManagerPassword" alignment="0" min="-2" pref="268" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -401,7 +401,7 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblWManagerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="pwdWManagerPassword1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pwdWManagerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                       <Component id="btnCreateWarehouseManager" min="-2" pref="37" max="-2" attributes="0"/>
@@ -532,7 +532,7 @@
                 <Property name="text" type="java.lang.String" value="Warehouse ID :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="pwdWManagerPassword1">
+            <Component class="javax.swing.JPasswordField" name="pwdWManagerPassword">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="52" green="36" red="19" type="rgb"/>
@@ -562,6 +562,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create Manager"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateWarehouseManagerActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -755,6 +758,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create CSR Agent"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateCSRActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="pwdCSRAgentPassword">
               <Properties>
@@ -948,6 +954,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create SSR Agent"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateSSRActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="pwdSSRAgentPassword">
               <Properties>
