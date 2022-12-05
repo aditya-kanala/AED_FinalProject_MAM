@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.UserAccount;
+import java.sql.*;
 
 /**
  *
@@ -13,8 +14,10 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
     /**
      * Creates new form Store_WarehouseSignUp
      */
-    public OrganizationsSignUp() {
+    Connection connection;
+    public OrganizationsSignUp(Connection connection) {
         initComponents();
+        this.connection=connection;
     }
 
     /**
@@ -85,6 +88,11 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         lblStoreLocation2.setText("Store Location :");
 
         btnCreateStore2.setText("Create Store");
+        btnCreateStore2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateStore2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout StoreLayout = new javax.swing.GroupLayout(Store);
         Store.setLayout(StoreLayout);
@@ -379,6 +387,10 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
             .addComponent(tpanel)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateStore2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStore2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreateStore2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

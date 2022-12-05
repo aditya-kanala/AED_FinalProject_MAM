@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.UserAccount;
-
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author adity
@@ -13,8 +14,10 @@ public class RolesSignUp extends javax.swing.JPanel {
     /**
      * Creates new form RolesSignUp
      */
-    public RolesSignUp() {
+    Connection connection;
+    public RolesSignUp(Connection connection) {
         initComponents();
+        this.connection=connection;
     }
 
     /**
@@ -177,6 +180,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         btnCreateStoreManager.setBackground(new java.awt.Color(25, 54, 82));
         btnCreateStoreManager.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateStoreManager.setText("Create Manager");
+        btnCreateStoreManager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateStoreManagerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout StoreManagerLayout = new javax.swing.GroupLayout(StoreManager);
         StoreManager.setLayout(StoreManagerLayout);
@@ -966,6 +974,32 @@ public class RolesSignUp extends javax.swing.JPanel {
             .addComponent(tabbedRoles)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateStoreManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStoreManagerActionPerformed
+        // TODO add your handling code here:
+        String id= txtStoreID.getText();
+        String sname= txtStoreName.getText();
+        String mname=txtSManagerName.getText();
+        String memail = txtSManagerEmail.getText();
+        String username = txtSManagerUserName.getText();
+        String password = String.valueOf(pwdSManagerPassword.getText());
+        
+      try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into store_manager values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,id);
+        preparedStatement.setString(2,sname);
+        preparedStatement.setString(3,mname);
+        preparedStatement.setString(4,memail);
+        preparedStatement.setString(5,username);
+        preparedStatement.setString(6,password);
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Store Manager Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+}
+    }//GEN-LAST:event_btnCreateStoreManagerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

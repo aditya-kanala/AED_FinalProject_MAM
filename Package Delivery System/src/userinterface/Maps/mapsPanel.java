@@ -40,9 +40,7 @@ public class mapsPanel extends javax.swing.JPanel {
         Engine engine = Engine.newInstance(options);
         browser = engine.newBrowser();
         BrowserView view = BrowserView.newInstance(browser);
-        browser.navigation().loadUrl("https://www.google.com/maps");
-        
-        mapArea.add(view);
+       
     }
 
     /**
@@ -55,52 +53,85 @@ public class mapsPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         mapArea = new javax.swing.JPanel();
+        btnSetLocation = new javax.swing.JButton();
+        setMarkers = new javax.swing.JButton();
 
-        mapArea.setLayout(new java.awt.CardLayout());
+        mapArea.setLayout(new javax.swing.BoxLayout(mapArea, javax.swing.BoxLayout.LINE_AXIS));
+
+        btnSetLocation.setText("Set Location");
+        btnSetLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetLocationActionPerformed(evt);
+            }
+        });
+
+        setMarkers.setText("Set Markers");
+        setMarkers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setMarkersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mapArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mapArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(476, 476, 476)
+                .addComponent(btnSetLocation)
+                .addGap(193, 193, 193)
+                .addComponent(setMarkers)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mapArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSetLocation)
+                    .addComponent(setMarkers))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(mapArea, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSetLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetLocationActionPerformed
+        // TODO add your handling code here:
+        if (browser.url()!= null) {
+
+//                System.out.println(browser.url());
+//                String[] a = browser.url().split("!3d", 0);
+//                String[] b = a[1].split("!4d");
+//                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
+                    
+                String[] split1= browser.url().split("/place/");
+                String[] split2 = split1[1].split("/@");
+                String[] placeName = split2[0].split("\\+");
+                String[] longLat = split2[1].split(",");
+                String place="";
+                
+                int size = placeName.length;
+                for(int i=0;i<size;i++){
+                    place+=placeName[i];
+                }
+                System.out.println(place);
+                System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
+            }
+    }//GEN-LAST:event_btnSetLocationActionPerformed
+
+    private void setMarkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setMarkersActionPerformed
+   
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_setMarkersActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSetLocation;
     private javax.swing.JPanel mapArea;
+    private javax.swing.JButton setMarkers;
     // End of variables declaration//GEN-END:variables
 
     
-    
-//    private void open_site(){
-//        
-//        Browser browser;
-//        BrowserView view;
-//        
-//        BrowserUtil.setVersion(Version.V6_22);
-//        
-//        browser = new Browser();
-//        view = new BrowserView(browser);
-//        
-//        mapArea.add(view,BorderLayout.CENTER);
-//        
-//        browser.addTitleListener((TitleEvent evt)->{
-//            setTitle(evt.getTitle());
-//            
-//        });
-//                
-//        browser.addConsoleListener((ConsoleEvent evt)->{
-//            System.out.println("LOG:"+ evt.getMessage());
-//        });
-//                
-//        
-//        
-//    }
-
-
 }
