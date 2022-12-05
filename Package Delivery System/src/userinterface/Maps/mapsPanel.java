@@ -26,22 +26,30 @@ public class mapsPanel extends javax.swing.JPanel {
      * Creates new form mapsPanel
      */
     
-    //JPanel userProcessContainer;
-    //LocationPoint locationPoint;
     Browser browser;
-    BrowserView view;
     public mapsPanel() {
 
         initComponents();
-        //locationPoint = new LocationPoint();
         
         EngineOptions options =
                 EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
         Engine engine = Engine.newInstance(options);
         browser = engine.newBrowser();
         BrowserView view = BrowserView.newInstance(browser);
-        browser.navigation().loadUrl("https://www.google.com/maps");
+        //browser.navigation().loadUrl("https://www.google.com/maps");
         
+        
+        String first = "var locations = [\n";
+        String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
+        String third = "];\n";
+        String fourth = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0]\n });\n}\n\tbounds.extend(marker.position);";
+        
+        String setMarkerScript = first+second+third+fourth;
+        setMarkers.addActionListener(e -> browser.mainFrame().ifPresent(frame -> frame.executeJavaScript(setMarkerScript)));
+        mapArea.add(view);
+        
+        String rootPath = System.getProperty("user.dir");
+        browser.navigation().loadUrl(rootPath+"/simple_map.html/");
         mapArea.add(view);
     }
 
@@ -56,6 +64,7 @@ public class mapsPanel extends javax.swing.JPanel {
 
         mapArea = new javax.swing.JPanel();
         btnSetLocation = new javax.swing.JButton();
+        setMarkers = new javax.swing.JButton();
 
         mapArea.setLayout(new java.awt.CardLayout());
 
@@ -63,6 +72,13 @@ public class mapsPanel extends javax.swing.JPanel {
         btnSetLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSetLocationActionPerformed(evt);
+            }
+        });
+
+        setMarkers.setText("Set Location");
+        setMarkers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setMarkersActionPerformed(evt);
             }
         });
 
@@ -74,14 +90,18 @@ public class mapsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(476, 476, 476)
                 .addComponent(btnSetLocation)
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(setMarkers)
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(btnSetLocation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSetLocation)
+                    .addComponent(setMarkers))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(mapArea, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -89,31 +109,29 @@ public class mapsPanel extends javax.swing.JPanel {
     private void btnSetLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetLocationActionPerformed
         // TODO add your handling code here:
         if (browser.url()!= null) {
-
-//                System.out.println(browser.url());
-//                String[] a = browser.url().split("!3d", 0);
-//                String[] b = a[1].split("!4d");
-//                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
-                    
-                String[] split1= browser.url().split("/place/");
-                String[] split2 = split1[1].split("/@");
-                String[] placeName = split2[0].split("\\+");
-                String[] longLat = split2[1].split(",");
-                String place="";
-                int i=0;
-                while(placeName.length!=0){
-                    place+=placeName[i++];
-                    
-                }
-                System.out.println(place);
-                System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
+ 
+            String[] split1= browser.url().split("/place/");
+            String[] split2 = split1[1].split("/@");
+            String[] placeName = split2[0].split("\\+");
+            String[] longLat = split2[1].split(",");
+            String place="";
+            int size=placeName.length;
+            for(int i=0;i<size;i++){
+                place+=placeName[i];
             }
+        }
+            
     }//GEN-LAST:event_btnSetLocationActionPerformed
+
+    private void setMarkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setMarkersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_setMarkersActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSetLocation;
     private javax.swing.JPanel mapArea;
+    private javax.swing.JButton setMarkers;
     // End of variables declaration//GEN-END:variables
 
     

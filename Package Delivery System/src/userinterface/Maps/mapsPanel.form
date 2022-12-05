@@ -17,10 +17,12 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="mapArea" alignment="1" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="476" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="476" pref="476" max="-2" attributes="0"/>
               <Component id="btnSetLocation" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="480" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <Component id="setMarkers" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="317" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -28,8 +30,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="btnSetLocation" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="52" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSetLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="setMarkers" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
               <Component id="mapArea" min="-2" pref="735" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -46,6 +51,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSetLocationActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="setMarkers">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Set Location"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setMarkersActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
