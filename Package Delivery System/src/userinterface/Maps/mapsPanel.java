@@ -26,21 +26,35 @@ public class mapsPanel extends javax.swing.JPanel {
      * Creates new form mapsPanel
      */
     
-    //JPanel userProcessContainer;
-    //LocationPoint locationPoint;
     Browser browser;
-    BrowserView view;
     public mapsPanel() {
 
         initComponents();
-        //locationPoint = new LocationPoint();
         
         EngineOptions options =
                 EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
         Engine engine = Engine.newInstance(options);
         browser = engine.newBrowser();
         BrowserView view = BrowserView.newInstance(browser);
+<<<<<<< HEAD
+        //browser.navigation().loadUrl("https://www.google.com/maps");
+        
+        
+        String first = "var locations = [\n";
+        String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
+        String third = "];\n";
+        String fourth = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0]\n });\n}\n\tbounds.extend(marker.position);";
+        
+        String setMarkerScript = first+second+third+fourth;
+        setMarkers.addActionListener(e -> browser.mainFrame().ifPresent(frame -> frame.executeJavaScript(setMarkerScript)));
+        mapArea.add(view);
+        
+        String rootPath = System.getProperty("user.dir");
+        browser.navigation().loadUrl(rootPath+"/simple_map.html/");
+        mapArea.add(view);
+=======
        
+>>>>>>> main
     }
 
     /**
@@ -65,7 +79,11 @@ public class mapsPanel extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< HEAD
+        setMarkers.setText("Set Location");
+=======
         setMarkers.setText("Set Markers");
+>>>>>>> main
         setMarkers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setMarkersActionPerformed(evt);
@@ -80,9 +98,15 @@ public class mapsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(476, 476, 476)
                 .addComponent(btnSetLocation)
+<<<<<<< HEAD
+                .addGap(61, 61, 61)
+                .addComponent(setMarkers)
+                .addContainerGap(317, Short.MAX_VALUE))
+=======
                 .addGap(193, 193, 193)
                 .addComponent(setMarkers)
                 .addContainerGap(195, Short.MAX_VALUE))
+>>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,6 +123,17 @@ public class mapsPanel extends javax.swing.JPanel {
     private void btnSetLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetLocationActionPerformed
         // TODO add your handling code here:
         if (browser.url()!= null) {
+<<<<<<< HEAD
+ 
+            String[] split1= browser.url().split("/place/");
+            String[] split2 = split1[1].split("/@");
+            String[] placeName = split2[0].split("\\+");
+            String[] longLat = split2[1].split(",");
+            String place="";
+            int size=placeName.length;
+            for(int i=0;i<size;i++){
+                place+=placeName[i];
+=======
 
 //                System.out.println(browser.url());
 //                String[] a = browser.url().split("!3d", 0);
@@ -117,13 +152,20 @@ public class mapsPanel extends javax.swing.JPanel {
                 }
                 System.out.println(place);
                 System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
+>>>>>>> main
             }
+        }
+            
     }//GEN-LAST:event_btnSetLocationActionPerformed
 
     private void setMarkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setMarkersActionPerformed
+<<<<<<< HEAD
+        // TODO add your handling code here:
+=======
    
         
 // TODO add your handling code here:
+>>>>>>> main
     }//GEN-LAST:event_setMarkersActionPerformed
 
 

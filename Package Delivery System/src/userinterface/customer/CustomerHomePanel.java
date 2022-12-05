@@ -17,6 +17,11 @@ public class CustomerHomePanel extends javax.swing.JPanel {
      */
     public CustomerHomePanel() {
         initComponents();
+        
+        CustomerPanel panel = new CustomerPanel();
+        rightCustomerPanel.add("workArea", panel);
+        CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
+        layout.next(rightCustomerPanel);
     }
 
     /**
@@ -29,18 +34,21 @@ public class CustomerHomePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        manageOrganizationPanel = new javax.swing.JPanel();
+        homeCustomerPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        manageOrganization = new javax.swing.JLabel();
-        manageEmployee = new javax.swing.JPanel();
+        customerChatBoxLabel = new javax.swing.JLabel();
+        customerProfile = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        manageEmployeeLabel = new javax.swing.JLabel();
-        manageUserAccount = new javax.swing.JPanel();
+        customerProfileLabel = new javax.swing.JLabel();
+        customerOrdersPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        manageUserAccountLabel = new javax.swing.JLabel();
+        customerOrdersLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        customerChatPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        customerChatBoxLabel1 = new javax.swing.JLabel();
         rightCustomerPanel = new javax.swing.JPanel();
 
         jPanel3.setBackground(new java.awt.Color(215, 81, 81));
@@ -48,149 +56,178 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         jPanel3.setPreferredSize(new java.awt.Dimension(280, 840));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageOrganizationPanel.setBackground(new java.awt.Color(215, 81, 81));
-        manageOrganizationPanel.setToolTipText("");
-        manageOrganizationPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        homeCustomerPanel.setBackground(new java.awt.Color(215, 81, 81));
+        homeCustomerPanel.setToolTipText("");
+        homeCustomerPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageOrganizationPanelMousePressed(evt);
+                homeCustomerPanelMousePressed(evt);
             }
         });
 
         jLabel2.setBackground(new java.awt.Color(215, 81, 81));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Home Page.png"))); // NOI18N
         jLabel2.setToolTipText("");
 
-        manageOrganization.setBackground(new java.awt.Color(215, 81, 81));
-        manageOrganization.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        manageOrganization.setText("Customer Chat Box");
-        manageOrganization.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manageOrganizationMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageOrganizationMousePressed(evt);
-            }
-        });
+        customerChatBoxLabel.setBackground(new java.awt.Color(215, 81, 81));
+        customerChatBoxLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        customerChatBoxLabel.setText("Home");
 
-        javax.swing.GroupLayout manageOrganizationPanelLayout = new javax.swing.GroupLayout(manageOrganizationPanel);
-        manageOrganizationPanel.setLayout(manageOrganizationPanelLayout);
-        manageOrganizationPanelLayout.setHorizontalGroup(
-            manageOrganizationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageOrganizationPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout homeCustomerPanelLayout = new javax.swing.GroupLayout(homeCustomerPanel);
+        homeCustomerPanel.setLayout(homeCustomerPanelLayout);
+        homeCustomerPanelLayout.setHorizontalGroup(
+            homeCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homeCustomerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageOrganization, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addComponent(customerChatBoxLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
-        manageOrganizationPanelLayout.setVerticalGroup(
-            manageOrganizationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageOrganizationPanelLayout.createSequentialGroup()
+        homeCustomerPanelLayout.setVerticalGroup(
+            homeCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homeCustomerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(manageOrganizationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(manageOrganization, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(homeCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(customerChatBoxLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(manageOrganizationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, -1));
+        jPanel3.add(homeCustomerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 50));
 
-        manageEmployee.setBackground(new java.awt.Color(215, 81, 81));
-        manageEmployee.setToolTipText("");
-        manageEmployee.setPreferredSize(new java.awt.Dimension(264, 48));
-        manageEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+        customerProfile.setBackground(new java.awt.Color(215, 81, 81));
+        customerProfile.setToolTipText("");
+        customerProfile.setPreferredSize(new java.awt.Dimension(264, 48));
+        customerProfile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageEmployeeMousePressed(evt);
+                customerProfileMousePressed(evt);
             }
         });
 
         jLabel4.setBackground(new java.awt.Color(215, 81, 81));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/User Male.png"))); // NOI18N
 
-        manageEmployeeLabel.setBackground(new java.awt.Color(215, 81, 81));
-        manageEmployeeLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        manageEmployeeLabel.setText("Manage User Orders");
-        manageEmployeeLabel.setAutoscrolls(true);
-        manageEmployeeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageEmployeeLabelMousePressed(evt);
-            }
-        });
+        customerProfileLabel.setBackground(new java.awt.Color(215, 81, 81));
+        customerProfileLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        customerProfileLabel.setText("Profile");
+        customerProfileLabel.setAutoscrolls(true);
 
-        javax.swing.GroupLayout manageEmployeeLayout = new javax.swing.GroupLayout(manageEmployee);
-        manageEmployee.setLayout(manageEmployeeLayout);
-        manageEmployeeLayout.setHorizontalGroup(
-            manageEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageEmployeeLayout.createSequentialGroup()
+        javax.swing.GroupLayout customerProfileLayout = new javax.swing.GroupLayout(customerProfile);
+        customerProfile.setLayout(customerProfileLayout);
+        customerProfileLayout.setHorizontalGroup(
+            customerProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerProfileLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(manageEmployeeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(customerProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
-        manageEmployeeLayout.setVerticalGroup(
-            manageEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageEmployeeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(manageEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addGroup(manageEmployeeLayout.createSequentialGroup()
-                        .addComponent(manageEmployeeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+        customerProfileLayout.setVerticalGroup(
+            customerProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerProfileLayout.createSequentialGroup()
+                .addGroup(customerProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(customerProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel3.add(manageEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 280, 40));
+        jPanel3.add(customerProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, 40));
 
-        manageUserAccount.setBackground(new java.awt.Color(215, 81, 81));
-        manageUserAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+        customerOrdersPanel.setBackground(new java.awt.Color(215, 81, 81));
+        customerOrdersPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageUserAccountMousePressed(evt);
+                customerOrdersPanelMousePressed(evt);
             }
         });
 
         jLabel6.setBackground(new java.awt.Color(215, 81, 81));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Business.png"))); // NOI18N
 
-        manageUserAccountLabel.setBackground(new java.awt.Color(215, 81, 81));
-        manageUserAccountLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        manageUserAccountLabel.setText("Manage Supply Orders");
-        manageUserAccountLabel.setPreferredSize(new java.awt.Dimension(115, 16));
+        customerOrdersLabel.setBackground(new java.awt.Color(215, 81, 81));
+        customerOrdersLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        customerOrdersLabel.setText("Manage Orders");
+        customerOrdersLabel.setPreferredSize(new java.awt.Dimension(115, 16));
 
-        javax.swing.GroupLayout manageUserAccountLayout = new javax.swing.GroupLayout(manageUserAccount);
-        manageUserAccount.setLayout(manageUserAccountLayout);
-        manageUserAccountLayout.setHorizontalGroup(
-            manageUserAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageUserAccountLayout.createSequentialGroup()
+        javax.swing.GroupLayout customerOrdersPanelLayout = new javax.swing.GroupLayout(customerOrdersPanel);
+        customerOrdersPanel.setLayout(customerOrdersPanelLayout);
+        customerOrdersPanelLayout.setHorizontalGroup(
+            customerOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerOrdersPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(manageUserAccountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(customerOrdersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        manageUserAccountLayout.setVerticalGroup(
-            manageUserAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageUserAccountLayout.createSequentialGroup()
+        customerOrdersPanelLayout.setVerticalGroup(
+            customerOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerOrdersPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(manageUserAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(manageUserAccountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(customerOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(customerOrdersPanelLayout.createSequentialGroup()
+                        .addComponent(customerOrdersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel3.add(manageUserAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 280, 40));
+        jPanel3.add(customerOrdersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 280, 40));
 
         jSeparator1.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 280, -1));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, 10));
 
         jLabel1.setBackground(new java.awt.Color(215, 81, 81));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel1.setText("STORE MANAGEMENT SYSTEM");
+        jLabel1.setText("Customer Landing Page");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 190, 10));
+
+        customerChatPanel.setBackground(new java.awt.Color(215, 81, 81));
+        customerChatPanel.setToolTipText("");
+        customerChatPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                customerChatPanelMousePressed(evt);
+            }
+        });
+
+        jLabel3.setBackground(new java.awt.Color(215, 81, 81));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Technical Support.png"))); // NOI18N
+        jLabel3.setToolTipText("");
+
+        customerChatBoxLabel1.setBackground(new java.awt.Color(215, 81, 81));
+        customerChatBoxLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        customerChatBoxLabel1.setText("Customer Chat Box");
+
+        javax.swing.GroupLayout customerChatPanelLayout = new javax.swing.GroupLayout(customerChatPanel);
+        customerChatPanel.setLayout(customerChatPanelLayout);
+        customerChatPanelLayout.setHorizontalGroup(
+            customerChatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerChatPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(customerChatBoxLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        customerChatPanelLayout.setVerticalGroup(
+            customerChatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerChatPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(customerChatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(customerChatBoxLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel3.add(customerChatPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 280, -1));
 
         rightCustomerPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightCustomerPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -213,49 +250,57 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void manageOrganizationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrganizationMousePressed
-        customerChatPanel custChatPanel = new customerChatPanel();
-        
-        rightCustomerPanel.add("workArea", custChatPanel);
+    private void homeCustomerPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeCustomerPanelMousePressed
+        // TODO add your handling code here:
+        CustomerPanel panel = new CustomerPanel();
+        rightCustomerPanel.add("workArea", panel);
         CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
         layout.next(rightCustomerPanel);
-    }//GEN-LAST:event_manageOrganizationMousePressed
+    }//GEN-LAST:event_homeCustomerPanelMousePressed
 
-    private void manageOrganizationPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrganizationPanelMousePressed
+    private void customerProfileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerProfileMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_manageOrganizationPanelMousePressed
+        customerProfilePanel customerProfile = new customerProfilePanel();
+        rightCustomerPanel.add("Customer Profile",customerProfile );
+        CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
+        layout.next(rightCustomerPanel);
+    }//GEN-LAST:event_customerProfileMousePressed
 
-    private void manageEmployeeLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEmployeeLabelMousePressed
+    private void customerOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerOrdersPanelMousePressed
+        customerOrdersPanel orders = new customerOrdersPanel();
+        rightCustomerPanel.add("Customer Profile",orders );
+        CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
+        layout.next(rightCustomerPanel);
+    }//GEN-LAST:event_customerOrdersPanelMousePressed
 
-    }//GEN-LAST:event_manageEmployeeLabelMousePressed
-
-    private void manageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEmployeeMousePressed
+    private void customerChatPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerChatPanelMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_manageEmployeeMousePressed
-
-    private void manageUserAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageUserAccountMousePressed
-
-    }//GEN-LAST:event_manageUserAccountMousePressed
-
-    private void manageOrganizationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrganizationMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manageOrganizationMouseClicked
+        customerChatPanel chat = new customerChatPanel();
+        rightCustomerPanel.add("Customer Profile",chat );
+        CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
+        layout.next(rightCustomerPanel);
+    }//GEN-LAST:event_customerChatPanelMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel customerChatBoxLabel;
+    private javax.swing.JLabel customerChatBoxLabel1;
+    private javax.swing.JPanel customerChatPanel;
+    private javax.swing.JLabel customerOrdersLabel;
+    private javax.swing.JPanel customerOrdersPanel;
+    private javax.swing.JPanel customerProfile;
+    private javax.swing.JLabel customerProfileLabel;
+    private javax.swing.JPanel homeCustomerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JPanel manageEmployee;
-    private javax.swing.JLabel manageEmployeeLabel;
-    private javax.swing.JLabel manageOrganization;
-    private javax.swing.JPanel manageOrganizationPanel;
-    private javax.swing.JPanel manageUserAccount;
-    private javax.swing.JLabel manageUserAccountLabel;
     private javax.swing.JPanel rightCustomerPanel;
     // End of variables declaration//GEN-END:variables
+
+    
 }
