@@ -652,6 +652,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         btnShippingAgent.setBackground(new java.awt.Color(25, 54, 82));
         btnShippingAgent.setForeground(new java.awt.Color(204, 204, 204));
         btnShippingAgent.setText("Create Shipping Agent");
+        btnShippingAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShippingAgentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ShippingAgentLayout = new javax.swing.GroupLayout(ShippingAgent);
         ShippingAgent.setLayout(ShippingAgentLayout);
@@ -771,6 +776,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         btnDAAgent.setBackground(new java.awt.Color(25, 54, 82));
         btnDAAgent.setForeground(new java.awt.Color(204, 204, 204));
         btnDAAgent.setText("Register Delivery Agent");
+        btnDAAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDAAgentActionPerformed(evt);
+            }
+        });
 
         txtDAAgentMobile.setBackground(new java.awt.Color(25, 54, 82));
         txtDAAgentMobile.setForeground(new java.awt.Color(204, 204, 204));
@@ -907,6 +917,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         btnCreateUser.setBackground(new java.awt.Color(25, 54, 82));
         btnCreateUser.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateUser.setText("Create User");
+        btnCreateUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CustomerLayout = new javax.swing.GroupLayout(Customer);
         Customer.setLayout(CustomerLayout);
@@ -997,7 +1012,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         String mname=txtSManagerName.getText();
         String memail = txtSManagerEmail.getText();
         String username = txtSManagerUserName.getText();
-        String password = String.valueOf(pwdSManagerPassword.getText());
+        String password = String.valueOf(pwdSManagerPassword.getPassword());
         
       try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into store_manager values(?,?,?,?,?,?)");
@@ -1023,7 +1038,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         String mname=txtWManagerName.getText();
         String memail = txtWManagerEmail.getText();
         String username = txtWManagerUserName.getText();
-        String password = String.valueOf(pwdWManagerPassword.getText());
+        String password = String.valueOf(pwdWManagerPassword.getPassword());
         
       try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_manager values(?,?,?,?,?,?)");
@@ -1047,7 +1062,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         String id= txtCSRAgentID.getText();
         String csrname= txtCSRAgentName.getText();
         String csremail = txtCSRAgentEmail.getText();
-        String password = String.valueOf(pwdCSRAgentPassword.getText());
+        String password = String.valueOf(pwdCSRAgentPassword.getPassword());
         
       try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into csr values(?,?,?,?)");
@@ -1069,7 +1084,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         String id= txtSSRAgentID.getText();
         String ssrname= txtSSRAgentName.getText();
         String ssremail = txtSSRAgentEmail.getText();
-        String password = String.valueOf(pwdSSRAgentPassword.getText());
+        String password = String.valueOf(pwdSSRAgentPassword.getPassword());
         
       try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into ssr values(?,?,?,?)");
@@ -1085,6 +1100,90 @@ public class RolesSignUp extends javax.swing.JPanel {
        catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
 }     
     }//GEN-LAST:event_btnCreateSSRActionPerformed
+
+    private void btnShippingAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShippingAgentActionPerformed
+        // TODO add your handling code here:
+        String name=txtShippingAgentName.getText();
+        String mobile = txtShippingAgentMobile.getText();
+        String bLocation = txtShippingAgentBaseLocation.getText();
+        String username = txtShippingAgentUserName.getText();
+        String password = String.valueOf(pwdShippingAgent.getPassword());
+        
+      
+      try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into shipping_agent values(?,?,?,?,?)");
+        preparedStatement.setString(1,name);
+        preparedStatement.setString(2,mobile);
+        preparedStatement.setString(3,bLocation);
+        preparedStatement.setString(4,username);
+        preparedStatement.setString(5,password);
+
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Shipping Agent Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+} 
+    }//GEN-LAST:event_btnShippingAgentActionPerformed
+
+    private void btnDAAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDAAgentActionPerformed
+        // TODO add your handling code here:
+        String id = txtDAAgentID.getText();
+        String name=txtDAAgentName.getText();
+        String mobile = txtDAAgentMobile.getText();
+        String bLocation = txtDAAgentBaseLocation.getText();
+        String username = txtDAAgentUserName.getText();
+        String password = String.valueOf(pwdDAAgentPassword.getPassword());
+        
+      
+      try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_agent values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,id);
+        preparedStatement.setString(2,name);
+        preparedStatement.setString(3,mobile);
+        preparedStatement.setString(4,bLocation);
+        preparedStatement.setString(5,username);
+        preparedStatement.setString(6,password);
+
+
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Delivery Agent Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+}    
+    }//GEN-LAST:event_btnDAAgentActionPerformed
+
+    private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
+        // TODO add your handling code here:
+      String name =txtUserName.getText();
+      String email = txtUserEmail.getText();
+      String mobile = txtUserMobile.getText();
+      String username = txtUserUserName.getText();
+      String password = String.valueOf(pwdUserPassword.getPassword());
+      String gender = cbUserGender.getSelectedItem().toString();
+  
+        try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into customer values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,name);
+        preparedStatement.setString(2,email);
+        preparedStatement.setString(3,username);
+        preparedStatement.setString(4,mobile);
+        preparedStatement.setString(5,password);
+        preparedStatement.setString(6,gender);
+
+
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+} 
+      
+    }//GEN-LAST:event_btnCreateUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

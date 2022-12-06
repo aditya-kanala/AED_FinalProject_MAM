@@ -23,30 +23,30 @@ public class mapsPanel extends javax.swing.JPanel {
     public mapsPanel() {
         initComponents();
         
-        loadMaps();
+        //loadMaps();
         
         loadMarkedMaps();
         
-        EngineOptions options =
-                EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-        Engine engine = Engine.newInstance(options);
-        browser = engine.newBrowser();
-        BrowserView view = BrowserView.newInstance(browser);
+//        EngineOptions options =
+//                EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
+//        Engine engine = Engine.newInstance(options);
+//        browser = engine.newBrowser();
+//        BrowserView view = BrowserView.newInstance(browser);
         
         
-        String first = "var locations = [\n";
-        String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
-        String third = "];\n";
-        String fourth = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0]\n });\n}\n\tbounds.extend(marker.position);";
-        
-        String setMarkerScript = first+second+third+fourth;
-        //setMarkers.addActionListener(e -> browser.mainFrame().ifPresent(frame -> frame.executeJavaScript(setMarkerScript)));
-        mapsArea.add(view);
-        
-        String rootPath = System.getProperty("user.dir");
-        browser.navigation().loadUrl(rootPath+"/simple_map.html/");
-        
-        mapsArea.add(view);
+//        String first = "var locations = [\n";
+//        String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
+//        String third = "];\n";
+//        String fourth = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0]\n });\n}\n\tbounds.extend(marker.position);";
+//        
+//        String setMarkerScript = first+second+third+fourth;
+//        //setMarkers.addActionListener(e -> browser.mainFrame().ifPresent(frame -> frame.executeJavaScript(setMarkerScript)));
+//        mapsArea.add(view);
+//        
+//        String rootPath = System.getProperty("user.dir");
+//        browser.navigation().loadUrl(rootPath+"/simple_map.html/");
+//        
+//        mapsArea.add(view);
     }
 
     /**
@@ -58,19 +58,8 @@ public class mapsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mapsArea = new javax.swing.JPanel();
         btnSetLocation = new javax.swing.JButton();
-
-        javax.swing.GroupLayout mapsAreaLayout = new javax.swing.GroupLayout(mapsArea);
-        mapsArea.setLayout(mapsAreaLayout);
-        mapsAreaLayout.setHorizontalGroup(
-            mapsAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        mapsAreaLayout.setVerticalGroup(
-            mapsAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
-        );
+        mapsArea = new javax.swing.JPanel();
 
         btnSetLocation.setText("Set Location");
         btnSetLocation.addActionListener(new java.awt.event.ActionListener() {
@@ -79,23 +68,25 @@ public class mapsPanel extends javax.swing.JPanel {
             }
         });
 
+        mapsArea.setLayout(new java.awt.CardLayout());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mapsArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(483, 483, 483)
+                .addGap(463, 463, 463)
                 .addComponent(btnSetLocation)
-                .addContainerGap(473, Short.MAX_VALUE))
+                .addContainerGap(493, Short.MAX_VALUE))
+            .addComponent(mapsArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 42, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addComponent(btnSetLocation)
-                .addGap(18, 18, 18)
-                .addComponent(mapsArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(mapsArea, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,6 +103,8 @@ public class mapsPanel extends javax.swing.JPanel {
                 for(int i=0;i<size;i++){
                     place+=placeName[i];
                 }
+                
+                System.out.println(place+" Long is "+longLat[0]+" & Lat is"+ longLat[1]);
     }//GEN-LAST:event_btnSetLocationActionPerformed
 
 
@@ -127,9 +120,9 @@ public class mapsPanel extends javax.swing.JPanel {
         Engine engine = Engine.newInstance(options);
         browser = engine.newBrowser();
         BrowserView view = BrowserView.newInstance(browser);
-         browser.navigation().loadUrl("https://www.google.com/maps");
+        browser.navigation().loadUrl("https://www.google.com/maps");
         
-        mapsArea.add(view);
+        mapsArea.add(view,"a");
         
     }
     
@@ -141,14 +134,15 @@ public class mapsPanel extends javax.swing.JPanel {
         browser = engine.newBrowser();
         BrowserView view = BrowserView.newInstance(browser);
 //      browser.navigation().loadUrl("https://www.google.com/maps");
-         
+
+         browser.navigation().loadUrl("D:\\AED Project\\AED_FinalProject_MAM\\Google Maps\\index.html");
          
         String first = "var locations = [\n";
         String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
         String third = "];\n";
-        String fourth = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0]\n });\n}\n\tbounds.extend(marker.position);";
-        
-        String setMarkerScript = first+second+third+fourth;        
+        String fourth = "var i;\n\nfor (i = 0; i < locations.length; i++) {  \n var marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0]\n });\n}\n\tbounds.extend(marker.position);";
+        String fifth = "\nmap.fitBounds(bounds)";
+        String setMarkerScript = first+second+third+fourth+fifth;        
         
         
         //setMarkers.addActionListener(e -> browser.mainFrame().ifPresent(frame -> frame.executeJavaScript(setMarkerScript)));
@@ -157,8 +151,8 @@ public class mapsPanel extends javax.swing.JPanel {
         
         String rootPath = System.getProperty("user.dir");
         browser.navigation().loadUrl(rootPath+"/simple_map.html/");
-        mapsArea.add(view);
-        
+        browser.navigation().loadUrl("D:\\AED Project\\AED_FinalProject_MAM\\Google Maps\\index.html");
+
         mapsArea.add(view);
         
     }

@@ -276,7 +276,6 @@ public class CustomerPanel extends javax.swing.JPanel {
         this.getParent().add("customer Cart",cart);
         CardLayout layout = (CardLayout) this.getParent().getLayout();
         layout.next(this.getParent());
-//        userinterface.customer.CustomerHomePanel.rightCustomerPanel.add();
     }//GEN-LAST:event_cartLabelMousePressed
 
 

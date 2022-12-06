@@ -4,6 +4,9 @@
  */
 package userinterface.customer;
 
+import java.awt.CardLayout;
+import userinterface.Maps.mapsPanel;
+
 /**
  *
  * @author mahith
@@ -153,6 +156,10 @@ public class customerCart extends javax.swing.JPanel {
 
     private void selectLocationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectLocationBtnActionPerformed
         // TODO add your handling code here:
+        mapsPanel setAddress = new mapsPanel();
+        this.getParent().add("Set Address",setAddress);
+        CardLayout layout = (CardLayout) this.getParent().getLayout();
+        layout.next(this.getParent());
     }//GEN-LAST:event_selectLocationBtnActionPerformed
 
     private void txtCartValue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCartValue1ActionPerformed
