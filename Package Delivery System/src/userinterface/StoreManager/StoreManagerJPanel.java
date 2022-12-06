@@ -18,6 +18,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
      */
     public StoreManagerJPanel() {
         initComponents();
+        storeGraphs();
     }
 
     /**
@@ -282,7 +283,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageSupplyOrdersPanelMousePressed
 
     private void homeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMousePressed
-        
+        storeGraphs();
     }//GEN-LAST:event_homeMousePressed
 
     private void homePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMousePressed
@@ -291,7 +292,8 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_homePanelMousePressed
 
     private void manageStore(){
-        manageStorePanel.setBackground(new Color(255, 255, 255));
+        homePanel.setBackground(new Color(227, 73, 78));
+        manageStorePanel.setBackground(new Color(135, 206, 235));
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageSupplyOrdersPanel.setBackground(new Color(227, 73, 78));
         ManageStoreJPanel manageStoreJPanel = new ManageStoreJPanel();        
@@ -301,8 +303,9 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }
     
     private void manageUserOrders(){
+        homePanel.setBackground(new Color(227, 73, 78));
         manageStorePanel.setBackground(new Color(227, 73, 78));
-        manageUserOrdersPanel.setBackground(new Color(255, 255, 255));
+        manageUserOrdersPanel.setBackground(new Color(135, 206, 235));
         manageSupplyOrdersPanel.setBackground(new Color(227, 73, 78));
         ManageUserOrdersJPanel manageUserOrdersJPanel = new ManageUserOrdersJPanel();        
         rightSystemAdminPanel.add("manageUserOrdersJPanel",manageUserOrdersJPanel);
@@ -311,9 +314,10 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }
     
     private void manageSupplyOrders(){
+        homePanel.setBackground(new Color(227, 73, 78));
         manageStorePanel.setBackground(new Color(227, 73, 78));
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
-        manageSupplyOrdersPanel.setBackground(new Color(255, 255, 255));
+        manageSupplyOrdersPanel.setBackground(new Color(135, 206, 235));
         ManageSupplyOrdersJPanel manageSupplyOrdersJPanel = new ManageSupplyOrdersJPanel();        
         rightSystemAdminPanel.add("manageSupplyOrdersJPanel",manageSupplyOrdersJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -321,10 +325,10 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }
 
     private void storeGraphs(){
+        homePanel.setBackground(new Color(135, 206, 235));
         manageStorePanel.setBackground(new Color(227, 73, 78));
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageSupplyOrdersPanel.setBackground(new Color(227, 73, 78));
-        homePanel.setBackground(new Color(255, 255, 255));
         ViewStoreGraphsJPanel viewStoreGraphsJPanel = new ViewStoreGraphsJPanel();
         rightSystemAdminPanel.add("viewStoreGraphsJPanel",viewStoreGraphsJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
