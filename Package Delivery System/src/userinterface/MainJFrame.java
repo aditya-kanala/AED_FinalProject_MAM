@@ -400,7 +400,7 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "BPO Admin Login Successful..!!");
-                        StoreManagerJPanel panel = new StoreManagerJPanel();
+                        StoreManagerJPanel panel = new StoreManagerJPanel(connection);
                         container.add("workArea111", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
@@ -517,7 +517,7 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
-                        StoreManagerJPanel panel = new StoreManagerJPanel();
+                        StoreManagerJPanel panel = new StoreManagerJPanel(connection);
                         container.add("workArea111", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);

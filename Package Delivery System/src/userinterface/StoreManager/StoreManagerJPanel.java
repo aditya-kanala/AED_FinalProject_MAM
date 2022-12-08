@@ -6,6 +6,7 @@ package userinterface.StoreManager;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.sql.*;
 
 /**
  *
@@ -16,9 +17,11 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form StoreManagerJPanel
      */
-    public StoreManagerJPanel() {
+    Connection connection;
+    public StoreManagerJPanel(Connection connection) {
         initComponents();
         storeGraphs();
+        this.connection=connection;
     }
 
     /**
@@ -296,7 +299,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageStorePanel.setBackground(new Color(135, 206, 235));
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageSupplyOrdersPanel.setBackground(new Color(227, 73, 78));
-        ManageStoreJPanel manageStoreJPanel = new ManageStoreJPanel();        
+        ManageStoreJPanel manageStoreJPanel = new ManageStoreJPanel(connection);        
         rightSystemAdminPanel.add("manageStoreJPanel",manageStoreJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
