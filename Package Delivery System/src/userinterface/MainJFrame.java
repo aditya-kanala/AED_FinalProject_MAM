@@ -508,6 +508,30 @@ public class MainJFrame extends javax.swing.JFrame {
         txtUserName.setText("");
         fldPassword.setText("");
           }
+          
+         /*Store Manager Login*/ 
+          else if (txtUserName.getText().contains("storemanager")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        StoreManagerJPanel panel = new StoreManagerJPanel();
+                        container.add("workArea111", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText("");    
+          }
           else{
             JOptionPane.showMessageDialog(this, "No Admin Found for the Credentials"+" :( :(");
           }
