@@ -9,21 +9,14 @@
     <div id="map"></div>
     <script>
       var map;
+	var bounds = new google.maps.LatLngBounds();
       function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 15,
-          center: { lat: 42.3324987, lng: -71.109201 },
+          zoom: 5,
+     		 center: new google.maps.LatLng(42.3340015, 71.1009949),
+      	mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        var marker = new google.maps.Marker({
-          map: map,
-          position: { lat: 42.3143286, lng: -25.0 },
-          title: "Hello World!",
-        });
-
-        var centre = new google.maps.Center({
-          map: map,
-          center: { lat: 42.3143286, lng: -25.0 },
-        });
+        
       }
     </script>
     <script

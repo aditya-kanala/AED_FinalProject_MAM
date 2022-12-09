@@ -4,6 +4,10 @@
  */
 package userinterface.StoreManager;
 
+import java.sql.PreparedStatement;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+
 /**
  *
  * @author mohit
@@ -13,10 +17,15 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageStoreJPanel
      */
-    public ManageStoreJPanel() {
+    Connection connection;
+    
+    public ManageStoreJPanel(Connection connection) {
         initComponents();
         initialSetup();
+        populateStoreItemsTable(connection);
+        this.connection=connection;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,7 +72,6 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         lblStoreId.setForeground(new java.awt.Color(255, 255, 255));
         lblStoreId.setText("Store ID:");
 
-        tblItems.setForeground(new java.awt.Color(255, 255, 255));
         tblItems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -297,6 +305,26 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         btnFinalizeItem.setVisible(true);
     }
 
+    public void populateStoreItemsTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
+        model.setRowCount(0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_items");
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+            Object[] rows = new Object[5];
+            rows[0]= rs.getString(1);
+            rows[1]=rs.getString(2);
+            rows[2]=rs.getString(3);
+            rows[3]=rs.getString(4);
+            rows[4] =rs.getString(5);
+            
+            model.addRow(rows);
+            }
+        }
+        catch(SQLException e){System.out.println(e);}
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddItem;
     private javax.swing.JButton btnFinalizeItem;

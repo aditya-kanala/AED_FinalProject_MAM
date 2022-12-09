@@ -4,6 +4,13 @@
  */
 package userinterface.StoreManager;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+
 /**
  *
  * @author mohit
@@ -13,9 +20,13 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageSupplyOrdersJPanel
      */
-    public ManageSupplyOrdersJPanel() {
+    Connection connection;
+    public ManageSupplyOrdersJPanel(Connection connection) {
         initComponents();
         initialSetup();
+        populateSupplyOrderTable(connection);
+        this.connection=connection;
+        
     }
 
     /**
@@ -42,7 +53,6 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(25, 56, 82));
 
-        tblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
         tblSupplyOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -208,6 +218,25 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
         btnFinalizeOrder.setVisible(true);
     }
 
+        public void populateSupplyOrderTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblSupplyOrders.getModel();
+        model.setRowCount(0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from supply_orders");
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+            Object[] rows = new Object[4];
+            rows[0]= rs.getString(1);
+            rows[1]=rs.getString(2);
+            rows[2]=rs.getString(3);
+            rows[3]=rs.getString(4);
+            
+            model.addRow(rows);
+            }
+        }
+        catch(SQLException e){System.out.println(e);}
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddOrder;
     private javax.swing.JButton btnFinalizeOrder;
