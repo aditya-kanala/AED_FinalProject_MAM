@@ -4,6 +4,12 @@
  */
 package userinterface.StoreManager;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mohit
@@ -13,9 +19,12 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageUserOrdersJPanel
      */
-    public ManageUserOrdersJPanel() {
+    Connection connection;
+    public ManageUserOrdersJPanel(Connection connection) {
         initComponents();
         initialSetup();
+        this.connection=connection;
+        populateUserOrderTable(connection);
     }
 
     /**
@@ -29,7 +38,7 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
 
         lblUserOrders = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblItems = new javax.swing.JTable();
+        tblUserOrders = new javax.swing.JTable();
         btnViewOrder = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
@@ -46,8 +55,7 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
         lblUserOrders.setForeground(new java.awt.Color(255, 255, 255));
         lblUserOrders.setText("USER ORDERS");
 
-        tblItems.setForeground(new java.awt.Color(255, 255, 255));
-        tblItems.setModel(new javax.swing.table.DefaultTableModel(
+        tblUserOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -55,7 +63,7 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
                 "Order ID", "Order Date", "Order Items", "Order Total"
             }
         ));
-        jScrollPane1.setViewportView(tblItems);
+        jScrollPane1.setViewportView(tblUserOrders);
 
         btnViewOrder.setText("View/Update Order");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +188,25 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
         
         jButton1.setVisible(true);
     }
+    
+        public void populateUserOrderTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblUserOrders.getModel();
+        model.setRowCount(0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from user_orders");
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+            Object[] rows = new Object[4];
+            rows[0]= rs.getString(1);
+            rows[1]=rs.getString(2);
+            rows[2]=rs.getString(3);
+            rows[3]=rs.getString(4);
+            
+            model.addRow(rows);
+            }
+        }
+        catch(SQLException e){System.out.println(e);}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
@@ -189,7 +216,7 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblOrderItems;
     private javax.swing.JLabel lblOrderTotal;
     private javax.swing.JLabel lblUserOrders;
-    private javax.swing.JTable tblItems;
+    private javax.swing.JTable tblUserOrders;
     private javax.swing.JTextField txtOrderItems;
     private javax.swing.JTextField txtOrderTotal;
     private javax.swing.JTextField txtSearch;

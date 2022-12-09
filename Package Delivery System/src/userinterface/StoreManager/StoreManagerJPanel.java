@@ -310,7 +310,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageStorePanel.setBackground(new Color(227, 73, 78));
         manageUserOrdersPanel.setBackground(new Color(135, 206, 235));
         manageSupplyOrdersPanel.setBackground(new Color(227, 73, 78));
-        ManageUserOrdersJPanel manageUserOrdersJPanel = new ManageUserOrdersJPanel();        
+        ManageUserOrdersJPanel manageUserOrdersJPanel = new ManageUserOrdersJPanel(connection);        
         rightSystemAdminPanel.add("manageUserOrdersJPanel",manageUserOrdersJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -321,7 +321,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageStorePanel.setBackground(new Color(227, 73, 78));
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageSupplyOrdersPanel.setBackground(new Color(135, 206, 235));
-        ManageSupplyOrdersJPanel manageSupplyOrdersJPanel = new ManageSupplyOrdersJPanel();        
+        ManageSupplyOrdersJPanel manageSupplyOrdersJPanel = new ManageSupplyOrdersJPanel(connection);        
         rightSystemAdminPanel.add("manageSupplyOrdersJPanel",manageSupplyOrdersJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
