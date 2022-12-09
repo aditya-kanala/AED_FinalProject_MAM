@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package userinterface.customer;
+package userinterface.Supplier;
 
 /**
  *
  * @author mahith
  */
-public class customerOrdersPanel extends javax.swing.JPanel {
+public class supplierHistoryPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form customerOrdersPanel
+     * Creates new form supplierHistoryPanel
      */
-    public customerOrdersPanel() {
+    public supplierHistoryPanel() {
         initComponents();
     }
 
@@ -27,42 +27,42 @@ public class customerOrdersPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblOrderHistory = new javax.swing.JTable();
+        supplyHistory = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
-        tblOrderHistory.setForeground(new java.awt.Color(255, 255, 255));
-        tblOrderHistory.setModel(new javax.swing.table.DefaultTableModel(
+        supplyHistory.setForeground(new java.awt.Color(255, 255, 255));
+        supplyHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order ID", "Order Date", "Cost", "Status"
+                "Order ID", "Items", "Quantity", "Order Date", "Fulfilles date"
             }
         ));
-        jScrollPane1.setViewportView(tblOrderHistory);
+        jScrollPane1.setViewportView(supplyHistory);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(131, 131, 131))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addGap(191, 191, 191)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(349, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblOrderHistory;
+    private javax.swing.JTable supplyHistory;
     // End of variables declaration//GEN-END:variables
 }

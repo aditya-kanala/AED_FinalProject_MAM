@@ -34,8 +34,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblProductName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblProductCost1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="totalCartlbl" min="-2" max="-2" attributes="0"/>
                           <Component id="setLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -43,10 +43,10 @@
                           <Component id="jLabel1" min="-2" pref="160" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jScrollPane2" pref="230" max="32767" attributes="0"/>
-                              <Component id="txtCartValue1" max="32767" attributes="0"/>
+                              <Component id="txtCartValue" max="32767" attributes="0"/>
                               <Component id="selectLocationBtn" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="placeOrderBtn1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="placeOrderBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -66,15 +66,15 @@
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtCartValue1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="lblProductCost1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCartValue" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="totalCartlbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblProductName" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -86,7 +86,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="placeOrderBtn1" min="-2" max="-2" attributes="0"/>
+              <Component id="placeOrderBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -114,7 +114,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblSearchCatalog">
+        <Component class="javax.swing.JTable" name="tblCart">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -174,7 +174,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectLocationBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblProductName">
+    <Component class="javax.swing.JLabel" name="lblAddress">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -189,7 +189,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="txtAddress">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -197,7 +197,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblProductCost1">
+    <Component class="javax.swing.JLabel" name="totalCartlbl">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -205,17 +205,17 @@
         <Property name="text" type="java.lang.String" value="Total Cart value"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCartValue1">
+    <Component class="javax.swing.JTextField" name="txtCartValue">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCartValue1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCartValueActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="placeOrderBtn1">
+    <Component class="javax.swing.JButton" name="placeOrderBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Place Order"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeOrderBtn1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeOrderBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

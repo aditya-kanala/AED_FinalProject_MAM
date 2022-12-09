@@ -28,15 +28,15 @@ public class customerCart extends javax.swing.JPanel {
 
         lblSupplyOrders = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSearchCatalog = new javax.swing.JTable();
+        tblCart = new javax.swing.JTable();
         setLocationLabel = new javax.swing.JLabel();
         selectLocationBtn = new javax.swing.JButton();
-        lblProductName = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        lblProductCost1 = new javax.swing.JLabel();
-        txtCartValue1 = new javax.swing.JTextField();
-        placeOrderBtn1 = new javax.swing.JButton();
+        txtAddress = new javax.swing.JTextArea();
+        totalCartlbl = new javax.swing.JLabel();
+        txtCartValue = new javax.swing.JTextField();
+        placeOrderBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(25, 56, 82));
@@ -46,8 +46,8 @@ public class customerCart extends javax.swing.JPanel {
         lblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
         lblSupplyOrders.setText("CART");
 
-        tblSearchCatalog.setForeground(new java.awt.Color(255, 255, 255));
-        tblSearchCatalog.setModel(new javax.swing.table.DefaultTableModel(
+        tblCart.setForeground(new java.awt.Color(255, 255, 255));
+        tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -55,7 +55,7 @@ public class customerCart extends javax.swing.JPanel {
                 "Product", "Store", "Price", "Quantity"
             }
         ));
-        jScrollPane1.setViewportView(tblSearchCatalog);
+        jScrollPane1.setViewportView(tblCart);
 
         setLocationLabel.setForeground(new java.awt.Color(255, 255, 255));
         setLocationLabel.setText("Set Location");
@@ -67,26 +67,26 @@ public class customerCart extends javax.swing.JPanel {
             }
         });
 
-        lblProductName.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductName.setText("Address");
+        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddress.setText("Address");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtAddress.setColumns(20);
+        txtAddress.setRows(5);
+        jScrollPane2.setViewportView(txtAddress);
 
-        lblProductCost1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductCost1.setText("Total Cart value");
+        totalCartlbl.setForeground(new java.awt.Color(255, 255, 255));
+        totalCartlbl.setText("Total Cart value");
 
-        txtCartValue1.addActionListener(new java.awt.event.ActionListener() {
+        txtCartValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCartValue1ActionPerformed(evt);
+                txtCartValueActionPerformed(evt);
             }
         });
 
-        placeOrderBtn1.setText("Place Order");
-        placeOrderBtn1.addActionListener(new java.awt.event.ActionListener() {
+        placeOrderBtn.setText("Place Order");
+        placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeOrderBtn1ActionPerformed(evt);
+                placeOrderBtnActionPerformed(evt);
             }
         });
 
@@ -107,17 +107,17 @@ public class customerCart extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(397, 397, 397)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblProductName)
-                            .addComponent(lblProductCost1)
+                            .addComponent(lblAddress)
+                            .addComponent(totalCartlbl)
                             .addComponent(setLocationLabel))
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                .addComponent(txtCartValue1)
+                                .addComponent(txtCartValue)
                                 .addComponent(selectLocationBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(placeOrderBtn1))))
+                            .addComponent(placeOrderBtn))))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,13 +131,13 @@ public class customerCart extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(74, 74, 74))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCartValue1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblProductCost1)))
+                        .addComponent(txtCartValue, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(totalCartlbl)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblProductName)
+                        .addComponent(lblAddress)
                         .addGap(39, 39, 39)))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -146,7 +146,7 @@ public class customerCart extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
-                .addComponent(placeOrderBtn1)
+                .addComponent(placeOrderBtn)
                 .addGap(252, 252, 252))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -155,27 +155,27 @@ public class customerCart extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectLocationBtnActionPerformed
 
-    private void txtCartValue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCartValue1ActionPerformed
+    private void txtCartValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCartValueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCartValue1ActionPerformed
+    }//GEN-LAST:event_txtCartValueActionPerformed
 
-    private void placeOrderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtn1ActionPerformed
+    private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_placeOrderBtn1ActionPerformed
+    }//GEN-LAST:event_placeOrderBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel lblProductCost1;
-    private javax.swing.JLabel lblProductName;
+    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblSupplyOrders;
-    private javax.swing.JButton placeOrderBtn1;
+    private javax.swing.JButton placeOrderBtn;
     private javax.swing.JButton selectLocationBtn;
     private javax.swing.JLabel setLocationLabel;
-    private javax.swing.JTable tblSearchCatalog;
-    private javax.swing.JTextField txtCartValue1;
+    private javax.swing.JTable tblCart;
+    private javax.swing.JLabel totalCartlbl;
+    private javax.swing.JTextArea txtAddress;
+    private javax.swing.JTextField txtCartValue;
     // End of variables declaration//GEN-END:variables
 }

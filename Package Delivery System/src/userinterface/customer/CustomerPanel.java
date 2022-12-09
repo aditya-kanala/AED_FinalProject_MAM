@@ -5,6 +5,9 @@
 package userinterface.customer;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,11 +40,11 @@ public class CustomerPanel extends javax.swing.JPanel {
         lblProductName = new javax.swing.JLabel();
         txtOrderItems = new javax.swing.JTextField();
         lblProductDescription = new javax.swing.JLabel();
-        txtOrderTotal = new javax.swing.JTextField();
+        txtProductDesc = new javax.swing.JTextField();
         lblProductCost = new javax.swing.JLabel();
         lblProductQuantity = new javax.swing.JLabel();
-        txtOrderTotal1 = new javax.swing.JTextField();
-        txtOrderTotal2 = new javax.swing.JTextField();
+        txtProductCost = new javax.swing.JTextField();
+        productQuantity = new javax.swing.JTextField();
         addToCartBtn = new javax.swing.JButton();
         productImage = new javax.swing.JLabel();
         cartLabel = new javax.swing.JLabel();
@@ -59,6 +62,11 @@ public class CustomerPanel extends javax.swing.JPanel {
                 "Product", "Store", "Price", "Availability"
             }
         ));
+        tblSearchCatalog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSearchCatalogMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblSearchCatalog);
 
         lblSupplyOrders.setBackground(new java.awt.Color(255, 255, 255));
@@ -66,7 +74,6 @@ public class CustomerPanel extends javax.swing.JPanel {
         lblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
         lblSupplyOrders.setText("ORDER ITEM");
 
-        btnViewOrder.setBackground(null);
         btnViewOrder.setForeground(new java.awt.Color(204, 204, 204));
         btnViewOrder.setText("View Item");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +82,6 @@ public class CustomerPanel extends javax.swing.JPanel {
             }
         });
 
-        txtSearch.setBackground(null);
         txtSearch.setForeground(new java.awt.Color(204, 204, 204));
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,24 +89,26 @@ public class CustomerPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSearch.setBackground(null);
         btnSearch.setForeground(new java.awt.Color(204, 204, 204));
         btnSearch.setText("Search");
+        btnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSearchMouseClicked(evt);
+            }
+        });
 
         lblProductName.setForeground(new java.awt.Color(255, 255, 255));
         lblProductName.setText("Product");
 
-        txtOrderItems.setBackground(null);
         txtOrderItems.setForeground(new java.awt.Color(204, 204, 204));
 
         lblProductDescription.setForeground(new java.awt.Color(255, 255, 255));
         lblProductDescription.setText("Description");
 
-        txtOrderTotal.setBackground(null);
-        txtOrderTotal.setForeground(new java.awt.Color(204, 204, 204));
-        txtOrderTotal.addActionListener(new java.awt.event.ActionListener() {
+        txtProductDesc.setForeground(new java.awt.Color(204, 204, 204));
+        txtProductDesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrderTotalActionPerformed(evt);
+                txtProductDescActionPerformed(evt);
             }
         });
 
@@ -110,23 +118,20 @@ public class CustomerPanel extends javax.swing.JPanel {
         lblProductQuantity.setForeground(new java.awt.Color(255, 255, 255));
         lblProductQuantity.setText("Quantity");
 
-        txtOrderTotal1.setBackground(null);
-        txtOrderTotal1.setForeground(new java.awt.Color(204, 204, 204));
-        txtOrderTotal1.addActionListener(new java.awt.event.ActionListener() {
+        txtProductCost.setForeground(new java.awt.Color(204, 204, 204));
+        txtProductCost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrderTotal1ActionPerformed(evt);
+                txtProductCostActionPerformed(evt);
             }
         });
 
-        txtOrderTotal2.setBackground(null);
-        txtOrderTotal2.setForeground(new java.awt.Color(204, 204, 204));
-        txtOrderTotal2.addActionListener(new java.awt.event.ActionListener() {
+        productQuantity.setForeground(new java.awt.Color(204, 204, 204));
+        productQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrderTotal2ActionPerformed(evt);
+                productQuantityActionPerformed(evt);
             }
         });
 
-        addToCartBtn.setBackground(null);
         addToCartBtn.setForeground(new java.awt.Color(204, 204, 204));
         addToCartBtn.setText("Add to Cart");
         addToCartBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +151,7 @@ public class CustomerPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("1");
+        jLabel1.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -176,7 +181,7 @@ public class CustomerPanel extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblProductDescription)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtProductDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblProductName)
                                                 .addGap(67, 67, 67)
@@ -187,8 +192,8 @@ public class CustomerPanel extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(addToCartBtn)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(txtOrderTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtOrderTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(productQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtProductCost, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(80, 80, 80)
                                 .addComponent(productImage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,15 +232,15 @@ public class CustomerPanel extends javax.swing.JPanel {
                             .addComponent(txtOrderItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProductDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblProductDescription))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtOrderTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProductCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblProductCost))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtOrderTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(productQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblProductQuantity)))
                     .addComponent(productImage, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
@@ -253,17 +258,17 @@ public class CustomerPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
 
-    private void txtOrderTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotalActionPerformed
+    private void txtProductDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductDescActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrderTotalActionPerformed
+    }//GEN-LAST:event_txtProductDescActionPerformed
 
-    private void txtOrderTotal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotal1ActionPerformed
+    private void txtProductCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductCostActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrderTotal1ActionPerformed
+    }//GEN-LAST:event_txtProductCostActionPerformed
 
-    private void txtOrderTotal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotal2ActionPerformed
+    private void productQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productQuantityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrderTotal2ActionPerformed
+    }//GEN-LAST:event_productQuantityActionPerformed
 
     private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
         // TODO add your handling code here:
@@ -279,6 +284,33 @@ public class CustomerPanel extends javax.swing.JPanel {
 //        userinterface.customer.CustomerHomePanel.rightCustomerPanel.add();
     }//GEN-LAST:event_cartLabelMousePressed
 
+    private void tblSearchCatalogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchCatalogMouseClicked
+        // TODO add your handling code here:
+        int selectedRowIndex  = tblSearchCatalog.getSelectedRow();
+        
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this,"Please select a Row to View");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblSearchCatalog.getModel();
+        String selectedProduct = (String) model.getValueAt(selectedRowIndex,0);
+        
+        //use selectedprod to serach through db to get values and display it on the screen;
+        
+        
+    }//GEN-LAST:event_tblSearchCatalogMouseClicked
+
+    private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
+        // TODO add your handling code here:
+        
+        //searh through the db to get values and display it in the table
+//        while(RS.hasNext(){
+//            populateProducts(Rs.Next());
+//        }
+        
+    }//GEN-LAST:event_btnSearchMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartBtn;
@@ -293,11 +325,28 @@ public class CustomerPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblProductQuantity;
     private javax.swing.JLabel lblSupplyOrders;
     private javax.swing.JLabel productImage;
+    private javax.swing.JTextField productQuantity;
     private javax.swing.JTable tblSearchCatalog;
     private javax.swing.JTextField txtOrderItems;
-    private javax.swing.JTextField txtOrderTotal;
-    private javax.swing.JTextField txtOrderTotal1;
-    private javax.swing.JTextField txtOrderTotal2;
+    private javax.swing.JTextField txtProductCost;
+    private javax.swing.JTextField txtProductDesc;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    public void populateProducts(){
+        DefaultTableModel model = (DefaultTableModel) tblSearchCatalog.getModel();
+        model.setRowCount(0);
+        
+//        for(Product item: productList){
+//            
+//            Object[] Row =new Object[1];
+//            Row[0] = item.getProductName();
+//            Row[1] = item.getProductStore();
+//            Row[2] = item.getProductPrice();
+//            Row[3] = item.getProductAvailability();
+
+//            model.addRow(Row);
+//        }
+    }
+
 }

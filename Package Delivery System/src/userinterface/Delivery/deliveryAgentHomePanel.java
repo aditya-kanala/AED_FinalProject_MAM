@@ -60,7 +60,7 @@ public class deliveryAgentHomePanel extends javax.swing.JPanel {
 
         manageStoreLabel.setBackground(new java.awt.Color(25, 56, 82));
         manageStoreLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        manageStoreLabel.setText("Manage Store");
+        manageStoreLabel.setText("Manage Orders");
         manageStoreLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageStoreLabelMousePressed(evt);
@@ -185,8 +185,8 @@ public class deliveryAgentHomePanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(215, 81, 81));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel1.setText("STORE MANAGEMENT SYSTEM");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+        jLabel1.setText("Delivery Unit");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
