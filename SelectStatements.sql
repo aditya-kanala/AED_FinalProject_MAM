@@ -12,3 +12,6 @@ select * from store_manager;
 select * from supplier;
 select * from warehouse;
 select * from warehouse_manager;
+select * from store_items;
+select * from supply_orders;
+select * from user_orders;

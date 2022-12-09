@@ -128,3 +128,33 @@ CREATE TABLE `warehouse_manager` (
   `ManagerPassword` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`WarehouseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Store Items Table*/
+CREATE TABLE `store_items` (
+  `Item ID` varchar(20) NOT NULL,
+  `Item Name` varchar(45) DEFAULT NULL,
+  `Item Description` varchar(45) DEFAULT NULL,
+  `Item Price` double DEFAULT NULL,
+  `Item Quantity` int DEFAULT NULL,
+  PRIMARY KEY (`Item ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Supply Order Table*/
+CREATE TABLE `supply_orders` (
+  `Order ID` varchar(20) NOT NULL,
+  `Order Date` varchar(20) DEFAULT NULL,
+  `Order Items` varchar(45) DEFAULT NULL,
+  `Order Total` double DEFAULT NULL,
+  PRIMARY KEY (`Order ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+/*User Order Table*/
+CREATE TABLE `user_orders` (
+  `Order ID` varchar(20) NOT NULL,
+  `Order Date` varchar(20) DEFAULT NULL,
+  `Order Items` varchar(45) DEFAULT NULL,
+  `Order Total` double DEFAULT NULL,
+  PRIMARY KEY (`Order ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
