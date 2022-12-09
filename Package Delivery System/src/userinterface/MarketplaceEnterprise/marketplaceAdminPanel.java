@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.MarketplaceEnterprise;
-
+import java.sql.*;
 /**
  *
  * @author mahith
  */
 public class marketplaceAdminPanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form marketplaceAdminPanel
      */
-    public marketplaceAdminPanel() {
+    public marketplaceAdminPanel(Connection connection) {
+        this.connection = connection;
         initComponents();
     }
 

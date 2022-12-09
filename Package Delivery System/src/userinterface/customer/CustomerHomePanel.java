@@ -5,17 +5,18 @@
 package userinterface.customer;
 
 import java.awt.CardLayout;
-
+import java.sql.*;
 /**
  *
  * @author mahith
  */
 public class CustomerHomePanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form CustomerHomePanel
      */
-    public CustomerHomePanel() {
+    public CustomerHomePanel(Connection connection) {
+        this.connection= connection;
         initComponents();
         
         CustomerPanel panel = new CustomerPanel();

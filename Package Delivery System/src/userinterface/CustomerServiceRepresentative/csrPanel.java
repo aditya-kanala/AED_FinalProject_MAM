@@ -5,17 +5,18 @@
 package userinterface.CustomerServiceRepresentative;
 
 import java.awt.CardLayout;
-
+import java.sql.*;
 /**
  *
  * @author mahith
  */
 public class csrPanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form csrPanel
      */
-    public csrPanel() {
+    public csrPanel(Connection connection) {
+        this.connection =connection;
         initComponents();
     }
 
