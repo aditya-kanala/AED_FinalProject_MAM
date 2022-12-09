@@ -22,13 +22,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.Maps.mapsPanel;
 import userinterface.SystemAdmin.SystemAdminJPanel;
-
+import model.mysql.DataBaseConnection;
 /**
  *
  * @author mahith
  */
 public class MainJFrame extends javax.swing.JFrame {
-
+    Connection connection;
     /**
      * Creates new form MainJFrame
      */
@@ -39,21 +39,11 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setVisible(false);
         leftPanel.setVisible(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        databaseConnection();
+        DataBaseConnection db = new DataBaseConnection();
+        db.databaseConnection();
     }
     
-    Connection connection;
-     
-    private void databaseConnection(){
-        System.out.println("Connection db");
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
-            System.out.println("Connected With the database successfully"); //Message after successful connection 
-        } catch (SQLException e) {
-            System.out.println(e); //Message if something goes wrong while conneting to the database
-        }
-
-    } 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
