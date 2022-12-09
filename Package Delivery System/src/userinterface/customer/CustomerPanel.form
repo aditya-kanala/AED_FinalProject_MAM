@@ -47,7 +47,7 @@
                                           <Group type="102" attributes="0">
                                               <Component id="lblProductDescription" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="txtOrderTotal" min="-2" pref="319" max="-2" attributes="0"/>
+                                              <Component id="txtProductDesc" min="-2" pref="319" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="lblProductName" min="-2" max="-2" attributes="0"/>
@@ -62,8 +62,8 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="addToCartBtn" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="txtOrderTotal2" min="-2" pref="319" max="-2" attributes="0"/>
-                                              <Component id="txtOrderTotal1" min="-2" pref="319" max="-2" attributes="0"/>
+                                              <Component id="productQuantity" min="-2" pref="319" max="-2" attributes="0"/>
+                                              <Component id="txtProductCost" min="-2" pref="319" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -120,17 +120,17 @@
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtOrderTotal" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProductDesc" min="-2" max="-2" attributes="0"/>
                           <Component id="lblProductDescription" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtOrderTotal1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProductCost" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblProductCost" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtOrderTotal2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="productQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblProductQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -195,6 +195,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblSearchCatalogMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -240,6 +243,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSearchMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblProductName">
       <Properties>
@@ -264,14 +270,14 @@
         <Property name="text" type="java.lang.String" value="Description"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtOrderTotal">
+    <Component class="javax.swing.JTextField" name="txtProductDesc">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOrderTotalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductDescActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblProductCost">
@@ -290,24 +296,24 @@
         <Property name="text" type="java.lang.String" value="Quantity"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtOrderTotal1">
+    <Component class="javax.swing.JTextField" name="txtProductCost">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOrderTotal1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductCostActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtOrderTotal2">
+    <Component class="javax.swing.JTextField" name="productQuantity">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOrderTotal2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="productQuantityActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="addToCartBtn">
@@ -344,7 +350,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="1"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
   </SubComponents>
