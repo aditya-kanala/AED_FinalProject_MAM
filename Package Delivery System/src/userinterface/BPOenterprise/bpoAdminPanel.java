@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.BPOenterprise;
-
+import java.sql.*;
 /**
  *
  * @author mahith
  */
 public class bpoAdminPanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form bpoAdminPanel
      */
-    public bpoAdminPanel() {
+    public bpoAdminPanel(Connection connection) {
+        this.connection = connection;
         initComponents();
     }
 

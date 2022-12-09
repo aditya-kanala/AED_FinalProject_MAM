@@ -20,15 +20,22 @@ import userinterface.StoreManager.StoreManagerJPanel;
 import userinterface.customer.CustomerHomePanel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.BPOenterprise.bpoAdminPanel;
+import userinterface.DistributionEnterprise.distributionAdminPanel;
+import userinterface.Farms.farmManagerPanel;
+import userinterface.LogisticsEnterprise.logisticsAdminPanel;
 import userinterface.Maps.mapsPanel;
+import userinterface.MarketplaceEnterprise.marketplaceAdminPanel;
+import userinterface.Supplier.supplierHomePanel;
 import userinterface.SystemAdmin.SystemAdminJPanel;
-import model.mysql.DataBaseConnection;
+import userinterface.Warehouse.warehouseManagerPanel;
+
 /**
  *
  * @author mahith
  */
 public class MainJFrame extends javax.swing.JFrame {
-    Connection connection;
+
     /**
      * Creates new form MainJFrame
      */
@@ -39,11 +46,21 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setVisible(false);
         leftPanel.setVisible(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        DataBaseConnection db = new DataBaseConnection();
-        db.databaseConnection();
+        databaseConnection();
     }
     
-    
+    Connection connection;
+     
+    private void databaseConnection(){
+        System.out.println("Connection db");
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
+            System.out.println("Connected With the database successfully"); //Message after successful connection 
+        } catch (SQLException e) {
+            System.out.println(e); //Message if something goes wrong while conneting to the database
+        }
+
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,6 +91,7 @@ public class MainJFrame extends javax.swing.JFrame {
         newUserSeperator = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1338, 840));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         leftPanel.setBackground(new java.awt.Color(244, 242, 227));
@@ -143,7 +161,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(titleLabel1)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
 
         txtUserName.setBackground(new java.awt.Color(25, 56, 82));
@@ -390,8 +408,8 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "BPO Admin Login Successful..!!");
-                        StoreManagerJPanel panel = new StoreManagerJPanel(connection);
-                        container.add("workArea111", panel);
+                        bpoAdminPanel panel = new bpoAdminPanel(connection);
+                        container.add("BPO Admin work Area", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
                 }
@@ -414,10 +432,10 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Distribution Admin Login Successful..!!");
-//                        StoreManagerJPanel panel = new StoreManagerJPanel();
-//                        container.add("workArea111", panel);
-//                        CardLayout layout = (CardLayout) container.getLayout();
-//                        layout.next(container);
+                        distributionAdminPanel panel = new distributionAdminPanel(connection);
+                        container.add("Distribution admin", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
                 }
             }
         loginJPanel.setVisible(false);
@@ -437,10 +455,10 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Logistics Admin Login Successful..!!");
-//                        StoreManagerJPanel panel = new StoreManagerJPanel();
-//                        container.add("workArea111", panel);
-//                        CardLayout layout = (CardLayout) container.getLayout();
-//                        layout.next(container);
+                        logisticsAdminPanel panel = new logisticsAdminPanel(connection);
+                        container.add("Logistics Admin", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
                 }
             }
         loginJPanel.setVisible(false);
@@ -461,10 +479,10 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
                     JOptionPane.showMessageDialog(this, "Market Place Admin Login Successful..!!");
-//                        StoreManagerJPanel panel = new StoreManagerJPanel();
-//                        container.add("workArea111", panel);
-//                        CardLayout layout = (CardLayout) container.getLayout();
-//                        layout.next(container);
+                        marketplaceAdminPanel panel = new marketplaceAdminPanel(connection);
+                        container.add("marketplace admin", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
                 }
             }
          loginJPanel.setVisible(false);
@@ -485,7 +503,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
                     JOptionPane.showMessageDialog(this, "System Admin Login Successful..!!");
                         SystemAdminJPanel sysadmin = new SystemAdminJPanel(connection);
-                        container.add("workArea111", sysadmin);
+                        container.add("sys admin", sysadmin);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
                 }
@@ -508,7 +526,7 @@ public class MainJFrame extends javax.swing.JFrame {
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
                         StoreManagerJPanel panel = new StoreManagerJPanel(connection);
-                        container.add("workArea111", panel);
+                        container.add("store manager", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
                 }
@@ -522,6 +540,148 @@ public class MainJFrame extends javax.swing.JFrame {
             txtUserName.setText("");
             fldPassword.setText("");    
           }
+          
+          else if (txtUserName.getText().contains("warehousemanager")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        warehouseManagerPanel panel = new warehouseManagerPanel(connection);
+                        container.add("warehouse admin", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText("");  
+            
+          }
+          
+          else if (txtUserName.getText().contains("farmmanager")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        farmManagerPanel panel = new farmManagerPanel(connection);
+                        container.add("farm manager", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText(""); 
+          }
+          
+          else if (txtUserName.getText().contains("user")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        CustomerHomePanel panel = new CustomerHomePanel(connection);
+                        container.add("customer", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText(""); 
+          }
+          
+          else if (txtUserName.getText().contains("supplier")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        supplierHomePanel panel = new supplierHomePanel(connection);
+                        container.add("supplier", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText(""); 
+          }
+          
+          else if (txtUserName.getText().contains("csr")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        csrPanel panel = new csrPanel(connection);
+                        container.add("supplier", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText(""); 
+          }
+          
+          else if (txtUserName.getText().contains("ssr")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        csrPanel panel = new csrPanel(connection);
+                        container.add("supplier", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText(""); 
+          }
+          
+          
+          
           else{
             JOptionPane.showMessageDialog(this, "No Admin Found for the Credentials"+" :( :(");
           }

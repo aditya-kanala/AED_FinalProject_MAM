@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.LogisticsEnterprise;
-
+import java.sql.*;
 /**
  *
  * @author mahith
  */
 public class logisticsAdminPanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form logisticsAdminPanel
      */
-    public logisticsAdminPanel() {
+    public logisticsAdminPanel(Connection connection) {
+        this.connection = connection;
         initComponents();
     }
 

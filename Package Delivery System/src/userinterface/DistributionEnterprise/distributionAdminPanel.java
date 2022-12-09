@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.DistributionEnterprise;
-
+import java.sql.*;
 /**
  *
  * @author mahith
  */
 public class distributionAdminPanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form distributionAdminPanel
      */
-    public distributionAdminPanel() {
+    public distributionAdminPanel(Connection connection) {
+        this.connection = connection;
         initComponents();
     }
 

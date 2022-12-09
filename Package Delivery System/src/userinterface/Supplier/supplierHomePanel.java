@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.Supplier;
-
+import java.sql.*;
 /**
  *
  * @author mahith
  */
 public class supplierHomePanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form supplierHomePanel
      */
-    public supplierHomePanel() {
+    public supplierHomePanel(Connection connection) {
+        this.connection =connection;
         initComponents();
     }
 
