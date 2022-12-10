@@ -38,8 +38,8 @@ public class WarehouseManagerPanel extends javax.swing.JPanel {
         manageStoreRequestsPanel = new javax.swing.JPanel();
         manageStoreRequestsLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        manageOrdersPanel = new javax.swing.JPanel();
-        manageOrdersLabel = new javax.swing.JLabel();
+        manageSupplyOrdersPanel = new javax.swing.JPanel();
+        manageSupplyOrdersLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
@@ -145,46 +145,46 @@ public class WarehouseManagerPanel extends javax.swing.JPanel {
 
         jPanel3.add(manageStoreRequestsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 280, 60));
 
-        manageOrdersPanel.setBackground(new java.awt.Color(227, 73, 78));
-        manageOrdersPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        manageSupplyOrdersPanel.setBackground(new java.awt.Color(227, 73, 78));
+        manageSupplyOrdersPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageOrdersPanelMousePressed(evt);
+                manageSupplyOrdersPanelMousePressed(evt);
             }
         });
 
-        manageOrdersLabel.setBackground(new java.awt.Color(215, 81, 81));
-        manageOrdersLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        manageOrdersLabel.setText("Manage Orders");
-        manageOrdersLabel.setPreferredSize(new java.awt.Dimension(115, 16));
+        manageSupplyOrdersLabel.setBackground(new java.awt.Color(215, 81, 81));
+        manageSupplyOrdersLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageSupplyOrdersLabel.setText("Manage Supply Orders");
+        manageSupplyOrdersLabel.setPreferredSize(new java.awt.Dimension(115, 16));
 
         jLabel6.setBackground(new java.awt.Color(215, 81, 81));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Supply Chain.png"))); // NOI18N
 
-        javax.swing.GroupLayout manageOrdersPanelLayout = new javax.swing.GroupLayout(manageOrdersPanel);
-        manageOrdersPanel.setLayout(manageOrdersPanelLayout);
-        manageOrdersPanelLayout.setHorizontalGroup(
-            manageOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageOrdersPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout manageSupplyOrdersPanelLayout = new javax.swing.GroupLayout(manageSupplyOrdersPanel);
+        manageSupplyOrdersPanel.setLayout(manageSupplyOrdersPanelLayout);
+        manageSupplyOrdersPanelLayout.setHorizontalGroup(
+            manageSupplyOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageSupplyOrdersPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageOrdersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addComponent(manageSupplyOrdersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
-        manageOrdersPanelLayout.setVerticalGroup(
-            manageOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageOrdersPanelLayout.createSequentialGroup()
+        manageSupplyOrdersPanelLayout.setVerticalGroup(
+            manageSupplyOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageSupplyOrdersPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(manageOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(manageSupplyOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addGroup(manageOrdersPanelLayout.createSequentialGroup()
+                    .addGroup(manageSupplyOrdersPanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(manageOrdersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(manageSupplyOrdersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42))
         );
 
-        jPanel3.add(manageOrdersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 280, 70));
+        jPanel3.add(manageSupplyOrdersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 280, 70));
 
         jSeparator1.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
@@ -294,13 +294,12 @@ public class WarehouseManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageStoreRequestsLabelMousePressed
 
     private void manageStoreRequestsPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageStoreRequestsPanelMousePressed
-        // TODO add your handling code here:
-
+        manageStoreRequests();
     }//GEN-LAST:event_manageStoreRequestsPanelMousePressed
 
-    private void manageOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrdersPanelMousePressed
-        manageStoreRequests();
-    }//GEN-LAST:event_manageOrdersPanelMousePressed
+    private void manageSupplyOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupplyOrdersPanelMousePressed
+        
+    }//GEN-LAST:event_manageSupplyOrdersPanelMousePressed
 
     private void homeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMousePressed
     }//GEN-LAST:event_homeMousePressed
@@ -313,7 +312,7 @@ public class WarehouseManagerPanel extends javax.swing.JPanel {
         homePanel.setBackground(new Color(227, 73, 78));
         manageWarehousePanel.setBackground(new Color(227, 73, 78));
         manageStoreRequestsPanel.setBackground(new Color(227, 73, 78));
-        manageOrdersPanel.setBackground(new Color(135, 206, 235));
+        manageSupplyOrdersPanel.setBackground(new Color(135, 206, 235));
         ManageStoreRequestsJPanel manageStoreRequestsJPanel = new ManageStoreRequestsJPanel(connection);        
         rightWarehouseAdminPanel.add("manageStoreRequestsJPanel",manageStoreRequestsJPanel);
         CardLayout layout = (CardLayout) rightWarehouseAdminPanel.getLayout();
@@ -332,10 +331,10 @@ public class WarehouseManagerPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel manageOrdersLabel;
-    private javax.swing.JPanel manageOrdersPanel;
     private javax.swing.JLabel manageStoreRequestsLabel;
     private javax.swing.JPanel manageStoreRequestsPanel;
+    private javax.swing.JLabel manageSupplyOrdersLabel;
+    private javax.swing.JPanel manageSupplyOrdersPanel;
     private javax.swing.JLabel manageWarehouseLabel;
     private javax.swing.JPanel manageWarehousePanel;
     private javax.swing.JPanel rightWarehouseAdminPanel;
