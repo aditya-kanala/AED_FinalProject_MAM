@@ -21,6 +21,7 @@ import userinterface.customer.CustomerHomePanel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.BPOenterprise.bpoAdminPanel;
+import userinterface.Delivery.deliveryAgentHomePanel;
 import userinterface.DistributionEnterprise.distributionAdminPanel;
 import userinterface.Farms.farmManagerPanel;
 import userinterface.LogisticsEnterprise.logisticsAdminPanel;
@@ -28,7 +29,7 @@ import userinterface.Maps.mapsPanel;
 import userinterface.MarketplaceEnterprise.marketplaceAdminPanel;
 import userinterface.Supplier.supplierHomePanel;
 import userinterface.SystemAdmin.SystemAdminJPanel;
-import userinterface.Warehouse.WarehouseManagerPanel;
+import userinterface.Warehouse.warehouseManagerPanel;
 
 /**
  *
@@ -543,7 +544,7 @@ public class MainJFrame extends javax.swing.JFrame {
           
           /*warehouse Manager*/
           else if (txtUserName.getText().contains("warehousemanager")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_manager where Manager    UserName=?");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_manager where ManagerUserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
@@ -684,7 +685,29 @@ public class MainJFrame extends javax.swing.JFrame {
             fldPassword.setText(""); 
           }
           
-          
+          /*Delivery Agent*/  
+          else if (txtUserName.getText().contains("dagent")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from delivery_agent where AgentUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Delivery Agent Login Successful..!!");
+                        deliveryAgentHomePanel panel = new deliveryAgentHomePanel(connection);
+                        container.add("supplier", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText(""); 
+          }  
           
           else{
             JOptionPane.showMessageDialog(this, "No Admin Found for the Credentials"+" :( :(");

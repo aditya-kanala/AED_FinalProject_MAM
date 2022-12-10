@@ -2,33 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package userinterface.StoreManager;
+package userinterface.Shipping;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
-import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author mohit
+ * @author adity
  */
-public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form ManageSupplyOrdersJPanel
-     */
+public class shippingHomePanel extends javax.swing.JPanel {
     Connection connection;
-    public ManageWarehouseOrdersJPanel(Connection connection) {
+    String selectedOrder;
+    /**
+     * Creates new form shippingHomePanel
+     */
+    public shippingHomePanel(Connection connection) {
+        this.connection = connection;
+    
         initComponents();
-        initialSetup();
-        populateWarehouseOrderTable(connection);
-        this.connection=connection;
-        
+        populateshipmentOrderTable(connection);
     }
 
     /**
@@ -40,49 +37,19 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblWarehouseOrders = new javax.swing.JTable();
-        lblSupplyOrders = new javax.swing.JLabel();
-        btnAddOrder = new javax.swing.JButton();
-        btnViewOrder = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         lblOrderItems = new javax.swing.JLabel();
         txtOrderItems = new javax.swing.JTextField();
         lblOrderTotal = new javax.swing.JLabel();
         txtOrderTotal = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblShipmentOrders = new javax.swing.JTable();
         btnFinalizeOrder = new javax.swing.JButton();
-
-        setBackground(new java.awt.Color(25, 56, 82));
-
-        tblWarehouseOrders.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Order ID", "Order Date", "Order Items", "Order Total"
-            }
-        ));
-        jScrollPane1.setViewportView(tblWarehouseOrders);
-
-        lblSupplyOrders.setBackground(new java.awt.Color(255, 255, 255));
-        lblSupplyOrders.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        lblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
-        lblSupplyOrders.setText("WAREHOUSE ORDERS");
-
-        btnAddOrder.setText("Add Order");
-        btnAddOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddOrderActionPerformed(evt);
-            }
-        });
-
-        btnViewOrder.setText("View Order");
-        btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewOrderActionPerformed(evt);
-            }
-        });
+        lblSupplyOrders = new javax.swing.JLabel();
+        btnAddOrder = new javax.swing.JButton();
+        btnViewOrder = new javax.swing.JButton();
+        cbStatus = new javax.swing.JComboBox<>();
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,12 +71,43 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnFinalizeOrder.setText("Finalize Order");
+        tblShipmentOrders.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Order ID", "Order Date", "Order Items", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(tblShipmentOrders);
+
+        btnFinalizeOrder.setText("Raise for Delivery");
         btnFinalizeOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizeOrderActionPerformed(evt);
             }
         });
+
+        lblSupplyOrders.setBackground(new java.awt.Color(255, 255, 255));
+        lblSupplyOrders.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
+        lblSupplyOrders.setText("SHIPMENT ORDERS");
+
+        btnAddOrder.setText("Add Order");
+        btnAddOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddOrderActionPerformed(evt);
+            }
+        });
+
+        btnViewOrder.setText("View Order");
+        btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewOrderActionPerformed(evt);
+            }
+        });
+
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -142,8 +140,13 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(148, 148, 148))
             .addGroup(layout.createSequentialGroup()
-                .addGap(397, 397, 397)
-                .addComponent(lblSupplyOrders)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(397, 397, 397)
+                        .addComponent(lblSupplyOrders))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,19 +176,11 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
                     .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnFinalizeOrder)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrderActionPerformed
-        // TODO add your handling code here:
-        addOrShowOrderDetails();
-    }//GEN-LAST:event_btnAddOrderActionPerformed
-
-    private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
-        // TODO add your handling code here:
-        addOrShowOrderDetails();
-    }//GEN-LAST:event_btnViewOrderActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
@@ -198,80 +193,85 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
         try{
-            PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_orders values(?,?,?,?)");
-            preparedStatement.setString(1,generateUniqueId());
-            preparedStatement.setString(2,"1st Jan 2023");
-            preparedStatement.setString(3,txtOrderItems.getText());
-            preparedStatement.setString(4,txtOrderTotal.getText());
-            
-            preparedStatement.executeUpdate();
-            System.out.println("Warehouse Order inserted Successfully");
 
-            populateWarehouseOrderTable(connection);
-            
+            PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from shipment_orders where OrderID=?");
+            preparedStatement1.setString(1,selectedOrder.toString());
+            ResultSet rs1 = preparedStatement1.executeQuery();
+            System.out.println(rs1);
+            if(rs1.next())
+            {PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_orders values(?,?,?,?,?)");
+
+                preparedStatement.setString(1,rs1.getString(1));
+                preparedStatement.setString(2,rs1.getString(2));
+                preparedStatement.setString(3,rs1.getString(3));
+                preparedStatement.setString(4,rs1.getString(4));
+                preparedStatement.setString(5,cbStatus.getSelectedItem().toString());
+
+                preparedStatement.executeUpdate();
+                JOptionPane.showMessageDialog(this,"Delivery Request Raised Successfully..");
+
+            }
+            System.out.println("Delivery Request raised Successfully");
+
+            populateshipmentOrderTable(connection);
+
         }
         catch(SQLException e){
-            System.out.println("Error Connecting Database" + e);}
+            System.out.println("Error Connecting Database" + e);
+            JOptionPane.showMessageDialog(this,"Delivery Request Already Raised..");
+
+        }
     }//GEN-LAST:event_btnFinalizeOrderActionPerformed
 
-    private void initialSetup(){
-        lblOrderItems.setVisible(false);
-        txtOrderItems.setVisible(false);
-        
-        lblOrderTotal.setVisible(false);
-        txtOrderTotal.setVisible(false);
-        
-        btnFinalizeOrder.setVisible(false);
-    }
-    
-    private void addOrShowOrderDetails(){
-        lblOrderItems.setVisible(true);
-        txtOrderItems.setVisible(true);
-        
-        lblOrderTotal.setVisible(true);
-        txtOrderTotal.setVisible(true);
-        
-        btnFinalizeOrder.setVisible(true);
-    }
+    private void btnAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddOrderActionPerformed
 
-        public void populateWarehouseOrderTable(Connection connection){
-        DefaultTableModel model = (DefaultTableModel) tblWarehouseOrders.getModel();
+    private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex  = tblShipmentOrders.getSelectedRow();
+
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this,"Please select a Row to View");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblShipmentOrders.getModel();
+        selectedOrder = (String) model.getValueAt(selectedRowIndex,0);
+
+        System.out.println(selectedOrder);
+    }//GEN-LAST:event_btnViewOrderActionPerformed
+    
+    public void populateshipmentOrderTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblShipmentOrders.getModel();
         model.setRowCount(0);
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_orders");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from shipment_orders");
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
             Object[] rows = new Object[4];
             rows[0]= rs.getString(1);
             rows[1]=rs.getString(2);
             rows[2]=rs.getString(3);
-            rows[3]=rs.getString(4);
+            rows[3]=rs.getString(5);
             
             model.addRow(rows);
             }
         }
         catch(SQLException e){System.out.println(e);}
     }
-    
-    public String generateUniqueId(){
-        Random random = new Random();
-        String res = "";
-        int arr[] = {1,2,3,4,5,6,7,8,9};
-        for(int i=0;i<6;i++){
-            res += arr[random.nextInt(arr.length)];
-        }
-        return res;
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddOrder;
     private javax.swing.JButton btnFinalizeOrder;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnViewOrder;
+    private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblOrderItems;
     private javax.swing.JLabel lblOrderTotal;
     private javax.swing.JLabel lblSupplyOrders;
-    private javax.swing.JTable tblWarehouseOrders;
+    private javax.swing.JTable tblShipmentOrders;
     private javax.swing.JTextField txtOrderItems;
     private javax.swing.JTextField txtOrderTotal;
     private javax.swing.JTextField txtSearch;
