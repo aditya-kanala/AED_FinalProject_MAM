@@ -11,12 +11,12 @@ import userinterface.StoreManager.ManageWarehouseOrdersJPanel;
  *
  * @author mahith
  */
-public class WarehouseManagerPanel extends javax.swing.JPanel {
+public class WarehouseManagerHomeJPanel extends javax.swing.JPanel {
     Connection connection;
     /**
      * Creates new form warehouseManagerPanel
      */
-    public WarehouseManagerPanel(Connection connection) {
+    public WarehouseManagerHomeJPanel(Connection connection) {
         this.connection = connection;
         initComponents();
     }
@@ -298,7 +298,7 @@ public class WarehouseManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageStoreRequestsPanelMousePressed
 
     private void manageSupplyOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupplyOrdersPanelMousePressed
-        
+        manageSupplyOrders();
     }//GEN-LAST:event_manageSupplyOrdersPanelMousePressed
 
     private void homeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMousePressed
@@ -315,6 +315,17 @@ public class WarehouseManagerPanel extends javax.swing.JPanel {
         manageSupplyOrdersPanel.setBackground(new Color(135, 206, 235));
         ManageStoreRequestsJPanel manageStoreRequestsJPanel = new ManageStoreRequestsJPanel(connection);        
         rightWarehouseAdminPanel.add("manageStoreRequestsJPanel",manageStoreRequestsJPanel);
+        CardLayout layout = (CardLayout) rightWarehouseAdminPanel.getLayout();
+        layout.next(rightWarehouseAdminPanel);
+    }
+    
+    public void manageSupplyOrders(){
+        homePanel.setBackground(new Color(227, 73, 78));
+        manageWarehousePanel.setBackground(new Color(227, 73, 78));
+        manageStoreRequestsPanel.setBackground(new Color(227, 73, 78));
+        manageSupplyOrdersPanel.setBackground(new Color(135, 206, 235));
+        ManageWarehouseOrdersJPanel manageSupplyOrdersJPanel = new ManageWarehouseOrdersJPanel(connection);        
+        rightWarehouseAdminPanel.add("manageSupplyOrdersJPanel",manageSupplyOrdersJPanel);
         CardLayout layout = (CardLayout) rightWarehouseAdminPanel.getLayout();
         layout.next(rightWarehouseAdminPanel);
     }

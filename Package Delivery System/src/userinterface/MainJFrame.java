@@ -28,7 +28,7 @@ import userinterface.Maps.mapsPanel;
 import userinterface.MarketplaceEnterprise.marketplaceAdminPanel;
 import userinterface.Supplier.supplierHomePanel;
 import userinterface.SystemAdmin.SystemAdminJPanel;
-import userinterface.Warehouse.WarehouseManagerPanel;
+import userinterface.Warehouse.WarehouseManagerHomeJPanel;
 
 /**
  *
