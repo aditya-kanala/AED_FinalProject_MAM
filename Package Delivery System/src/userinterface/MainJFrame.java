@@ -543,7 +543,7 @@ public class MainJFrame extends javax.swing.JFrame {
           
           /*warehouse Manager*/
           else if (txtUserName.getText().contains("warehousemanager")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_manager where Manager    UserName=?");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_manager where ManagerUserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){

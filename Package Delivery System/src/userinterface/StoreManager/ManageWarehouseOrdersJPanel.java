@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,7 +26,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
     public ManageWarehouseOrdersJPanel(Connection connection) {
         initComponents();
         initialSetup();
-        populateSupplyOrderTable(connection);
+        populateWarehouseOrderTable(connection);
         this.connection=connection;
         
     }
@@ -39,7 +41,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSupplyOrders = new javax.swing.JTable();
+        tblWarehouseOrders = new javax.swing.JTable();
         lblSupplyOrders = new javax.swing.JLabel();
         btnAddOrder = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
@@ -53,7 +55,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(25, 56, 82));
 
-        tblSupplyOrders.setModel(new javax.swing.table.DefaultTableModel(
+        tblWarehouseOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -61,7 +63,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
                 "Order ID", "Order Date", "Order Items", "Order Total"
             }
         ));
-        jScrollPane1.setViewportView(tblSupplyOrders);
+        jScrollPane1.setViewportView(tblWarehouseOrders);
 
         lblSupplyOrders.setBackground(new java.awt.Color(255, 255, 255));
         lblSupplyOrders.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
@@ -195,7 +197,21 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
 
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
-        initialSetup();
+        try{
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_orders values(?,?,?,?)");
+            preparedStatement.setString(1,generateUniqueId());
+            preparedStatement.setString(2,"1st Jan 2023");
+            preparedStatement.setString(3,txtOrderItems.getText());
+            preparedStatement.setString(4,txtOrderTotal.getText());
+            
+            preparedStatement.executeUpdate();
+            System.out.println("Warehouse Order inserted Successfully");
+
+            populateWarehouseOrderTable(connection);
+            
+        }
+        catch(SQLException e){
+            System.out.println("Error Connecting Database" + e);}
     }//GEN-LAST:event_btnFinalizeOrderActionPerformed
 
     private void initialSetup(){
@@ -218,11 +234,11 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
         btnFinalizeOrder.setVisible(true);
     }
 
-        public void populateSupplyOrderTable(Connection connection){
-        DefaultTableModel model = (DefaultTableModel) tblSupplyOrders.getModel();
+        public void populateWarehouseOrderTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblWarehouseOrders.getModel();
         model.setRowCount(0);
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from supply_orders");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_orders");
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
             Object[] rows = new Object[4];
@@ -237,6 +253,15 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
         catch(SQLException e){System.out.println(e);}
     }
     
+    public String generateUniqueId(){
+        Random random = new Random();
+        String res = "";
+        int arr[] = {1,2,3,4,5,6,7,8,9};
+        for(int i=0;i<6;i++){
+            res += arr[random.nextInt(arr.length)];
+        }
+        return res;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddOrder;
     private javax.swing.JButton btnFinalizeOrder;
@@ -246,7 +271,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblOrderItems;
     private javax.swing.JLabel lblOrderTotal;
     private javax.swing.JLabel lblSupplyOrders;
-    private javax.swing.JTable tblSupplyOrders;
+    private javax.swing.JTable tblWarehouseOrders;
     private javax.swing.JTextField txtOrderItems;
     private javax.swing.JTextField txtOrderTotal;
     private javax.swing.JTextField txtSearch;
