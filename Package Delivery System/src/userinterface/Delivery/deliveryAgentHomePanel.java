@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.Delivery;
-
+import java.awt.CardLayout;
+import java.sql.*;
+import userinterface.StoreManager.ViewStoreGraphsJPanel;
 /**
  *
  * @author mahith
@@ -13,8 +15,14 @@ public class deliveryAgentHomePanel extends javax.swing.JPanel {
     /**
      * Creates new form deliveryAgentHomePanel
      */
-    public deliveryAgentHomePanel() {
+    Connection connection;
+    public deliveryAgentHomePanel(Connection connection) {
         initComponents();
+        this.connection=connection;
+         deliveryAgentHome deliveryAgent = new deliveryAgentHome(connection);
+        rightSystemAdminPanel.add("deliveryAgent",deliveryAgent);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
     }
 
     /**

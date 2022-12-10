@@ -4,8 +4,16 @@
  */
 package userinterface.Delivery;
 
+import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import userinterface.CustomerServiceRepresentative.csrPanel;
+import userinterface.Maps.mapsPanel;
+import userinterface.customer.customerCart;
 
 /**
  *
@@ -16,8 +24,11 @@ public class deliveryAgentHome extends javax.swing.JPanel {
     /**
      * Creates new form deliveryAgentHome
      */
-    public deliveryAgentHome() {
+    Connection connection;
+    public deliveryAgentHome(Connection connection) {
         initComponents();
+        this.connection = connection;
+        populatedeliveryAgentTable(connection);
     }
 
     /**
@@ -30,7 +41,7 @@ public class deliveryAgentHome extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSearchCatalog = new javax.swing.JTable();
+        tblDeliveryItems = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -44,9 +55,9 @@ public class deliveryAgentHome extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(25, 54, 82));
 
-        tblSearchCatalog.setBackground(new java.awt.Color(25, 54, 82));
-        tblSearchCatalog.setForeground(new java.awt.Color(204, 204, 204));
-        tblSearchCatalog.setModel(new javax.swing.table.DefaultTableModel(
+        tblDeliveryItems.setBackground(new java.awt.Color(25, 54, 82));
+        tblDeliveryItems.setForeground(new java.awt.Color(204, 204, 204));
+        tblDeliveryItems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -54,12 +65,12 @@ public class deliveryAgentHome extends javax.swing.JPanel {
                 "Order ID", "Delivery Date", "Area", "Status"
             }
         ));
-        tblSearchCatalog.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblDeliveryItems.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblSearchCatalogMouseClicked(evt);
+                tblDeliveryItemsMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblSearchCatalog);
+        jScrollPane1.setViewportView(tblDeliveryItems);
 
         jButton1.setText("view");
 
@@ -68,6 +79,11 @@ public class deliveryAgentHome extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTextArea1);
 
         jButton2.setText("View Location");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Address");
 
@@ -156,21 +172,21 @@ public class deliveryAgentHome extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblSearchCatalogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchCatalogMouseClicked
+    private void tblDeliveryItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDeliveryItemsMouseClicked
         // TODO add your handling code here:
-        int selectedRowIndex  = tblSearchCatalog.getSelectedRow();
+        int selectedRowIndex  = tblDeliveryItems.getSelectedRow();
 
         if(selectedRowIndex<0){
             JOptionPane.showMessageDialog(this,"Please select a Row to View");
             return;
         }
 
-        DefaultTableModel model = (DefaultTableModel) tblSearchCatalog.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryItems.getModel();
         String selectedProduct = (String) model.getValueAt(selectedRowIndex,0);
 
         //use selectedprod to serach through db to get values and display it on the screen;
 
-    }//GEN-LAST:event_tblSearchCatalogMouseClicked
+    }//GEN-LAST:event_tblDeliveryItemsMouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -180,6 +196,34 @@ public class deliveryAgentHome extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        mapsPanel maps = new mapsPanel();
+        this.getParent().add("customer Cart",maps);
+        CardLayout layout = (CardLayout) this.getParent().getLayout();
+        layout.next(this.getParent());
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    public void populatedeliveryAgentTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryItems.getModel();
+        model.setRowCount(0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from shipment_orders");
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+            Object[] rows = new Object[4];
+            rows[0]= rs.getString(1);
+            rows[1]=rs.getString(2);
+            rows[2]=rs.getString(3);
+            rows[3]=rs.getString(5);
+            
+            model.addRow(rows);
+            }
+        }
+        catch(SQLException e){System.out.println(e);}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -193,6 +237,6 @@ public class deliveryAgentHome extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tblSearchCatalog;
+    private javax.swing.JTable tblDeliveryItems;
     // End of variables declaration//GEN-END:variables
 }
