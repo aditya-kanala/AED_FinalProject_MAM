@@ -7,6 +7,7 @@ package userinterface.StoreManager;
 import java.sql.PreparedStatement;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -303,6 +304,17 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         sprItemQuantity.setVisible(true);
         
         btnFinalizeItem.setVisible(true);
+        
+        int selectedRowIndex = tblItems.getSelectedRow();
+
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select an item to view their details");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
+//        City c= (City) model.getValueAt(selectedRowIndex, 0);
+
+//        txtItemName.setText(c.getName());
     }
 
     public void populateStoreItemsTable(Connection connection){

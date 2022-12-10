@@ -15,13 +15,13 @@ import java.sql.*;
  *
  * @author mohit
  */
-public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
+public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageSupplyOrdersJPanel
      */
     Connection connection;
-    public ManageSupplyOrdersJPanel(Connection connection) {
+    public ManageWarehouseOrdersJPanel(Connection connection) {
         initComponents();
         initialSetup();
         populateSupplyOrderTable(connection);
@@ -66,7 +66,7 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
         lblSupplyOrders.setBackground(new java.awt.Color(255, 255, 255));
         lblSupplyOrders.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         lblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
-        lblSupplyOrders.setText("SUPPLY ORDERS");
+        lblSupplyOrders.setText("WAREHOUSE ORDERS");
 
         btnAddOrder.setText("Add Order");
         btnAddOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(203, Short.MAX_VALUE)
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
@@ -137,19 +137,19 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
                             .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(btnSearch))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblSupplyOrders)
-                        .addGap(266, 266, 266)))
-                .addGap(104, 104, 104))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(148, 148, 148))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(397, 397, 397)
+                .addComponent(lblSupplyOrders)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addGap(99, 99, 99)
                 .addComponent(lblSupplyOrders)
-                .addGap(46, 46, 46)
+                .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
