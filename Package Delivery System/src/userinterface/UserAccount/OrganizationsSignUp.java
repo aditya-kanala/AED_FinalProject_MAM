@@ -4,6 +4,7 @@
  */
 package userinterface.UserAccount;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,10 +36,10 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         lblStoreID2 = new javax.swing.JLabel();
         lblStoreName2 = new javax.swing.JLabel();
         lblStoreLocation2 = new javax.swing.JLabel();
-        txtStoreID2 = new javax.swing.JTextField();
-        txtStoreName2 = new javax.swing.JTextField();
-        txtStoreLocation2 = new javax.swing.JTextField();
-        btnCreateStore2 = new javax.swing.JButton();
+        txtStoreID = new javax.swing.JTextField();
+        txtStoreName = new javax.swing.JTextField();
+        txtStoreLocation = new javax.swing.JTextField();
+        btnCreateStore = new javax.swing.JButton();
         Warehouse = new javax.swing.JPanel();
         lblWarehouseID = new javax.swing.JLabel();
         lblWarehouseName = new javax.swing.JLabel();
@@ -87,10 +88,10 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
         lblStoreLocation2.setText("Store Location :");
 
-        btnCreateStore2.setText("Create Store");
-        btnCreateStore2.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateStore.setText("Create Store");
+        btnCreateStore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateStore2ActionPerformed(evt);
+                btnCreateStoreActionPerformed(evt);
             }
         });
 
@@ -112,14 +113,14 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
                                     .addComponent(lblStoreName2))
                                 .addGap(25, 25, 25)))
                         .addGroup(StoreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtStoreID2)
+                            .addComponent(txtStoreID)
                             .addGroup(StoreLayout.createSequentialGroup()
-                                .addComponent(txtStoreName2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtStoreLocation2)))
+                            .addComponent(txtStoreLocation)))
                     .addGroup(StoreLayout.createSequentialGroup()
                         .addGap(469, 469, 469)
-                        .addComponent(btnCreateStore2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCreateStore, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(275, 275, 275))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StoreLayout.createSequentialGroup()
@@ -135,17 +136,17 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
                 .addGap(116, 116, 116)
                 .addGroup(StoreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStoreID2)
-                    .addComponent(txtStoreID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStoreID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(StoreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStoreName2)
-                    .addComponent(txtStoreName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(StoreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStoreLocation2)
-                    .addComponent(txtStoreLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStoreLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(119, 119, 119)
-                .addComponent(btnCreateStore2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCreateStore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(274, Short.MAX_VALUE))
         );
 
@@ -158,6 +159,11 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         lblWarehouseLocation.setText("Warehouse Location :");
 
         btnCreateWarehouse.setText("Create Warehouse");
+        btnCreateWarehouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateWarehouseActionPerformed(evt);
+            }
+        });
 
         lblHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -233,6 +239,11 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         lblFarmLocation.setText("Farm Location :");
 
         btnFarm.setText("Register Farm");
+        btnFarm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFarmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FarmsLayout = new javax.swing.GroupLayout(Farms);
         Farms.setLayout(FarmsLayout);
@@ -308,6 +319,11 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         lblSupplierPassword.setText("Password :");
 
         btnCreateSupplier.setText("Create Supplier");
+        btnCreateSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateSupplierActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SupplierLayout = new javax.swing.GroupLayout(Supplier);
         Supplier.setLayout(SupplierLayout);
@@ -388,9 +404,87 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCreateStore2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStore2ActionPerformed
+    private void btnCreateStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStoreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCreateStore2ActionPerformed
+        Double longitude = 55.46;
+        Double latitude =-85.23;
+            try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into store values(?,?,?,?,?)");
+        preparedStatement.setString(1,txtStoreID.getText());
+        preparedStatement.setString(2,txtStoreName.getText());
+        preparedStatement.setString(3,txtStoreLocation.getText());
+        preparedStatement.setString(4,String.valueOf(longitude));
+        preparedStatement.setString(5,String.valueOf(latitude));
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Store Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+}
+    }//GEN-LAST:event_btnCreateStoreActionPerformed
+
+    private void btnCreateWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWarehouseActionPerformed
+        // TODO add your handling code here:
+        Double longitude = 55.46;
+        Double latitude =-85.23;
+        try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,txtWarehouseID.getText());
+        preparedStatement.setString(2,txtWarehouseName.getText());
+        preparedStatement.setString(3,txtWarehouseType.getText());
+        preparedStatement.setString(4,txtWarehouseLocation.getText());
+        preparedStatement.setString(5,String.valueOf(longitude));
+        preparedStatement.setString(6,String.valueOf(latitude));
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Warehouse Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+        }
+    }//GEN-LAST:event_btnCreateWarehouseActionPerformed
+
+    private void btnFarmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFarmActionPerformed
+        // TODO add your handling code here:
+        Double longitude = 55.46;
+        Double latitude =-85.23;
+        try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into farms values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,txtFarmname.getText());
+        preparedStatement.setString(2,txtFarmOwner.getText());
+        preparedStatement.setString(3,txtFarmProduce.getText());
+        preparedStatement.setString(4,txtFarmLocation.getText());
+        preparedStatement.setString(5,String.valueOf(longitude));
+        preparedStatement.setString(6,String.valueOf(latitude));
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Farm Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+        }
+    }//GEN-LAST:event_btnFarmActionPerformed
+
+    private void btnCreateSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSupplierActionPerformed
+        // TODO add your handling code here:
+   
+        try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into supplier values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,txtSupplierName.getText());
+        preparedStatement.setString(2,txtSupplierEmail.getText());
+        preparedStatement.setString(3,txtSupplierMobile.getText());
+        preparedStatement.setString(4,txtSupplierLocation.getText());
+        preparedStatement.setString(5,txtSupplierUserName.getText());
+        preparedStatement.setString(6,pwdSupplier.getText());
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Supplier Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+        }
+    }//GEN-LAST:event_btnCreateSupplierActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -398,7 +492,7 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
     private javax.swing.JPanel Store;
     private javax.swing.JPanel Supplier;
     private javax.swing.JPanel Warehouse;
-    private javax.swing.JButton btnCreateStore2;
+    private javax.swing.JButton btnCreateStore;
     private javax.swing.JToggleButton btnCreateSupplier;
     private javax.swing.JButton btnCreateWarehouse;
     private javax.swing.JButton btnFarm;
@@ -429,9 +523,9 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
     private javax.swing.JTextField txtFarmOwner;
     private javax.swing.JTextField txtFarmProduce;
     private javax.swing.JTextField txtFarmname;
-    private javax.swing.JTextField txtStoreID2;
-    private javax.swing.JTextField txtStoreLocation2;
-    private javax.swing.JTextField txtStoreName2;
+    private javax.swing.JTextField txtStoreID;
+    private javax.swing.JTextField txtStoreLocation;
+    private javax.swing.JTextField txtStoreName;
     private javax.swing.JTextField txtSupplierEmail;
     private javax.swing.JTextField txtSupplierLocation;
     private javax.swing.JTextField txtSupplierMobile;

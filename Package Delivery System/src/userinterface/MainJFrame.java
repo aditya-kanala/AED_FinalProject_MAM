@@ -37,6 +37,7 @@ import userinterface.Warehouse.warehouseManagerPanel;
  *
  * @author mahith
  */
+/*Main Frame*/
 public class MainJFrame extends javax.swing.JFrame {
 
     /**

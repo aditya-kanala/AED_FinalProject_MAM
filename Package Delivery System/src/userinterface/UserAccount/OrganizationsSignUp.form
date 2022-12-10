@@ -60,17 +60,17 @@
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtStoreID2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStoreID" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtStoreName2" min="-2" pref="310" max="-2" attributes="0"/>
+                                      <Component id="txtStoreName" min="-2" pref="310" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="txtStoreLocation2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtStoreLocation" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="469" max="-2" attributes="0"/>
-                              <Component id="btnCreateStore2" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="btnCreateStore" min="-2" pref="105" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -91,20 +91,20 @@
                       <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblStoreID2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtStoreID2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtStoreID" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblStoreName2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtStoreName2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtStoreName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblStoreLocation2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtStoreLocation2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtStoreLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                      <Component id="btnCreateStore2" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnCreateStore" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace pref="274" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -135,18 +135,18 @@
                 <Property name="text" type="java.lang.String" value="Store Location :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtStoreID2">
+            <Component class="javax.swing.JTextField" name="txtStoreID">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtStoreName2">
+            <Component class="javax.swing.JTextField" name="txtStoreName">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtStoreLocation2">
+            <Component class="javax.swing.JTextField" name="txtStoreLocation">
             </Component>
-            <Component class="javax.swing.JButton" name="btnCreateStore2">
+            <Component class="javax.swing.JButton" name="btnCreateStore">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Store"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateStore2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateStoreActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -250,6 +250,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Warehouse"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateWarehouseActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblHeading">
               <Properties>
@@ -387,6 +390,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Register Farm"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFarmActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtFarmLocation">
             </Component>
@@ -534,6 +540,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Supplier"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateSupplierActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="pwdSupplier">
             </Component>
