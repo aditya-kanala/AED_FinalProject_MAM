@@ -131,30 +131,39 @@ CREATE TABLE `warehouse_manager` (
 
 /*Store Items Table*/
 CREATE TABLE `store_items` (
-  `Item ID` varchar(20) NOT NULL,
-  `Item Name` varchar(45) DEFAULT NULL,
-  `Item Description` varchar(45) DEFAULT NULL,
-  `Item Price` double DEFAULT NULL,
-  `Item Quantity` int DEFAULT NULL,
-  PRIMARY KEY (`Item ID`)
+  `ItemID` varchar(20) NOT NULL,
+  `ItemName` varchar(45) DEFAULT NULL,
+  `ItemDescription` varchar(45) DEFAULT NULL,
+  `ItemPrice` double DEFAULT NULL,
+  `ItemQuantity` int DEFAULT NULL,
+  PRIMARY KEY (`ItemID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-/*Supply Order Table*/
-CREATE TABLE `supply_orders` (
-  `Order ID` varchar(20) NOT NULL,
-  `Order Date` varchar(20) DEFAULT NULL,
-  `Order Items` varchar(45) DEFAULT NULL,
-  `Order Total` double DEFAULT NULL,
-  PRIMARY KEY (`Order ID`)
+/*Warehouse Order Table*/
+CREATE TABLE `warehouse_orders` (
+  `OrderID` varchar(20) NOT NULL,
+  `OrderDate` varchar(20) DEFAULT NULL,
+  `OrderItems` varchar(45) DEFAULT NULL,
+  `OrderTotal` double DEFAULT NULL,
+  PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 /*User Order Table*/
 CREATE TABLE `user_orders` (
-  `Order ID` varchar(20) NOT NULL,
-  `Order Date` varchar(20) DEFAULT NULL,
-  `Order Items` varchar(45) DEFAULT NULL,
-  `Order Total` double DEFAULT NULL,
-  PRIMARY KEY (`Order ID`)
+  `OrderID` varchar(20) NOT NULL,
+  `OrderDate` varchar(20) DEFAULT NULL,
+  `OrderItems` varchar(45) DEFAULT NULL,
+  `OrderTotal` double DEFAULT NULL,
+  PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+/*Shipment Table*/
+CREATE TABLE `shipment_orders` (
+  `OrderID` varchar(20) NOT NULL,
+  `OrderDate` varchar(20) DEFAULT NULL,
+  `OrderItems` varchar(45) DEFAULT NULL,
+  `OrderTotal` double DEFAULT NULL,
+  `OrderStatus` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
