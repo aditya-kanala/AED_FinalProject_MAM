@@ -161,7 +161,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(titleLabel1)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
 
         txtUserName.setBackground(new java.awt.Color(25, 56, 82));
@@ -541,14 +541,15 @@ public class MainJFrame extends javax.swing.JFrame {
             fldPassword.setText("");    
           }
           
+          /*warehouse Manager*/
           else if (txtUserName.getText().contains("warehousemanager")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_manager where Manager    UserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
-                        WarehouseManagerPanel panel = new WarehouseManagerPanel(connection);
+                        JOptionPane.showMessageDialog(this, "Warehouse Manager Login Successful..!!");
+                        warehouseManagerPanel panel = new warehouseManagerPanel(connection);
                         container.add("warehouse admin", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
@@ -564,37 +565,38 @@ public class MainJFrame extends javax.swing.JFrame {
             fldPassword.setText("");  
             
           }
+          /*farm Manager*/
+//          else if (txtUserName.getText().contains("farmmanager")){
+//            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+//            preparedStatement.setString(1, txtUserName.getText());
+//            ResultSet rs = preparedStatement.executeQuery(); 
+//            while(rs.next()){
+//              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+//                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+//                        farmManagerPanel panel = new farmManagerPanel(connection);
+//                        container.add("farm manager", panel);
+//                        CardLayout layout = (CardLayout) container.getLayout();
+//                        layout.next(container);
+//                }
+//            }
+//            
+//            loginJPanel.setVisible(false);
+//            container.setVisible(true);
+//            leftPanel.setVisible(true);
+//            logoutLabel.setVisible(false);
+//            backLabel.setVisible(true);
+//            txtUserName.setText("");
+//            fldPassword.setText(""); 
+//          }
           
-          else if (txtUserName.getText().contains("farmmanager")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
-            preparedStatement.setString(1, txtUserName.getText());
-            ResultSet rs = preparedStatement.executeQuery(); 
-            while(rs.next()){
-              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
-                        farmManagerPanel panel = new farmManagerPanel(connection);
-                        container.add("farm manager", panel);
-                        CardLayout layout = (CardLayout) container.getLayout();
-                        layout.next(container);
-                }
-            }
-            
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText(""); 
-          }
-          
+          /*Customer Login*/
           else if (txtUserName.getText().contains("user")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from customer where CustomerUserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
-              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+              if((rs.getString(3).equalsIgnoreCase(txtUserName.getText())) && rs.getString(5).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Customer Login Successful..!!");
                         CustomerHomePanel panel = new CustomerHomePanel(connection);
                         container.add("customer", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
@@ -611,13 +613,14 @@ public class MainJFrame extends javax.swing.JFrame {
             fldPassword.setText(""); 
           }
           
+          /*Suppplier Login*/
           else if (txtUserName.getText().contains("supplier")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from supplier where SupplierUserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+                        JOptionPane.showMessageDialog(this, "Supplier Login Successful..!!");
                         supplierHomePanel panel = new supplierHomePanel(connection);
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
@@ -633,14 +636,14 @@ public class MainJFrame extends javax.swing.JFrame {
             txtUserName.setText("");
             fldPassword.setText(""); 
           }
-          
+          /*CSR Login*/
           else if (txtUserName.getText().contains("csr")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from csr where CSREmail=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
-              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+              if((rs.getString(3).equalsIgnoreCase(txtUserName.getText())) && rs.getString(4).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "CSR Login Successful..!!");
                         csrPanel panel = new csrPanel(connection);
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
@@ -657,13 +660,14 @@ public class MainJFrame extends javax.swing.JFrame {
             fldPassword.setText(""); 
           }
           
+         /*SSR Login*/
           else if (txtUserName.getText().contains("ssr")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_manager where ManagerUserName=?");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from ssr where SSREmail=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
-              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
+              if((rs.getString(3).equalsIgnoreCase(txtUserName.getText())) && rs.getString(4).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "SSR Login Successful..!!");
                         csrPanel panel = new csrPanel(connection);
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
@@ -735,24 +739,24 @@ public class MainJFrame extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backLabel;
-    private javax.swing.JPanel container;
+    public javax.swing.JLabel backLabel;
+    public javax.swing.JPanel container;
     private javax.swing.JLabel exitLabel;
     private javax.swing.JPasswordField fldPassword;
     private javax.swing.JLabel forgotPassword;
     private javax.swing.JLabel greetingUserLabel;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel leftPanel;
-    private javax.swing.JPanel loginJPanel;
+    public javax.swing.JPanel leftPanel;
+    public javax.swing.JPanel loginJPanel;
     private javax.swing.JLabel logoLabel;
-    private javax.swing.JLabel logoutLabel;
+    public javax.swing.JLabel logoutLabel;
     private javax.swing.JLabel newUser;
     private javax.swing.JSeparator newUserSeperator;
     private javax.swing.JSeparator passwordSeperator;
     private javax.swing.JPanel signInButtonPanel;
     private javax.swing.JLabel signInLabel;
     private javax.swing.JLabel titleLabel1;
-    private javax.swing.JTextField txtUserName;
+    public javax.swing.JTextField txtUserName;
     private javax.swing.JSeparator userNameSeperator;
     // End of variables declaration//GEN-END:variables
 }
