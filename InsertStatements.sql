@@ -19,7 +19,7 @@ INSERT INTO `aed_project`.`warehouse_manager`
 VALUES
 (100, "CostCo Warehouse", "Manuel" , "manuel@costco.com", "manuel@costco", "Manuel");
 
-delete from warehouse_manager where WarehouseID = 100;
+/*delete from warehouse_manager where WarehouseID = 100;*/
 
 /*CSR Agent*/
 INSERT INTO `aed_project`.`csr`
@@ -41,20 +41,31 @@ VALUES
 
 /*Store Items*/
 INSERT INTO `aed_project`.`store_items`
-(`Item ID`, `Item Name`, `Item Description`, `Item Price`, `Item Quantity`)
+(`ItemID`, `ItemName`, `ItemDescription`, `ItemPrice`, `ItemQuantity`)
 VALUES
 (1012, "Doritos" , "Flaming Hot", 5.69, 25);
 
-/*Supply Order*/
-INSERT INTO `aed_project`.`supply_orders`
-(`Order ID`, `Order Date`, `Order Items`, `Order Total`)
+/*Warehouse Order*/
+INSERT INTO `aed_project`.`warehouse_orders`
+(`OrderID`, `OrderDate`, `OrderItems`, `OrderTotal`)
 VALUES
 ('100', '25 Oct 2022', 'Wheat', 1000);
 
 /*User Order*/
 INSERT INTO `aed_project`.`user_orders`
-(`Order ID`, `Order Date`, `Order Items`, `Order Total`)
+(`OrderID`, `OrderDate`, `OrderItems`, `OrderTotal`)
 VALUES
 ('100', '01 Dec 2022', 'Mobile', 1100);
 
+/*Supplier*/
+INSERT INTO `aed_project`.`supplier`
+(`SupplierName`, `SupplierEmail`, `SupplierLocation`, `SupplierMobile`, `SupplierUserName`, `SuppplierPassword`)
+VALUES
+('Mohith','mohith@gmail.com', 'LA',12345679890,'supplier1@supplier','supplier');
+
+/*Shipment Order*/
+INSERT INTO `aed_project`.`shipment_orders`
+(`OrderID`, `OrderDate`, `OrderItems`, `OrderTotal`,`OrderStatus`)
+VALUES
+('100', '25 Oct 2022', 'Wheat', 1000,'Order Received');
 
