@@ -49,7 +49,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         homePanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        rightSystemAdminPanel = new javax.swing.JPanel();
+        rightStoreAdminPanel = new javax.swing.JPanel();
 
         jPanel3.setBackground(new java.awt.Color(227, 73, 78));
         jPanel3.setMinimumSize(new java.awt.Dimension(280, 840));
@@ -242,9 +242,9 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
 
         jPanel3.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 280, -1));
 
-        rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
-        rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
-        rightSystemAdminPanel.setLayout(new java.awt.CardLayout());
+        rightStoreAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
+        rightStoreAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
+        rightStoreAdminPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -254,11 +254,11 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(rightStoreAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rightStoreAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -300,9 +300,9 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageWarehouseOrdersPanel.setBackground(new Color(227, 73, 78));
         ManageStoreJPanel manageStoreJPanel = new ManageStoreJPanel(connection);        
-        rightSystemAdminPanel.add("manageStoreJPanel",manageStoreJPanel);
-        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-        layout.next(rightSystemAdminPanel);
+        rightStoreAdminPanel.add("manageStoreJPanel",manageStoreJPanel);
+        CardLayout layout = (CardLayout) rightStoreAdminPanel.getLayout();
+        layout.next(rightStoreAdminPanel);
     }
     
     private void manageUserOrders(){
@@ -311,9 +311,9 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageUserOrdersPanel.setBackground(new Color(135, 206, 235));
         manageWarehouseOrdersPanel.setBackground(new Color(227, 73, 78));
         ManageUserOrdersJPanel manageUserOrdersJPanel = new ManageUserOrdersJPanel(connection);        
-        rightSystemAdminPanel.add("manageUserOrdersJPanel",manageUserOrdersJPanel);
-        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-        layout.next(rightSystemAdminPanel);
+        rightStoreAdminPanel.add("manageUserOrdersJPanel",manageUserOrdersJPanel);
+        CardLayout layout = (CardLayout) rightStoreAdminPanel.getLayout();
+        layout.next(rightStoreAdminPanel);
     }
     
     private void manageWarehouseOrders(){
@@ -322,9 +322,9 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageWarehouseOrdersPanel.setBackground(new Color(135, 206, 235));
         ManageWarehouseOrdersJPanel manageSupplyOrdersJPanel = new ManageWarehouseOrdersJPanel(connection);        
-        rightSystemAdminPanel.add("manageSupplyOrdersJPanel",manageSupplyOrdersJPanel);
-        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-        layout.next(rightSystemAdminPanel);
+        rightStoreAdminPanel.add("manageSupplyOrdersJPanel",manageSupplyOrdersJPanel);
+        CardLayout layout = (CardLayout) rightStoreAdminPanel.getLayout();
+        layout.next(rightStoreAdminPanel);
     }
 
     private void storeGraphs(){
@@ -333,9 +333,9 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageWarehouseOrdersPanel.setBackground(new Color(227, 73, 78));
         ViewStoreGraphsJPanel viewStoreGraphsJPanel = new ViewStoreGraphsJPanel();
-        rightSystemAdminPanel.add("viewStoreGraphsJPanel",viewStoreGraphsJPanel);
-        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-        layout.next(rightSystemAdminPanel);
+        rightStoreAdminPanel.add("viewStoreGraphsJPanel",viewStoreGraphsJPanel);
+        CardLayout layout = (CardLayout) rightStoreAdminPanel.getLayout();
+        layout.next(rightStoreAdminPanel);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel home;
@@ -354,6 +354,6 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel manageUserOrdersPanel;
     private javax.swing.JLabel manageWarehouseOrdersLabel;
     private javax.swing.JPanel manageWarehouseOrdersPanel;
-    private javax.swing.JPanel rightSystemAdminPanel;
+    private javax.swing.JPanel rightStoreAdminPanel;
     // End of variables declaration//GEN-END:variables
 }
