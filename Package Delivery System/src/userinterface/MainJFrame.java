@@ -415,16 +415,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("BPO Admin work Area", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText("");
+            
           }
           
           /*Distribution Admin Login*/
@@ -439,15 +441,17 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("Distribution admin", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
-        loginJPanel.setVisible(false);
-        container.setVisible(true);
-        leftPanel.setVisible(true);
-        logoutLabel.setVisible(false);
-        backLabel.setVisible(true);
-        txtUserName.setText("");
-        fldPassword.setText("");
+        
           }
           
           /*Logistics Admin Login */
@@ -462,15 +466,17 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("Logistics Admin", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
-        loginJPanel.setVisible(false);
-        container.setVisible(true);
-        leftPanel.setVisible(true);
-        logoutLabel.setVisible(false);
-        backLabel.setVisible(true);
-        txtUserName.setText("");
-        fldPassword.setText("");
+        
           }
           
           
@@ -486,15 +492,17 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("marketplace admin", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
-         loginJPanel.setVisible(false);
-        container.setVisible(true);
-        leftPanel.setVisible(true);
-        logoutLabel.setVisible(false);
-        backLabel.setVisible(true);
-        txtUserName.setText("");
-        fldPassword.setText("");
+         
           }
           
           /*System Admin Login*/
@@ -509,15 +517,17 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("sys admin", sysadmin);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
         loginJPanel.setVisible(false);
-        container.setVisible(true);
-        leftPanel.setVisible(true);
-        logoutLabel.setVisible(false);
-        backLabel.setVisible(true);
-        txtUserName.setText("");
-        fldPassword.setText("");
+        
           }
           
          /*Store Manager Login*/ 
@@ -532,16 +542,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("store manager", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText("");    
+                
           }
           
           /*warehouse Manager*/
@@ -556,16 +568,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("warehouse admin", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText("");  
+              
             
           }
           /*farm Manager*/
@@ -604,16 +618,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("customer", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText(""); 
+             
           }
           
           /*Suppplier Login*/
@@ -628,16 +644,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText(""); 
+             
           }
           else if (txtUserName.getText().contains("supplier")){
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from supplier where SupplierUserName=?");
@@ -650,16 +668,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText(""); 
+             
           }
           
           /*CSR Login*/
@@ -674,16 +694,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("shipping", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText(""); 
+             
           }
           
          /*SSR Login*/
@@ -698,16 +720,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText(""); 
+             
           }
           
           /*Delivery Agent*/  
@@ -722,16 +746,18 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
+                        
+                        loginJPanel.setVisible(false);
+                        container.setVisible(true);
+                        leftPanel.setVisible(true);
+                        logoutLabel.setVisible(false);
+                        backLabel.setVisible(true);
+                        txtUserName.setText("");
+                        fldPassword.setText("");
                 }
             }
             
-            loginJPanel.setVisible(false);
-            container.setVisible(true);
-            leftPanel.setVisible(true);
-            logoutLabel.setVisible(false);
-            backLabel.setVisible(true);
-            txtUserName.setText("");
-            fldPassword.setText(""); 
+             
           }  
           
           else{
