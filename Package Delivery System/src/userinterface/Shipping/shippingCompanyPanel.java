@@ -3,18 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.Shipping;
-
+import java.awt.CardLayout;
+import java.sql.*;
+import userinterface.Delivery.deliveryAgentHome;
 /**
  *
  * @author mahith
  */
 public class shippingCompanyPanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form shippingCompanyPanel
      */
-    public shippingCompanyPanel() {
+    public shippingCompanyPanel(Connection connection) {
+        this.connection = connection;
         initComponents();
+        
+        shippingHomePanel shipping = new shippingHomePanel(connection);
+        rightShippingUnitPanel.add("deliveryAgent",shipping);
+        CardLayout layout = (CardLayout) rightShippingUnitPanel.getLayout();
+        layout.next(rightShippingUnitPanel);
     }
 
     /**

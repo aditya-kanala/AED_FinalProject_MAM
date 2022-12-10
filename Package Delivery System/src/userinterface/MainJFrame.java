@@ -27,6 +27,8 @@ import userinterface.Farms.farmManagerPanel;
 import userinterface.LogisticsEnterprise.logisticsAdminPanel;
 import userinterface.Maps.mapsPanel;
 import userinterface.MarketplaceEnterprise.marketplaceAdminPanel;
+import userinterface.Shipping.shippingCompanyPanel;
+import userinterface.Shipping.shippingHomePanel;
 import userinterface.Supplier.supplierHomePanel;
 import userinterface.SystemAdmin.SystemAdminJPanel;
 import userinterface.Warehouse.warehouseManagerPanel;
@@ -637,16 +639,39 @@ public class MainJFrame extends javax.swing.JFrame {
             txtUserName.setText("");
             fldPassword.setText(""); 
           }
-          /*CSR Login*/
-          else if (txtUserName.getText().contains("csr")){
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from csr where CSREmail=?");
+          else if (txtUserName.getText().contains("supplier")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from supplier where SupplierUserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
-              if((rs.getString(3).equalsIgnoreCase(txtUserName.getText())) && rs.getString(4).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "CSR Login Successful..!!");
-                        csrPanel panel = new csrPanel(connection);
+              if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "Supplier Login Successful..!!");
+                        supplierHomePanel panel = new supplierHomePanel(connection);
                         container.add("supplier", panel);
+                        CardLayout layout = (CardLayout) container.getLayout();
+                        layout.next(container);
+                }
+            }
+            
+            loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText(""); 
+          }
+          
+          /*CSR Login*/
+          else if (txtUserName.getText().contains("shippingagent")){
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from shipping_agent where AgentUserName=?");
+            preparedStatement.setString(1, txtUserName.getText());
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+              if((rs.getString(4).equalsIgnoreCase(txtUserName.getText())) && rs.getString(5).equals(String.valueOf(fldPassword.getPassword()))){
+                        JOptionPane.showMessageDialog(this, "shipping agent Successful..!!");
+                        shippingCompanyPanel panel = new shippingCompanyPanel(connection);
+                        container.add("shipping", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
                 }
