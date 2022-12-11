@@ -235,7 +235,7 @@ public class CustomerPanel extends javax.swing.JPanel {
     private void cartLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMousePressed
         // TODO add your handling code here:
         
-        customerCart cart = new customerCart(connection,"","","");
+        customerCart cart = new customerCart(connection,"","","", 0);
         this.getParent().add("customer Cart",cart);
         CardLayout layout = (CardLayout) this.getParent().getLayout();
         layout.next(this.getParent());

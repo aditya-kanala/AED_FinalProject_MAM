@@ -23,11 +23,11 @@ public class customerCart extends javax.swing.JPanel {
     String longi;
     String lati;
     String loci;
-    String zoom;
+    int zoom;
     /**
      * Creates new form customerCart
      */
-    public customerCart(Connection connection,String longi, String lati,String loci,String zoom) {
+    public customerCart(Connection connection,String longi, String lati,String loci,int zoom) {
         this.connection =connection;
         this.loci = loci;
         this.longi = longi;
@@ -226,7 +226,7 @@ public class customerCart extends javax.swing.JPanel {
             preparedStatement.setString(6, loci);
             preparedStatement.setString(7, longi);
             preparedStatement.setString(8, lati);
-            preparedStatement.setString(9, zoom);
+            preparedStatement.setString(9, String.valueOf(zoom));
             
             preparedStatement.executeUpdate();
             
