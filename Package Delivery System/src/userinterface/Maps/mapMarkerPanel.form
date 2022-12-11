@@ -18,8 +18,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="463" max="-2" attributes="0"/>
-              <Component id="btnSetLocation" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="500" max="32767" attributes="0"/>
+              <Component id="setMarkers" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="488" max="32767" attributes="0"/>
           </Group>
           <Component id="mapsArea" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -28,7 +28,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="btnSetLocation" min="-2" max="-2" attributes="0"/>
+              <Component id="setMarkers" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="mapsArea" pref="784" max="32767" attributes="0"/>
           </Group>
@@ -36,13 +36,10 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnSetLocation">
+    <Component class="javax.swing.JButton" name="setMarkers">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Set Location"/>
+        <Property name="text" type="java.lang.String" value="Show Location"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSetLocationActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="mapsArea">
 

@@ -57,7 +57,7 @@ public class MainJFrame extends javax.swing.JFrame {
         public void databaseConnection(Connection connection1){
         System.out.println("Connection db");
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root@123");//Establishing connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
             System.out.println("Connected With the database successfully"); //Message after successful connection 
         } catch (SQLException e) {
             System.out.println(e); //Message if something goes wrong while conneting to the database
