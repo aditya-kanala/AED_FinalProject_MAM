@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -65,7 +66,7 @@ public class MainJFrame extends javax.swing.JFrame {
         public void databaseConnection(Connection connection1){
         System.out.println("Connection db");
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root@123");//Establishing connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
             System.out.println("Connected With the database successfully"); //Message after successful connection 
         } catch (SQLException e) {
             System.out.println(e); //Message if something goes wrong while conneting to the database
@@ -409,11 +410,30 @@ public class MainJFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitLabelMouseClicked
 
+    /*Login Validation*/
+    private boolean checkfield(){
+    ArrayList msg=null;
+    msg=new ArrayList();
+    
+    if(txtUserName.getText().isBlank())
+        msg.add(("Please enter the correct User Name"));
+    if(String.valueOf(fldPassword.getText()).isBlank())
+        msg.add("Password field is empty");
+     
+    if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true;
+    }
+    
+    
     private void signInButtonPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInButtonPanelMouseClicked
         // TODO add your handling code here:
         
         try{ 
-        
+        if(checkfield()){
          /*BPO Admin Login*/   
           if(txtUserName.getText().equalsIgnoreCase("bpoadmin")){  
             PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from admins where username = ?");
@@ -421,7 +441,8 @@ public class MainJFrame extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "BPO Admin Login Successful..!!");
+                      
+                    JOptionPane.showMessageDialog(this, "BPO Admin Login Successful..!!");
                         bpoAdminPanel panel = new bpoAdminPanel(connection);
                         container.add("BPO Admin work Area", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
@@ -434,6 +455,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                       
                 }else{
                     JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
 
@@ -811,8 +833,11 @@ public class MainJFrame extends javax.swing.JFrame {
           }  
           
           else{
-            JOptionPane.showMessageDialog(this, "No Admin Found for the Credentials"+" :( :(");
+            JOptionPane.showMessageDialog(this, "No Active User found for the Credentials"+" :( :(");
           }
+        }
+        else {/*JOptionPane.showMessageDialog(this, "Please Enter Valid Credentials..!!");*/}
+ 
         }
         catch(SQLException e){
             System.out.println("Error while retrieving data  "+e);
