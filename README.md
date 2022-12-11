@@ -61,4 +61,10 @@ By Team Number 22
 <h2>Workflow Diagram</h2>
 
 ![Workflow drawio](https://user-images.githubusercontent.com/114545333/206878632-5ce878e0-a949-43c4-aab3-e96378b80684.png)
+<br>
+<br>
+<br>
+<h2>Sequence Diagram</h2>
+<img width="1108" alt="SequenceDiagram" src="https://user-images.githubusercontent.com/114545333/206881849-7920f7d7-6405-420f-bcb4-63ba4be4c211.png">
+
 
