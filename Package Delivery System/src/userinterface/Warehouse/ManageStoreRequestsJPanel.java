@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +26,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         initComponents();
         initialSetup();
         this.connection=connection;
-        populateUserOrderTable(connection);
+        populateStoreRequestsTable(connection);
     }
 
     /**
@@ -39,7 +40,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
 
         lblUserOrders = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblUserOrders = new javax.swing.JTable();
+        tblStoreRequests = new javax.swing.JTable();
         btnViewOrder = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
@@ -49,6 +50,8 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         txtOrderTotal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnAcceptReject = new javax.swing.JButton();
+        btnFinalizeOrder = new javax.swing.JButton();
+        cbStatus = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -57,7 +60,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         lblUserOrders.setForeground(new java.awt.Color(255, 255, 255));
         lblUserOrders.setText("STORE REQUESTS");
 
-        tblUserOrders.setModel(new javax.swing.table.DefaultTableModel(
+        tblStoreRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -65,7 +68,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                 "Order ID", "Order Date", "Order Items", "Order Total"
             }
         ));
-        jScrollPane1.setViewportView(tblUserOrders);
+        jScrollPane1.setViewportView(tblStoreRequests);
 
         btnViewOrder.setText("View/Update Order");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +111,15 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnFinalizeOrder.setText("Raise Shipment");
+        btnFinalizeOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizeOrderActionPerformed(evt);
+            }
+        });
+
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +152,12 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                                 .addGap(16, 16, 16)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton1)
-                                    .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnFinalizeOrder, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(4, 4, 4)
+                                            .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
@@ -170,7 +187,11 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                     .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(btnFinalizeOrder)
+                .addGap(42, 42, 42)
+                .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,6 +216,39 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAcceptRejectActionPerformed
 
+    private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
+        // TODO add your handling code here:
+//        try{
+//
+//            PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from warehouse_orders where OrderID=?");
+//            preparedStatement1.setString(1,selectedOrder.toString());
+//            ResultSet rs1 = preparedStatement1.executeQuery();
+//            System.out.println(rs1);
+//            if(rs1.next())
+//            {PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?,?)");
+//
+//                preparedStatement.setString(1,rs1.getString(1));
+//                preparedStatement.setString(2,rs1.getString(2));
+//                preparedStatement.setString(3,rs1.getString(3));
+//                preparedStatement.setString(4,rs1.getString(4));
+//                preparedStatement.setString(5,cbStatus.getSelectedItem().toString());
+//
+//                preparedStatement.executeUpdate();
+//                JOptionPane.showMessageDialog(this,"Shipment Request Raised Successfully..");
+//
+//            }
+//            System.out.println("Shipment Request raised Successfully");
+//
+//            populateStoreRequestsTable(connection);
+//
+//        }
+//        catch(SQLException e){
+//            System.out.println("Error Connecting Database" + e);
+//            JOptionPane.showMessageDialog(this,"Shipment Request Already Raised..");
+//
+//        }
+    }//GEN-LAST:event_btnFinalizeOrderActionPerformed
+
     private void initialSetup(){
         lblOrderItems.setVisible(false);
         txtOrderItems.setVisible(false);
@@ -215,11 +269,11 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         jButton1.setVisible(true);
     }
     
-        public void populateUserOrderTable(Connection connection){
-        DefaultTableModel model = (DefaultTableModel) tblUserOrders.getModel();
+        public void populateStoreRequestsTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblStoreRequests.getModel();
         model.setRowCount(0);
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from user_orders");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from warehouse_orders");
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
             Object[] rows = new Object[4];
@@ -236,14 +290,16 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceptReject;
+    private javax.swing.JButton btnFinalizeOrder;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnViewOrder;
+    private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblOrderItems;
     private javax.swing.JLabel lblOrderTotal;
     private javax.swing.JLabel lblUserOrders;
-    private javax.swing.JTable tblUserOrders;
+    private javax.swing.JTable tblStoreRequests;
     private javax.swing.JTextField txtOrderItems;
     private javax.swing.JTextField txtOrderTotal;
     private javax.swing.JTextField txtSearch;

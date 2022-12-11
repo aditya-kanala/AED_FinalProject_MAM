@@ -31,8 +31,7 @@ import userinterface.Shipping.shippingCompanyPanel;
 import userinterface.Shipping.shippingHomePanel;
 import userinterface.Supplier.supplierHomePanel;
 import userinterface.SystemAdmin.SystemAdminJPanel;
-import userinterface.Warehouse.warehouseManagerPanel;
-
+import userinterface.Warehouse.WarehouseManagerHomeJPanel;
 /**
  *
  * @author mahith
@@ -58,7 +57,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void databaseConnection(){
         System.out.println("Connection db");
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root@123");//Establishing connection
             System.out.println("Connected With the database successfully"); //Message after successful connection 
         } catch (SQLException e) {
             System.out.println(e); //Message if something goes wrong while conneting to the database
@@ -565,7 +564,7 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Warehouse Manager Login Successful..!!");
-                        warehouseManagerPanel panel = new warehouseManagerPanel(connection);
+                        WarehouseManagerHomeJPanel panel = new WarehouseManagerHomeJPanel(connection);
                         container.add("warehouse admin", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
