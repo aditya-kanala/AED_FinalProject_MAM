@@ -21,7 +21,7 @@ public class UserDirectory {
     }
    
    
-   public void addWarehouseManager(String id,String sname,String mname,String memail,String username,String password){
+   public boolean addWarehouseManager(String id,String sname,String mname,String memail,String username,String password){
        try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_manager values(?,?,?,?,?,?)");
         preparedStatement.setString(1,id);
@@ -33,13 +33,15 @@ public class UserDirectory {
         
         preparedStatement.executeUpdate();
         System.out.println("Data inserted Successfully");
+        return true;
       }
        catch(Exception e){
             System.out.println(""+e);
        }
+        return false;
    }
    
-   public void addStoreManager(String id, String sname,String mname, String memail, String username, String password){
+   public boolean addStoreManager(String id, String sname,String mname, String memail, String username, String password){
         try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into store_manager values(?,?,?,?,?,?)");
         preparedStatement.setString(1,id);
@@ -51,12 +53,14 @@ public class UserDirectory {
         
         preparedStatement.executeUpdate();
         System.out.println("Data inserted Successfully");
+        return true;
       }
        catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
 }
+        return false;
    }
 
-    public void addCSRAgent(String id, String csrname, String csremail, String password){
+    public boolean addCSRAgent(String id, String csrname, String csremail, String password){
              
       try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into csr values(?,?,?,?)");
@@ -67,12 +71,14 @@ public class UserDirectory {
         
         preparedStatement.executeUpdate();
         System.out.println("Data inserted Successfully");
+        return true;
       }
        catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
 } 
+        return false;
     }
     
-    public void addSSRAgent(String id, String ssrname, String ssremail, String password){
+    public boolean addSSRAgent(String id, String ssrname, String ssremail, String password){
              
       try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into ssr values(?,?,?,?)");
@@ -83,12 +89,14 @@ public class UserDirectory {
         
         preparedStatement.executeUpdate();
         System.out.println("Data inserted Successfully");
+        return true;
       }
        catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
 } 
+        return false;
     }
     
-    public void addShippingAgent(String name, String mobile, String bLocation, String username, String password){
+    public boolean addShippingAgent(String name, String mobile, String bLocation, String username, String password){
         try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into shipping_agent values(?,?,?,?,?)");
         preparedStatement.setString(1,name);
@@ -100,12 +108,14 @@ public class UserDirectory {
         
         preparedStatement.executeUpdate();
         System.out.println("Data inserted Successfully");
+        return true;
       }
        catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
 }
+        return false;
     }
     
-    public void addDAgent(String id, String name, String mobile, String bLocation, String username, String password){
+    public boolean addDAgent(String id, String name, String mobile, String bLocation, String username, String password){
           try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_agent values(?,?,?,?,?,?)");
         preparedStatement.setString(1,id);
@@ -119,12 +129,14 @@ public class UserDirectory {
         
         preparedStatement.executeUpdate();
         System.out.println("Data inserted Successfully");
+        return true;
       }
        catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
 } 
+        return false;
     }
     
-    public void addCustomer(String name, String email, String username, String mobile, String password, String gender){
+    public boolean addCustomer(String name, String email, String username, String mobile, String password, String gender){
             try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into customer values(?,?,?,?,?,?)");
         preparedStatement.setString(1,name);
@@ -138,9 +150,12 @@ public class UserDirectory {
         
         preparedStatement.executeUpdate();
         System.out.println("Data inserted Successfully");
+        return true;
+        
       }
        catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
 } 
+        return false;
     }
 
 
