@@ -248,8 +248,12 @@ public class CustomerPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblSearchCatalog.getModel();
         model.setRowCount(0);
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_items where upper(ItemName)=?");
-            preparedStatement.setString(1, itemSearch.toUpperCase());
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_items where upper(ItemName)like ? or ItemDescription like ? or ItemQuantity like ?");
+            preparedStatement.setString(1, "%"+itemSearch.toUpperCase()+"%");
+            preparedStatement.setString(2, "%"+itemSearch.toUpperCase()+"%");
+            preparedStatement.setString(3, "%"+itemSearch.toUpperCase()+"%");
+
+
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
             Object[] rows = new Object[3];
