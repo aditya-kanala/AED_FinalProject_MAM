@@ -435,10 +435,13 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
         if(StoreValidation()){
         if(orgDir.addStore(id, name, location, longitude, latitude))
-             JOptionPane.showMessageDialog(this, "Warehouse Successfully Created..!!");
+             JOptionPane.showMessageDialog(this, "Store Successfully Created..!!");
         else 
-             JOptionPane.showMessageDialog(this, "Warehouse not Created..!!");
+             JOptionPane.showMessageDialog(this, "Store not Created..!!");
         }
+        txtStoreID.setText("");
+        txtStoreName.setText("");
+        txtStoreLocation.setText("");
         //else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
 
     }//GEN-LAST:event_btnCreateStoreActionPerformed
@@ -476,7 +479,10 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         else 
          JOptionPane.showMessageDialog(this, "Warehouse not Created..!!");
        }
-          // else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
+        txtWarehouseID.setText("");
+        txtWarehouseName.setText("");
+        txtWarehouseLocation.setText(""); 
+       // else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
 
     }//GEN-LAST:event_btnCreateWarehouseActionPerformed
 
@@ -516,6 +522,10 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         else
            JOptionPane.showMessageDialog(this, "Farm Not Created..!!");
        }
+       txtFarmname.setText("");
+       txtFarmOwner.setText("");
+       txtFarmProduce.setText("");
+       txtFarmLocation.setText("");
         //else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
  
     }//GEN-LAST:event_btnFarmActionPerformed
@@ -559,8 +569,12 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
          JOptionPane.showMessageDialog(this, "Supplier Not Created..!!");
         }
         //else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
-
-
+        txtSupplierName.setText("");
+        txtSupplierEmail.setText("");
+        txtSupplierMobile.setText("");
+        txtSupplierLocation.setText("");
+        txtSupplierUserName.setText("");
+        pwdSupplier.setText(""); 
     }//GEN-LAST:event_btnCreateSupplierActionPerformed
 
 

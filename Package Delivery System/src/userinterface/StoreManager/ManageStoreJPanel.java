@@ -305,7 +305,7 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
         model.setRowCount(0);
         try{
-                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items where ItemName = ?");
+                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items where ItemName=?");
                 preparedStatement.setString(1,searchTerm);
                 ResultSet rs = preparedStatement.executeQuery(); 
                 while(rs.next()){
