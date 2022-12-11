@@ -41,10 +41,10 @@ public class UserDirectory {
         return false;
    }
    
-   public boolean addStoreManager(String id, String sname,String mname, String memail, String username, String password){
+   public boolean addStoreManager(String sid, String sname,String mname, String memail, String username, String password){
         try{
         PreparedStatement preparedStatement =connection.prepareStatement("insert into store_manager values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,id);
+        preparedStatement.setString(1,sid);
         preparedStatement.setString(2,sname);
         preparedStatement.setString(3,mname);
         preparedStatement.setString(4,memail);

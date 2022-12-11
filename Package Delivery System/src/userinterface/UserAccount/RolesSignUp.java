@@ -1051,6 +1051,12 @@ public class RolesSignUp extends javax.swing.JPanel {
        else
         JOptionPane.showMessageDialog(this, "Store Manager Not Created..!!");
       }
+      txtStoreID.setText("");
+      cbStoreName.setSelectedItem("");
+      txtSManagerName.setText("");
+      txtSManagerEmail.setText("");
+      txtSManagerUserName.setText("");  
+      pwdSManagerPassword.setText("");
     }//GEN-LAST:event_btnCreateStoreManagerActionPerformed
 
       public boolean warehouseManagerValidation(){
@@ -1093,7 +1099,13 @@ public class RolesSignUp extends javax.swing.JPanel {
        else
             JOptionPane.showMessageDialog(this, "Warehouse Manager Not Successfully");
       }
-  
+      
+     txtWarehouseID.setText("");
+     cbWarehouseName.setSelectedItem("");
+     txtWManagerName.setText("");
+     txtWManagerEmail.setText("");
+     txtWManagerUserName.setText("");
+   pwdWManagerPassword.setText("");
     }//GEN-LAST:event_btnCreateWarehouseManagerActionPerformed
 
     public boolean csrValidation(){
@@ -1131,6 +1143,10 @@ public class RolesSignUp extends javax.swing.JPanel {
         else
           JOptionPane.showMessageDialog(this, "CSR Agent Not Created..!!");
         }
+       txtCSRAgentID.setText(""); 
+       txtCSRAgentName.setText(""); 
+       txtCSRAgentEmail.setText("");
+       pwdCSRAgentPassword.setText("");
     }//GEN-LAST:event_btnCreateCSRActionPerformed
 
    
@@ -1168,7 +1184,10 @@ public class RolesSignUp extends javax.swing.JPanel {
         else
          JOptionPane.showMessageDialog(this, "SSR Agent Not Created..!!");
         }
-
+       txtSSRAgentID.setText(""); 
+       txtSSRAgentName.setText(""); 
+       txtSSRAgentEmail.setText("");
+       pwdSSRAgentPassword.setText("");
     }//GEN-LAST:event_btnCreateSSRActionPerformed
 
     
@@ -1210,6 +1229,15 @@ public class RolesSignUp extends javax.swing.JPanel {
       else
         JOptionPane.showMessageDialog(this, "Shipping Agent Not Created..!!");
        }
+       
+       txtShippingAgentName.setText("");
+       txtShippingAgentMobile.setText("");
+       txtShippingAgentBaseLocation.setText("");
+       txtShippingAgentUserName.setText("");
+       pwdShippingAgent.setText("");
+       
+       
+       
     }//GEN-LAST:event_btnShippingAgentActionPerformed
 
      public boolean DAAgentValidation(){
@@ -1252,7 +1280,15 @@ public class RolesSignUp extends javax.swing.JPanel {
         else
         JOptionPane.showMessageDialog(this, "Delivery Agent not Created..!!");
        }
-            
+        
+       txtDAAgentName.setText("");
+       txtDAAgentMobile.setText("");
+       txtDAAgentBaseLocation.setText("");
+       txtDAAgentUserName.setText("");
+       pwdDAAgentPassword.setText("");  
+       
+       
+       
     }//GEN-LAST:event_btnDAAgentActionPerformed
 
     public boolean customerValidation(){
@@ -1295,7 +1331,14 @@ public class RolesSignUp extends javax.swing.JPanel {
       else
            JOptionPane.showMessageDialog(this, "Customer Not Created..!!");
      }
-      
+    txtUserName.setText("");
+    txtUserEmail.setText("");
+    txtUserMobile.setText(""); 
+    txtUserUserName.setText("");
+    pwdUserPassword.setText("");
+    cbUserGender.setSelectedItem("");
+     
+     
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
         private void populatestorenames(){
