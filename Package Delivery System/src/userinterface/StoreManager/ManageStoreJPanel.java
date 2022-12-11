@@ -304,9 +304,13 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         String searchTerm = txtSearch.getText();
         DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
         model.setRowCount(0);
+        if(!(txtSearch.getText().isBlank())){
         try{
-                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items where ItemName=?");
-                preparedStatement.setString(1,searchTerm);
+                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items where ItemName like ? or ItemDescription like ? or ItemQuantity like ?");
+                preparedStatement.setString(1,"%"+searchTerm+"%");
+                preparedStatement.setString(2,"%"+searchTerm+"%");
+                preparedStatement.setString(3,"%"+searchTerm+"%");
+
                 ResultSet rs = preparedStatement.executeQuery(); 
                 while(rs.next()){
                 Object[] rows = new Object[5];
@@ -319,12 +323,16 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                 model.addRow(rows);
                 
                 initialSetup();
+               txtSearch.setText(""); 
             }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, "Cannot find item");
             populateStoreItemsTable(connection);
         }
+        }
+        else {JOptionPane.showMessageDialog(this, "Please enter a value in the search box");
+}
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllActionPerformed
