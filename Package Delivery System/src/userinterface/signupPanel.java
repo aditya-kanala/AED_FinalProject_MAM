@@ -4,6 +4,11 @@
  */
 package userinterface;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.*;
+
 /**
  *
  * @author mahith
@@ -13,8 +18,10 @@ public class signupPanel extends javax.swing.JPanel {
     /**
      * Creates new form signupPanel
      */
-    public signupPanel() {
+    Connection connection;
+    public signupPanel(Connection connection) {
         initComponents();
+        this.connection=connection;
     }
 
     /**
@@ -96,6 +103,11 @@ public class signupPanel extends javax.swing.JPanel {
         btnCreateUser.setBackground(new java.awt.Color(25, 54, 82));
         btnCreateUser.setForeground(new java.awt.Color(204, 204, 204));
         btnCreateUser.setText("Create User");
+        btnCreateUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -165,6 +177,34 @@ public class signupPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
+        // TODO add your handling code here:
+           String name =txtUserName.getText();
+      String email = txtUserEmail.getText();
+      String mobile = txtUserMobile.getText();
+      String username = txtUserUserName.getText();
+      String password = String.valueOf(pwdUserPassword.getPassword());
+      String gender = cbUserGender.getSelectedItem().toString();
+  
+        try{
+        PreparedStatement preparedStatement =connection.prepareStatement("insert into customer values(?,?,?,?,?,?)");
+        preparedStatement.setString(1,name);
+        preparedStatement.setString(2,email);
+        preparedStatement.setString(3,username);
+        preparedStatement.setString(4,mobile);
+        preparedStatement.setString(5,password);
+        preparedStatement.setString(6,gender);
+
+
+        
+        preparedStatement.executeUpdate();
+        System.out.println("Data inserted Successfully");
+        JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
+      }
+       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
+} 
+    }//GEN-LAST:event_btnCreateUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
