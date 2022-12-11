@@ -199,7 +199,7 @@ public class deliveryAgentHome extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        mapsPanel maps = new mapsPanel();
+        mapsPanel maps = new mapsPanel(connection);
         this.getParent().add("customer Cart",maps);
         CardLayout layout = (CardLayout) this.getParent().getLayout();
         layout.next(this.getParent());

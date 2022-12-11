@@ -155,6 +155,10 @@ CREATE TABLE `user_orders` (
   `OrderDate` varchar(20) DEFAULT NULL,
   `OrderItems` varchar(45) DEFAULT NULL,
   `OrderTotal` double DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
+  `long` varchar(100) DEFAULT NULL,
+  `lat` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -166,4 +170,13 @@ CREATE TABLE `shipment_orders` (
   `OrderTotal` double DEFAULT NULL,
   `OrderStatus` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+/*cart Table*/
+CREATE TABLE `cart` (
+  `product` varchar(20) NOT NULL,
+  `price` double DEFAULT NULL,
+  `quantity` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
