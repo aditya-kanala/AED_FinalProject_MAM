@@ -434,6 +434,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -460,6 +463,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
         
@@ -485,6 +491,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
         
@@ -511,6 +520,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
          
@@ -535,6 +547,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
         loginJPanel.setVisible(false);
@@ -561,6 +576,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
