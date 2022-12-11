@@ -179,7 +179,6 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
             String orderID = (String) model.getValueAt(selectedRowIndex, 0);
             Double total = Double.valueOf(orderTotal);
             
-
             PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?,?)");
             preparedStatement.setString(1,orderID);
             preparedStatement.setString(2, LocalDate.now().toString());

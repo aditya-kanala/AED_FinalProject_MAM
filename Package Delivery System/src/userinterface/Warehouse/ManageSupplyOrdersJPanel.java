@@ -11,6 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -196,7 +199,31 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
 
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
-        initialSetup();
+        try{
+            int selectedRowIndex = tblSupplyOrders.getSelectedRow();
+
+            if(selectedRowIndex < 0){
+                JOptionPane.showMessageDialog(this, "Please select an item to view its details");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) tblSupplyOrders.getModel();
+            String orderItems = (String) model.getValueAt(selectedRowIndex, 2);
+            double orderTotal = (double) model.getValueAt(selectedRowIndex, 2);
+            
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into supplier_orders values(?,?,?,?)");
+            preparedStatement.setString(1,generateUniqueId());
+            preparedStatement.setString(2, LocalDate.now().toString());
+            preparedStatement.setString(3,orderItems);
+            preparedStatement.setDouble(4, orderTotal);
+            
+            preparedStatement.executeUpdate();
+            System.out.println("Warehouse Order inserted Successfully");
+
+            populateSupplyOrderTable(connection);
+            initialSetup();
+        }
+            catch(SQLException e){
+                System.out.println("Error Connecting Database" + e);}
     }//GEN-LAST:event_btnFinalizeOrderActionPerformed
 
     private void initialSetup(){
@@ -237,6 +264,16 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
         }
         catch(SQLException e){System.out.println(e);}
     }
+        
+        public String generateUniqueId(){
+        Random random = new Random();
+        String res = "";
+        int arr[] = {1,2,3,4,5,6,7,8,9};
+        for(int i=0;i<6;i++){
+            res += arr[random.nextInt(arr.length)];
+        }
+        return res;
+        }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddOrder;

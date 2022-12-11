@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -213,7 +215,32 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAcceptRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptRejectActionPerformed
-        // TODO add your handling code here:
+        try{
+            int selectedRowIndex = tblStoreRequests.getSelectedRow();
+
+            if(selectedRowIndex < 0){
+                JOptionPane.showMessageDialog(this, "Please select an item to view its details");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) tblStoreRequests.getModel();
+            String orderItems = (String) model.getValueAt(selectedRowIndex, 2);
+            double orderTotal = (double) model.getValueAt(selectedRowIndex, 2);
+            
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?)");
+            preparedStatement.setString(1,generateUniqueId());
+            preparedStatement.setString(2, LocalDate.now().toString());
+            preparedStatement.setString(3,orderItems);
+            preparedStatement.setDouble(4, orderTotal);
+            
+            preparedStatement.executeUpdate();
+            System.out.println("Shipment Order inserted Successfully");
+
+            populateStoreRequestsTable(connection);
+            initialSetup();
+            
+        }
+        catch(SQLException e){
+            System.out.println("Error Connecting Database" + e);}
     }//GEN-LAST:event_btnAcceptRejectActionPerformed
 
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
@@ -287,6 +314,16 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         }
         catch(SQLException e){System.out.println(e);}
     }
+        
+        public String generateUniqueId(){
+        Random random = new Random();
+        String res = "";
+        int arr[] = {1,2,3,4,5,6,7,8,9};
+        for(int i=0;i<6;i++){
+            res += arr[random.nextInt(arr.length)];
+        }
+        return res;
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceptReject;
