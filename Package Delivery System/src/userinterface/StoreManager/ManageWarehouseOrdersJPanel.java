@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -110,7 +111,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnFinalizeOrder.setText("Finalize Order");
+        btnFinalizeOrder.setText("Raise Shipment");
         btnFinalizeOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizeOrderActionPerformed(evt);
@@ -207,16 +208,12 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
 
-    private void txtOrderTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrderTotalActionPerformed
-
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
         try{
             PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_orders values(?,?,?,?)");
             preparedStatement.setString(1,generateUniqueId());
-            preparedStatement.setString(2,"1st Jan 2023");
+            preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3,txtOrderItems.getText());
             preparedStatement.setString(4,txtOrderTotal.getText());
             
@@ -260,6 +257,10 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
             populateWarehouseOrderTable(connection);
         }         
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void txtOrderTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrderTotalActionPerformed
 
     private void initialSetup(){
         lblOrderItems.setVisible(false);
