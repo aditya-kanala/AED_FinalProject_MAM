@@ -111,7 +111,7 @@ public class mapsPanel extends javax.swing.JPanel {
                     place+=placeName[i]+" ";
                 }
                 
-                customerCart cart = new customerCart(connection,longLat[0],longLat[1],place,zoom);
+                customerCart cart = new customerCart(connection,longLat[0],longLat[1],place,zoomer);
                 this.getParent().add("customer Cart",cart);
                 CardLayout layout = (CardLayout) this.getParent().getLayout();
                 layout.next(this.getParent());
