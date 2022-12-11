@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.SystemAdmin;
+import Directories.UserDirectory;
 import java.awt.CardLayout;
 import java.sql.*;
 
@@ -19,9 +20,11 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
      * Creates new form SystemAdminJPanel
      */
     Connection connection;
-    public SystemAdminJPanel(Connection connection) {
+    UserDirectory userdir;
+    public SystemAdminJPanel(Connection connection,UserDirectory userdir) {
         initComponents();
         this.connection=connection;
+        this.userdir = userdir;
     }
 
     /**
@@ -228,7 +231,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblManageRolesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblManageRolesMousePressed
-        RolesSignUp roles=new RolesSignUp( connection);
+        RolesSignUp roles=new RolesSignUp( connection,userdir);
         rightSystemAdminPanel.add("SystemAdmin",roles);
         CardLayout  layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.UserAccount;
+import Directories.UserDirectory;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
@@ -15,9 +16,13 @@ public class RolesSignUp extends javax.swing.JPanel {
      * Creates new form RolesSignUp
      */
     Connection connection;
-    public RolesSignUp(Connection connection) {
+    UserDirectory userdir;
+    public RolesSignUp(Connection connection,UserDirectory userdir) {
         initComponents();
         this.connection=connection;
+        this.userdir = userdir;
+        populatestorenames();
+        populateWarehouseNames();
     }
 
     /**
@@ -37,7 +42,6 @@ public class RolesSignUp extends javax.swing.JPanel {
         lblSManagerEmail = new javax.swing.JLabel();
         lblSManagerUserName = new javax.swing.JLabel();
         lblSManagerPassword = new javax.swing.JLabel();
-        txtStoreName = new javax.swing.JTextField();
         txtSManagerName = new javax.swing.JTextField();
         txtSManagerEmail = new javax.swing.JTextField();
         txtSManagerUserName = new javax.swing.JTextField();
@@ -45,6 +49,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         pwdSManagerPassword = new javax.swing.JPasswordField();
         txtStoreID = new javax.swing.JTextField();
         btnCreateStoreManager = new javax.swing.JButton();
+        cbStoreName = new javax.swing.JComboBox<>();
         WarehouseManager = new javax.swing.JPanel();
         lblWarehouseName = new javax.swing.JLabel();
         lblWHeading = new javax.swing.JLabel();
@@ -52,7 +57,6 @@ public class RolesSignUp extends javax.swing.JPanel {
         lblWManagerEmail = new javax.swing.JLabel();
         lblManagerUserName1 = new javax.swing.JLabel();
         lblWManagerPassword = new javax.swing.JLabel();
-        txtWarehouseName = new javax.swing.JTextField();
         txtWManagerName = new javax.swing.JTextField();
         txtWManagerEmail = new javax.swing.JTextField();
         txtWManagerUserName = new javax.swing.JTextField();
@@ -60,6 +64,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         pwdWManagerPassword = new javax.swing.JPasswordField();
         txtWarehouseID = new javax.swing.JTextField();
         btnCreateWarehouseManager = new javax.swing.JButton();
+        cbWarehouseName = new javax.swing.JComboBox<>();
         CSR = new javax.swing.JPanel();
         lblCHeading = new javax.swing.JLabel();
         lblCSRAgentID = new javax.swing.JLabel();
@@ -155,9 +160,6 @@ public class RolesSignUp extends javax.swing.JPanel {
         lblSManagerPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblSManagerPassword.setText("Password :");
 
-        txtStoreName.setBackground(new java.awt.Color(25, 54, 82));
-        txtStoreName.setForeground(new java.awt.Color(204, 204, 204));
-
         txtSManagerName.setBackground(new java.awt.Color(25, 54, 82));
         txtSManagerName.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -213,17 +215,20 @@ public class RolesSignUp extends javax.swing.JPanel {
                                 .addGroup(StoreManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblStoreName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblStoreID, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(96, 96, 96)
-                                .addGroup(StoreManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtStoreName)
-                                    .addComponent(txtStoreID, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(StoreManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(StoreManagerLayout.createSequentialGroup()
+                                        .addGap(96, 96, 96)
+                                        .addComponent(txtStoreID, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(StoreManagerLayout.createSequentialGroup()
+                                        .addGap(127, 127, 127)
+                                        .addComponent(cbStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(StoreManagerLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(lblSHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(StoreManagerLayout.createSequentialGroup()
                         .addGap(446, 446, 446)
                         .addComponent(btnCreateStoreManager)))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         StoreManagerLayout.setVerticalGroup(
             StoreManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,7 +242,7 @@ public class RolesSignUp extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(StoreManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStoreName)
-                    .addComponent(txtStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(StoreManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSManagerName)
@@ -266,7 +271,7 @@ public class RolesSignUp extends javax.swing.JPanel {
 
         lblWarehouseName.setBackground(new java.awt.Color(25, 54, 82));
         lblWarehouseName.setForeground(new java.awt.Color(204, 204, 204));
-        lblWarehouseName.setText("Store Name :");
+        lblWarehouseName.setText("Warehouse Name :");
 
         lblWHeading.setBackground(new java.awt.Color(25, 54, 82));
         lblWHeading.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -289,9 +294,6 @@ public class RolesSignUp extends javax.swing.JPanel {
         lblWManagerPassword.setBackground(new java.awt.Color(25, 54, 82));
         lblWManagerPassword.setForeground(new java.awt.Color(204, 204, 204));
         lblWManagerPassword.setText("Password :");
-
-        txtWarehouseName.setBackground(new java.awt.Color(25, 54, 82));
-        txtWarehouseName.setForeground(new java.awt.Color(204, 204, 204));
 
         txtWManagerName.setBackground(new java.awt.Color(25, 54, 82));
         txtWManagerName.setForeground(new java.awt.Color(204, 204, 204));
@@ -348,17 +350,20 @@ public class RolesSignUp extends javax.swing.JPanel {
                                 .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblWarehouseName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblWarehouseID, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(96, 96, 96)
-                                .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtWarehouseName)
-                                    .addComponent(txtWarehouseID, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(WarehouseManagerLayout.createSequentialGroup()
+                                        .addGap(96, 96, 96)
+                                        .addComponent(txtWarehouseID, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(WarehouseManagerLayout.createSequentialGroup()
+                                        .addGap(114, 114, 114)
+                                        .addComponent(cbWarehouseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(WarehouseManagerLayout.createSequentialGroup()
                         .addGap(446, 446, 446)
                         .addComponent(btnCreateWarehouseManager))
                     .addGroup(WarehouseManagerLayout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addComponent(lblWHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         WarehouseManagerLayout.setVerticalGroup(
             WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,7 +377,7 @@ public class RolesSignUp extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWarehouseName)
-                    .addComponent(txtWarehouseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbWarehouseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(WarehouseManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblWManagerName)
@@ -1008,53 +1013,30 @@ public class RolesSignUp extends javax.swing.JPanel {
     private void btnCreateStoreManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStoreManagerActionPerformed
         // TODO add your handling code here:
         String id= txtStoreID.getText();
-        String sname= txtStoreName.getText();
+        String sname= String.valueOf(cbStoreName.getSelectedItem());
         String mname=txtSManagerName.getText();
         String memail = txtSManagerEmail.getText();
         String username = txtSManagerUserName.getText();
         String password = String.valueOf(pwdSManagerPassword.getPassword());
-        
-      try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into store_manager values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,id);
-        preparedStatement.setString(2,sname);
-        preparedStatement.setString(3,mname);
-        preparedStatement.setString(4,memail);
-        preparedStatement.setString(5,username);
-        preparedStatement.setString(6,password);
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
-        JOptionPane.showMessageDialog(this, "Store Manager Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-}
+              
+       userdir.addStoreManager(id, sname, mname, memail, username, password);
+       JOptionPane.showMessageDialog(this, "Store Manager Successfully Created..!!");
+
     }//GEN-LAST:event_btnCreateStoreManagerActionPerformed
 
     private void btnCreateWarehouseManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWarehouseManagerActionPerformed
         // TODO add your handling code here:
         String id= txtWarehouseID.getText();
-        String sname= txtWarehouseName.getText();
+        String sname= String.valueOf(cbWarehouseName.getSelectedItem());
         String mname=txtWManagerName.getText();
         String memail = txtWManagerEmail.getText();
         String username = txtWManagerUserName.getText();
         String password = String.valueOf(pwdWManagerPassword.getPassword());
         
-      try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_manager values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,id);
-        preparedStatement.setString(2,sname);
-        preparedStatement.setString(3,mname);
-        preparedStatement.setString(4,memail);
-        preparedStatement.setString(5,username);
-        preparedStatement.setString(6,password);
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
-        JOptionPane.showMessageDialog(this, "Warehouse Manager Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-}   
+      userdir.addWarehouseManager(id, sname, mname, memail, username, password);
+      JOptionPane.showMessageDialog(this, "Warehouse Manager Created Successfully");
+       
+  
     }//GEN-LAST:event_btnCreateWarehouseManagerActionPerformed
 
     private void btnCreateCSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCSRActionPerformed
@@ -1063,20 +1045,10 @@ public class RolesSignUp extends javax.swing.JPanel {
         String csrname= txtCSRAgentName.getText();
         String csremail = txtCSRAgentEmail.getText();
         String password = String.valueOf(pwdCSRAgentPassword.getPassword());
-        
-      try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into csr values(?,?,?,?)");
-        preparedStatement.setString(1,id);
-        preparedStatement.setString(2,csrname);
-        preparedStatement.setString(3,csremail);
-        preparedStatement.setString(4,password);
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
+
+        userdir.addCSRAgent(id, csrname, csremail, password);
         JOptionPane.showMessageDialog(this, "CSR Agent Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-}   
+
     }//GEN-LAST:event_btnCreateCSRActionPerformed
 
     private void btnCreateSSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSSRActionPerformed
@@ -1086,19 +1058,10 @@ public class RolesSignUp extends javax.swing.JPanel {
         String ssremail = txtSSRAgentEmail.getText();
         String password = String.valueOf(pwdSSRAgentPassword.getPassword());
         
-      try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into ssr values(?,?,?,?)");
-        preparedStatement.setString(1,id);
-        preparedStatement.setString(2,ssrname);
-        preparedStatement.setString(3,ssremail);
-        preparedStatement.setString(4,password);
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
+        userdir.addSSRAgent(id, ssrname, ssremail, password);
         JOptionPane.showMessageDialog(this, "SSR Agent Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-}     
+ 
+
     }//GEN-LAST:event_btnCreateSSRActionPerformed
 
     private void btnShippingAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShippingAgentActionPerformed
@@ -1109,22 +1072,9 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtShippingAgentUserName.getText();
         String password = String.valueOf(pwdShippingAgent.getPassword());
         
-      
-      try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into shipping_agent values(?,?,?,?,?)");
-        preparedStatement.setString(1,name);
-        preparedStatement.setString(2,mobile);
-        preparedStatement.setString(3,bLocation);
-        preparedStatement.setString(4,username);
-        preparedStatement.setString(5,password);
-
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
+       userdir.addShippingAgent(name, mobile, bLocation, username, password);
         JOptionPane.showMessageDialog(this, "Shipping Agent Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-} 
+ 
     }//GEN-LAST:event_btnShippingAgentActionPerformed
 
     private void btnDAAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDAAgentActionPerformed
@@ -1136,25 +1086,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtDAAgentUserName.getText();
         String password = String.valueOf(pwdDAAgentPassword.getPassword());
         
-      
-      try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_agent values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,id);
-        preparedStatement.setString(2,name);
-        preparedStatement.setString(3,mobile);
-        preparedStatement.setString(4,bLocation);
-        preparedStatement.setString(5,username);
-        preparedStatement.setString(6,password);
-
-
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
+        userdir.addDAgent(id, name, mobile, bLocation, username, password);
         JOptionPane.showMessageDialog(this, "Delivery Agent Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-}    
+   
     }//GEN-LAST:event_btnDAAgentActionPerformed
+
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
         // TODO add your handling code here:
@@ -1165,26 +1101,38 @@ public class RolesSignUp extends javax.swing.JPanel {
       String password = String.valueOf(pwdUserPassword.getPassword());
       String gender = cbUserGender.getSelectedItem().toString();
   
-        try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into customer values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,name);
-        preparedStatement.setString(2,email);
-        preparedStatement.setString(3,username);
-        preparedStatement.setString(4,mobile);
-        preparedStatement.setString(5,password);
-        preparedStatement.setString(6,gender);
+      userdir.addCustomer(name, email, username, mobile, password, gender);
+      JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
 
-
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
-        JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-} 
       
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
+        private void populatestorenames(){
+        
+        try{
+        PreparedStatement preparedStatement =connection.prepareStatement("select StoreName from store");
+        ResultSet rs = preparedStatement.executeQuery();
+        while(rs.next()){
+            cbStoreName.addItem(rs.getString(1));
+        }
+        
+      }
+       catch(SQLException e){System.out.println(""+e);
+    }
+    }
+    
+    private void populateWarehouseNames(){
+        try{
+        PreparedStatement preparedStatement =connection.prepareStatement("select WarehouseName from warehouse");
+        ResultSet rs = preparedStatement.executeQuery();
+        while(rs.next()){
+            cbStoreName.addItem(rs.getString(1));
+        }
+        
+      }
+       catch(SQLException e){System.out.println(""+e);
+    }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CSR;
@@ -1201,7 +1149,9 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateWarehouseManager;
     private javax.swing.JToggleButton btnDAAgent;
     private javax.swing.JButton btnShippingAgent;
+    private javax.swing.JComboBox<String> cbStoreName;
     private javax.swing.JComboBox<String> cbUserGender;
+    private javax.swing.JComboBox<String> cbWarehouseName;
     private javax.swing.JLabel lblCHeading;
     private javax.swing.JLabel lblCSRAgentEmail;
     private javax.swing.JLabel lblCSRAgentID;
@@ -1273,7 +1223,6 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JTextField txtShippingAgentName;
     private javax.swing.JTextField txtShippingAgentUserName;
     private javax.swing.JTextField txtStoreID;
-    private javax.swing.JTextField txtStoreName;
     private javax.swing.JTextField txtUserEmail;
     private javax.swing.JTextField txtUserMobile;
     private javax.swing.JTextField txtUserName;
@@ -1282,6 +1231,5 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JTextField txtWManagerName;
     private javax.swing.JTextField txtWManagerUserName;
     private javax.swing.JTextField txtWarehouseID;
-    private javax.swing.JTextField txtWarehouseName;
     // End of variables declaration//GEN-END:variables
 }
