@@ -4,6 +4,11 @@
  */
 package userinterface.customer;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
 /**
  *
  * @author mahith
@@ -13,8 +18,11 @@ public class customerOrdersPanel extends javax.swing.JPanel {
     /**
      * Creates new form customerOrdersPanel
      */
+    Connection connection;
     public customerOrdersPanel() {
         initComponents();
+        populateCustomerOrders(connection);
+        this.connection=connection;
     }
 
     /**
@@ -37,7 +45,7 @@ public class customerOrdersPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Order ID", "Order Date", "Cost", "Status"
+                "Order ID", "Order Date", "Order Item", "Order Total"
             }
         ));
         jScrollPane1.setViewportView(tblOrderHistory);
@@ -61,6 +69,28 @@ public class customerOrdersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
+    public void populateCustomerOrders(Connection connection1){
+    
+         DefaultTableModel model = (DefaultTableModel) tblOrderHistory.getModel();
+        model.setRowCount(0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from user_orders");
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+            Object[] rows = new Object[4];
+            rows[0]= rs.getString(1);
+            rows[1]=rs.getString(2);
+            rows[2]=rs.getString(3);
+            rows[3]=rs.getString(4);
+
+          
+            
+            model.addRow(rows);
+            }
+        }
+        catch(SQLException e){System.out.println(e);}
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblOrderHistory;

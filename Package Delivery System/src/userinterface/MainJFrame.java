@@ -260,6 +260,9 @@ public class MainJFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 newUserMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                newUserMousePressed(evt);
+            }
         });
 
         newUserSeperator.setForeground(new java.awt.Color(204, 204, 204));
@@ -771,8 +774,25 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_signInButtonPanelMouseClicked
 
     private void newUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newUserMouseClicked
-        // TODO add your handling code here:   
+        // TODO add your handling code here:  
+        
+        loginJPanel.setVisible(false);
+            container.setVisible(true);
+            leftPanel.setVisible(true);
+            logoutLabel.setVisible(false);
+            backLabel.setVisible(true);
+            txtUserName.setText("");
+            fldPassword.setText("");
+          signupPanel signUp = new signupPanel(connection);
+          container.add("sign up", signUp);
+          CardLayout layout = (CardLayout) container.getLayout();
+          layout.next(container);
+        
     }//GEN-LAST:event_newUserMouseClicked
+
+    private void newUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newUserMousePressed
+    
+    }//GEN-LAST:event_newUserMousePressed
 
     /**
      * @param args the command line arguments
