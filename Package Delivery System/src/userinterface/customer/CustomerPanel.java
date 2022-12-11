@@ -46,10 +46,10 @@ public class CustomerPanel extends javax.swing.JPanel {
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         lblProductQuantity = new javax.swing.JLabel();
-        productQuantity = new javax.swing.JTextField();
         addToCartBtn = new javax.swing.JButton();
         cartLabel = new javax.swing.JLabel();
         count = new javax.swing.JLabel();
+        productQuantity = new javax.swing.JSpinner();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -103,14 +103,6 @@ public class CustomerPanel extends javax.swing.JPanel {
         lblProductQuantity.setForeground(new java.awt.Color(255, 255, 255));
         lblProductQuantity.setText("Quantity");
 
-        productQuantity.setBackground(new java.awt.Color(25, 56, 82));
-        productQuantity.setForeground(new java.awt.Color(204, 204, 204));
-        productQuantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productQuantityActionPerformed(evt);
-            }
-        });
-
         addToCartBtn.setBackground(new java.awt.Color(25, 56, 82));
         addToCartBtn.setForeground(new java.awt.Color(204, 204, 204));
         addToCartBtn.setText("Add to Cart");
@@ -148,10 +140,13 @@ public class CustomerPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(256, 256, 256)
                         .addComponent(lblProductQuantity)
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addToCartBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(productQuantity))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(addToCartBtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(productQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(463, 463, 463))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(45, 45, 45)
@@ -183,8 +178,8 @@ public class CustomerPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(121, 121, 121)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductQuantity))
+                    .addComponent(lblProductQuantity)
+                    .addComponent(productQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(addToCartBtn)
                 .addContainerGap(247, Short.MAX_VALUE))
@@ -194,10 +189,6 @@ public class CustomerPanel extends javax.swing.JPanel {
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void productQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productQuantityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_productQuantityActionPerformed
 
     private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
         // TODO add your handling code here:
@@ -223,7 +214,7 @@ public class CustomerPanel extends javax.swing.JPanel {
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into cart values(?,?,?)");
             preparedStatement.setString(1, selectedProduct);
             preparedStatement.setDouble(2, price);
-            preparedStatement.setString(3, productQuantity.getText());
+            preparedStatement.setInt(3, Integer.valueOf(productQuantity.getValue().toString()));
             preparedStatement.executeUpdate();
         
         }catch(Exception e){
@@ -289,7 +280,7 @@ public class CustomerPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblProductQuantity;
     private javax.swing.JLabel lblSupplyOrders;
-    private javax.swing.JTextField productQuantity;
+    private javax.swing.JSpinner productQuantity;
     private javax.swing.JTable tblSearchCatalog;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
