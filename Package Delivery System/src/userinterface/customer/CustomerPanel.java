@@ -25,6 +25,7 @@ public class CustomerPanel extends javax.swing.JPanel {
      */
     public CustomerPanel(Connection connection) {
         initComponents();
+        populateTable(connection);
          countCart =0;
         this.connection=connection;
         
@@ -303,6 +304,25 @@ public class CustomerPanel extends javax.swing.JPanel {
 
 //            model.addRow(Row);
 //        }
+    }
+    
+    public void populateTable(Connection connection){
+        DefaultTableModel model = (DefaultTableModel) tblSearchCatalog.getModel();
+        model.setRowCount(0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from store_items");
+            
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+            Object[] rows = new Object[3];
+            rows[0]= rs.getString(2);
+            rows[1]=rs.getString(4);
+            rows[2]=rs.getString(3);
+            
+            model.addRow(rows);
+            }
+        }
+        catch(SQLException e){System.out.println(e);}
     }
 
 }

@@ -17,3 +17,5 @@ select * from warehouse_orders;
 select * from user_orders;
 select * from shipment_orders;
 select * from supplier_orders;
+select * from cart;
+select * from delivery_orders;

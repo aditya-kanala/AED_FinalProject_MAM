@@ -166,7 +166,7 @@ public class shippingHomePanel extends javax.swing.JPanel {
 
                 preparedStatement.setString(1,rs1.getString(1));
                 preparedStatement.setString(2,rs1.getString(2));
-                preparedStatement.setString(3,"");
+                preparedStatement.setString(3,rs1.getString(3));
                 preparedStatement.setString(4,cbStatus.getSelectedItem().toString());
 
                 preparedStatement.executeUpdate();
@@ -184,10 +184,6 @@ public class shippingHomePanel extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_btnFinalizeOrderActionPerformed
-
-    private void btnAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddOrderActionPerformed
 
     private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
         // TODO add your handling code here:
@@ -214,6 +210,14 @@ public class shippingHomePanel extends javax.swing.JPanel {
 
         System.out.println(selectedOrder);
     }//GEN-LAST:event_btnViewOrderActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void btnAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddOrderActionPerformed
     
     public void populateshipmentOrderTable(Connection connection){
         DefaultTableModel model = (DefaultTableModel) tblShipmentOrders.getModel();
