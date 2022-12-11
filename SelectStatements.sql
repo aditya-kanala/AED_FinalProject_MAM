@@ -16,3 +16,4 @@ select * from store_items;
 select * from warehouse_orders;
 select * from user_orders;
 select * from shipment_orders;
+select * from supplier_orders;
