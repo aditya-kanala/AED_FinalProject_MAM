@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.UserAccount;
+import Model.OrganizationsDirectory;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -16,9 +17,11 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
      * Creates new form Store_WarehouseSignUp
      */
     Connection connection;
-    public OrganizationsSignUp(Connection connection) {
+    OrganizationsDirectory orgDir;
+    public OrganizationsSignUp(Connection connection, OrganizationsDirectory orgDir) {
         initComponents();
         this.connection=connection;
+        this.orgDir=orgDir;
     }
 
     /**
@@ -406,84 +409,68 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
     private void btnCreateStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStoreActionPerformed
         // TODO add your handling code here:
+        String id=txtStoreID.getText();
+        String name=txtStoreName.getText();
+        String location=txtStoreLocation.getText();
         Double longitude = 55.46;
         Double latitude =-85.23;
-            try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into store values(?,?,?,?,?)");
-        preparedStatement.setString(1,txtStoreID.getText());
-        preparedStatement.setString(2,txtStoreName.getText());
-        preparedStatement.setString(3,txtStoreLocation.getText());
-        preparedStatement.setString(4,String.valueOf(longitude));
-        preparedStatement.setString(5,String.valueOf(latitude));
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
-        JOptionPane.showMessageDialog(this, "Store Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-}
+
+        if(orgDir.addStore(id, name, location, longitude, latitude))
+             JOptionPane.showMessageDialog(this, "Warehouse Successfully Created..!!");
+        else 
+             JOptionPane.showMessageDialog(this, "Warehouse not Created..!!");
+
+
     }//GEN-LAST:event_btnCreateStoreActionPerformed
 
     private void btnCreateWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWarehouseActionPerformed
         // TODO add your handling code here:
+        String id=txtWarehouseID.getText();
+        String name=txtWarehouseName.getText();
+        String location=txtWarehouseLocation.getText();
+        String type = txtWarehouseType.getText();
         Double longitude = 55.46;
         Double latitude =-85.23;
-        try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,txtWarehouseID.getText());
-        preparedStatement.setString(2,txtWarehouseName.getText());
-        preparedStatement.setString(3,txtWarehouseType.getText());
-        preparedStatement.setString(4,txtWarehouseLocation.getText());
-        preparedStatement.setString(5,String.valueOf(longitude));
-        preparedStatement.setString(6,String.valueOf(latitude));
         
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
-        JOptionPane.showMessageDialog(this, "Warehouse Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-        }
+        if(orgDir.addWarehouse(id, name, type, location, longitude, latitude))
+         JOptionPane.showMessageDialog(this, "Warehouse Successfully Created..!!");
+        else 
+         JOptionPane.showMessageDialog(this, "Warehouse not Created..!!");
+
     }//GEN-LAST:event_btnCreateWarehouseActionPerformed
 
     private void btnFarmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFarmActionPerformed
         // TODO add your handling code here:
+        String name = txtFarmname.getText();
+        String owner = txtFarmOwner.getText();
+        String produce= txtFarmProduce.getText();
+        String location = txtFarmLocation.getText();
         Double longitude = 55.46;
         Double latitude =-85.23;
-        try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into farms values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,txtFarmname.getText());
-        preparedStatement.setString(2,txtFarmOwner.getText());
-        preparedStatement.setString(3,txtFarmProduce.getText());
-        preparedStatement.setString(4,txtFarmLocation.getText());
-        preparedStatement.setString(5,String.valueOf(longitude));
-        preparedStatement.setString(6,String.valueOf(latitude));
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
-        JOptionPane.showMessageDialog(this, "Farm Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-        }
+
+        if(orgDir.addFarm(name, owner, produce, location, longitude, latitude))
+         JOptionPane.showMessageDialog(this, "Farm Successfully Created..!!");
+        else
+           JOptionPane.showMessageDialog(this, "Farm Not Created..!!");
+
     }//GEN-LAST:event_btnFarmActionPerformed
 
     private void btnCreateSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSupplierActionPerformed
         // TODO add your handling code here:
    
-        try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into supplier values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,txtSupplierName.getText());
-        preparedStatement.setString(2,txtSupplierEmail.getText());
-        preparedStatement.setString(3,txtSupplierMobile.getText());
-        preparedStatement.setString(4,txtSupplierLocation.getText());
-        preparedStatement.setString(5,txtSupplierUserName.getText());
-        preparedStatement.setString(6,pwdSupplier.getText());
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
+        String name =txtSupplierName.getText();
+        String email =txtSupplierEmail.getText();
+        String mobile =String.valueOf(txtSupplierMobile.getText());
+        String location =txtSupplierLocation.getText();
+        String username=txtSupplierUserName.getText();
+        String password =   pwdSupplier.getText(); 
+            
+        if(orgDir.addSupplier(name, email, mobile, location, username, password))
         JOptionPane.showMessageDialog(this, "Supplier Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-        }
+        else
+         JOptionPane.showMessageDialog(this, "Supplier Not Created..!!");
+
+
     }//GEN-LAST:event_btnCreateSupplierActionPerformed
 
 

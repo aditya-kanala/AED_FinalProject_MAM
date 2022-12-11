@@ -24,15 +24,17 @@ Browser browser;
 String longi;
 String lati;
 int zoom;
+String orderid;
 Connection connection;
 
     /**
      * Creates new form mapMarkerPanel
      */
-    public mapMarkerPanel(String longi, String lati,int zoom) {
+    public mapMarkerPanel(String longi, String lati,int zoom, String selectedProduct) {
         this.longi = longi;
         this.lati = lati;
         this.zoom = zoom;
+        this.orderid = selectedProduct;
         initComponents();
         
         loadMarkedMaps(longi,lati,zoom);
@@ -47,15 +49,10 @@ Connection connection;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSetLocation = new javax.swing.JButton();
+        setMarkers = new javax.swing.JButton();
         mapsArea = new javax.swing.JPanel();
 
-        btnSetLocation.setText("Set Location");
-        btnSetLocation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetLocationActionPerformed(evt);
-            }
-        });
+        setMarkers.setText("Show Location");
 
         mapsArea.setLayout(new java.awt.CardLayout());
 
@@ -65,41 +62,19 @@ Connection connection;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(463, 463, 463)
-                .addComponent(btnSetLocation)
-                .addContainerGap(500, Short.MAX_VALUE))
+                .addComponent(setMarkers)
+                .addContainerGap(488, Short.MAX_VALUE))
             .addComponent(mapsArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(btnSetLocation)
+                .addComponent(setMarkers)
                 .addGap(17, 17, 17)
                 .addComponent(mapsArea, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSetLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetLocationActionPerformed
-        // TODO add your handling code here:
-
-        String[] split1= browser.url().split("/place/");
-        String[] split2 = split1[1].split("/@");
-        String[] placeName = split2[0].split("\\+");
-        String[] longLat = split2[1].split(",");
-        String place="";
-
-        int size = placeName.length;
-        for(int i=0;i<size;i++){
-            place+=placeName[i]+" ";
-        }
-
-        deliveryAgentHome agent = new deliveryAgentHome(connection);
-        this.getParent().add("customer Cart",agent);
-        CardLayout layout = (CardLayout) this.getParent().getLayout();
-        layout.next(this.getParent());
-
-        System.out.println(place+" Long is "+longLat[0]+" & Lat is"+ longLat[1]);
-    }//GEN-LAST:event_btnSetLocationActionPerformed
 
      public void loadMarkedMaps(String longi,String lati,int zoom){
         
@@ -113,14 +88,16 @@ Connection connection;
          browser.navigation().loadUrl("D:\\AED Project\\AED_FinalProject_MAM\\Google Maps\\index.html");
          
         String first = "var locations = [\n";
-        String second = "['Booking 1',"+Integer.valueOf(longi)+","+Integer.valueOf(longi)+","+zoom+"]";
+        String second = "["+orderid+","+longi+","+lati+","+String.valueOf(zoom)+"]";
+        System.out.println(second);
+        System.out.println("longi"+longi);
         String third = "];\n";
         String fourth = "var i;\n\nfor (i = 0; i < locations.length; i++) {  \n var marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0]\n });\n}\n\tbounds.extend(marker.position);";
         String fifth = "\nmap.fitBounds(bounds)";
         String setMarkerScript = first+second+third+fourth+fifth;        
         
         
-        //setMarkers.addActionListener(e -> browser.mainFrame().ifPresent(frame -> frame.executeJavaScript(setMarkerScript)));
+        setMarkers.addActionListener(e -> browser.mainFrame().ifPresent(frame -> frame.executeJavaScript(setMarkerScript)));
         
         mapsArea.add(view);
         
@@ -134,7 +111,7 @@ Connection connection;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSetLocation;
     private javax.swing.JPanel mapsArea;
+    private javax.swing.JButton setMarkers;
     // End of variables declaration//GEN-END:variables
 }

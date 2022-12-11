@@ -24,6 +24,8 @@ public class customerCart extends javax.swing.JPanel {
     String lati;
     String loci;
     int zoom;
+    String quantity;
+    String selectedProduct;
     /**
      * Creates new form customerCart
      */
@@ -93,12 +95,17 @@ public class customerCart extends javax.swing.JPanel {
                 "Product", "Price", "Quantity"
             }
         ));
+        tblCart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCartMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCart);
 
         setLocationLabel.setForeground(new java.awt.Color(255, 255, 255));
         setLocationLabel.setText("Set Location");
 
-        selectLocationBtn.setBackground(null);
+        selectLocationBtn.setBackground(new java.awt.Color(25, 56, 82));
         selectLocationBtn.setForeground(new java.awt.Color(204, 204, 204));
         selectLocationBtn.setText("Open Maps");
         selectLocationBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +126,6 @@ public class customerCart extends javax.swing.JPanel {
         totalCartlbl.setForeground(new java.awt.Color(255, 255, 255));
         totalCartlbl.setText("Total Cart value");
 
-        txtCartValue.setBackground(null);
         txtCartValue.setForeground(new java.awt.Color(204, 204, 204));
         txtCartValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +133,7 @@ public class customerCart extends javax.swing.JPanel {
             }
         });
 
-        placeOrderBtn.setBackground(null);
+        placeOrderBtn.setBackground(new java.awt.Color(25, 56, 82));
         placeOrderBtn.setForeground(new java.awt.Color(204, 204, 204));
         placeOrderBtn.setText("Place Order");
         placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +223,7 @@ public class customerCart extends javax.swing.JPanel {
         }
         
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?,?,?,?,?) ");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?,?,?,?,?,?) ");
             preparedStatement.setString(1, generateUniqueId());
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3, products);
@@ -231,6 +237,7 @@ public class customerCart extends javax.swing.JPanel {
             preparedStatement.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Order Placed");
+            
         }catch(Exception e){
             System.out.println(e);
         }
@@ -246,13 +253,31 @@ public class customerCart extends javax.swing.JPanel {
          
     }//GEN-LAST:event_placeOrderBtnActionPerformed
 
+    private void tblCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCartMouseClicked
+        // TODO add your handling code here:
+        
+        int selectedRowIndex  = tblCart.getSelectedRow();
+        
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this,"Please select a Row to View");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+         quantity = (String) model.getValueAt(selectedRowIndex,2);
+                  selectedProduct = (String) model.getValueAt(selectedRowIndex,0);
+
+        
+        
+    }//GEN-LAST:event_tblCartMouseClicked
+
     
     
     public String generateUniqueId(){
         Random random = new Random();
         String res = "";
         int arr[] = {1,2,3,4,5,6,7,8,9};
-        for(int i=0;i<16;i++){
+        for(int i=0;i<6;i++){
             res += arr[random.nextInt(arr.length)];
         }
         return res;

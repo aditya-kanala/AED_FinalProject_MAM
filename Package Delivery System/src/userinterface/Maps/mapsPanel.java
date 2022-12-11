@@ -102,7 +102,7 @@ public class mapsPanel extends javax.swing.JPanel {
                 String[] split2 = split1[1].split("/@");
                 String[] placeName = split2[0].split("\\+");
                 String[] longLat = split2[1].split(",");
-                String[] zoom = longLat[2].split("z/data");
+                String[] zoom = longLat[2].split("z");
                 int zoomer = Integer.valueOf(zoom[0]);
                 String place="";
                 
@@ -118,7 +118,7 @@ public class mapsPanel extends javax.swing.JPanel {
                 
                 
                 
-                System.out.println(place+" Long is "+longLat[0]+" & Lat is"+ longLat[1]);
+                System.out.println(place+" Long is "+longLat[0]+" & Lat is"+ longLat[1]+" zoom"+zoomer);
     }//GEN-LAST:event_btnSetLocationActionPerformed
 
 

@@ -173,14 +173,19 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
                 return;
             }
             DefaultTableModel model = (DefaultTableModel) tblUserOrders.getModel();
+            
             String orderItems = (String) model.getValueAt(selectedRowIndex, 2);
-            double orderTotal = (double) model.getValueAt(selectedRowIndex, 3);
-
-            PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?)");
-            preparedStatement.setString(1,generateUniqueId());
+            String orderTotal = (String) model.getValueAt(selectedRowIndex, 3);
+            String orderID = (String) model.getValueAt(selectedRowIndex, 0);
+            Double total = Double.valueOf(orderTotal);
+            
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?,?)");
+            preparedStatement.setString(1,orderID);
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3,orderItems);
-            preparedStatement.setDouble(4,orderTotal);
+            preparedStatement.setDouble(4,total);
+            preparedStatement.setString(5,"Shipment requested");
+
 
             preparedStatement.executeUpdate();
             System.out.println("Warehouse Order inserted Successfully");
