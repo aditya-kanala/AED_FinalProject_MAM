@@ -4,8 +4,10 @@
  */
 package userinterface.Shipping;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.sql.*;
 import userinterface.Delivery.deliveryAgentHome;
+import userinterface.StoreManager.ManageStoreJPanel;
 /**
  *
  * @author mahith
@@ -18,6 +20,7 @@ public class shippingCompanyPanel extends javax.swing.JPanel {
     public shippingCompanyPanel(Connection connection) {
         this.connection = connection;
         initComponents();
+        homePanel();
         
         shippingHomePanel shipping = new shippingHomePanel(connection);
         rightShippingUnitPanel.add("deliveryAgent",shipping);
@@ -209,6 +212,7 @@ public class shippingCompanyPanel extends javax.swing.JPanel {
 
     private void homePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMousePressed
         // TODO add your handling code here:
+        homePanel();
     }//GEN-LAST:event_homePanelMousePressed
 
     private void manageOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrdersPanelMousePressed
@@ -219,6 +223,13 @@ public class shippingCompanyPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_manageSupplyOrdersPanelMousePressed
 
+    private void homePanel(){
+        homePanel.setBackground(new Color(135, 206, 235));
+        shippingHomePanel shippingHomePanel = new shippingHomePanel(connection);        
+        rightShippingUnitPanel.add("shippingHomePanel",shippingHomePanel);
+        CardLayout layout = (CardLayout) rightShippingUnitPanel.getLayout();
+        layout.next(rightShippingUnitPanel);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel homeLabel;

@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -409,11 +410,30 @@ public class MainJFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitLabelMouseClicked
 
+    /*Login Validation*/
+    private boolean checkfield(){
+    ArrayList msg=null;
+    msg=new ArrayList();
+    
+    if(txtUserName.getText().isBlank())
+        msg.add(("Please enter the correct User Name"));
+    if(String.valueOf(fldPassword.getText()).isBlank())
+        msg.add("Password field is empty");
+     
+    if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true;
+    }
+    
+    
     private void signInButtonPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInButtonPanelMouseClicked
         // TODO add your handling code here:
         
         try{ 
-        
+        if(checkfield()){
          /*BPO Admin Login*/   
           if(txtUserName.getText().equalsIgnoreCase("bpoadmin")){  
             PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from admins where username = ?");
@@ -421,7 +441,8 @@ public class MainJFrame extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "BPO Admin Login Successful..!!");
+                      
+                    JOptionPane.showMessageDialog(this, "BPO Admin Login Successful..!!");
                         bpoAdminPanel panel = new bpoAdminPanel(connection);
                         container.add("BPO Admin work Area", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
@@ -434,6 +455,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                       
                 }else{
                     JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
 
@@ -553,7 +575,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         
-        
           }
           
          /*Store Manager Login*/ 
@@ -564,7 +585,7 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
-                        StoreManagerJPanel panel = new StoreManagerJPanel(connection);
+                        StoreManagerJPanel panel = new StoreManagerJPanel(connection, txtUserName.getText());
                         container.add("store manager", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
@@ -782,7 +803,7 @@ public class MainJFrame extends javax.swing.JFrame {
           }
           
           /*Delivery Agent*/  
-          else if (txtUserName.getText().contains("dagent")){
+          else if (txtUserName.getText().contains("deliveryagent")){
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from delivery_agent where AgentUserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 
@@ -811,8 +832,11 @@ public class MainJFrame extends javax.swing.JFrame {
           }  
           
           else{
-            JOptionPane.showMessageDialog(this, "No Admin Found for the Credentials"+" :( :(");
+            JOptionPane.showMessageDialog(this, "No Active User found for the Credentials"+" :( :(");
           }
+        }
+        else {/*JOptionPane.showMessageDialog(this, "Please Enter Valid Credentials..!!");*/}
+ 
         }
         catch(SQLException e){
             System.out.println("Error while retrieving data  "+e);

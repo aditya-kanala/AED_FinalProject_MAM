@@ -5,6 +5,7 @@
 package userinterface.UserAccount;
 import Model.OrganizationsDirectory;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -407,6 +408,23 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean StoreValidation(){
+            ArrayList msg=null;
+    msg= new ArrayList();
+    
+        if(txtStoreID.getText().isBlank()|| !(txtStoreID.getText().matches("^[0-9a-zA-Z ]*$")))
+        {msg.add("Please enter the Store ID without special characters and do not leave it blank");}
+        if(txtStoreName.getText().isBlank()|| !(txtStoreName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the name without digits or special characters and do not leave it blank");}
+        
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true;
+    }
     private void btnCreateStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStoreActionPerformed
         // TODO add your handling code here:
         String id=txtStoreID.getText();
@@ -415,14 +433,37 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         Double longitude = 55.46;
         Double latitude =-85.23;
 
+        if(StoreValidation()){
         if(orgDir.addStore(id, name, location, longitude, latitude))
-             JOptionPane.showMessageDialog(this, "Warehouse Successfully Created..!!");
+             JOptionPane.showMessageDialog(this, "Store Successfully Created..!!");
         else 
-             JOptionPane.showMessageDialog(this, "Warehouse not Created..!!");
-
+             JOptionPane.showMessageDialog(this, "Store not Created..!!");
+        }
+        txtStoreID.setText("");
+        txtStoreName.setText("");
+        txtStoreLocation.setText("");
+        //else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
 
     }//GEN-LAST:event_btnCreateStoreActionPerformed
 
+     public boolean WarehouseValidation(){
+            ArrayList msg=null;
+            msg= new ArrayList();
+    
+        if(txtWarehouseID.getText().isBlank()|| !(txtWarehouseID.getText().matches("^[0-9a-zA-Z ]*$")))
+        {msg.add("Please enter the Store ID without special characters and do not leave it blank");}
+        if(txtWarehouseName.getText().isBlank()|| !(txtWarehouseName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the name without digits or special characters and do not leave it blank");}
+        if(txtWarehouseType.getText().isBlank()|| !(txtWarehouseType.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Warehouse Type without digits or special characters and do not leave it blank");}
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true;
+    }
     private void btnCreateWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWarehouseActionPerformed
         // TODO add your handling code here:
         String id=txtWarehouseID.getText();
@@ -432,13 +473,40 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         Double longitude = 55.46;
         Double latitude =-85.23;
         
+       if(WarehouseValidation()){
         if(orgDir.addWarehouse(id, name, type, location, longitude, latitude))
          JOptionPane.showMessageDialog(this, "Warehouse Successfully Created..!!");
         else 
          JOptionPane.showMessageDialog(this, "Warehouse not Created..!!");
+       }
+        txtWarehouseID.setText("");
+        txtWarehouseName.setText("");
+        txtWarehouseLocation.setText(""); 
+       // else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
 
     }//GEN-LAST:event_btnCreateWarehouseActionPerformed
 
+    public boolean farmValidation(){
+            ArrayList msg=null;
+            msg= new ArrayList();
+    
+        if(txtFarmname.getText().isBlank()|| !(txtFarmname.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Farm Name without digits or special characters and do not leave it blank");}
+        if(txtFarmOwner.getText().isBlank()|| !(txtFarmOwner.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Owner Name without digits or special characters and do not leave it blank");} 
+        if(txtFarmProduce.getText().isBlank()|| !(txtFarmProduce.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Produce without digits or special characters and do not leave it blank");}
+        
+        
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true;
+    }
+    
     private void btnFarmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFarmActionPerformed
         // TODO add your handling code here:
         String name = txtFarmname.getText();
@@ -448,13 +516,42 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         Double longitude = 55.46;
         Double latitude =-85.23;
 
+       if(farmValidation()){ 
         if(orgDir.addFarm(name, owner, produce, location, longitude, latitude))
          JOptionPane.showMessageDialog(this, "Farm Successfully Created..!!");
         else
            JOptionPane.showMessageDialog(this, "Farm Not Created..!!");
-
+       }
+       txtFarmname.setText("");
+       txtFarmOwner.setText("");
+       txtFarmProduce.setText("");
+       txtFarmLocation.setText("");
+        //else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
+ 
     }//GEN-LAST:event_btnFarmActionPerformed
 
+    public boolean supplierValidation(){
+        ArrayList msg=null;
+    msg= new ArrayList();
+    
+     if(txtSupplierName.getText().isBlank()|| !(txtSupplierName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the name without digits or special characters but do not leave it blank");}
+     if(txtSupplierEmail.getText().isBlank()||!(txtSupplierEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
+        msg.add(("Please enter the correct email (xxx@xx.xx)"));
+     if(!(String.valueOf(txtSupplierMobile.getText()).matches("^[0-9]{10}$")))
+       {msg.add("Please enter the 10 digit mobile number");}
+     if(txtSupplierUserName.getText().isBlank()|| !(txtSupplierUserName.getText().matches("^[0-9a-zA-Z@._]*$")))
+        {msg.add("Please enter the User name but do not leave it blank. Use only digts,lower & upper alphabets,special characters(@,.,_)");}
+     if(pwdSupplier.getText().isBlank())
+        msg.add("Password field is empty");
+  
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true;
+    }
     private void btnCreateSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSupplierActionPerformed
         // TODO add your handling code here:
    
@@ -464,13 +561,20 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         String location =txtSupplierLocation.getText();
         String username=txtSupplierUserName.getText();
         String password =   pwdSupplier.getText(); 
-            
+       
+        if(supplierValidation()){
         if(orgDir.addSupplier(name, email, mobile, location, username, password))
         JOptionPane.showMessageDialog(this, "Supplier Successfully Created..!!");
         else
          JOptionPane.showMessageDialog(this, "Supplier Not Created..!!");
-
-
+        }
+        //else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
+        txtSupplierName.setText("");
+        txtSupplierEmail.setText("");
+        txtSupplierMobile.setText("");
+        txtSupplierLocation.setText("");
+        txtSupplierUserName.setText("");
+        pwdSupplier.setText(""); 
     }//GEN-LAST:event_btnCreateSupplierActionPerformed
 
 

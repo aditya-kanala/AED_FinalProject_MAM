@@ -5,6 +5,7 @@
 package userinterface.UserAccount;
 import Model.UserDirectory;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 /**
  *
@@ -1010,6 +1011,31 @@ public class RolesSignUp extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean storeManagerValidation(){
+    ArrayList msg=null;
+    msg= new ArrayList();
+    
+        if(txtStoreID.getText().isBlank()|| !(txtStoreID.getText().matches("^[0-9a-zA-Z ]*$")))
+        {msg.add("Please enter the Store ID without special characters and do not leave it blank");}
+        if(String.valueOf(cbStoreName.getSelectedItem()).isBlank())
+        {msg.add("Please select store name");}
+        if(txtSManagerName.getText().isBlank()|| !(txtSManagerName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Store Manager Name without special characters and do not leave it blank");} 
+        if(txtSManagerEmail.getText().isBlank()||!(txtSManagerEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
+        msg.add(("Please enter the correct email (xxx@xx.xx)"));
+       if(txtSManagerUserName.getText().isBlank()|| !(txtSManagerUserName.getText().matches("^[0-9a-zA-Z@._]*$")))
+        {msg.add("Please enter the User name but do not leave it blank. Use only digts,lower & upper alphabets,special characters(@,.,_)");}
+       if(String.valueOf(pwdSManagerPassword.getPassword()).isBlank())
+        msg.add("Password field is empty");
+           
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+    }
     private void btnCreateStoreManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStoreManagerActionPerformed
         // TODO add your handling code here:
         String id= txtStoreID.getText();
@@ -1019,13 +1045,45 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtSManagerUserName.getText();
         String password = String.valueOf(pwdSManagerPassword.getPassword());
               
-       if(userdir.addStoreManager(id, sname, mname, memail, username, password))
+      if(storeManagerValidation()){
+        if(userdir.addStoreManager(id, sname, mname, memail, username, password))
        JOptionPane.showMessageDialog(this, "Store Manager Successfully Created..!!");
        else
         JOptionPane.showMessageDialog(this, "Store Manager Not Created..!!");
- 
+      }
+      txtStoreID.setText("");
+      cbStoreName.setSelectedItem("");
+      txtSManagerName.setText("");
+      txtSManagerEmail.setText("");
+      txtSManagerUserName.setText("");  
+      pwdSManagerPassword.setText("");
     }//GEN-LAST:event_btnCreateStoreManagerActionPerformed
 
+      public boolean warehouseManagerValidation(){
+    ArrayList msg=null;
+    msg= new ArrayList();
+    
+        if(txtWarehouseID.getText().isBlank()|| !(txtWarehouseID.getText().matches("^[0-9a-zA-Z ]*$")))
+        {msg.add("Please enter the Warehouse ID without special characters and do not leave it blank");}
+        if(String.valueOf(cbWarehouseName.getSelectedItem()).isBlank())
+        {msg.add("Please select Warehouse name");}
+        if(txtWManagerName.getText().isBlank()|| !(txtWManagerName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Warehouse Manager Name without special characters and do not leave it blank");} 
+        if(txtWManagerEmail.getText().isBlank()||!(txtWManagerEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
+        msg.add(("Please enter the correct email (xxx@xx.xx)"));
+       if(txtWManagerUserName.getText().isBlank()|| !(txtWManagerUserName.getText().matches("^[0-9a-zA-Z@._]*$")))
+        {msg.add("Please enter the User name but do not leave it blank. Use only digts,lower & upper alphabets,special characters(@,.,_)");}
+       if(String.valueOf(pwdWManagerPassword.getPassword()).isBlank())
+        msg.add("Password field is empty");
+           
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+    }  
     private void btnCreateWarehouseManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWarehouseManagerActionPerformed
         // TODO add your handling code here:
         String id= txtWarehouseID.getText();
@@ -1035,14 +1093,43 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtWManagerUserName.getText();
         String password = String.valueOf(pwdWManagerPassword.getPassword());
         
-      if(userdir.addWarehouseManager(id, sname, mname, memail, username, password))
+      if(warehouseManagerValidation()){
+        if(userdir.addWarehouseManager(id, sname, mname, memail, username, password))
       JOptionPane.showMessageDialog(this, "Warehouse Manager Created Successfully");
        else
             JOptionPane.showMessageDialog(this, "Warehouse Manager Not Successfully");
-   
-  
+      }
+      
+     txtWarehouseID.setText("");
+     cbWarehouseName.setSelectedItem("");
+     txtWManagerName.setText("");
+     txtWManagerEmail.setText("");
+     txtWManagerUserName.setText("");
+   pwdWManagerPassword.setText("");
     }//GEN-LAST:event_btnCreateWarehouseManagerActionPerformed
 
+    public boolean csrValidation(){
+        ArrayList msg=null;
+    msg= new ArrayList();
+    
+        if(txtCSRAgentID.getText().isBlank()|| !(txtCSRAgentID.getText().matches("^[0-9a-zA-Z ]*$")))
+        {msg.add("Please enter the CSR Agent ID without special characters and do not leave it blank");}
+        if(txtCSRAgentName.getText().isBlank() || !(txtCSRAgentName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the CSR Agent Name without special characters and do not leave it blank");}
+        if(txtCSRAgentEmail.getText().isBlank()||!(txtCSRAgentEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
+        msg.add(("Please enter the correct email (xxx@xx.xx)"));
+       if(String.valueOf(pwdCSRAgentPassword.getPassword()).isBlank())
+        msg.add("Password field is empty");
+           
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+    }
+    
     private void btnCreateCSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCSRActionPerformed
         // TODO add your handling code here:
         String id= txtCSRAgentID.getText();
@@ -1050,13 +1137,40 @@ public class RolesSignUp extends javax.swing.JPanel {
         String csremail = txtCSRAgentEmail.getText();
         String password = String.valueOf(pwdCSRAgentPassword.getPassword());
 
+        if(csrValidation()){
         if(userdir.addCSRAgent(id, csrname, csremail, password))
         JOptionPane.showMessageDialog(this, "CSR Agent Successfully Created..!!");
         else
           JOptionPane.showMessageDialog(this, "CSR Agent Not Created..!!");
-    
+        }
+       txtCSRAgentID.setText(""); 
+       txtCSRAgentName.setText(""); 
+       txtCSRAgentEmail.setText("");
+       pwdCSRAgentPassword.setText("");
     }//GEN-LAST:event_btnCreateCSRActionPerformed
 
+   
+    public boolean ssrValidation(){
+        ArrayList msg=null;
+    msg= new ArrayList();
+    
+        if(txtSSRAgentID.getText().isBlank()|| !(txtSSRAgentID.getText().matches("^[0-9a-zA-Z ]*$")))
+        {msg.add("Please enter the SSR Agent ID without special characters and do not leave it blank");}
+        if(txtSSRAgentName.getText().isBlank() || !(txtSSRAgentName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the SSR Agent Name without special characters and do not leave it blank");}
+        if(txtSSRAgentEmail.getText().isBlank()||!(txtSSRAgentEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
+        msg.add(("Please enter the correct email (xxx@xx.xx)"));
+       if(String.valueOf(pwdSSRAgentPassword.getPassword()).isBlank())
+        msg.add("Password field is empty");
+           
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+    } 
     private void btnCreateSSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSSRActionPerformed
         // TODO add your handling code here:\
         String id= txtSSRAgentID.getText();
@@ -1064,14 +1178,43 @@ public class RolesSignUp extends javax.swing.JPanel {
         String ssremail = txtSSRAgentEmail.getText();
         String password = String.valueOf(pwdSSRAgentPassword.getPassword());
         
+        if(ssrValidation()){
         if(userdir.addSSRAgent(id, ssrname, ssremail, password))
         JOptionPane.showMessageDialog(this, "SSR Agent Successfully Created..!!");
         else
          JOptionPane.showMessageDialog(this, "SSR Agent Not Created..!!");
-   
-
+        }
+       txtSSRAgentID.setText(""); 
+       txtSSRAgentName.setText(""); 
+       txtSSRAgentEmail.setText("");
+       pwdSSRAgentPassword.setText("");
     }//GEN-LAST:event_btnCreateSSRActionPerformed
 
+    
+    public boolean shippingAgentValidation(){
+        ArrayList msg=null;
+    msg= new ArrayList();
+    
+      
+        if(txtShippingAgentName.getText().isBlank() || !(txtShippingAgentName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Shipping Agent Name without special characters and do not leave it blank");}
+        if(!(String.valueOf(txtShippingAgentMobile.getText()).matches("^[0-9]{10}$")))
+        {msg.add("Please enter the 10 digit mobile number");}
+        if(txtShippingAgentBaseLocation.getText().isBlank() || !(txtShippingAgentBaseLocation.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Shipping Agent Base Location without special characters and do not leave it blank");}
+        if(txtShippingAgentUserName.getText().isBlank()|| !(txtShippingAgentUserName.getText().matches("^[0-9a-zA-Z@._]*$")))
+        {msg.add("Please enter the User name but do not leave it blank. Use only digts,lower & upper alphabets,special characters(@,.,_)");}
+       if(String.valueOf(pwdShippingAgent.getPassword()).isBlank())
+        msg.add("Password field is empty");
+           
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+    }
     private void btnShippingAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShippingAgentActionPerformed
         // TODO add your handling code here:
         String name=txtShippingAgentName.getText();
@@ -1080,13 +1223,48 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtShippingAgentUserName.getText();
         String password = String.valueOf(pwdShippingAgent.getPassword());
         
-       if(userdir.addShippingAgent(name, mobile, bLocation, username, password))
+       if(shippingAgentValidation()){
+        if(userdir.addShippingAgent(name, mobile, bLocation, username, password))
         JOptionPane.showMessageDialog(this, "Shipping Agent Successfully Created..!!");
       else
-               JOptionPane.showMessageDialog(this, "Shipping Agent Not Created..!!");
-    
+        JOptionPane.showMessageDialog(this, "Shipping Agent Not Created..!!");
+       }
+       
+       txtShippingAgentName.setText("");
+       txtShippingAgentMobile.setText("");
+       txtShippingAgentBaseLocation.setText("");
+       txtShippingAgentUserName.setText("");
+       pwdShippingAgent.setText("");
+       
+       
+       
     }//GEN-LAST:event_btnShippingAgentActionPerformed
 
+     public boolean DAAgentValidation(){
+        ArrayList msg=null;
+    msg= new ArrayList();
+    
+         if(txtDAAgentID.getText().isBlank() || !(txtDAAgentID.getText().matches("^[0-9a-zA-Z ]*$")))
+        {msg.add("Please enter the Delivery Agent Name without special characters and do not leave it blank");}
+        if(txtDAAgentName.getText().isBlank() || !(txtDAAgentName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Delivery Agent Name without special characters and do not leave it blank");}
+        if(!(String.valueOf(txtDAAgentMobile.getText()).matches("^[0-9]{10}$")))
+        {msg.add("Please enter the 10 digit mobile number");}
+        if(txtDAAgentBaseLocation.getText().isBlank() || !(txtDAAgentBaseLocation.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Delivery Agent Base Location without special characters and do not leave it blank");}
+        if(txtDAAgentUserName.getText().isBlank()|| !(txtDAAgentUserName.getText().matches("^[0-9a-zA-Z@._]*$")))
+        {msg.add("Please enter the User name but do not leave it blank. Use only digts,lower & upper alphabets,special characters(@,.,_)");}
+       if(String.valueOf(pwdDAAgentPassword.getPassword()).isBlank())
+        msg.add("Password field is empty");
+           
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+     }   
     private void btnDAAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDAAgentActionPerformed
         // TODO add your handling code here:
         String id = txtDAAgentID.getText();
@@ -1096,15 +1274,48 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtDAAgentUserName.getText();
         String password = String.valueOf(pwdDAAgentPassword.getPassword());
         
+       if(DAAgentValidation()){
         if(userdir.addDAgent(id, name, mobile, bLocation, username, password))
         JOptionPane.showMessageDialog(this, "Delivery Agent Successfully Created..!!");
         else
-                JOptionPane.showMessageDialog(this, "Delivery Agent not Created..!!");
-  
-            
+        JOptionPane.showMessageDialog(this, "Delivery Agent not Created..!!");
+       }
+        
+       txtDAAgentName.setText("");
+       txtDAAgentMobile.setText("");
+       txtDAAgentBaseLocation.setText("");
+       txtDAAgentUserName.setText("");
+       pwdDAAgentPassword.setText("");  
+       
+       
+       
     }//GEN-LAST:event_btnDAAgentActionPerformed
 
-
+    public boolean customerValidation(){
+    ArrayList msg=null;
+    msg= new ArrayList();
+    
+  
+        if(txtUserName.getText().isBlank()|| !(txtUserName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Customer Name without special characters and do not leave it blank");} 
+        if( txtUserEmail.getText().isBlank()||!( txtUserEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
+        msg.add(("Please enter the correct email (xxx@xx.xx)"));
+        if(!(String.valueOf(txtUserMobile.getText()).matches("^[0-9]{10}$")))
+       {msg.add("Please enter the 10 digit mobile number");}
+       if(txtUserUserName.getText().isBlank()|| !(txtUserUserName.getText().matches("^[0-9a-zA-Z@._]*$")))
+        {msg.add("Please enter the User name but do not leave it blank. Use only digts,lower & upper alphabets,special characters(@,.,_)");}
+       if(String.valueOf(pwdUserPassword.getPassword()).isBlank())
+        msg.add("Password field is empty");
+        if(String.valueOf(cbUserGender.getSelectedItem()).isBlank())
+        {msg.add("Please select Gender");}    
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+    }
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
         // TODO add your handling code here:
       String name =txtUserName.getText();
@@ -1114,12 +1325,20 @@ public class RolesSignUp extends javax.swing.JPanel {
       String password = String.valueOf(pwdUserPassword.getPassword());
       String gender = cbUserGender.getSelectedItem().toString();
   
+     if(customerValidation()){
       if(userdir.addCustomer(name, email, username, mobile, password, gender))
       JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
       else
            JOptionPane.showMessageDialog(this, "Customer Not Created..!!");
+     }
+    txtUserName.setText("");
+    txtUserEmail.setText("");
+    txtUserMobile.setText(""); 
+    txtUserUserName.setText("");
+    pwdUserPassword.setText("");
+    cbUserGender.setSelectedItem("");
      
-      
+     
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
         private void populatestorenames(){
@@ -1127,6 +1346,7 @@ public class RolesSignUp extends javax.swing.JPanel {
         try{
         PreparedStatement preparedStatement =connection.prepareStatement("select StoreName from store");
         ResultSet rs = preparedStatement.executeQuery();
+        cbStoreName.addItem("");
         while(rs.next()){
             cbStoreName.addItem(rs.getString(1));
         }
@@ -1140,8 +1360,10 @@ public class RolesSignUp extends javax.swing.JPanel {
         try{
         PreparedStatement preparedStatement =connection.prepareStatement("select WarehouseName from warehouse");
         ResultSet rs = preparedStatement.executeQuery();
+        cbWarehouseName.addItem("");
+
         while(rs.next()){
-            cbStoreName.addItem(rs.getString(1));
+            cbWarehouseName.addItem(rs.getString(1));
         }
         
       }

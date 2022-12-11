@@ -27,12 +27,15 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     int itemQuantity;
     
     Connection connection;
+    String managerName;
     
-    public ManageStoreJPanel(Connection connection) {
+    public ManageStoreJPanel(Connection connection, String managerName) {
         initComponents();
         initialSetup();
         populateStoreItemsTable(connection);
         this.connection=connection;
+        this.managerName = managerName;
+        getStoreDetails(managerName);
     }
     
 
@@ -45,9 +48,8 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblStoreName = new javax.swing.JLabel();
-        lblStoreLocation = new javax.swing.JLabel();
         lblStoreId = new javax.swing.JLabel();
+        lblStoreName = new javax.swing.JLabel();
         lblManageStoreItems = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblItems = new javax.swing.JTable();
@@ -70,17 +72,13 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(25, 56, 82));
 
-        lblStoreName.setBackground(new java.awt.Color(255, 255, 255));
-        lblStoreName.setForeground(new java.awt.Color(255, 255, 255));
-        lblStoreName.setText("Store Name:");
-
-        lblStoreLocation.setBackground(new java.awt.Color(255, 255, 255));
-        lblStoreLocation.setForeground(new java.awt.Color(255, 255, 255));
-        lblStoreLocation.setText("Store Location:");
-
         lblStoreId.setBackground(new java.awt.Color(255, 255, 255));
         lblStoreId.setForeground(new java.awt.Color(255, 255, 255));
-        lblStoreId.setText("Store ID:");
+        lblStoreId.setText("Store Name:");
+
+        lblStoreName.setBackground(new java.awt.Color(255, 255, 255));
+        lblStoreName.setForeground(new java.awt.Color(255, 255, 255));
+        lblStoreName.setText("Store ID:");
 
         lblManageStoreItems.setBackground(new java.awt.Color(255, 255, 255));
         lblManageStoreItems.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
@@ -161,25 +159,20 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblStoreName)
-                                    .addComponent(lblStoreId)
-                                    .addComponent(lblStoreLocation))
-                                .addGap(648, 648, 648))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnAddItem)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnViewItem)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnViewAll)
-                                    .addGap(242, 242, 242)
-                                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnSearch)))))
+                                .addComponent(btnAddItem)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnViewItem)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnViewAll)
+                                .addGap(242, 242, 242)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearch))
+                            .addComponent(lblStoreId)
+                            .addComponent(lblStoreName)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -201,25 +194,24 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtItemDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnFinalizeItem)
-                                        .addComponent(sprItemQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(sprItemQuantity, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnFinalizeItem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
                 .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblManageStoreItems)
-                .addGap(319, 319, 319))
+                .addGap(328, 328, 328))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblStoreName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblStoreId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblStoreLocation)
-                .addGap(24, 24, 24)
+                .addComponent(lblStoreName)
+                .addGap(53, 53, 53)
                 .addComponent(lblManageStoreItems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,9 +296,13 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         String searchTerm = txtSearch.getText();
         DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
         model.setRowCount(0);
+        if(!(txtSearch.getText().isBlank())){
         try{
-                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items where ItemName = ?");
-                preparedStatement.setString(1,searchTerm);
+                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items where ItemName like ? or ItemDescription like ? or ItemQuantity like ?");
+                preparedStatement.setString(1,"%"+searchTerm+"%");
+                preparedStatement.setString(2,"%"+searchTerm+"%");
+                preparedStatement.setString(3,"%"+searchTerm+"%");
+
                 ResultSet rs = preparedStatement.executeQuery(); 
                 while(rs.next()){
                 Object[] rows = new Object[5];
@@ -319,12 +315,16 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                 model.addRow(rows);
                 
                 initialSetup();
+               txtSearch.setText(""); 
             }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, "Cannot find item");
             populateStoreItemsTable(connection);
         }
+        }
+        else {JOptionPane.showMessageDialog(this, "Please enter a value in the search box");
+}
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllActionPerformed
@@ -466,6 +466,28 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         return res;
     }
     
+    private void getStoreDetails(String managerName){
+        String storeId;
+        String storeName;
+        DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
+        model.setRowCount(0);
+        try{
+                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_manager where ManagerUserName = ?");
+                preparedStatement.setString(1,managerName);
+                ResultSet rs = preparedStatement.executeQuery(); 
+                while(rs.next()){
+                storeId = rs.getString(1);
+                storeName = rs.getString(2);
+                lblStoreId.setText("Store ID: " + storeId);
+                lblStoreName.setText("Store name: " + storeName);
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Cannot find item");
+            populateStoreItemsTable(connection);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddItem;
     private javax.swing.JButton btnFinalizeItem;
@@ -480,7 +502,6 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblManageStoreItems;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblStoreId;
-    private javax.swing.JLabel lblStoreLocation;
     private javax.swing.JLabel lblStoreName;
     private javax.swing.JSpinner sprItemQuantity;
     private javax.swing.JTable tblItems;

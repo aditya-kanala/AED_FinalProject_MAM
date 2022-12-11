@@ -165,7 +165,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(50, 50, 50)
                 .addComponent(lblUserOrders)
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,7 +189,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                     .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(btnFinalizeOrder)
                 .addGap(42, 42, 42)
                 .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,15 +224,18 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
             }
             DefaultTableModel model = (DefaultTableModel) tblStoreRequests.getModel();
             String orderItems = (String) model.getValueAt(selectedRowIndex, 2);
-            double orderTotal = (double) model.getValueAt(selectedRowIndex, 2);
+            String orderTotal = (String) model.getValueAt(selectedRowIndex, 3);
+            Double total = Double.valueOf(orderTotal);
             
-            PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?)");
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?,?)");
             preparedStatement.setString(1,generateUniqueId());
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3,orderItems);
-            preparedStatement.setDouble(4, orderTotal);
+            preparedStatement.setDouble(4, total);
+            preparedStatement.setString(5, "Shipment Requested");
             
             preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Shipment Requested Successfully");
             System.out.println("Shipment Order inserted Successfully");
 
             populateStoreRequestsTable(connection);

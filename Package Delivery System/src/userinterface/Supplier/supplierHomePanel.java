@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.Supplier;
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.sql.*;
+import userinterface.StoreManager.ManageStoreJPanel;
 /**
  *
  * @author mahith
@@ -16,6 +19,7 @@ public class supplierHomePanel extends javax.swing.JPanel {
     public supplierHomePanel(Connection connection) {
         this.connection =connection;
         initComponents();
+        supplierHome();
     }
 
     /**
@@ -175,6 +179,7 @@ public class supplierHomePanel extends javax.swing.JPanel {
 
     private void manageOrdersMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrdersMousePressed
         // TODO add your handling code here:
+        supplierHome();
     }//GEN-LAST:event_manageOrdersMousePressed
 
     private void manageSupplyHistoryLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupplyHistoryLabelMousePressed
@@ -185,6 +190,14 @@ public class supplierHomePanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_manageSupplyHistoryMousePressed
 
+    private void supplierHome(){
+        manageOrders.setBackground(new Color(135, 206, 235));
+        manageSupplyHistory.setBackground(new Color(227, 73, 78));
+        SupplierHome supplierHome = new SupplierHome(connection);        
+        rightSupplierPanel.add("manageStoreJPanel",supplierHome);
+        CardLayout layout = (CardLayout) rightSupplierPanel.getLayout();
+        layout.next(rightSupplierPanel);
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel home;
