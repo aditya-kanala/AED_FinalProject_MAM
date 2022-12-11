@@ -69,3 +69,5 @@ INSERT INTO `aed_project`.`shipment_orders`
 VALUES
 ('100', '25 Oct 2022', 'Wheat', 1000,'Order Received');
 
+
+
