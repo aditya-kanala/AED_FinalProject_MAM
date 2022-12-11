@@ -9,11 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author mahith
  */
 public class customerOrdersPanel extends javax.swing.JPanel {
+    String selectedOrder;
     /**
      * Creates new form customerOrdersPanel
      */
@@ -35,6 +37,12 @@ public class customerOrdersPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrderHistory = new javax.swing.JTable();
+        dispute = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        msg_area = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        mobile = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -50,6 +58,21 @@ public class customerOrdersPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblOrderHistory);
 
+        dispute.setText("Raise Dispute");
+        dispute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disputeActionPerformed(evt);
+            }
+        });
+
+        msg_area.setColumns(20);
+        msg_area.setRows(5);
+        jScrollPane2.setViewportView(msg_area);
+
+        jLabel1.setText("Comments");
+
+        jLabel2.setText("Mobile");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,15 +81,75 @@ public class customerOrdersPanel extends javax.swing.JPanel {
                 .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(131, 131, 131))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(454, 454, 454)
+                        .addComponent(dispute))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(mobile))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(389, 389, 389)
+                        .addComponent(jLabel1)))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(dispute)
+                .addContainerGap(322, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void disputeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disputeActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex  = tblOrderHistory.getSelectedRow();
+
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(this,"Please select a Row to View");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblOrderHistory.getModel();
+         selectedOrder = (String) model.getValueAt(selectedRowIndex,0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from user_orders where OrderID = ?");
+            preparedStatement.setString(1, selectedOrder);
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+                 PreparedStatement preparedStatement1= (PreparedStatement) connection.prepareStatement("insert into csr_issues values(?,?,?,?)");
+            preparedStatement1.setString(1, rs.getString(1));
+            preparedStatement1.setString(2, msg_area.getText());
+            preparedStatement1.setString(3, mobile.getText());
+            preparedStatement1.setString(4, "Open");
+            preparedStatement1.executeUpdate();
+            }
+           
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+        
+    }//GEN-LAST:event_disputeActionPerformed
 
 
     public void populateCustomerOrders(Connection connection){
@@ -92,7 +175,13 @@ public class customerOrdersPanel extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dispute;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField mobile;
+    private javax.swing.JTextArea msg_area;
     private javax.swing.JTable tblOrderHistory;
     // End of variables declaration//GEN-END:variables
 }

@@ -54,7 +54,7 @@ int zoom;
         txtOrderID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cdStatus = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(25, 54, 82));
@@ -66,7 +66,7 @@ int zoom;
 
             },
             new String [] {
-                "Order ID", "Delivery Date", "Area", "Status"
+                "Order ID", "order Date", "Items", "Status"
             }
         ));
         tblDeliveryItems.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,7 +102,12 @@ int zoom;
 
         jLabel3.setText("Status");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cdStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "select ...", "Out for Delivery", "Delivered", "Unable to Deliver" }));
+        cdStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cdStatusActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Update");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +132,7 @@ int zoom;
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtOrderID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cdStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(374, 374, 374))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +165,7 @@ int zoom;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cdStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jButton3)
                 .addGap(70, 70, 70))
@@ -178,6 +183,22 @@ int zoom;
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("update delivery_orders set OrderStatus =? where OrderID = ?");
+            preparedStatement.setString(2, selectedProduct);
+            preparedStatement.setString(1, cdStatus.getSelectedItem().toString());
+            preparedStatement.executeQuery(); 
+            
+            PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("update shipment_orders set OrderStatus =? where OrderID = ?");
+            preparedStatement1.setString(2, selectedProduct);
+            preparedStatement1.setString(1, cdStatus.getSelectedItem().toString());
+            preparedStatement1.executeQuery(); 
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        txtOrderID.setText(selectedProduct);
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -220,6 +241,10 @@ int zoom;
         txtOrderID.setText(selectedProduct);
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cdStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cdStatusActionPerformed
     
     public void populatedeliveryAgentTable(Connection connection){
         DefaultTableModel model = (DefaultTableModel) tblDeliveryItems.getModel();
@@ -240,10 +265,10 @@ int zoom;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cdStatus;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

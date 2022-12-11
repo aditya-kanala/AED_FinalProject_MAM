@@ -17,7 +17,13 @@ public class csrPanel extends javax.swing.JPanel {
      */
     public csrPanel(Connection connection) {
         this.connection =connection;
+        
         initComponents();
+        
+        homeCSRPanel chatHome = new homeCSRPanel(connection);
+        rightCSRPanel.add("chatPanel", chatHome);
+        CardLayout layout = (CardLayout) rightCSRPanel.getLayout();
+        layout.next(rightCSRPanel);
     }
 
     /**
@@ -30,9 +36,6 @@ public class csrPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        csrChatBoxPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        csrChatBox = new javax.swing.JLabel();
         csrHome = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         homeLabel = new javax.swing.JLabel();
@@ -45,44 +48,6 @@ public class csrPanel extends javax.swing.JPanel {
         jPanel3.setMinimumSize(new java.awt.Dimension(280, 840));
         jPanel3.setPreferredSize(new java.awt.Dimension(280, 840));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        csrChatBoxPanel.setBackground(new java.awt.Color(215, 81, 81));
-        csrChatBoxPanel.setToolTipText("");
-        csrChatBoxPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                csrChatBoxPanelMousePressed(evt);
-            }
-        });
-
-        jLabel2.setBackground(new java.awt.Color(215, 81, 81));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Speech.png"))); // NOI18N
-        jLabel2.setToolTipText("");
-
-        csrChatBox.setBackground(new java.awt.Color(215, 81, 81));
-        csrChatBox.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        csrChatBox.setText("CSR Chat Box");
-
-        javax.swing.GroupLayout csrChatBoxPanelLayout = new javax.swing.GroupLayout(csrChatBoxPanel);
-        csrChatBoxPanel.setLayout(csrChatBoxPanelLayout);
-        csrChatBoxPanelLayout.setHorizontalGroup(
-            csrChatBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(csrChatBoxPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(csrChatBox, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9))
-        );
-        csrChatBoxPanelLayout.setVerticalGroup(
-            csrChatBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(csrChatBox, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, csrChatBoxPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(csrChatBoxPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 280, -1));
 
         csrHome.setBackground(new java.awt.Color(215, 81, 81));
         csrHome.setToolTipText("");
@@ -127,7 +92,7 @@ public class csrPanel extends javax.swing.JPanel {
 
         jSeparator1.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 10));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 280, 10));
 
         jLabel1.setBackground(new java.awt.Color(215, 81, 81));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -159,20 +124,10 @@ public class csrPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void csrChatBoxPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_csrChatBoxPanelMousePressed
-        // TODO add your handling code here:
-         chatPanel chat = new chatPanel();
-        rightCSRPanel.add("chatPanel", chat);
-        
-        CardLayout layout = (CardLayout) rightCSRPanel.getLayout();
-        layout.next(rightCSRPanel);
-
-    }//GEN-LAST:event_csrChatBoxPanelMousePressed
-
     private void csrHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_csrHomeMousePressed
         // TODO add your handling code here:
-        homeCSRPanel home = new homeCSRPanel();
-        rightCSRPanel.add("chatPanel", home);
+        homeCSRPanel home = new homeCSRPanel(connection);
+        rightCSRPanel.add("chat home Panel", home);
         
         CardLayout layout = (CardLayout) rightCSRPanel.getLayout();
         layout.next(rightCSRPanel);
@@ -181,12 +136,9 @@ public class csrPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel csrChatBox;
-    private javax.swing.JPanel csrChatBoxPanel;
     private javax.swing.JPanel csrHome;
     private javax.swing.JLabel homeLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;

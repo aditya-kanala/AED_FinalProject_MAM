@@ -540,7 +540,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         container.add("sys admin", sysadmin);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
-                        
+                        loginJPanel.setVisible(false);
                         container.setVisible(true);
                         leftPanel.setVisible(true);
                         logoutLabel.setVisible(false);
@@ -552,7 +552,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 }
             }
-        loginJPanel.setVisible(false);
+        
         
           }
           

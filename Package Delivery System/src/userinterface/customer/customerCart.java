@@ -46,7 +46,7 @@ public class customerCart extends javax.swing.JPanel {
         
         try{
         
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select sum(price) from cart");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select sum(price*quantity) from cart");
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next())
             {System.out.println(rs.getDouble(1));
@@ -265,10 +265,8 @@ public class customerCart extends javax.swing.JPanel {
         
         DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
          quantity = (String) model.getValueAt(selectedRowIndex,2);
-                  selectedProduct = (String) model.getValueAt(selectedRowIndex,0);
+        selectedProduct = (String) model.getValueAt(selectedRowIndex,0);
 
-        
-        
     }//GEN-LAST:event_tblCartMouseClicked
 
     

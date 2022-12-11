@@ -189,7 +189,7 @@ CREATE TABLE `cart` (
 CREATE TABLE `delivery_orders` (
   `OrderID` varchar(45) NOT NULL,
   `OrderDate` varchar(20) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
+  `items` varchar(45) DEFAULT NULL,
   `OrderStatus` varchar(45) DEFAULT NULL,		
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -211,4 +211,13 @@ CREATE TABLE `supplier_orders` (
   `OrderQuantity` double DEFAULT NULL,
   `OrderStatus` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Csr issues*/
+CREATE TABLE `csr_issues` (
+  `request_id` varchar(20) NOT NULL,
+  `message` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`request_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
