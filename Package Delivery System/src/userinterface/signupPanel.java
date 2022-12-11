@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -180,6 +181,32 @@ public class signupPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+        public boolean customerValidation(){
+    ArrayList msg=null;
+    msg= new ArrayList();
+    
+  
+        if(txtUserName.getText().isBlank()|| !(txtUserName.getText().matches("^[a-zA-Z ]*$")))
+        {msg.add("Please enter the Customer Name without special characters and do not leave it blank");} 
+        if( txtUserEmail.getText().isBlank()||!( txtUserEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
+        msg.add(("Please enter the correct email (xxx@xx.xx)"));
+        if(!(String.valueOf(txtUserMobile.getText()).matches("^[0-9]{10}$")))
+       {msg.add("Please enter the 10 digit mobile number");}
+       if(txtUserUserName.getText().isBlank()|| !(txtUserUserName.getText().matches("^[0-9a-zA-Z@._]*$")))
+        {msg.add("Please enter the User name but do not leave it blank. Use only digts,lower & upper alphabets,special characters(@,.,_)");}
+       if(String.valueOf(pwdUserPassword.getPassword()).isBlank())
+        msg.add("Password field is empty");
+        if(String.valueOf(cbUserGender.getSelectedItem()).isBlank())
+        {msg.add("Please select Gender");}    
+        
+        if(!(msg.isEmpty()))
+        {JOptionPane.showMessageDialog(this, msg.toArray());
+        msg.clear();
+        return false;}
+        else 
+        return true; 
+    }
+    
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
         // TODO add your handling code here:
            String name =txtUserName.getText();
@@ -189,10 +216,12 @@ public class signupPanel extends javax.swing.JPanel {
       String password = String.valueOf(pwdUserPassword.getPassword());
       String gender = cbUserGender.getSelectedItem().toString();
   
-    if(userdir.addCustomer(name, email, username, mobile, password, gender))
-            JOptionPane.showMessageDialog(this, "Customer Created Successfully");
-    else
-             JOptionPane.showMessageDialog(this, "Customer Not Created Successfully");
+     if(customerValidation()){
+      if(userdir.addCustomer(name, email, username, mobile, password, gender))
+      JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
+      else
+           JOptionPane.showMessageDialog(this, "Customer Not Created..!!");
+     }
 
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
