@@ -64,6 +64,9 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         lblPrice = new javax.swing.JLabel();
         lblItemDescription = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
+        lblItemId = new javax.swing.JLabel();
+        txtItemId = new javax.swing.JTextField();
+        btnViewAll = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -115,6 +118,11 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         });
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnFinalizeItem.setText("Finalize Item");
         btnFinalizeItem.addActionListener(new java.awt.event.ActionListener() {
@@ -135,21 +143,51 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         lblItemDescription.setForeground(new java.awt.Color(255, 255, 255));
         lblItemDescription.setText("Item Description:");
 
+        lblItemId.setForeground(new java.awt.Color(255, 255, 255));
+        lblItemId.setText("Item ID:");
+
+        btnViewAll.setText("View All");
+        btnViewAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblStoreName)
+                                    .addComponent(lblStoreId)
+                                    .addComponent(lblStoreLocation))
+                                .addGap(648, 648, 648))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(27, 27, 27)
                                     .addComponent(btnAddItem)
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnViewItem))
+                                    .addComponent(btnViewItem)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnViewAll)
+                                    .addGap(242, 242, 242)
+                                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnSearch)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblItemId)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtItemId, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(32, 32, 32)
                                     .addComponent(lblItemName)
@@ -165,25 +203,12 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                                         .addComponent(txtItemDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnFinalizeItem)
                                         .addComponent(sprItemQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(46, 46, 46)
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnSearch))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(113, 113, 113)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblStoreName)
-                                    .addComponent(lblStoreId)
-                                    .addComponent(lblStoreLocation)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(lblManageStoreItems)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblManageStoreItems)
+                .addGap(319, 319, 319))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,8 +228,15 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                     .addComponent(btnAddItem)
                     .addComponent(btnViewItem)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addGap(39, 39, 39)
+                    .addComponent(btnSearch)
+                    .addComponent(btnViewAll))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblItemId))
+                    .addComponent(txtItemId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -226,13 +258,13 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                     .addComponent(lblItemQuantity))
                 .addGap(18, 18, 18)
                 .addComponent(btnFinalizeItem)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewItemActionPerformed
         // TODO add your handling code here:
-        showItemDetails();
+//        showItemDetails();
     }//GEN-LAST:event_btnViewItemActionPerformed
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
@@ -268,7 +300,41 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnFinalizeItemActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String searchTerm = txtSearch.getText();
+        DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
+        model.setRowCount(0);
+        try{
+                PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items where ItemName = ?");
+                preparedStatement.setString(1,searchTerm);
+                ResultSet rs = preparedStatement.executeQuery(); 
+                while(rs.next()){
+                Object[] rows = new Object[5];
+                rows[0]= rs.getString(1);
+                rows[1]=rs.getString(2);
+                rows[2]=rs.getString(3);
+                rows[3]=rs.getString(4);
+                rows[4] =rs.getString(5);
+
+                model.addRow(rows);
+                
+                initialSetup();
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Cannot find item");
+            populateStoreItemsTable(connection);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllActionPerformed
+        populateStoreItemsTable(connection);
+    }//GEN-LAST:event_btnViewAllActionPerformed
+
     private void initialSetup(){
+        lblItemId.setVisible(false);
+        txtItemId.setVisible(false);
+        
         lblItemName.setVisible(false);
         txtItemName.setVisible(false);
         
@@ -282,6 +348,7 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         sprItemQuantity.setVisible(false);
         
         btnFinalizeItem.setVisible(false);
+        btnViewItem.setVisible(false);
     }
     
     private void addItem(){
@@ -301,6 +368,16 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     }
     
     private void showItemDetails(){
+        int selectedRowIndex = tblItems.getSelectedRow();
+
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select an item to view its details");
+            return;
+        }
+        
+        lblItemId.setVisible(true);
+        txtItemId.setVisible(true);
+        
         lblItemName.setVisible(true);
         txtItemName.setVisible(true);
         
@@ -312,6 +389,21 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         
         lblItemQuantity.setVisible(true);
         sprItemQuantity.setVisible(true);
+        
+        DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
+        String productId = (String) model.getValueAt(selectedRowIndex, 0);
+        String productName = (String) model.getValueAt(selectedRowIndex, 1);
+        String productDescription = (String) model.getValueAt(selectedRowIndex, 2);
+//        Double productPrice = (Double) model.getValueAt(selectedRowIndex, 3);
+//        int productQuantity = (int) model.getValueAt(selectedRowIndex, 4);
+
+
+        
+            txtItemId.setText(productId);
+            txtItemName.setText(productName);
+            txtItemDescription.setText(productDescription);
+//            txtPrice.setText(String.valueOf(productPrice));
+//            sprItemQuantity.setSelection(productQuantity);
     }
 
     public void populateStoreItemsTable(Connection connection){
@@ -378,9 +470,11 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAddItem;
     private javax.swing.JButton btnFinalizeItem;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnViewAll;
     private javax.swing.JButton btnViewItem;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblItemDescription;
+    private javax.swing.JLabel lblItemId;
     private javax.swing.JLabel lblItemName;
     private javax.swing.JLabel lblItemQuantity;
     private javax.swing.JLabel lblManageStoreItems;
@@ -391,6 +485,7 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     private javax.swing.JSpinner sprItemQuantity;
     private javax.swing.JTable tblItems;
     private javax.swing.JTextField txtItemDescription;
+    private javax.swing.JTextField txtItemId;
     private javax.swing.JTextField txtItemName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtSearch;
