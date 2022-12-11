@@ -120,12 +120,13 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnViewAll)
-                        .addComponent(btnFinalizeOrder)))
+                        .addComponent(btnFinalizeOrder))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSearch)))
                 .addContainerGap(316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -172,14 +173,20 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
                 return;
             }
             DefaultTableModel model = (DefaultTableModel) tblUserOrders.getModel();
+            
             String orderItems = (String) model.getValueAt(selectedRowIndex, 2);
-            double orderTotal = (double) model.getValueAt(selectedRowIndex, 2);
+            String orderTotal = (String) model.getValueAt(selectedRowIndex, 3);
+            String orderID = (String) model.getValueAt(selectedRowIndex, 0);
+            Double total = Double.valueOf(orderTotal);
+            
 
-            PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?)");
-            preparedStatement.setString(1,generateUniqueId());
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?,?)");
+            preparedStatement.setString(1,orderID);
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3,orderItems);
-            preparedStatement.setDouble(4,orderTotal);
+            preparedStatement.setDouble(4,total);
+            preparedStatement.setString(5,"Shipment requested");
+
 
             preparedStatement.executeUpdate();
             System.out.println("Warehouse Order inserted Successfully");

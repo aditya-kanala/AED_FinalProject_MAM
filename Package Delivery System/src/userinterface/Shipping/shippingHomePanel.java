@@ -197,15 +197,14 @@ public class shippingHomePanel extends javax.swing.JPanel {
             PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from shipment_orders where OrderID=?");
             preparedStatement1.setString(1,selectedOrder.toString());
             ResultSet rs1 = preparedStatement1.executeQuery();
-            System.out.println(rs1);
-            if(rs1.next())
-            {PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_orders values(?,?,?,?,?)");
+            
+            while(rs1.next())
+            {PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_orders values(?,?,?,?)");
 
                 preparedStatement.setString(1,rs1.getString(1));
                 preparedStatement.setString(2,rs1.getString(2));
-                preparedStatement.setString(3,rs1.getString(3));
-                preparedStatement.setString(4,rs1.getString(4));
-                preparedStatement.setString(5,cbStatus.getSelectedItem().toString());
+                preparedStatement.setString(3,"");
+                preparedStatement.setString(4,cbStatus.getSelectedItem().toString());
 
                 preparedStatement.executeUpdate();
                 JOptionPane.showMessageDialog(this,"Delivery Request Raised Successfully..");

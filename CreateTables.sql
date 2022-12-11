@@ -145,6 +145,7 @@ CREATE TABLE `warehouse_orders` (
   `OrderDate` varchar(20) DEFAULT NULL,
   `OrderItems` varchar(45) DEFAULT NULL,
   `OrderTotal` double DEFAULT NULL,
+  `status` double DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -161,6 +162,7 @@ CREATE TABLE `user_orders` (
   `long` varchar(100) DEFAULT NULL,
   `lat` varchar(100) DEFAULT NULL,
   `zoom` varchar(100) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -184,11 +186,20 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Shipping Agent*/
-CREATE TABLE `delivery_agent` (
+CREATE TABLE `delivery_orders` (
   `OrderID` varchar(45) NOT NULL,
-  `OrderDate` bigint DEFAULT NULL,
-  `OrderItems` varchar(45) DEFAULT NULL,
-  `OrderTotal` varchar(45) DEFAULT NULL,
+  `OrderDate` varchar(20) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
   `OrderStatus` varchar(45) DEFAULT NULL,		
-  PRIMARY KEY (`AgentName`)
+  PRIMARY KEY (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Shipment Table*/
+CREATE TABLE `shipment_orders` (
+  `OrderID` varchar(20) NOT NULL,
+  `OrderDate` varchar(20) DEFAULT NULL,
+  `OrderItems` varchar(45) DEFAULT NULL,
+  `OrderTotal` double DEFAULT NULL,
+  `OrderStatus` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

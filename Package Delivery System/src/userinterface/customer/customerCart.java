@@ -217,7 +217,7 @@ public class customerCart extends javax.swing.JPanel {
         }
         
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?,?,?,?,?) ");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?,?,?,?,?,?) ");
             preparedStatement.setString(1, generateUniqueId());
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3, products);
@@ -252,7 +252,7 @@ public class customerCart extends javax.swing.JPanel {
         Random random = new Random();
         String res = "";
         int arr[] = {1,2,3,4,5,6,7,8,9};
-        for(int i=0;i<16;i++){
+        for(int i=0;i<6;i++){
             res += arr[random.nextInt(arr.length)];
         }
         return res;

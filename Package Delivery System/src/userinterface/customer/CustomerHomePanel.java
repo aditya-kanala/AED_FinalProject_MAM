@@ -268,8 +268,8 @@ public class CustomerHomePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_customerProfileMousePressed
 
     private void customerOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerOrdersPanelMousePressed
-        customerOrdersPanel orders = new customerOrdersPanel();
-        rightCustomerPanel.add("Customer Profile",orders );
+        customerOrdersPanel orders = new customerOrdersPanel(connection);
+        rightCustomerPanel.add("Customer orders",orders );
         CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
         layout.next(rightCustomerPanel);
     }//GEN-LAST:event_customerOrdersPanelMousePressed

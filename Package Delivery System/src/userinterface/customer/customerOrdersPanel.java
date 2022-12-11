@@ -14,12 +14,11 @@ import java.sql.*;
  * @author mahith
  */
 public class customerOrdersPanel extends javax.swing.JPanel {
-
     /**
      * Creates new form customerOrdersPanel
      */
     Connection connection;
-    public customerOrdersPanel() {
+    public customerOrdersPanel(Connection connection) {
         initComponents();
         populateCustomerOrders(connection);
         this.connection=connection;
@@ -39,7 +38,8 @@ public class customerOrdersPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(25, 56, 82));
 
-        tblOrderHistory.setForeground(new java.awt.Color(255, 255, 255));
+        tblOrderHistory.setBackground(new java.awt.Color(25, 56, 82));
+        tblOrderHistory.setForeground(new java.awt.Color(204, 204, 204));
         tblOrderHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -69,7 +69,7 @@ public class customerOrdersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    public void populateCustomerOrders(Connection connection1){
+    public void populateCustomerOrders(Connection connection){
     
          DefaultTableModel model = (DefaultTableModel) tblOrderHistory.getModel();
         model.setRowCount(0);
