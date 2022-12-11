@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.UserAccount;
-import Directories.UserDirectory;
+import Model.UserDirectory;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
@@ -1019,9 +1019,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtSManagerUserName.getText();
         String password = String.valueOf(pwdSManagerPassword.getPassword());
               
-       userdir.addStoreManager(id, sname, mname, memail, username, password);
+       if(userdir.addStoreManager(id, sname, mname, memail, username, password))
        JOptionPane.showMessageDialog(this, "Store Manager Successfully Created..!!");
-
+       else
+        JOptionPane.showMessageDialog(this, "Store Manager Not Created..!!");
+ 
     }//GEN-LAST:event_btnCreateStoreManagerActionPerformed
 
     private void btnCreateWarehouseManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWarehouseManagerActionPerformed
@@ -1033,9 +1035,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtWManagerUserName.getText();
         String password = String.valueOf(pwdWManagerPassword.getPassword());
         
-      userdir.addWarehouseManager(id, sname, mname, memail, username, password);
+      if(userdir.addWarehouseManager(id, sname, mname, memail, username, password))
       JOptionPane.showMessageDialog(this, "Warehouse Manager Created Successfully");
-       
+       else
+            JOptionPane.showMessageDialog(this, "Warehouse Manager Not Successfully");
+   
   
     }//GEN-LAST:event_btnCreateWarehouseManagerActionPerformed
 
@@ -1046,9 +1050,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         String csremail = txtCSRAgentEmail.getText();
         String password = String.valueOf(pwdCSRAgentPassword.getPassword());
 
-        userdir.addCSRAgent(id, csrname, csremail, password);
+        if(userdir.addCSRAgent(id, csrname, csremail, password))
         JOptionPane.showMessageDialog(this, "CSR Agent Successfully Created..!!");
-
+        else
+          JOptionPane.showMessageDialog(this, "CSR Agent Not Created..!!");
+    
     }//GEN-LAST:event_btnCreateCSRActionPerformed
 
     private void btnCreateSSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSSRActionPerformed
@@ -1058,9 +1064,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         String ssremail = txtSSRAgentEmail.getText();
         String password = String.valueOf(pwdSSRAgentPassword.getPassword());
         
-        userdir.addSSRAgent(id, ssrname, ssremail, password);
+        if(userdir.addSSRAgent(id, ssrname, ssremail, password))
         JOptionPane.showMessageDialog(this, "SSR Agent Successfully Created..!!");
- 
+        else
+         JOptionPane.showMessageDialog(this, "SSR Agent Not Created..!!");
+   
 
     }//GEN-LAST:event_btnCreateSSRActionPerformed
 
@@ -1072,9 +1080,11 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtShippingAgentUserName.getText();
         String password = String.valueOf(pwdShippingAgent.getPassword());
         
-       userdir.addShippingAgent(name, mobile, bLocation, username, password);
+       if(userdir.addShippingAgent(name, mobile, bLocation, username, password))
         JOptionPane.showMessageDialog(this, "Shipping Agent Successfully Created..!!");
- 
+      else
+               JOptionPane.showMessageDialog(this, "Shipping Agent Not Created..!!");
+    
     }//GEN-LAST:event_btnShippingAgentActionPerformed
 
     private void btnDAAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDAAgentActionPerformed
@@ -1086,9 +1096,12 @@ public class RolesSignUp extends javax.swing.JPanel {
         String username = txtDAAgentUserName.getText();
         String password = String.valueOf(pwdDAAgentPassword.getPassword());
         
-        userdir.addDAgent(id, name, mobile, bLocation, username, password);
+        if(userdir.addDAgent(id, name, mobile, bLocation, username, password))
         JOptionPane.showMessageDialog(this, "Delivery Agent Successfully Created..!!");
-   
+        else
+                JOptionPane.showMessageDialog(this, "Delivery Agent not Created..!!");
+  
+            
     }//GEN-LAST:event_btnDAAgentActionPerformed
 
 
@@ -1101,9 +1114,11 @@ public class RolesSignUp extends javax.swing.JPanel {
       String password = String.valueOf(pwdUserPassword.getPassword());
       String gender = cbUserGender.getSelectedItem().toString();
   
-      userdir.addCustomer(name, email, username, mobile, password, gender);
+      if(userdir.addCustomer(name, email, username, mobile, password, gender))
       JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
-
+      else
+           JOptionPane.showMessageDialog(this, "Customer Not Created..!!");
+     
       
     }//GEN-LAST:event_btnCreateUserActionPerformed
 

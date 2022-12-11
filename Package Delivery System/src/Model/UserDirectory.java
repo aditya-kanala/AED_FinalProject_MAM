@@ -8,7 +8,7 @@
  * @author mahith
  */
 
-package Directories;
+package Model;
 import java.sql.*;
 import javax.swing.JOptionPane;
 

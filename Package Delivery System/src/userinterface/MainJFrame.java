@@ -4,7 +4,8 @@
  */
 package userinterface;
 
-import Directories.UserDirectory;
+import Model.OrganizationsDirectory;
+import Model.UserDirectory;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.sql.Connection;
@@ -41,8 +42,10 @@ import userinterface.Warehouse.WarehouseManagerHomeJPanel;
 
 public class MainJFrame extends javax.swing.JFrame {
         Connection connection;
-UserDirectory userdir;
-    public MainJFrame() {
+        OrganizationsDirectory orgDir;
+        UserDirectory userdir;
+    
+        public MainJFrame() {
         this.setUndecorated(true);
         initComponents();
         loginJPanel.setVisible(true);
@@ -53,6 +56,7 @@ UserDirectory userdir;
         //databaseConnection();
         databaseConnection(connection);
         userdir  = new UserDirectory(connection);
+        orgDir=new OrganizationsDirectory(connection);
     }
     
 /**
@@ -520,7 +524,7 @@ UserDirectory userdir;
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
                     JOptionPane.showMessageDialog(this, "System Admin Login Successful..!!");
-                        SystemAdminJPanel sysadmin = new SystemAdminJPanel(connection,userdir);
+                        SystemAdminJPanel sysadmin = new SystemAdminJPanel(connection,userdir,orgDir);
                         container.add("sys admin", sysadmin);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
