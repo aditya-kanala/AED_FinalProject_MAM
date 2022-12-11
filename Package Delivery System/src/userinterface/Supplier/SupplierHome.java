@@ -21,7 +21,7 @@ public class SupplierHome extends javax.swing.JPanel {
      * Creates new form SupplierHome
      */
     Connection connection;
-    public SupplierHome() {
+    public SupplierHome(Connection connection) {
         initComponents();
         this.connection = connection;
         populateSupplierOrdersTable(connection);
@@ -154,6 +154,7 @@ public class SupplierHome extends javax.swing.JPanel {
             if(selectedRowIndex < 0){
                 JOptionPane.showMessageDialog(this, "Please select an order to view its details");
             return;
+            }
             
             DefaultTableModel model = (DefaultTableModel) tblSupplierOrders.getModel();
             String orderId = (String) model.getValueAt(selectedRowIndex, 0);
@@ -168,11 +169,10 @@ public class SupplierHome extends javax.swing.JPanel {
                 preparedStatement.setInt(5,Integer.parseInt(status));
 
                 preparedStatement.executeUpdate();
-                System.out.println("Warehouse Order inserted Successfully");
+                System.out.println("Supplier Order inserted Successfully");
 
                 populateSupplierOrdersTable(connection);
                 initialSetup();
-                }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, "Please enter all values and try again");
@@ -186,21 +186,21 @@ public class SupplierHome extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select an order to view its details");
             return;
         }
-        
+
         lblOrderID.setVisible(true);
         txtOrderID.setVisible(true);
-        
+
         lblStatus.setVisible(true);
         cmbStatus.setVisible(true);
-        
+
         btnRaiseShipment.setVisible(true);
-        
+
         DefaultTableModel model = (DefaultTableModel) tblSupplierOrders.getModel();
         String orderId = (String) model.getValueAt(selectedRowIndex, 0);
         String status = (String) model.getValueAt(selectedRowIndex, 4);
-        
-            txtOrderID.setText(orderId);
-            cmbStatus.setSelectedItem(status);
+
+        txtOrderID.setText(orderId);
+        cmbStatus.setSelectedItem(status);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void populateSupplierOrdersTable(Connection connection){
