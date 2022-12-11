@@ -148,6 +148,7 @@ CREATE TABLE `warehouse_orders` (
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+DROP TABLE user_orders;
 
 /*User Order Table*/
 CREATE TABLE `user_orders` (
@@ -159,6 +160,7 @@ CREATE TABLE `user_orders` (
   `location` varchar(100) DEFAULT NULL,
   `long` varchar(100) DEFAULT NULL,
   `lat` varchar(100) DEFAULT NULL,
+  `zoom` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -179,4 +181,14 @@ CREATE TABLE `cart` (
   `price` double DEFAULT NULL,
   `quantity` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`product`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Shipping Agent*/
+CREATE TABLE `delivery_agent` (
+  `OrderID` varchar(45) NOT NULL,
+  `OrderDate` bigint DEFAULT NULL,
+  `OrderItems` varchar(45) DEFAULT NULL,
+  `OrderTotal` varchar(45) DEFAULT NULL,
+  `OrderStatus` varchar(45) DEFAULT NULL,		
+  PRIMARY KEY (`AgentName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

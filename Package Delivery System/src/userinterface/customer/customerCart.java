@@ -23,29 +23,32 @@ public class customerCart extends javax.swing.JPanel {
     String longi;
     String lati;
     String loci;
+    String zoom;
     /**
      * Creates new form customerCart
      */
-    public customerCart(Connection connection,String loni, String lati,String loci) {
+    public customerCart(Connection connection,String longi, String lati,String loci,String zoom) {
         this.connection =connection;
         this.loci = loci;
         this.longi = longi;
         this.lati = lati;
+        this.zoom = zoom;
         initComponents();
         if(!loci.isBlank()){
             lblLocation.setText(loci);
         }
         
         
-        populateCartTable(connection,products);
+        populateCartTable(connection);
         
         
         try{
         
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select sum(price) from cart");
             ResultSet rs = preparedStatement.executeQuery();
-            System.out.println(rs.getDouble(1));
-            txtCartValue.setText(Double.toString(rs.getDouble(1)));
+            if(rs.next())
+            {System.out.println(rs.getDouble(1));
+            txtCartValue.setText(Double.toString(rs.getDouble(1)));}
         }catch(Exception e){
             
         }
@@ -214,28 +217,32 @@ public class customerCart extends javax.swing.JPanel {
         }
         
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?) ");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?,?,?,?,?) ");
             preparedStatement.setString(1, generateUniqueId());
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3, products);
             preparedStatement.setString(4, txtCartValue.getText());
-            preparedStatement.setString(5, loci);
-            preparedStatement.setString(6, longi);
-            preparedStatement.setString(7, lati);
+            preparedStatement.setString(5, txtAddress.getText());
+            preparedStatement.setString(6, loci);
+            preparedStatement.setString(7, longi);
+            preparedStatement.setString(8, lati);
+            preparedStatement.setString(9, zoom);
             
-            ResultSet rs = preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Order Placed");
         }catch(Exception e){
             System.out.println(e);
         }
         
         try{
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("truncate cart");
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         }catch(Exception e){
             System.out.println(e);
         }
         
-        JOptionPane.showMessageDialog(this, "Order Placed");
+        
          
     }//GEN-LAST:event_placeOrderBtnActionPerformed
 
@@ -251,8 +258,9 @@ public class customerCart extends javax.swing.JPanel {
         return res;
     }
 
-    public void populateCartTable(Connection connection, String products){
+    public void populateCartTable(Connection connection){
         DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+        
         model.setRowCount(0);
         try{
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from cart");
@@ -264,7 +272,9 @@ public class customerCart extends javax.swing.JPanel {
             rows[2]=rs.getString(3);
             model.addRow(rows);
             
-            products += rs.getString(1)+" ,";
+             products += rows[0]+" ,";
+             System.out.println(products);
+            
             
             }
         }

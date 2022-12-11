@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import userinterface.CustomerServiceRepresentative.csrPanel;
+import userinterface.Maps.mapMarkerPanel;
 import userinterface.Maps.mapsPanel;
 import userinterface.customer.customerCart;
 
@@ -20,12 +21,18 @@ import userinterface.customer.customerCart;
  * @author mahith
  */
 public class deliveryAgentHome extends javax.swing.JPanel {
-
+String longi;
+String lati;
+String loci;
+int zoom;
     /**
      * Creates new form deliveryAgentHome
      */
     Connection connection;
     public deliveryAgentHome(Connection connection) {
+        longi = "";
+        lati = "";
+        loci = "";
         initComponents();
         this.connection = connection;
         populatedeliveryAgentTable(connection);
@@ -199,8 +206,8 @@ public class deliveryAgentHome extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        mapsPanel maps = new mapsPanel(connection);
-        this.getParent().add("customer Cart",maps);
+        mapMarkerPanel map = new mapMarkerPanel(longi,lati,zoom);
+        this.getParent().add("map area",map);
         CardLayout layout = (CardLayout) this.getParent().getLayout();
         layout.next(this.getParent());
         

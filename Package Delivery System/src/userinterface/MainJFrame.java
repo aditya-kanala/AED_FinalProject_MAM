@@ -31,18 +31,15 @@ import userinterface.Shipping.shippingCompanyPanel;
 import userinterface.Shipping.shippingHomePanel;
 import userinterface.Supplier.supplierHomePanel;
 import userinterface.SystemAdmin.SystemAdminJPanel;
-import userinterface.Warehouse.warehouseManagerPanel;
-
+import userinterface.Warehouse.WarehouseManagerHomeJPanel;
 /**
  *
  * @author mahith
  */
 /*Main Frame*/
 public class MainJFrame extends javax.swing.JFrame {
+        Connection connection;
 
-    /**
-     * Creates new form MainJFrame
-     */
     public MainJFrame() {
         this.setUndecorated(true);
         initComponents();
@@ -50,12 +47,14 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setVisible(false);
         leftPanel.setVisible(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        databaseConnection();
+        //databaseConnection();
+        databaseConnection(connection);
     }
     
-    Connection connection;
-     
-    private void databaseConnection(){
+/**
+     * Creates new form MainJFrame
+     */
+        public void databaseConnection(Connection connection1){
         System.out.println("Connection db");
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root@123");//Establishing connection
@@ -64,7 +63,7 @@ public class MainJFrame extends javax.swing.JFrame {
             System.out.println(e); //Message if something goes wrong while conneting to the database
         }
 
-    } 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -410,7 +409,7 @@ public class MainJFrame extends javax.swing.JFrame {
          /*BPO Admin Login*/   
           if(txtUserName.getText().equalsIgnoreCase("bpoadmin")){  
             PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from admins where username = ?");
-            st.setString(1, "bpoadmin");
+            st.setString(1, txtUserName.getText());
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 if((rs.getString(1).equalsIgnoreCase(txtUserName.getText())) && rs.getString(2).equals(String.valueOf(fldPassword.getPassword()))){
@@ -568,7 +567,7 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Warehouse Manager Login Successful..!!");
-                        warehouseManagerPanel panel = new warehouseManagerPanel(connection);
+                        WarehouseManagerHomeJPanel panel = new WarehouseManagerHomeJPanel(connection);
                         container.add("warehouse admin", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
