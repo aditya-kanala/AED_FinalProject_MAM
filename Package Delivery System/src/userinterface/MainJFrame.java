@@ -66,7 +66,7 @@ public class MainJFrame extends javax.swing.JFrame {
         public void databaseConnection(Connection connection1){
         System.out.println("Connection db");
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root@123");//Establishing connection
             System.out.println("Connected With the database successfully"); //Message after successful connection 
         } catch (SQLException e) {
             System.out.println(e); //Message if something goes wrong while conneting to the database
@@ -585,7 +585,7 @@ public class MainJFrame extends javax.swing.JFrame {
             while(rs.next()){
               if((rs.getString(5).equalsIgnoreCase(txtUserName.getText())) && rs.getString(6).equals(String.valueOf(fldPassword.getPassword()))){
                         JOptionPane.showMessageDialog(this, "Store Manager Login Successful..!!");
-                        StoreManagerJPanel panel = new StoreManagerJPanel(connection);
+                        StoreManagerJPanel panel = new StoreManagerJPanel(connection, txtUserName.getText());
                         container.add("store manager", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
                         layout.next(container);
