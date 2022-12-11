@@ -574,7 +574,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 }
             }
-        loginJPanel.setVisible(false);
         
           }
           
@@ -804,7 +803,7 @@ public class MainJFrame extends javax.swing.JFrame {
           }
           
           /*Delivery Agent*/  
-          else if (txtUserName.getText().contains("dagent")){
+          else if (txtUserName.getText().contains("deliveryagent")){
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from delivery_agent where AgentUserName=?");
             preparedStatement.setString(1, txtUserName.getText());
             ResultSet rs = preparedStatement.executeQuery(); 

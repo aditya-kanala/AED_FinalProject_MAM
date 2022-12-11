@@ -188,6 +188,7 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
 
 
             preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Shipment Request raised successfully");
             System.out.println("Warehouse Order inserted Successfully");
 
             populateUserOrderTable(connection);
