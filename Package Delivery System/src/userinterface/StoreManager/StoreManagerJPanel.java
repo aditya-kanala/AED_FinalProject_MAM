@@ -18,10 +18,12 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
      * Creates new form StoreManagerJPanel
      */
     Connection connection;
-    public StoreManagerJPanel(Connection connection) {
+    String managerName;
+    public StoreManagerJPanel(Connection connection, String managerName) {
         initComponents();
         storeGraphs();
         this.connection=connection;
+        this.managerName = managerName;
     }
 
     /**
@@ -299,7 +301,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         manageStorePanel.setBackground(new Color(135, 206, 235));
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageWarehouseOrdersPanel.setBackground(new Color(227, 73, 78));
-        ManageStoreJPanel manageStoreJPanel = new ManageStoreJPanel(connection);        
+        ManageStoreJPanel manageStoreJPanel = new ManageStoreJPanel(connection, managerName);        
         rightStoreAdminPanel.add("manageStoreJPanel",manageStoreJPanel);
         CardLayout layout = (CardLayout) rightStoreAdminPanel.getLayout();
         layout.next(rightStoreAdminPanel);
@@ -337,6 +339,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) rightStoreAdminPanel.getLayout();
         layout.next(rightStoreAdminPanel);
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel home;
     private javax.swing.JPanel homePanel;

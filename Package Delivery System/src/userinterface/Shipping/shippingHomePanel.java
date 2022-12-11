@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class shippingHomePanel extends javax.swing.JPanel {
     Connection connection;
-    String selectedOrder;
+    String selectedOrder="";
     /**
      * Creates new form shippingHomePanel
      */
@@ -37,12 +37,8 @@ public class shippingHomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtSearch = new javax.swing.JTextField();
-        btnSearch = new javax.swing.JButton();
         lblOrderItems = new javax.swing.JLabel();
         txtOrderItems = new javax.swing.JTextField();
-        lblOrderTotal = new javax.swing.JLabel();
-        txtOrderTotal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblShipmentOrders = new javax.swing.JTable();
         btnFinalizeOrder = new javax.swing.JButton();
@@ -50,26 +46,12 @@ public class shippingHomePanel extends javax.swing.JPanel {
         btnAddOrder = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
         cbStatus = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
-
-        btnSearch.setText("Search");
+        setBackground(new java.awt.Color(25, 56, 82));
 
         lblOrderItems.setForeground(new java.awt.Color(255, 255, 255));
         lblOrderItems.setText("Order Items:");
-
-        lblOrderTotal.setForeground(new java.awt.Color(255, 255, 255));
-        lblOrderTotal.setText("Order Total:");
-
-        txtOrderTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrderTotalActionPerformed(evt);
-            }
-        });
 
         tblShipmentOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,95 +89,76 @@ public class shippingHomePanel extends javax.swing.JPanel {
             }
         });
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open", "Raise for shipment" }));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Status:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblOrderItems)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtOrderItems, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(lblOrderTotal)
-                            .addGap(16, 16, 16)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnFinalizeOrder)
-                                .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnAddOrder)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnViewOrder)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnSearch))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(148, 148, 148))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(157, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(397, 397, 397)
-                        .addComponent(lblSupplyOrders))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblSupplyOrders)
+                        .addGap(436, 436, 436))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblOrderItems)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtOrderItems, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnFinalizeOrder)
+                                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(174, 174, 174)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(btnAddOrder)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnViewOrder)
+                                    .addGap(90, 90, 90))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(150, 150, 150))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
                 .addComponent(lblSupplyOrders)
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAddOrder)
-                        .addComponent(btnViewOrder))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSearch)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddOrder)
+                    .addComponent(btnViewOrder))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOrderItems)
                     .addComponent(txtOrderItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblOrderTotal))
-                    .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(btnFinalizeOrder)
-                .addGap(42, 42, 42)
-                .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void txtOrderTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrderTotalActionPerformed
 
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
         try{
-
             PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from shipment_orders where OrderID=?");
-            preparedStatement1.setString(1,selectedOrder.toString());
+            preparedStatement1.setString(1,selectedOrder);
             ResultSet rs1 = preparedStatement1.executeQuery();
             
             while(rs1.next())
@@ -236,7 +199,18 @@ public class shippingHomePanel extends javax.swing.JPanel {
         }
 
         DefaultTableModel model = (DefaultTableModel) tblShipmentOrders.getModel();
+        String orderItems = (String) model.getValueAt(selectedRowIndex,2);
+//        String orderTotal = (String) model.getValueAt(selectedRowIndex,3);
         selectedOrder = (String) model.getValueAt(selectedRowIndex,0);
+
+        
+//        lblOrderItems.setVisible(true);
+//        txtOrderItems.setVisible(true);
+//        
+//        lblOrderTotal.setVisible(true);
+//        txtOrderItems.setVisible(true);
+        
+        txtOrderItems.setText(orderItems);
 
         System.out.println(selectedOrder);
     }//GEN-LAST:event_btnViewOrderActionPerformed
@@ -263,16 +237,13 @@ public class shippingHomePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddOrder;
     private javax.swing.JButton btnFinalizeOrder;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnViewOrder;
     private javax.swing.JComboBox<String> cbStatus;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblOrderItems;
-    private javax.swing.JLabel lblOrderTotal;
     private javax.swing.JLabel lblSupplyOrders;
     private javax.swing.JTable tblShipmentOrders;
     private javax.swing.JTextField txtOrderItems;
-    private javax.swing.JTextField txtOrderTotal;
-    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
