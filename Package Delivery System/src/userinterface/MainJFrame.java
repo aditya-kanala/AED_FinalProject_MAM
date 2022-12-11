@@ -65,7 +65,7 @@ public class MainJFrame extends javax.swing.JFrame {
         public void databaseConnection(Connection connection1){
         System.out.println("Connection db");
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root@123");//Establishing connection
             System.out.println("Connected With the database successfully"); //Message after successful connection 
         } catch (SQLException e) {
             System.out.println(e); //Message if something goes wrong while conneting to the database
@@ -791,7 +791,7 @@ public class MainJFrame extends javax.swing.JFrame {
             backLabel.setVisible(true);
             txtUserName.setText("");
             fldPassword.setText("");
-          signupPanel signUp = new signupPanel(connection);
+          signupPanel signUp = new signupPanel(connection,userdir);
           container.add("sign up", signUp);
           CardLayout layout = (CardLayout) container.getLayout();
           layout.next(container);

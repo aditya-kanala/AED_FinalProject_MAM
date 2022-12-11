@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface;
-
+import Model.UserDirectory;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -19,9 +19,11 @@ public class signupPanel extends javax.swing.JPanel {
      * Creates new form signupPanel
      */
     Connection connection;
-    public signupPanel(Connection connection) {
+    UserDirectory userdir;
+    public signupPanel(Connection connection,UserDirectory userdir) {
         initComponents();
         this.connection=connection;
+        this.userdir=userdir;
     }
 
     /**
@@ -187,23 +189,11 @@ public class signupPanel extends javax.swing.JPanel {
       String password = String.valueOf(pwdUserPassword.getPassword());
       String gender = cbUserGender.getSelectedItem().toString();
   
-        try{
-        PreparedStatement preparedStatement =connection.prepareStatement("insert into customer values(?,?,?,?,?,?)");
-        preparedStatement.setString(1,name);
-        preparedStatement.setString(2,email);
-        preparedStatement.setString(3,username);
-        preparedStatement.setString(4,mobile);
-        preparedStatement.setString(5,password);
-        preparedStatement.setString(6,gender);
+    if(userdir.addCustomer(name, email, username, mobile, password, gender))
+            JOptionPane.showMessageDialog(this, "Customer Created Successfully");
+    else
+             JOptionPane.showMessageDialog(this, "Customer Not Created Successfully");
 
-
-        
-        preparedStatement.executeUpdate();
-        System.out.println("Data inserted Successfully");
-        JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
-      }
-       catch(SQLException e){System.out.println(""+e); //Message if something goes wrong while conneting to the database
-} 
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
 
