@@ -192,3 +192,12 @@ CREATE TABLE `delivery_agent` (
   `OrderStatus` varchar(45) DEFAULT NULL,		
   PRIMARY KEY (`AgentName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Supplier Orders*/
+CREATE TABLE `supplier_orders` (
+  `OrderID` varchar(20) NOT NULL,
+  `OrderItems` varchar(45) DEFAULT NULL,
+  `OrderQuantity` double DEFAULT NULL,
+  `OrderStatus` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
