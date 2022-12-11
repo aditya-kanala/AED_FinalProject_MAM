@@ -434,6 +434,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -460,6 +463,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
         
@@ -485,6 +491,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
         
@@ -511,6 +520,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
          
@@ -535,6 +547,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
         loginJPanel.setVisible(false);
@@ -561,6 +576,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -587,6 +605,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -637,6 +658,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -663,6 +687,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -687,6 +714,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -713,6 +743,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -739,6 +772,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -765,6 +801,9 @@ public class MainJFrame extends javax.swing.JFrame {
                         backLabel.setVisible(true);
                         txtUserName.setText("");
                         fldPassword.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Please check your credentials..!!");
+
                 }
             }
             
@@ -791,7 +830,7 @@ public class MainJFrame extends javax.swing.JFrame {
             backLabel.setVisible(true);
             txtUserName.setText("");
             fldPassword.setText("");
-          signupPanel signUp = new signupPanel(connection);
+          signupPanel signUp = new signupPanel(connection,userdir);
           container.add("sign up", signUp);
           CardLayout layout = (CardLayout) container.getLayout();
           layout.next(container);

@@ -181,7 +181,7 @@ CREATE TABLE `shipment_orders` (
 CREATE TABLE `cart` (
   `product` varchar(20) NOT NULL,
   `price` double DEFAULT NULL,
-  `quantity` varchar(45) DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
   PRIMARY KEY (`product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
