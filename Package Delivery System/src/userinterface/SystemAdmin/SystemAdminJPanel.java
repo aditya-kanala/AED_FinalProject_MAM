@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.SystemAdmin;
+import Model.OrganizationsDirectory;
+import Model.UserDirectory;
 import java.awt.CardLayout;
 import java.sql.*;
 
@@ -19,9 +21,13 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
      * Creates new form SystemAdminJPanel
      */
     Connection connection;
-    public SystemAdminJPanel(Connection connection) {
+    UserDirectory userdir;
+    OrganizationsDirectory orgDir;
+    public SystemAdminJPanel(Connection connection,UserDirectory userdir, OrganizationsDirectory orgDir) {
         initComponents();
         this.connection=connection;
+        this.userdir = userdir;
+        this.orgDir=orgDir;
     }
 
     /**
@@ -228,7 +234,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblManageRolesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblManageRolesMousePressed
-        RolesSignUp roles=new RolesSignUp( connection);
+        RolesSignUp roles=new RolesSignUp( connection,userdir);
         rightSystemAdminPanel.add("SystemAdmin",roles);
         CardLayout  layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -241,7 +247,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageStorePanelMousePressed
 
     private void manageOrganizationsLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrganizationsLabelMousePressed
-        OrganizationsSignUp organizations=new OrganizationsSignUp( connection);
+        OrganizationsSignUp organizations=new OrganizationsSignUp( connection,orgDir);
         rightSystemAdminPanel.add("SystemAdmin",organizations);
         CardLayout  layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);    
