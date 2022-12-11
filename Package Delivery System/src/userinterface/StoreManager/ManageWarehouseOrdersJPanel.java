@@ -52,6 +52,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
         lblOrderTotal = new javax.swing.JLabel();
         txtOrderTotal = new javax.swing.JTextField();
         btnFinalizeOrder = new javax.swing.JButton();
+        btnViewAll = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -91,6 +92,11 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
         });
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         lblOrderItems.setForeground(new java.awt.Color(255, 255, 255));
         lblOrderItems.setText("Order Items:");
@@ -108,6 +114,13 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
         btnFinalizeOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizeOrderActionPerformed(evt);
+            }
+        });
+
+        btnViewAll.setText("View All");
+        btnViewAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllActionPerformed(evt);
             }
         });
 
@@ -135,6 +148,8 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
                             .addComponent(btnAddOrder)
                             .addGap(18, 18, 18)
                             .addComponent(btnViewOrder)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnViewAll)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -157,7 +172,8 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAddOrder)
-                        .addComponent(btnViewOrder))
+                        .addComponent(btnViewOrder)
+                        .addComponent(btnViewAll))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSearch)))
@@ -208,11 +224,42 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
             System.out.println("Warehouse Order inserted Successfully");
 
             populateWarehouseOrderTable(connection);
+            initialSetup();
             
         }
         catch(SQLException e){
             System.out.println("Error Connecting Database" + e);}
     }//GEN-LAST:event_btnFinalizeOrderActionPerformed
+
+    private void btnViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllActionPerformed
+        populateWarehouseOrderTable(connection);
+    }//GEN-LAST:event_btnViewAllActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String searchTerm = txtSearch.getText();
+        DefaultTableModel model = (DefaultTableModel) tblWarehouseOrders.getModel();
+        model.setRowCount(0);
+        try{
+                PreparedStatement preparedStatement =connection.prepareStatement("select * from warehouse_orders where OrderItems = ?");
+                preparedStatement.setString(1,searchTerm);
+                ResultSet rs = preparedStatement.executeQuery(); 
+                while(rs.next()){
+                Object[] rows = new Object[4];
+                rows[0]= rs.getString(1);
+                rows[1]=rs.getString(2);
+                rows[2]=rs.getString(3);
+                rows[3]=rs.getString(4);
+
+                model.addRow(rows);
+                
+                initialSetup();
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Cannot find order");
+            populateWarehouseOrderTable(connection);
+        }         
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void initialSetup(){
         lblOrderItems.setVisible(false);
@@ -222,6 +269,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
         txtOrderTotal.setVisible(false);
         
         btnFinalizeOrder.setVisible(false);
+        btnViewOrder.setVisible(false);
     }
     
     private void addOrShowOrderDetails(){
@@ -266,6 +314,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAddOrder;
     private javax.swing.JButton btnFinalizeOrder;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnViewAll;
     private javax.swing.JButton btnViewOrder;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblOrderItems;

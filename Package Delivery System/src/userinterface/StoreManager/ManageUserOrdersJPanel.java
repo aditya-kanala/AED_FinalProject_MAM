@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,6 +48,7 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
         lblOrderTotal = new javax.swing.JLabel();
         txtOrderTotal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnViewAll = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -79,6 +81,11 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
         });
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         lblOrderItems.setForeground(new java.awt.Color(255, 255, 255));
         lblOrderItems.setText("Order Items:");
@@ -94,6 +101,13 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
 
         jButton1.setText("Update Order");
 
+        btnViewAll.setText("View All");
+        btnViewAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,6 +122,8 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnViewOrder)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnViewAll)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -136,7 +152,9 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnViewOrder)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnViewOrder)
+                        .addComponent(btnViewAll))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSearch)))
@@ -168,6 +186,36 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
     private void txtOrderTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOrderTotalActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String searchTerm = txtSearch.getText();
+        DefaultTableModel model = (DefaultTableModel) tblUserOrders.getModel();
+        model.setRowCount(0);
+        try{
+                PreparedStatement preparedStatement =connection.prepareStatement("select * from user_orders where OrderItems = ?");
+                preparedStatement.setString(1,searchTerm);
+                ResultSet rs = preparedStatement.executeQuery(); 
+                while(rs.next()){
+                Object[] rows = new Object[4];
+                rows[0]= rs.getString(1);
+                rows[1]=rs.getString(2);
+                rows[2]=rs.getString(3);
+                rows[3]=rs.getString(4);
+
+                model.addRow(rows);
+                
+                initialSetup();
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Cannot find order");
+            populateUserOrderTable(connection);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllActionPerformed
+        populateUserOrderTable(connection);
+    }//GEN-LAST:event_btnViewAllActionPerformed
 
     private void initialSetup(){
         lblOrderItems.setVisible(false);
@@ -210,6 +258,7 @@ public class ManageUserOrdersJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnViewAll;
     private javax.swing.JButton btnViewOrder;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
