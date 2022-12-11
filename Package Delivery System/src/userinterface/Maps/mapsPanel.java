@@ -9,23 +9,28 @@ import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.engine.EngineOptions;
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 import com.teamdev.jxbrowser.view.swing.BrowserView;
+import java.awt.CardLayout;
+import userinterface.BPOenterprise.bpoAdminPanel;
+import userinterface.customer.customerCart;
+import java.sql.*;
 
 /**
  *
  * @author mahith
  */
 public class mapsPanel extends javax.swing.JPanel {
-
+    Connection connection;
     /**
      * Creates new form mapsPanel
      */
     Browser browser;
-    public mapsPanel() {
+    public mapsPanel(Connection connection) {
+        this.connection = connection;
         initComponents();
         
-        //loadMaps();
+        loadMaps();
         
-        loadMarkedMaps();
+        //loadMarkedMaps();
         
 //        EngineOptions options =
 //                EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
@@ -101,8 +106,15 @@ public class mapsPanel extends javax.swing.JPanel {
                 
                 int size = placeName.length;
                 for(int i=0;i<size;i++){
-                    place+=placeName[i];
+                    place+=placeName[i]+" ";
                 }
+                
+                
+                
+                customerCart cart = new customerCart(connection,longLat[0],longLat[1],place);
+                this.getParent().add("customer Cart",cart);
+                CardLayout layout = (CardLayout) this.getParent().getLayout();
+                layout.previous(cart);
                 
                 System.out.println(place+" Long is "+longLat[0]+" & Lat is"+ longLat[1]);
     }//GEN-LAST:event_btnSetLocationActionPerformed

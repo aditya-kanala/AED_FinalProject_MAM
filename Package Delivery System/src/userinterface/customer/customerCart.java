@@ -5,19 +5,50 @@
 package userinterface.customer;
 
 import java.awt.CardLayout;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Random;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import userinterface.Maps.mapsPanel;
-
+import java.sql.*;
+import java.time.LocalDate;
 /**
  *
  * @author mahith
  */
 public class customerCart extends javax.swing.JPanel {
-
+    Connection connection;
+    String products = "";
+    String longi;
+    String lati;
+    String loci;
     /**
      * Creates new form customerCart
      */
-    public customerCart() {
+    public customerCart(Connection connection,String loni, String lati,String loci) {
+        this.connection =connection;
+        this.loci = loci;
+        this.longi = longi;
+        this.lati = lati;
         initComponents();
+        if(!loci.isBlank()){
+            lblLocation.setText(loci);
+        }
+        
+        
+        populateCartTable(connection,products);
+        
+        
+        try{
+        
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select sum(price) from cart");
+            ResultSet rs = preparedStatement.executeQuery();
+            System.out.println(rs.getDouble(1));
+            txtCartValue.setText(Double.toString(rs.getDouble(1)));
+        }catch(Exception e){
+            
+        }
     }
 
     /**
@@ -40,7 +71,7 @@ public class customerCart extends javax.swing.JPanel {
         totalCartlbl = new javax.swing.JLabel();
         txtCartValue = new javax.swing.JTextField();
         placeOrderBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblLocation = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -49,13 +80,14 @@ public class customerCart extends javax.swing.JPanel {
         lblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
         lblSupplyOrders.setText("CART");
 
-        tblCart.setForeground(new java.awt.Color(255, 255, 255));
+        tblCart.setBackground(new java.awt.Color(25, 56, 82));
+        tblCart.setForeground(new java.awt.Color(204, 204, 204));
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Product", "Store", "Price", "Quantity"
+                "Product", "Price", "Quantity"
             }
         ));
         jScrollPane1.setViewportView(tblCart);
@@ -63,6 +95,8 @@ public class customerCart extends javax.swing.JPanel {
         setLocationLabel.setForeground(new java.awt.Color(255, 255, 255));
         setLocationLabel.setText("Set Location");
 
+        selectLocationBtn.setBackground(null);
+        selectLocationBtn.setForeground(new java.awt.Color(204, 204, 204));
         selectLocationBtn.setText("Open Maps");
         selectLocationBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,19 +107,25 @@ public class customerCart extends javax.swing.JPanel {
         lblAddress.setForeground(new java.awt.Color(255, 255, 255));
         lblAddress.setText("Address");
 
+        txtAddress.setBackground(new java.awt.Color(25, 56, 82));
         txtAddress.setColumns(20);
+        txtAddress.setForeground(new java.awt.Color(204, 204, 204));
         txtAddress.setRows(5);
         jScrollPane2.setViewportView(txtAddress);
 
         totalCartlbl.setForeground(new java.awt.Color(255, 255, 255));
         totalCartlbl.setText("Total Cart value");
 
+        txtCartValue.setBackground(null);
+        txtCartValue.setForeground(new java.awt.Color(204, 204, 204));
         txtCartValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCartValueActionPerformed(evt);
             }
         });
 
+        placeOrderBtn.setBackground(null);
+        placeOrderBtn.setForeground(new java.awt.Color(204, 204, 204));
         placeOrderBtn.setText("Place Order");
         placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +133,9 @@ public class customerCart extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Select Location");
+        lblLocation.setBackground(new java.awt.Color(25, 56, 82));
+        lblLocation.setForeground(new java.awt.Color(204, 204, 204));
+        lblLocation.setText("Select Location");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,58 +150,56 @@ public class customerCart extends javax.swing.JPanel {
                         .addGap(135, 135, 135)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(397, 397, 397)
+                        .addGap(286, 286, 286)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAddress)
                             .addComponent(totalCartlbl)
-                            .addComponent(setLocationLabel))
-                        .addGap(42, 42, 42)
+                            .addComponent(setLocationLabel)
+                            .addComponent(lblAddress))
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                            .addComponent(placeOrderBtn)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtCartValue)
-                                .addComponent(selectLocationBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(placeOrderBtn))))
+                                .addComponent(selectLocationBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSupplyOrders)
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCartValue, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(totalCartlbl)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSupplyOrders)
+                .addGap(51, 51, 51)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblAddress)
-                        .addGap(39, 39, 39)))
-                .addGap(33, 33, 33)
+                    .addComponent(totalCartlbl)
+                    .addComponent(txtCartValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectLocationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(setLocationLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                    .addComponent(setLocationLabel)
+                    .addComponent(selectLocationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblLocation)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAddress)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(placeOrderBtn)
-                .addGap(252, 252, 252))
+                .addGap(309, 309, 309))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectLocationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectLocationBtnActionPerformed
         // TODO add your handling code here:
-        mapsPanel setAddress = new mapsPanel();
+        mapsPanel setAddress = new mapsPanel(connection);
         this.getParent().add("Set Address",setAddress);
         CardLayout layout = (CardLayout) this.getParent().getLayout();
         layout.next(this.getParent());
+        
+        
     }//GEN-LAST:event_selectLocationBtnActionPerformed
 
     private void txtCartValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCartValueActionPerformed
@@ -168,14 +208,74 @@ public class customerCart extends javax.swing.JPanel {
 
     private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
         // TODO add your handling code here:
+        
+        if(longi.isEmpty() || loci.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please select location from maps");
+        }
+        
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?) ");
+            preparedStatement.setString(1, generateUniqueId());
+            preparedStatement.setString(2, LocalDate.now().toString());
+            preparedStatement.setString(3, products);
+            preparedStatement.setString(4, txtCartValue.getText());
+            preparedStatement.setString(5, loci);
+            preparedStatement.setString(6, longi);
+            preparedStatement.setString(7, lati);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("truncate cart");
+            preparedStatement.executeQuery();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Order Placed");
+         
     }//GEN-LAST:event_placeOrderBtnActionPerformed
 
+    
+    
+    public String generateUniqueId(){
+        Random random = new Random();
+        String res = "";
+        int arr[] = {1,2,3,4,5,6,7,8,9};
+        for(int i=0;i<16;i++){
+            res += arr[random.nextInt(arr.length)];
+        }
+        return res;
+    }
 
+    public void populateCartTable(Connection connection, String products){
+        DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+        model.setRowCount(0);
+        try{
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from cart");
+            ResultSet rs = preparedStatement.executeQuery(); 
+            while(rs.next()){
+            Object[] rows = new Object[3];
+            rows[0]= rs.getString(1);
+            rows[1]=rs.getString(2);
+            rows[2]=rs.getString(3);
+            model.addRow(rows);
+            
+            products += rs.getString(1)+" ,";
+            
+            }
+        }
+        catch(SQLException e){System.out.println(e);}
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblLocation;
     private javax.swing.JLabel lblSupplyOrders;
     private javax.swing.JButton placeOrderBtn;
     private javax.swing.JButton selectLocationBtn;

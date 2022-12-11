@@ -19,7 +19,7 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         this.connection= connection;
         initComponents();
         
-        CustomerPanel panel = new CustomerPanel();
+        CustomerPanel panel = new CustomerPanel(connection);
         rightCustomerPanel.add("workArea", panel);
         CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
         layout.next(rightCustomerPanel);
@@ -253,7 +253,7 @@ public class CustomerHomePanel extends javax.swing.JPanel {
 
     private void homeCustomerPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeCustomerPanelMousePressed
         // TODO add your handling code here:
-        CustomerPanel panel = new CustomerPanel();
+        CustomerPanel panel = new CustomerPanel(connection);
         rightCustomerPanel.add("workArea", panel);
         CardLayout layout = (CardLayout) rightCustomerPanel.getLayout();
         layout.next(rightCustomerPanel);
