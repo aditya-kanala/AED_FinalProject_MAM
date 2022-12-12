@@ -55,17 +55,6 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         lblHeading = new javax.swing.JLabel();
         lblWarehouseType = new javax.swing.JLabel();
         txtWarehouseType = new javax.swing.JTextField();
-        Farms = new javax.swing.JPanel();
-        lblFHeading = new javax.swing.JLabel();
-        lblFarmName = new javax.swing.JLabel();
-        lblFarmOwner = new javax.swing.JLabel();
-        lblFarmProduce = new javax.swing.JLabel();
-        lblFarmLocation = new javax.swing.JLabel();
-        txtFarmname = new javax.swing.JTextField();
-        txtFarmOwner = new javax.swing.JTextField();
-        txtFarmProduce = new javax.swing.JTextField();
-        btnFarm = new javax.swing.JButton();
-        txtFarmLocation = new javax.swing.JTextField();
         Supplier = new javax.swing.JPanel();
         lblSHeading = new javax.swing.JLabel();
         lblSupplierName = new javax.swing.JLabel();
@@ -229,82 +218,6 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         );
 
         tpanel.addTab("Warehouse", Warehouse);
-
-        lblFHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        lblFHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFHeading.setText("Register a Farm");
-
-        lblFarmName.setText("Farm Name :");
-
-        lblFarmOwner.setText("Farm Owner :");
-
-        lblFarmProduce.setText("Farm Produce :");
-
-        lblFarmLocation.setText("Farm Location :");
-
-        btnFarm.setText("Register Farm");
-        btnFarm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFarmActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout FarmsLayout = new javax.swing.GroupLayout(Farms);
-        Farms.setLayout(FarmsLayout);
-        FarmsLayout.setHorizontalGroup(
-            FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FarmsLayout.createSequentialGroup()
-                .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FarmsLayout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFarmName)
-                            .addComponent(lblFarmOwner)
-                            .addComponent(lblFarmProduce)
-                            .addComponent(lblFarmLocation))
-                        .addGap(28, 28, 28)
-                        .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtFarmname, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                                .addComponent(txtFarmOwner)
-                                .addComponent(txtFarmProduce))
-                            .addComponent(txtFarmLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(FarmsLayout.createSequentialGroup()
-                        .addGap(439, 439, 439)
-                        .addComponent(btnFarm)))
-                .addContainerGap(334, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FarmsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblFHeading)
-                .addGap(393, 393, 393))
-        );
-        FarmsLayout.setVerticalGroup(
-            FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FarmsLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(lblFHeading)
-                .addGap(85, 85, 85)
-                .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFarmName)
-                    .addComponent(txtFarmname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFarmOwner)
-                    .addComponent(txtFarmOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFarmProduce)
-                    .addComponent(txtFarmProduce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(FarmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFarmLocation)
-                    .addComponent(txtFarmLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
-                .addComponent(btnFarm)
-                .addContainerGap(295, Short.MAX_VALUE))
-        );
-
-        tpanel.addTab("Farms", Farms);
 
         lblSHeading.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblSHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -482,54 +395,12 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
         txtWarehouseID.setText("");
         txtWarehouseName.setText("");
         txtWarehouseLocation.setText(""); 
+        txtWarehouseType.setText("");
        // else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
 
     }//GEN-LAST:event_btnCreateWarehouseActionPerformed
 
-    public boolean farmValidation(){
-            ArrayList msg=null;
-            msg= new ArrayList();
-    
-        if(txtFarmname.getText().isBlank()|| !(txtFarmname.getText().matches("^[a-zA-Z ]*$")))
-        {msg.add("Please enter the Farm Name without digits or special characters and do not leave it blank");}
-        if(txtFarmOwner.getText().isBlank()|| !(txtFarmOwner.getText().matches("^[a-zA-Z ]*$")))
-        {msg.add("Please enter the Owner Name without digits or special characters and do not leave it blank");} 
-        if(txtFarmProduce.getText().isBlank()|| !(txtFarmProduce.getText().matches("^[a-zA-Z ]*$")))
-        {msg.add("Please enter the Produce without digits or special characters and do not leave it blank");}
-        
-        
-        
-        if(!(msg.isEmpty()))
-        {JOptionPane.showMessageDialog(this, msg.toArray());
-        msg.clear();
-        return false;}
-        else 
-        return true;
-    }
-    
-    private void btnFarmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFarmActionPerformed
-        // TODO add your handling code here:
-        String name = txtFarmname.getText();
-        String owner = txtFarmOwner.getText();
-        String produce= txtFarmProduce.getText();
-        String location = txtFarmLocation.getText();
-        Double longitude = 55.46;
-        Double latitude =-85.23;
-
-       if(farmValidation()){ 
-        if(orgDir.addFarm(name, owner, produce, location, longitude, latitude))
-         JOptionPane.showMessageDialog(this, "Farm Successfully Created..!!");
-        else
-           JOptionPane.showMessageDialog(this, "Farm Not Created..!!");
-       }
-       txtFarmname.setText("");
-       txtFarmOwner.setText("");
-       txtFarmProduce.setText("");
-       txtFarmLocation.setText("");
-        //else{JOptionPane.showMessageDialog(this, "Enter Valid Details!!");}
- 
-    }//GEN-LAST:event_btnFarmActionPerformed
-
+   
     public boolean supplierValidation(){
         ArrayList msg=null;
     msg= new ArrayList();
@@ -579,19 +450,12 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Farms;
     private javax.swing.JPanel Store;
     private javax.swing.JPanel Supplier;
     private javax.swing.JPanel Warehouse;
     private javax.swing.JButton btnCreateStore;
     private javax.swing.JToggleButton btnCreateSupplier;
     private javax.swing.JButton btnCreateWarehouse;
-    private javax.swing.JButton btnFarm;
-    private javax.swing.JLabel lblFHeading;
-    private javax.swing.JLabel lblFarmLocation;
-    private javax.swing.JLabel lblFarmName;
-    private javax.swing.JLabel lblFarmOwner;
-    private javax.swing.JLabel lblFarmProduce;
     private javax.swing.JLabel lblHeading;
     private javax.swing.JLabel lblHeading2;
     private javax.swing.JLabel lblSHeading;
@@ -610,10 +474,6 @@ public class OrganizationsSignUp extends javax.swing.JPanel {
     private javax.swing.JLabel lblWarehouseType;
     private javax.swing.JPasswordField pwdSupplier;
     private javax.swing.JTabbedPane tpanel;
-    private javax.swing.JTextField txtFarmLocation;
-    private javax.swing.JTextField txtFarmOwner;
-    private javax.swing.JTextField txtFarmProduce;
-    private javax.swing.JTextField txtFarmname;
     private javax.swing.JTextField txtStoreID;
     private javax.swing.JTextField txtStoreLocation;
     private javax.swing.JTextField txtStoreName;
