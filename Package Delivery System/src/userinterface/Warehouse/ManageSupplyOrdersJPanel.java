@@ -28,9 +28,8 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
     public ManageSupplyOrdersJPanel(Connection connection) {
         initComponents();
         initialSetup();
-        populateSupplyOrderTable(connection);
         this.connection=connection;
-        
+        populateSupplyOrderTable(connection);
     }
 
     /**
@@ -250,7 +249,7 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblSupplyOrders.getModel();
         model.setRowCount(0);
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from supply_orders");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("select * from supplier_orders");
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
             Object[] rows = new Object[4];
