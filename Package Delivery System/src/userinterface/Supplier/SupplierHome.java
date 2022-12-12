@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,13 +49,14 @@ public class SupplierHome extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(25, 56, 82));
 
-        tblSupplierOrders.setForeground(new java.awt.Color(255, 255, 255));
+        tblSupplierOrders.setBackground(new java.awt.Color(25, 56, 82));
+        tblSupplierOrders.setForeground(new java.awt.Color(204, 204, 204));
         tblSupplierOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order ID", "Items", "Quantity", "Status"
+                "Order ID", "Order Date", "Order Items", "Order Total", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblSupplierOrders);
@@ -80,7 +82,9 @@ public class SupplierHome extends javax.swing.JPanel {
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open", "Raise for Delivery" }));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SUPPLIER ORDERS");
 
         jButton1.setText("View Order");
@@ -97,48 +101,51 @@ public class SupplierHome extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(472, 472, 472)
+                        .addGap(232, 232, 232)
+                        .addComponent(jButton1)
+                        .addGap(140, 140, 140)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lblOrderID)
+                                .addGap(62, 62, 62)
+                                .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblStatus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnRaiseShipment)
+                                        .addGap(145, 145, 145))
+                                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(474, 474, 474)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(222, 222, 222)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(lblOrderID)
-                                    .addGap(62, 62, 62)
-                                    .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblStatus)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btnRaiseShipment)
-                                            .addGap(145, 145, 145))
-                                        .addComponent(cmbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
-                .addContainerGap(261, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOrderID))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnRaiseShipment)
-                .addGap(206, 206, 206))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblOrderID))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStatus)
+                            .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRaiseShipment)))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,14 +166,19 @@ public class SupplierHome extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tblSupplierOrders.getModel();
             String orderId = (String) model.getValueAt(selectedRowIndex, 0);
             String items = (String) model.getValueAt(selectedRowIndex, 1);
-            int quantity = (int) model.getValueAt(selectedRowIndex, 2);
+            String quantity = (String) model.getValueAt(selectedRowIndex, 2);
+            String totalC = (String) model.getValueAt(selectedRowIndex, 3);
+            Double total = Double.valueOf(totalC);
+
             String status = cmbStatus.getSelectedItem().toString();
         
                 PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?,?)");
                 preparedStatement.setString(1, orderId);
-                preparedStatement.setString(2,items);
-                preparedStatement.setInt(3, quantity);
-                preparedStatement.setInt(5,Integer.parseInt(status));
+                preparedStatement.setString(2,LocalDate.now().toString());
+                preparedStatement.setString(3, quantity);
+                preparedStatement.setDouble(4, total);
+
+                preparedStatement.setString(5,status);
 
                 preparedStatement.executeUpdate();
                 System.out.println("Supplier Order inserted Successfully");
@@ -175,6 +187,7 @@ public class SupplierHome extends javax.swing.JPanel {
                 initialSetup();
         }
         catch(Exception e){
+            System.out.println(e);
             JOptionPane.showMessageDialog(this, "Please enter all values and try again");
         }
     }//GEN-LAST:event_btnRaiseShipmentActionPerformed

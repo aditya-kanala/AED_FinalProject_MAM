@@ -204,12 +204,14 @@ CREATE TABLE `shipment_orders` (
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+Drop Table supplier_orders;
 /*Supplier Orders*/
 CREATE TABLE `supplier_orders` (
   `OrderID` varchar(20) NOT NULL,
+  `OrderDate` varchar(45) DEFAULT NULL,
   `OrderItems` varchar(45) DEFAULT NULL,
-  `OrderQuantity` double DEFAULT NULL,
-  `OrderStatus` varchar(20) DEFAULT NULL,
+  `OrderTotal` int DEFAULT NULL,
+  `Status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

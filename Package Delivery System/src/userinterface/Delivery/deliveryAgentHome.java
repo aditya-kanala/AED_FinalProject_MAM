@@ -90,6 +90,8 @@ int zoom;
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(25, 56, 82));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Address");
 
         txtOrderID.addActionListener(new java.awt.event.ActionListener() {
@@ -98,8 +100,12 @@ int zoom;
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(25, 56, 82));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Order ID");
 
+        jLabel3.setBackground(new java.awt.Color(25, 56, 82));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Status");
 
         cdStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "select ...", "Out for Delivery", "Delivered", "Unable to Deliver" }));

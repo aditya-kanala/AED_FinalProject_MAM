@@ -211,7 +211,7 @@ public class WarehouseManagerHomeJPanel extends javax.swing.JPanel {
     public void manageSupplyOrders(){
         homePanel.setBackground(new Color(227, 73, 78));
         manageSupplyOrdersPanel.setBackground(new Color(135, 206, 235));
-        ManageWarehouseOrdersJPanel manageSupplyOrdersJPanel = new ManageWarehouseOrdersJPanel(connection);        
+        ManageSupplyOrdersJPanel manageSupplyOrdersJPanel = new ManageSupplyOrdersJPanel(connection);        
         rightWarehouseAdminPanel.add("manageSupplyOrdersJPanel",manageSupplyOrdersJPanel);
         CardLayout layout = (CardLayout) rightWarehouseAdminPanel.getLayout();
         layout.next(rightWarehouseAdminPanel);

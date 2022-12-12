@@ -8,6 +8,7 @@ import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,11 +20,16 @@ public class bpoHomePanel extends javax.swing.JPanel {
     /**
      * Creates new form bpoHomePanel
      */
+    String csrId;
+    String csrName;
+    String csrEmail;
+    String csrPassword;
     Connection connection;
     public bpoHomePanel(Connection connection) {
         initComponents();
         this.connection = connection;
         populateCsrTable(connection);
+        initialSetup();
     }
 
     /**
@@ -38,6 +44,16 @@ public class bpoHomePanel extends javax.swing.JPanel {
         lblManageStoreItems = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCsrAgents = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        lblCsrId = new javax.swing.JLabel();
+        lblCsrName = new javax.swing.JLabel();
+        lblCsrEmail = new javax.swing.JLabel();
+        lblCsrPassword = new javax.swing.JLabel();
+        txtCsrName = new javax.swing.JTextField();
+        txtCsrId = new javax.swing.JTextField();
+        txtCsrEmail = new javax.swing.JTextField();
+        txtCsrPassword = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -56,6 +72,36 @@ public class bpoHomePanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblCsrAgents);
 
+        jButton1.setText("Add New Agent");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        lblCsrId.setBackground(new java.awt.Color(255, 255, 255));
+        lblCsrId.setForeground(new java.awt.Color(255, 255, 255));
+        lblCsrId.setText("CSR ID:");
+
+        lblCsrName.setBackground(new java.awt.Color(255, 255, 255));
+        lblCsrName.setForeground(new java.awt.Color(255, 255, 255));
+        lblCsrName.setText("CSR Name:");
+
+        lblCsrEmail.setBackground(new java.awt.Color(255, 255, 255));
+        lblCsrEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblCsrEmail.setText("CSR Email:");
+
+        lblCsrPassword.setBackground(new java.awt.Color(255, 255, 255));
+        lblCsrPassword.setForeground(new java.awt.Color(255, 255, 255));
+        lblCsrPassword.setText("CSR Password:");
+
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,11 +109,26 @@ public class bpoHomePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(424, 424, 424)
-                        .addComponent(lblManageStoreItems)))
+                        .addComponent(lblManageStoreItems))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCsrName)
+                                    .addComponent(lblCsrId)
+                                    .addComponent(lblCsrEmail)
+                                    .addComponent(lblCsrPassword)
+                                    .addComponent(btnAdd))
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCsrPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCsrEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCsrId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCsrName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -77,9 +138,71 @@ public class bpoHomePanel extends javax.swing.JPanel {
                 .addComponent(lblManageStoreItems)
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(499, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCsrId)
+                    .addComponent(txtCsrId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCsrName)
+                    .addComponent(txtCsrName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCsrEmail)
+                    .addComponent(txtCsrEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCsrPassword)
+                    .addComponent(txtCsrPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAdd)
+                .addContainerGap(234, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        lblCsrId.setVisible(true);
+        txtCsrId.setVisible(true);
+        
+        lblCsrName.setVisible(true);
+        txtCsrName.setVisible(true);
+        
+        lblCsrEmail.setVisible(true);
+        txtCsrEmail.setVisible(true);
+        
+        lblCsrPassword.setVisible(true);
+        txtCsrPassword.setVisible(true);
+        
+        btnAdd.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        csrId = txtCsrId.getText();
+        csrName = txtCsrName.getText();
+        csrEmail = txtCsrEmail.getText();
+        csrPassword = txtCsrPassword.getText();
+        try{
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into csr values(?,?,?,?)");
+            preparedStatement.setString(1,csrId);
+            preparedStatement.setString(2,csrName);
+            preparedStatement.setString(3, csrEmail);
+            preparedStatement.setString(4, csrPassword);
+
+            preparedStatement.executeUpdate();
+            System.out.println("Warehouse Order inserted Successfully");
+
+            populateCsrTable(connection);
+            initialSetup();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please enter all values and try again");
+        }
+
+    }//GEN-LAST:event_btnAddActionPerformed
 
     private void populateCsrTable(Connection connection){
         DefaultTableModel model = (DefaultTableModel) tblCsrAgents.getModel();
@@ -98,9 +221,35 @@ public class bpoHomePanel extends javax.swing.JPanel {
         }
         catch(SQLException e){System.out.println(e);}
     }
+    
+    private void initialSetup(){
+        lblCsrId.setVisible(false);
+        txtCsrId.setVisible(false);
+        
+        lblCsrName.setVisible(false);
+        txtCsrName.setVisible(false);
+        
+        lblCsrEmail.setVisible(false);
+        txtCsrEmail.setVisible(false);
+        
+        lblCsrPassword.setVisible(false);
+        txtCsrPassword.setVisible(false);
+        
+        btnAdd.setVisible(false);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCsrEmail;
+    private javax.swing.JLabel lblCsrId;
+    private javax.swing.JLabel lblCsrName;
+    private javax.swing.JLabel lblCsrPassword;
     private javax.swing.JLabel lblManageStoreItems;
     private javax.swing.JTable tblCsrAgents;
+    private javax.swing.JTextField txtCsrEmail;
+    private javax.swing.JTextField txtCsrId;
+    private javax.swing.JTextField txtCsrName;
+    private javax.swing.JTextField txtCsrPassword;
     // End of variables declaration//GEN-END:variables
 }
