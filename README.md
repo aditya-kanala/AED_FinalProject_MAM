@@ -23,7 +23,7 @@ By Team Number 22
 
 <li>
 <h4>Organizations:</h4>
-<p>There are a total of 8 organizations participating in the ecosystem</p>
+<p>There are a total of 7 organizations participating in the ecosystem</p>
 <ol>
 <li>Stores <br><p> This organization represents all the stores in the project</p></li>
 <li>Store Support <br><p> This organization provides the required support to the store</p></li>
@@ -38,7 +38,7 @@ By Team Number 22
 
 <li>
 <h4>Roles:</h4>
-<p> There are a total of 13 roles being used for the project</p>
+<p> There are a total of 11 roles being used for the project</p>
 <ol>
 <li>System Admin <br><p>Has the overall control over the application</p></li>
 <li>Market Place Admin <br><p>Has the overall control over the market place enterprise</p></li>
@@ -66,4 +66,13 @@ By Team Number 22
 <h2>Sequence Diagram</h2>
 
 <img width="1016" alt="SequenceDiagram" src="https://user-images.githubusercontent.com/114545333/206952039-c027087d-7ffd-4ecc-af14-f38891d43915.png">
+
+<br>
+<br>
+<br>
+<h2>Class Diagram</h2>
+<img width="1016" alt="ClassDiagram" src="https://user-images.githubusercontent.com/113262044/206957280-7b1d4af8-a9b1-4f66-9df0-dbb305c84b01.png">
+
+
+
 
