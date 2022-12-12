@@ -77,17 +77,6 @@ public class RolesSignUp extends javax.swing.JPanel {
         txtCSRAgentEmail = new javax.swing.JTextField();
         btnCreateCSR = new javax.swing.JButton();
         pwdCSRAgentPassword = new javax.swing.JPasswordField();
-        SSR = new javax.swing.JPanel();
-        lblSSRHeading1 = new javax.swing.JLabel();
-        lblSSRAgentID = new javax.swing.JLabel();
-        lblSSRAgentName = new javax.swing.JLabel();
-        lblSSRAgentEmail = new javax.swing.JLabel();
-        lblSSRAgentPassword = new javax.swing.JLabel();
-        txtSSRAgentID = new javax.swing.JTextField();
-        txtSSRAgentEmail = new javax.swing.JTextField();
-        btnCreateSSR = new javax.swing.JButton();
-        pwdSSRAgentPassword = new javax.swing.JPasswordField();
-        txtSSRAgentName = new javax.swing.JTextField();
         ShippingAgent = new javax.swing.JPanel();
         lblSAHeading = new javax.swing.JLabel();
         lblShippingAgentName = new javax.swing.JLabel();
@@ -506,111 +495,6 @@ public class RolesSignUp extends javax.swing.JPanel {
         );
 
         tabbedRoles.addTab("CSR", CSR);
-
-        SSR.setBackground(new java.awt.Color(25, 54, 82));
-        SSR.setForeground(new java.awt.Color(204, 204, 204));
-
-        lblSSRHeading1.setBackground(new java.awt.Color(25, 54, 82));
-        lblSSRHeading1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        lblSSRHeading1.setForeground(new java.awt.Color(204, 204, 204));
-        lblSSRHeading1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSSRHeading1.setText("Create an SSR Agent");
-
-        lblSSRAgentID.setBackground(new java.awt.Color(25, 54, 82));
-        lblSSRAgentID.setForeground(new java.awt.Color(204, 204, 204));
-        lblSSRAgentID.setText("SSR Agent ID :");
-
-        lblSSRAgentName.setBackground(new java.awt.Color(25, 54, 82));
-        lblSSRAgentName.setForeground(new java.awt.Color(204, 204, 204));
-        lblSSRAgentName.setText("SSR Agent Name :");
-
-        lblSSRAgentEmail.setBackground(new java.awt.Color(25, 54, 82));
-        lblSSRAgentEmail.setForeground(new java.awt.Color(204, 204, 204));
-        lblSSRAgentEmail.setText("Email :");
-
-        lblSSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
-        lblSSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
-        lblSSRAgentPassword.setText("Password :");
-
-        txtSSRAgentID.setBackground(new java.awt.Color(25, 54, 82));
-        txtSSRAgentID.setForeground(new java.awt.Color(204, 204, 204));
-
-        txtSSRAgentEmail.setBackground(new java.awt.Color(25, 54, 82));
-        txtSSRAgentEmail.setForeground(new java.awt.Color(204, 204, 204));
-
-        btnCreateSSR.setBackground(new java.awt.Color(25, 54, 82));
-        btnCreateSSR.setForeground(new java.awt.Color(204, 204, 204));
-        btnCreateSSR.setText("Create SSR Agent");
-        btnCreateSSR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateSSRActionPerformed(evt);
-            }
-        });
-
-        pwdSSRAgentPassword.setBackground(new java.awt.Color(25, 54, 82));
-        pwdSSRAgentPassword.setForeground(new java.awt.Color(204, 204, 204));
-
-        txtSSRAgentName.setBackground(new java.awt.Color(25, 54, 82));
-        txtSSRAgentName.setForeground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout SSRLayout = new javax.swing.GroupLayout(SSR);
-        SSR.setLayout(SSRLayout);
-        SSRLayout.setHorizontalGroup(
-            SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SSRLayout.createSequentialGroup()
-                .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SSRLayout.createSequentialGroup()
-                        .addGap(413, 413, 413)
-                        .addComponent(btnCreateSSR))
-                    .addGroup(SSRLayout.createSequentialGroup()
-                        .addGap(324, 324, 324)
-                        .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSSRAgentID)
-                            .addGroup(SSRLayout.createSequentialGroup()
-                                .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSSRAgentEmail)
-                                    .addComponent(lblSSRAgentPassword)
-                                    .addComponent(lblSSRAgentName))
-                                .addGap(50, 50, 50)
-                                .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtSSRAgentID, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
-                                        .addComponent(pwdSSRAgentPassword))
-                                    .addComponent(txtSSRAgentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSSRAgentName))))))
-                .addContainerGap(276, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SSRLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblSSRHeading1)
-                .addGap(302, 302, 302))
-        );
-        SSRLayout.setVerticalGroup(
-            SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SSRLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(lblSSRHeading1)
-                .addGap(73, 73, 73)
-                .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSSRAgentID)
-                    .addComponent(txtSSRAgentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblSSRAgentName)
-                    .addComponent(txtSSRAgentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSSRAgentEmail)
-                    .addComponent(txtSSRAgentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(SSRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSSRAgentPassword)
-                    .addComponent(pwdSSRAgentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(91, 91, 91)
-                .addComponent(btnCreateSSR)
-                .addContainerGap(273, Short.MAX_VALUE))
-        );
-
-        tabbedRoles.addTab("SSR", SSR);
 
         ShippingAgent.setBackground(new java.awt.Color(25, 54, 82));
         ShippingAgent.setForeground(new java.awt.Color(204, 204, 204));
@@ -1150,47 +1034,6 @@ public class RolesSignUp extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCreateCSRActionPerformed
 
    
-    public boolean ssrValidation(){
-        ArrayList msg=null;
-    msg= new ArrayList();
-    
-        if(txtSSRAgentID.getText().isBlank()|| !(txtSSRAgentID.getText().matches("^[0-9a-zA-Z ]*$")))
-        {msg.add("Please enter the SSR Agent ID without special characters and do not leave it blank");}
-        if(txtSSRAgentName.getText().isBlank() || !(txtSSRAgentName.getText().matches("^[a-zA-Z ]*$")))
-        {msg.add("Please enter the SSR Agent Name without special characters and do not leave it blank");}
-        if(txtSSRAgentEmail.getText().isBlank()||!(txtSSRAgentEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")))
-        msg.add(("Please enter the correct email (xxx@xx.xx)"));
-       if(String.valueOf(pwdSSRAgentPassword.getPassword()).isBlank())
-        msg.add("Password field is empty");
-           
-        
-        if(!(msg.isEmpty()))
-        {JOptionPane.showMessageDialog(this, msg.toArray());
-        msg.clear();
-        return false;}
-        else 
-        return true; 
-    } 
-    private void btnCreateSSRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSSRActionPerformed
-        // TODO add your handling code here:\
-        String id= txtSSRAgentID.getText();
-        String ssrname= txtSSRAgentName.getText();
-        String ssremail = txtSSRAgentEmail.getText();
-        String password = String.valueOf(pwdSSRAgentPassword.getPassword());
-        
-        if(ssrValidation()){
-        if(userdir.addSSRAgent(id, ssrname, ssremail, password))
-        JOptionPane.showMessageDialog(this, "SSR Agent Successfully Created..!!");
-        else
-         JOptionPane.showMessageDialog(this, "SSR Agent Not Created..!!");
-        }
-       txtSSRAgentID.setText(""); 
-       txtSSRAgentName.setText(""); 
-       txtSSRAgentEmail.setText("");
-       pwdSSRAgentPassword.setText("");
-    }//GEN-LAST:event_btnCreateSSRActionPerformed
-
-    
     public boolean shippingAgentValidation(){
         ArrayList msg=null;
     msg= new ArrayList();
@@ -1375,12 +1218,10 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JPanel CSR;
     private javax.swing.JPanel Customer;
     private javax.swing.JPanel DeliveryAgent;
-    private javax.swing.JPanel SSR;
     private javax.swing.JPanel ShippingAgent;
     private javax.swing.JPanel StoreManager;
     private javax.swing.JPanel WarehouseManager;
     private javax.swing.JButton btnCreateCSR;
-    private javax.swing.JButton btnCreateSSR;
     private javax.swing.JButton btnCreateStoreManager;
     private javax.swing.JButton btnCreateUser;
     private javax.swing.JButton btnCreateWarehouseManager;
@@ -1409,11 +1250,6 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JLabel lblSManagerName;
     private javax.swing.JLabel lblSManagerPassword;
     private javax.swing.JLabel lblSManagerUserName;
-    private javax.swing.JLabel lblSSRAgentEmail;
-    private javax.swing.JLabel lblSSRAgentID;
-    private javax.swing.JLabel lblSSRAgentName;
-    private javax.swing.JLabel lblSSRAgentPassword;
-    private javax.swing.JLabel lblSSRHeading1;
     private javax.swing.JLabel lblShippingAgentBaseLocation;
     private javax.swing.JLabel lblShippingAgentMobile;
     private javax.swing.JLabel lblShippingAgentName;
@@ -1436,7 +1272,6 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JPasswordField pwdCSRAgentPassword;
     private javax.swing.JPasswordField pwdDAAgentPassword;
     private javax.swing.JPasswordField pwdSManagerPassword;
-    private javax.swing.JPasswordField pwdSSRAgentPassword;
     private javax.swing.JPasswordField pwdShippingAgent;
     private javax.swing.JPasswordField pwdUserPassword;
     private javax.swing.JPasswordField pwdWManagerPassword;
@@ -1452,9 +1287,6 @@ public class RolesSignUp extends javax.swing.JPanel {
     private javax.swing.JTextField txtSManagerEmail;
     private javax.swing.JTextField txtSManagerName;
     private javax.swing.JTextField txtSManagerUserName;
-    private javax.swing.JTextField txtSSRAgentEmail;
-    private javax.swing.JTextField txtSSRAgentID;
-    private javax.swing.JTextField txtSSRAgentName;
     private javax.swing.JTextField txtShippingAgentBaseLocation;
     private javax.swing.JTextField txtShippingAgentMobile;
     private javax.swing.JTextField txtShippingAgentName;

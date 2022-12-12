@@ -47,15 +47,8 @@
                                   <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnAddOrder" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnViewOrder" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jScrollPane1" alignment="1" min="-2" pref="751" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="751" max="-2" attributes="0"/>
+                          <Component id="btnViewOrder" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
@@ -71,10 +64,7 @@
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="300" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAddOrder" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnViewOrder" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnViewOrder" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblOrderItems" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -173,14 +163,6 @@
         <Property name="text" type="java.lang.String" value="SHIPMENT ORDERS"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAddOrder">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add Order"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddOrderActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnViewOrder">
       <Properties>
         <Property name="text" type="java.lang.String" value="View Order"/>
@@ -192,9 +174,10 @@
     <Component class="javax.swing.JComboBox" name="cbStatus">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
+          <StringArray count="3">
             <StringItem index="0" value="Open"/>
-            <StringItem index="1" value="Raise for shipment"/>
+            <StringItem index="1" value="Raise for Delivery"/>
+            <StringItem index="2" value="cancelled"/>
           </StringArray>
         </Property>
       </Properties>

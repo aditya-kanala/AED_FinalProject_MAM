@@ -26,7 +26,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
     Connection connection;
     public ManageStoreRequestsJPanel(Connection connection) {
         initComponents();
-        initialSetup();
+        
         this.connection=connection;
         populateStoreRequestsTable(connection);
     }
@@ -43,17 +43,11 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         lblUserOrders = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStoreRequests = new javax.swing.JTable();
-        btnViewOrder = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        lblOrderItems = new javax.swing.JLabel();
-        txtOrderItems = new javax.swing.JTextField();
-        lblOrderTotal = new javax.swing.JLabel();
-        txtOrderTotal = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnAcceptReject = new javax.swing.JButton();
-        btnFinalizeOrder = new javax.swing.JButton();
         cbStatus = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -72,13 +66,6 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblStoreRequests);
 
-        btnViewOrder.setText("View/Update Order");
-        btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewOrderActionPerformed(evt);
-            }
-        });
-
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
@@ -87,40 +74,17 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
 
         btnSearch.setText("Search");
 
-        lblOrderItems.setForeground(new java.awt.Color(255, 255, 255));
-        lblOrderItems.setText("Order Items:");
-
-        lblOrderTotal.setForeground(new java.awt.Color(255, 255, 255));
-        lblOrderTotal.setText("Order Total:");
-
-        txtOrderTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrderTotalActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Update Order");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        btnAcceptReject.setText("Accept/Reject Order");
+        btnAcceptReject.setText("Raise Shipment");
         btnAcceptReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptRejectActionPerformed(evt);
             }
         });
 
-        btnFinalizeOrder.setText("Raise Shipment");
-        btnFinalizeOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFinalizeOrderActionPerformed(evt);
-            }
-        });
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "select...", "Shipment Raised", "cancelled" }));
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("Status");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -132,35 +96,24 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblUserOrders)
                         .addGap(276, 276, 276))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnViewOrder)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAcceptReject)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSearch))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblOrderItems)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtOrderItems, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(lblOrderTotal)
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnFinalizeOrder, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(4, 4, 4)
-                                            .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(109, 109, 109))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabel1)
+                        .addGap(50, 50, 50)
+                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(btnAcceptReject)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,49 +123,22 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnViewOrder)
-                        .addComponent(btnAcceptReject))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSearch)))
-                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOrderItems)
-                    .addComponent(txtOrderItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblOrderTotal))
-                    .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(btnFinalizeOrder)
-                .addGap(42, 42, 42)
-                .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(47, 47, 47)
+                .addComponent(btnAcceptReject)
+                .addContainerGap(216, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
-        // TODO add your handling code here:
-        showOrderDetails();
-    }//GEN-LAST:event_btnViewOrderActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void txtOrderTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrderTotalActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAcceptRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptRejectActionPerformed
         try{
@@ -239,65 +165,16 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
             System.out.println("Shipment Order inserted Successfully");
 
             populateStoreRequestsTable(connection);
-            initialSetup();
+           
             
         }
         catch(SQLException e){
             System.out.println("Error Connecting Database" + e);}
     }//GEN-LAST:event_btnAcceptRejectActionPerformed
 
-    private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
-        // TODO add your handling code here:
-//        try{
-//
-//            PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from warehouse_orders where OrderID=?");
-//            preparedStatement1.setString(1,selectedOrder.toString());
-//            ResultSet rs1 = preparedStatement1.executeQuery();
-//            System.out.println(rs1);
-//            if(rs1.next())
-//            {PreparedStatement preparedStatement =connection.prepareStatement("insert into shipment_orders values(?,?,?,?,?)");
-//
-//                preparedStatement.setString(1,rs1.getString(1));
-//                preparedStatement.setString(2,rs1.getString(2));
-//                preparedStatement.setString(3,rs1.getString(3));
-//                preparedStatement.setString(4,rs1.getString(4));
-//                preparedStatement.setString(5,cbStatus.getSelectedItem().toString());
-//
-//                preparedStatement.executeUpdate();
-//                JOptionPane.showMessageDialog(this,"Shipment Request Raised Successfully..");
-//
-//            }
-//            System.out.println("Shipment Request raised Successfully");
-//
-//            populateStoreRequestsTable(connection);
-//
-//        }
-//        catch(SQLException e){
-//            System.out.println("Error Connecting Database" + e);
-//            JOptionPane.showMessageDialog(this,"Shipment Request Already Raised..");
-//
-//        }
-    }//GEN-LAST:event_btnFinalizeOrderActionPerformed
 
-    private void initialSetup(){
-        lblOrderItems.setVisible(false);
-        txtOrderItems.setVisible(false);
-        
-        lblOrderTotal.setVisible(false);
-        txtOrderTotal.setVisible(false);
-        
-        jButton1.setVisible(false);
-    }
             
-    private void showOrderDetails(){
-        lblOrderItems.setVisible(true);
-        txtOrderItems.setVisible(true);
-        
-        lblOrderTotal.setVisible(true);
-        txtOrderTotal.setVisible(true);
-        
-        jButton1.setVisible(true);
-    }
+   
     
         public void populateStoreRequestsTable(Connection connection){
         DefaultTableModel model = (DefaultTableModel) tblStoreRequests.getModel();
@@ -330,18 +207,12 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceptReject;
-    private javax.swing.JButton btnFinalizeOrder;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnViewOrder;
     private javax.swing.JComboBox<String> cbStatus;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblOrderItems;
-    private javax.swing.JLabel lblOrderTotal;
     private javax.swing.JLabel lblUserOrders;
     private javax.swing.JTable tblStoreRequests;
-    private javax.swing.JTextField txtOrderItems;
-    private javax.swing.JTextField txtOrderTotal;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

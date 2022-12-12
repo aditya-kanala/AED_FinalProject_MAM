@@ -43,7 +43,6 @@ public class shippingHomePanel extends javax.swing.JPanel {
         tblShipmentOrders = new javax.swing.JTable();
         btnFinalizeOrder = new javax.swing.JButton();
         lblSupplyOrders = new javax.swing.JLabel();
-        btnAddOrder = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
         cbStatus = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -75,13 +74,6 @@ public class shippingHomePanel extends javax.swing.JPanel {
         lblSupplyOrders.setForeground(new java.awt.Color(255, 255, 255));
         lblSupplyOrders.setText("SHIPMENT ORDERS");
 
-        btnAddOrder.setText("Add Order");
-        btnAddOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddOrderActionPerformed(evt);
-            }
-        });
-
         btnViewOrder.setText("View Order");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +81,7 @@ public class shippingHomePanel extends javax.swing.JPanel {
             }
         });
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open", "Raise for shipment" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open", "Raise for Delivery", "cancelled" }));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,13 +112,8 @@ public class shippingHomePanel extends javax.swing.JPanel {
                                         .addComponent(btnFinalizeOrder)
                                         .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(174, 174, 174)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(btnAddOrder)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnViewOrder)
-                                    .addGap(90, 90, 90))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnViewOrder))
                         .addGap(150, 150, 150))))
         );
         layout.setVerticalGroup(
@@ -137,9 +124,7 @@ public class shippingHomePanel extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddOrder)
-                    .addComponent(btnViewOrder))
+                .addComponent(btnViewOrder)
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOrderItems)
@@ -157,7 +142,7 @@ public class shippingHomePanel extends javax.swing.JPanel {
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
         try{
-            PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from shipment_orders where OrderID=?");
+            PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from warehouse_orders where OrderID=?");
             preparedStatement1.setString(1,selectedOrder);
             ResultSet rs1 = preparedStatement1.executeQuery();
             
@@ -214,10 +199,6 @@ public class shippingHomePanel extends javax.swing.JPanel {
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void btnAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddOrderActionPerformed
     
     public void populateshipmentOrderTable(Connection connection){
         DefaultTableModel model = (DefaultTableModel) tblShipmentOrders.getModel();
@@ -239,7 +220,6 @@ public class shippingHomePanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddOrder;
     private javax.swing.JButton btnFinalizeOrder;
     private javax.swing.JButton btnViewOrder;
     private javax.swing.JComboBox<String> cbStatus;
