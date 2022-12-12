@@ -28,7 +28,6 @@ By Team Number 22
 <li>Stores <br><p> This organization represents all the stores in the project</p></li>
 <li>Store Support <br><p> This organization provides the required support to the store</p></li>
 <li>Customer Service <br><p> This organization helps users with any queries while using the application</p></li>
-<li>Farms <br><p> This organization has all the data regarding the edibles</p></li>
 <li>Warehouses <br><p> This organization represents all the warehouses in the project</p></li>
 <li>Delivery Company <br><p> This organization has the details related to the package deliveries</p></li>
 <li>Shipping Company <br><p> This organization has all the details related to the shipping of the packages</p></li>
@@ -49,7 +48,6 @@ By Team Number 22
 <li>Store Manager <br><p>Has the overall control over a store under him</p></li>
 <li>Warehouse Manager <br><p>Has the overall control over a warehouse under him</p></li>
 <li>Customer Service Representative <br><p>Helps the users with any queries while using the application</p></li>
-<li>Supplier Service Representative <br><p>Helps the suppliers with any queries while using the application</p></li>
 <li>Shipping Agent <br><p>User who ships the packages from one location to one location</p></li>
 <li>Delivery Agent <br><p>User who delivers the packages to the customer</p></li>
 <li>Customer / End User <br><p>The end user who uses the application for packages</p></li>
@@ -59,12 +57,13 @@ By Team Number 22
 </ol>
 
 <h2>Workflow Diagram</h2>
+<img width="1016" alt="WorkflowDiagram" src="https://user-images.githubusercontent.com/114545333/206951922-5c24e940-6cbb-4392-8a9c-35dee7777fba.png">
 
-![Workflow drawio](https://user-images.githubusercontent.com/114545333/206878632-5ce878e0-a949-43c4-aab3-e96378b80684.png)
+
 <br>
 <br>
 <br>
 <h2>Sequence Diagram</h2>
-<img width="1108" alt="SequenceDiagram" src="https://user-images.githubusercontent.com/114545333/206881849-7920f7d7-6405-420f-bcb4-63ba4be4c211.png">
 
+<img width="1016" alt="SequenceDiagram" src="https://user-images.githubusercontent.com/114545333/206952039-c027087d-7ffd-4ecc-af14-f38891d43915.png">
 
