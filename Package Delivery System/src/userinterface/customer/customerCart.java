@@ -223,7 +223,7 @@ public class customerCart extends javax.swing.JPanel {
         }
         
         try{
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?,?,?,?,?,?) ");
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("insert into user_orders values(?,?,?,?,?,?,?,?,?,?) ");
             preparedStatement.setString(1, generateUniqueId());
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3, products);
@@ -233,7 +233,8 @@ public class customerCart extends javax.swing.JPanel {
             preparedStatement.setString(7, longi);
             preparedStatement.setString(8, lati);
             preparedStatement.setString(9, String.valueOf(zoom));
-            
+                       preparedStatement.setString(10, "Order Status");
+ 
             preparedStatement.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Order Placed");

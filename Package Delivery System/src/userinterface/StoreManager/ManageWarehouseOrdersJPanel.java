@@ -111,7 +111,7 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnFinalizeOrder.setText("Raise Shipment");
+        btnFinalizeOrder.setText("Order");
         btnFinalizeOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizeOrderActionPerformed(evt);
@@ -211,16 +211,17 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
         try{
-            PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_orders values(?,?,?,?)");
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into warehouse_orders values(?,?,?,?,?)");
             preparedStatement.setString(1,generateUniqueId());
             preparedStatement.setString(2, LocalDate.now().toString());
             preparedStatement.setString(3,txtOrderItems.getText());
             preparedStatement.setString(4,txtOrderTotal.getText());
-            
+            preparedStatement.setString(5,"Order Created");
+
             preparedStatement.executeUpdate();
             System.out.println("Warehouse Order inserted Successfully");
 
-            populateWarehouseOrderTable(connection);
+        populateWarehouseOrderTable(connection);
             JOptionPane.showMessageDialog(this, "Warehouse Order inserted Successfully");
  
             initialSetup();
