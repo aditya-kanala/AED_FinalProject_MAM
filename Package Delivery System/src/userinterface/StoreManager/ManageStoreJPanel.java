@@ -32,8 +32,8 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     public ManageStoreJPanel(Connection connection, String managerName) {
         initComponents();
         initialSetup();
-        populateStoreItemsTable(connection);
         this.connection=connection;
+        populateStoreItemsTable(connection);
         this.managerName = managerName;
         getStoreDetails(managerName);
     }
@@ -279,7 +279,6 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                 preparedStatement.setDouble(4, Double.parseDouble(txtPrice.getText()));
                 preparedStatement.setInt(5,Integer.parseInt(sprItemQuantity.getValue().toString()));
 
-                preparedStatement.executeUpdate();
                 System.out.println("Warehouse Order inserted Successfully");
 
                 populateStoreItemsTable(connection);

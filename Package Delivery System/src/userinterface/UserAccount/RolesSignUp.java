@@ -1129,6 +1129,7 @@ public class RolesSignUp extends javax.swing.JPanel {
        txtDAAgentBaseLocation.setText("");
        txtDAAgentUserName.setText("");
        pwdDAAgentPassword.setText("");  
+       txtDAAgentID.setText("");
        
        
        

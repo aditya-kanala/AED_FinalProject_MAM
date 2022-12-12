@@ -66,7 +66,7 @@ public class MainJFrame extends javax.swing.JFrame {
         public void databaseConnection(Connection connection1){
         System.out.println("Connection db");
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root@123");//Establishing connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/aed_project", "root", "root");//Establishing connection
             System.out.println("Connected With the database successfully"); //Message after successful connection 
         } catch (SQLException e) {
             System.out.println(e); //Message if something goes wrong while conneting to the database
@@ -780,7 +780,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
               if((rs.getString(3).equalsIgnoreCase(txtUserName.getText())) && rs.getString(4).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "SSR Login Successful..!!");
+                        JOptionPane.showMessageDialog(this, "CSR Login Successful..!!");
                         csrPanel panel = new csrPanel(connection);
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();
