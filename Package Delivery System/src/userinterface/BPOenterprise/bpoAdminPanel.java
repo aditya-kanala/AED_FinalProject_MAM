@@ -51,8 +51,8 @@ public class bpoAdminPanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(215, 81, 81));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel1.setText("STORE MANAGEMENT SYSTEM");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+        jLabel1.setText("BPO ADMIN");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));

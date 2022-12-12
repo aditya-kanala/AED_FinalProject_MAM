@@ -153,6 +153,7 @@ public class shippingHomePanel extends javax.swing.JPanel {
 
                 preparedStatement.executeUpdate();
                 JOptionPane.showMessageDialog(this,"Delivery Request Raised Successfully..");
+                txtOrderItems.setText("");
         }
         catch(SQLException e){
             System.out.println("Error Connecting Database" + e);

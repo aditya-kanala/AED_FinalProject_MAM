@@ -21,7 +21,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     String managerName;
     public StoreManagerJPanel(Connection connection, String managerName) {
         initComponents();
-        storeGraphs();
+        storeGraphs(connection);
         this.connection=connection;
         this.managerName = managerName;
     }
@@ -288,12 +288,12 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageWarehouseOrdersPanelMousePressed
 
     private void homeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMousePressed
-        storeGraphs();
+        storeGraphs(connection);
     }//GEN-LAST:event_homeMousePressed
 
     private void homePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMousePressed
         // TODO add your handling code here:
-        storeGraphs();
+        storeGraphs(connection);
     }//GEN-LAST:event_homePanelMousePressed
 
     private void manageStore(){
@@ -329,12 +329,12 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
         layout.next(rightStoreAdminPanel);
     }
 
-    private void storeGraphs(){
+    private void storeGraphs(Connection connection){
         homePanel.setBackground(new Color(135, 206, 235));
         manageStorePanel.setBackground(new Color(227, 73, 78));
         manageUserOrdersPanel.setBackground(new Color(227, 73, 78));
         manageWarehouseOrdersPanel.setBackground(new Color(227, 73, 78));
-        ViewStoreGraphsJPanel viewStoreGraphsJPanel = new ViewStoreGraphsJPanel();
+        ViewStoreGraphsJPanel viewStoreGraphsJPanel = new ViewStoreGraphsJPanel(connection);
         rightStoreAdminPanel.add("viewStoreGraphsJPanel",viewStoreGraphsJPanel);
         CardLayout layout = (CardLayout) rightStoreAdminPanel.getLayout();
         layout.next(rightStoreAdminPanel);

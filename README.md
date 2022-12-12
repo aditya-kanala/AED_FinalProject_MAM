@@ -14,7 +14,7 @@ By Team Number 22
 <p>There are a total of 4 enterprises being used for the project</p><br>
 <ol>
 <li>Market Place <br><p>    This enterprise consists of all the stores and warehouse participating in the ecosystem.</p></li>
-<li>Business Process Outsourcing <br><p>    This enterprise provides the customer and service support to take care of any issues.</p></li>
+<li>Business Process Outsourcing <br><p>    This enterprise provides the customer support to take care of any issues.</p></li>
 <li>Logistics <br><p>    This enterprise is responsible for all the tracking and shipment of a delivery placed by the customer.</p></li>
 <li>Distribution <br><p>    This enterprise acts as a wholesale supplier to the marketplace enterprise.</p></li>
 </ol>

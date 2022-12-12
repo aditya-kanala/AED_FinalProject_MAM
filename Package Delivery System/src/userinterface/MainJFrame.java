@@ -780,7 +780,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ResultSet rs = preparedStatement.executeQuery(); 
             while(rs.next()){
               if((rs.getString(3).equalsIgnoreCase(txtUserName.getText())) && rs.getString(4).equals(String.valueOf(fldPassword.getPassword()))){
-                        JOptionPane.showMessageDialog(this, "SSR Login Successful..!!");
+                        JOptionPane.showMessageDialog(this, "CSR Login Successful..!!");
                         csrPanel panel = new csrPanel(connection);
                         container.add("supplier", panel);
                         CardLayout layout = (CardLayout) container.getLayout();

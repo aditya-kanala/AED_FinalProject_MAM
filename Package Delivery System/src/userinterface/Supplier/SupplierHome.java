@@ -80,7 +80,7 @@ public class SupplierHome extends javax.swing.JPanel {
             }
         });
 
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open", "Raise for Delivery" }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open", "Raise for Shipment" }));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
@@ -113,9 +113,7 @@ public class SupplierHome extends javax.swing.JPanel {
                                 .addComponent(lblStatus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRaiseShipment)
-                                        .addGap(145, 145, 145))
+                                    .addComponent(btnRaiseShipment)
                                     .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(474, 474, 474)

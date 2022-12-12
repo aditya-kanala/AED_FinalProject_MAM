@@ -218,8 +218,15 @@ public class signupPanel extends javax.swing.JPanel {
   
      if(customerValidation()){
       if(userdir.addCustomer(name, email, username, mobile, password, gender))
+          
       JOptionPane.showMessageDialog(this, "Customer Successfully Created..!!");
-      else
+      txtUserName.setText("");
+      txtUserEmail.setText("");
+      txtUserMobile.setText("");
+      txtUserName.setText("");
+      pwdUserPassword.setText("");
+     }
+     else{
            JOptionPane.showMessageDialog(this, "Customer Not Created..!!");
      }
 

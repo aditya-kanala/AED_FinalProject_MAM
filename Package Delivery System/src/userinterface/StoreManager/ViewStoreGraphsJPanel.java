@@ -4,8 +4,10 @@
  */
 package userinterface.StoreManager;
 
+import java.sql.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -30,31 +32,32 @@ public class ViewStoreGraphsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewStoreGraphsJPanel
      */
-    public ViewStoreGraphsJPanel() {
+    Connection connection;
+    public ViewStoreGraphsJPanel(Connection connection) {
+        this.connection = connection;
         initComponents();
-        showPieChart();
+        showPieChart(connection);
         showLineChart();
-        showHistogram();
-        showBarChart();
+//        showHistogram();
+//        showBarChart();
     }
     
-    public void showPieChart(){
+    public void showPieChart(Connection connection){
         //create dataset
         DefaultPieDataset barDataset = new DefaultPieDataset( );
-        barDataset.setValue( "IPhone 5s" , new Double( 20 ) );  
-        barDataset.setValue( "SamSung Grand" , new Double( 20 ) );   
-        barDataset.setValue( "MotoG" , new Double( 40 ) );    
-        barDataset.setValue( "Nokia Lumia" , new Double( 10 ) );  
-        JFreeChart piechart = ChartFactory.createPieChart("mobile sales",barDataset, false,true,false);//explain
+        try{
+            PreparedStatement preparedStatement =connection.prepareStatement("select * from store_items");
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                barDataset.setValue(rs.getString(2), rs.getInt(5));  
+            }
+        } catch(Exception e){
+            return;
+        }
+        
+        JFreeChart piechart = ChartFactory.createPieChart("Store Items",barDataset, false,true,false);//explain
       
-        PiePlot piePlot =(PiePlot) piechart.getPlot();
-      
-        //changing pie chart blocks colors
-        piePlot.setSectionPaint("IPhone 5s", new Color(255,255,102));
-        piePlot.setSectionPaint("SamSung Grand", new Color(102,255,102));
-        piePlot.setSectionPaint("MotoG", new Color(255,102,153));
-        piePlot.setSectionPaint("Nokia Lumia", new Color(0,204,204));
-      
+        PiePlot piePlot =(PiePlot) piechart.getPlot();       
        
         piePlot.setBackgroundPaint(Color.white);
         
@@ -116,9 +119,9 @@ public class ViewStoreGraphsJPanel extends javax.swing.JPanel {
         
         
         ChartPanel barpChartPanel2 = new ChartPanel(chart);
-        histogram.removeAll();
-        histogram.add(barpChartPanel2, BorderLayout.CENTER);
-        histogram.validate();
+//        histogram.removeAll();
+//        histogram.add(barpChartPanel2, BorderLayout.CENTER);
+//        histogram.validate();
     }
     
     public void showBarChart(){
@@ -141,9 +144,9 @@ public class ViewStoreGraphsJPanel extends javax.swing.JPanel {
         renderer.setSeriesPaint(0, clr3);
         
         ChartPanel barpChartPanel = new ChartPanel(chart);
-        barGraph.removeAll();
-        barGraph.add(barpChartPanel, BorderLayout.CENTER);
-        barGraph.validate();
+//        barGraph.removeAll();
+//        barGraph.add(barpChartPanel, BorderLayout.CENTER);
+//        barGraph.validate();
     }
 
     /**
@@ -157,8 +160,6 @@ public class ViewStoreGraphsJPanel extends javax.swing.JPanel {
 
         piePlotPanel = new javax.swing.JPanel();
         lineChart = new javax.swing.JPanel();
-        histogram = new javax.swing.JPanel();
-        barGraph = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(25, 56, 82));
 
@@ -168,46 +169,30 @@ public class ViewStoreGraphsJPanel extends javax.swing.JPanel {
         lineChart.setPreferredSize(new java.awt.Dimension(400, 300));
         lineChart.setLayout(new java.awt.BorderLayout());
 
-        histogram.setPreferredSize(new java.awt.Dimension(400, 300));
-        histogram.setLayout(new java.awt.BorderLayout());
-
-        barGraph.setPreferredSize(new java.awt.Dimension(400, 300));
-        barGraph.setLayout(new java.awt.BorderLayout());
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(piePlotPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(histogram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(barGraph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lineChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(piePlotPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(lineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lineChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(piePlotPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(histogram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(barGraph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGap(223, 223, 223)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lineChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(piePlotPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel barGraph;
-    private javax.swing.JPanel histogram;
     private javax.swing.JPanel lineChart;
     private javax.swing.JPanel piePlotPanel;
     // End of variables declaration//GEN-END:variables
