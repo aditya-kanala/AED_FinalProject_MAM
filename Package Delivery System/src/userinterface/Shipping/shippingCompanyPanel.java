@@ -41,12 +41,6 @@ public class shippingCompanyPanel extends javax.swing.JPanel {
         homePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         homeLabel = new javax.swing.JLabel();
-        manageOrdersPanel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        manageOrdersLabel = new javax.swing.JLabel();
-        manageSupplyOrdersPanel = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        raiseDeliveryRequestLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -97,88 +91,9 @@ public class shippingCompanyPanel extends javax.swing.JPanel {
 
         jPanel3.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, -1));
 
-        manageOrdersPanel.setBackground(new java.awt.Color(227, 73, 78));
-        manageOrdersPanel.setToolTipText("");
-        manageOrdersPanel.setPreferredSize(new java.awt.Dimension(264, 48));
-        manageOrdersPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageOrdersPanelMousePressed(evt);
-            }
-        });
-
-        jLabel4.setBackground(new java.awt.Color(25, 56, 82));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Business.png"))); // NOI18N
-
-        manageOrdersLabel.setBackground(new java.awt.Color(25, 56, 82));
-        manageOrdersLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        manageOrdersLabel.setText("Manage Orders");
-        manageOrdersLabel.setAutoscrolls(true);
-
-        javax.swing.GroupLayout manageOrdersPanelLayout = new javax.swing.GroupLayout(manageOrdersPanel);
-        manageOrdersPanel.setLayout(manageOrdersPanelLayout);
-        manageOrdersPanelLayout.setHorizontalGroup(
-            manageOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageOrdersPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(manageOrdersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        manageOrdersPanelLayout.setVerticalGroup(
-            manageOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageOrdersPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(manageOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageOrdersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jPanel3.add(manageOrdersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 280, 40));
-
-        manageSupplyOrdersPanel.setBackground(new java.awt.Color(227, 73, 78));
-        manageSupplyOrdersPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageSupplyOrdersPanelMousePressed(evt);
-            }
-        });
-
-        jLabel6.setBackground(new java.awt.Color(215, 81, 81));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Request Service.png"))); // NOI18N
-
-        raiseDeliveryRequestLabel.setBackground(new java.awt.Color(215, 81, 81));
-        raiseDeliveryRequestLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        raiseDeliveryRequestLabel.setText("Raise Delivery Request");
-        raiseDeliveryRequestLabel.setPreferredSize(new java.awt.Dimension(115, 16));
-
-        javax.swing.GroupLayout manageSupplyOrdersPanelLayout = new javax.swing.GroupLayout(manageSupplyOrdersPanel);
-        manageSupplyOrdersPanel.setLayout(manageSupplyOrdersPanelLayout);
-        manageSupplyOrdersPanelLayout.setHorizontalGroup(
-            manageSupplyOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageSupplyOrdersPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(raiseDeliveryRequestLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        manageSupplyOrdersPanelLayout.setVerticalGroup(
-            manageSupplyOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageSupplyOrdersPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(raiseDeliveryRequestLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(manageSupplyOrdersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, 50));
-
         jSeparator1.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 280, 30));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 280, 100));
 
         jLabel1.setBackground(new java.awt.Color(215, 81, 81));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -215,14 +130,6 @@ public class shippingCompanyPanel extends javax.swing.JPanel {
         homePanel();
     }//GEN-LAST:event_homePanelMousePressed
 
-    private void manageOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageOrdersPanelMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manageOrdersPanelMousePressed
-
-    private void manageSupplyOrdersPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageSupplyOrdersPanelMousePressed
-
-    }//GEN-LAST:event_manageSupplyOrdersPanelMousePressed
-
     private void homePanel(){
         homePanel.setBackground(new Color(135, 206, 235));
         shippingHomePanel shippingHomePanel = new shippingHomePanel(connection);        
@@ -236,15 +143,9 @@ public class shippingCompanyPanel extends javax.swing.JPanel {
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel manageOrdersLabel;
-    private javax.swing.JPanel manageOrdersPanel;
-    private javax.swing.JPanel manageSupplyOrdersPanel;
-    private javax.swing.JLabel raiseDeliveryRequestLabel;
     private javax.swing.JPanel rightShippingUnitPanel;
     // End of variables declaration//GEN-END:variables
 }

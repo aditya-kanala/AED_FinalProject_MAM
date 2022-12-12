@@ -158,7 +158,7 @@ public class StoreManagerJPanel extends javax.swing.JPanel {
 
         manageWarehouseOrdersLabel.setBackground(new java.awt.Color(215, 81, 81));
         manageWarehouseOrdersLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        manageWarehouseOrdersLabel.setText("Manage Warhouse Orders");
+        manageWarehouseOrdersLabel.setText("Manage Warehouse Orders");
         manageWarehouseOrdersLabel.setPreferredSize(new java.awt.Dimension(115, 16));
 
         jLabel6.setBackground(new java.awt.Color(215, 81, 81));

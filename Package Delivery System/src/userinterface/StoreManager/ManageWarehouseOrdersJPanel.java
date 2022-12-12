@@ -221,8 +221,10 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
             System.out.println("Warehouse Order inserted Successfully");
 
             populateWarehouseOrderTable(connection);
+            JOptionPane.showMessageDialog(this, "Warehouse Order inserted Successfully");
+ 
             initialSetup();
-            
+
         }
         catch(SQLException e){
             System.out.println("Error Connecting Database" + e);}
@@ -250,6 +252,8 @@ public class ManageWarehouseOrdersJPanel extends javax.swing.JPanel {
                 model.addRow(rows);
                 
                 initialSetup();
+                txtSearch.setText("");
+                
             }
         }
         catch(Exception e){
