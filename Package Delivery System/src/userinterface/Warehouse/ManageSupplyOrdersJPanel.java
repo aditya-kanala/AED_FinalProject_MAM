@@ -129,19 +129,20 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
                             .addGap(6, 6, 6)
                             .addComponent(lblOrderTotal)
                             .addGap(16, 16, 16)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnFinalizeOrder)
-                                .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnAddOrder)
                             .addGap(18, 18, 18)
                             .addComponent(btnViewOrder)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnSearch))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnFinalizeOrder)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnSearch))))))
                 .addGap(148, 148, 148))
             .addGroup(layout.createSequentialGroup()
                 .addGap(397, 397, 397)
@@ -163,7 +164,9 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSearch)))
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
+                .addComponent(btnFinalizeOrder)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOrderItems)
                     .addComponent(txtOrderItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -173,9 +176,7 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
                         .addGap(3, 3, 3)
                         .addComponent(lblOrderTotal))
                     .addComponent(txtOrderTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnFinalizeOrder)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,7 +209,7 @@ public class ManageSupplyOrdersJPanel extends javax.swing.JPanel {
             }
             DefaultTableModel model = (DefaultTableModel) tblSupplyOrders.getModel();
             String orderItems = (String) model.getValueAt(selectedRowIndex, 2);
-            double orderTotal = (double) model.getValueAt(selectedRowIndex, 2);
+            double orderTotal = (double) model.getValueAt(selectedRowIndex, 3);
             
             PreparedStatement preparedStatement =connection.prepareStatement("insert into supplier_orders values(?,?,?,?)");
             preparedStatement.setString(1,generateUniqueId());

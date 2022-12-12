@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class shippingHomePanel extends javax.swing.JPanel {
     Connection connection;
     String selectedOrder="";
+    String selectedOrderDate="";
+    String orderItems="";
     /**
      * Creates new form shippingHomePanel
      */
@@ -142,26 +144,15 @@ public class shippingHomePanel extends javax.swing.JPanel {
     private void btnFinalizeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeOrderActionPerformed
         // TODO add your handling code here:
         try{
-            PreparedStatement preparedStatement1 = (PreparedStatement) connection.prepareStatement("select * from warehouse_orders where OrderID=?");
-            preparedStatement1.setString(1,selectedOrder);
-            ResultSet rs1 = preparedStatement1.executeQuery();
-            
-            while(rs1.next())
-            {PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_orders values(?,?,?,?)");
+            PreparedStatement preparedStatement =connection.prepareStatement("insert into delivery_orders values(?,?,?,?)");
 
-                preparedStatement.setString(1,rs1.getString(1));
-                preparedStatement.setString(2,rs1.getString(2));
-                preparedStatement.setString(3,rs1.getString(3));
+                preparedStatement.setString(1,selectedOrder);
+                preparedStatement.setString(2,selectedOrderDate);
+                preparedStatement.setString(3,orderItems);
                 preparedStatement.setString(4,cbStatus.getSelectedItem().toString());
 
                 preparedStatement.executeUpdate();
                 JOptionPane.showMessageDialog(this,"Delivery Request Raised Successfully..");
-
-            }
-            System.out.println("Delivery Request raised Successfully");
-
-            populateshipmentOrderTable(connection);
-
         }
         catch(SQLException e){
             System.out.println("Error Connecting Database" + e);
@@ -180,20 +171,12 @@ public class shippingHomePanel extends javax.swing.JPanel {
         }
 
         DefaultTableModel model = (DefaultTableModel) tblShipmentOrders.getModel();
-        String orderItems = (String) model.getValueAt(selectedRowIndex,2);
+         orderItems = (String) model.getValueAt(selectedRowIndex,2);
 //        String orderTotal = (String) model.getValueAt(selectedRowIndex,3);
         selectedOrder = (String) model.getValueAt(selectedRowIndex,0);
-
-        
-//        lblOrderItems.setVisible(true);
-//        txtOrderItems.setVisible(true);
-//        
-//        lblOrderTotal.setVisible(true);
-//        txtOrderItems.setVisible(true);
-        
+        selectedOrderDate = (String) model.getValueAt(selectedRowIndex,1);
+ 
         txtOrderItems.setText(orderItems);
-
-        System.out.println(selectedOrder);
     }//GEN-LAST:event_btnViewOrderActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
