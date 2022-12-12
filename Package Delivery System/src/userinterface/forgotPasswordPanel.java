@@ -162,12 +162,12 @@ public class forgotPasswordPanel extends javax.swing.JPanel {
           message.setSubject("AMAZONIAN: Password Reset Notification");
           message.setText("Hi, \n \n Your New Password is password"+"\n \nThanks,\nTeam Amazonian.");
           
-          Transport.send(message,fromEmail,"whdnlrdwrascgiij");
+          Transport.send(message,fromEmail,"waawvlxrgcqdqjui");
           
           JOptionPane.showMessageDialog(this, "Email Successfully sent");
         }
         catch(Exception e){
-            
+                System.out.println(e);
                 JOptionPane.showMessageDialog(this, "Please enter a valid Email ID");
             
         }
