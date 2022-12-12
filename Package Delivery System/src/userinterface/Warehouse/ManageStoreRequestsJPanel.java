@@ -97,7 +97,6 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                         .addComponent(lblUserOrders)
                         .addGap(276, 276, 276))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSearch))
@@ -132,7 +131,7 @@ public class ManageStoreRequestsJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addGap(47, 47, 47)
                 .addComponent(btnAcceptReject)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
